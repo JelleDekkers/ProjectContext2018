@@ -11,6 +11,9 @@ namespace CityView.Construction {
         public override void OnStart() { }
         public override void OnEnd() { }
 
+        [SerializeField]
+        private AudioClip DemolishSFX;
+
         public override void UpdateMode() {
             if (Input.GetMouseButtonDown(0))
                 OnClick();
@@ -28,6 +31,7 @@ namespace CityView.Construction {
 
         private void DestroyBuilding(Building b) {
             Destroy(b.gameObject);
+            CityCamera.Instance.audioSource.PlayOneShot(DemolishSFX);
         }
 
         private Tile GetTileAtPosition(Vector3 position) {

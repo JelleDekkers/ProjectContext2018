@@ -9,18 +9,16 @@ namespace CityView.Construction {
 
         [SerializeField] private Building buildingPrefab;
         [SerializeField] private BuildingGhost buildingGhost;
+        [SerializeField] private BuildingPlacementEffectHandler placeEffect;
 
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
 
         public override void OnStart() {
-            //placeholder
-            if (buildingPrefab != null) {
-                buildingGhost.Setup(buildingPrefab);
-                buildingGhost.gameObject.SetActive(true);
-            }
+            buildingGhost.Setup(buildingPrefab);
+            buildingGhost.gameObject.SetActive(true);
         }
-
+        
         public override void OnEnd() {
             buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
@@ -84,6 +82,7 @@ namespace CityView.Construction {
             Building b = Instantiate(buildingPrefab, pos, Quaternion.identity, City.Instance.transform);
             foreach (Tile t in tiles)
                 t.occupant = b;
+            Instantiate(placeEffect).Setup(b);
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {

@@ -110,3 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   occupant: {fileID: 0}
+  unBuildableColor: {r: 1, g: 0, b: 0, a: 0}

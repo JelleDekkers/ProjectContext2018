@@ -16,5 +16,9 @@ namespace CityView {
         }
 
         public CityGrid grid;
+
+        private void Awake() {
+            instance = this;
+        }
     }
 }
