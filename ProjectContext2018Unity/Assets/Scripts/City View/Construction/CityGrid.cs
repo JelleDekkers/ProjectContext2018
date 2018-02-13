@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CompanyView {
+namespace CityView.Construction {
 
     public class CityGrid : MonoBehaviour {
 
