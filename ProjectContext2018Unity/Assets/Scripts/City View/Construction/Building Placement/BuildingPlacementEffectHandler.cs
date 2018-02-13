@@ -34,6 +34,7 @@ namespace CityView.Construction {
             building.transform.position = target;
             ParticleSystem p = GetComponent<ParticleSystem>();
             CityCamera.Instance.audioSource.PlayOneShot(buildSFX);
+            CityCamera.Instance.cameraShaker.Shake();
             p.Play();
             Destroy(gameObject, p.main.duration);
         }

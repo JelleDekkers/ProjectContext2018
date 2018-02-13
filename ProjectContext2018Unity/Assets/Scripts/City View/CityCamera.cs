@@ -15,13 +15,15 @@ namespace CityView {
         }
 
         public AudioSource audioSource;
+        public CameraShake cameraShaker;
 
         private void Awake() {
             instance = this;
         }
 
-        private void Shake() {
-
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Space))
+                cameraShaker.Shake();
         }
     }
 }
