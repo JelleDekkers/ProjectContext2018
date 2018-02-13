@@ -21,14 +21,14 @@ namespace CityView.Construction {
                 currentBuildMode.OnEnd();
             } else {
                 currentBuildMode = mode;
-                currentBuildMode.OnStart(this);
+                currentBuildMode.OnStart();
                 return;
             }
 
             // toggle:
             if (currentBuildMode.GetType() != mode.GetType()) {
                 currentBuildMode = mode;
-                currentBuildMode.OnStart(this);
+                currentBuildMode.OnStart();
             } else {
                 currentBuildMode = null;
             }

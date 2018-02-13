@@ -17,8 +17,8 @@ namespace CityView.Construction {
             Fill();
         }
 
-        public bool IsInsideGrid(int x, int z) {
-            return (x >= 0 && x < size.x && z >= 0 && z < size.z);
+        public bool IsInsideGrid(IntVector2 coordinates) {
+            return (coordinates.x >= 0 && coordinates.x < size.x && coordinates.z >= 0 && coordinates.z < size.z);
         }
 
         private void Fill() {

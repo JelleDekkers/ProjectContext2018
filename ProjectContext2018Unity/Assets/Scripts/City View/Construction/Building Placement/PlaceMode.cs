@@ -6,7 +6,6 @@ namespace CityView.Construction {
 
     public class PlaceMode : BuildMode {
 
-        public override Builder Builder { get; set; }
 
         [SerializeField] private Building buildingPrefab;
         [SerializeField] private BuildingGhost buildingGhost;
@@ -14,9 +13,7 @@ namespace CityView.Construction {
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
 
-        public override void OnStart(Builder builder) {
-            Builder = builder;
-
+        public override void OnStart() {
             //placeholder
             if (buildingPrefab != null) {
                 buildingGhost.Setup(buildingPrefab);
@@ -94,7 +91,7 @@ namespace CityView.Construction {
             Tile[,] tiles = new Tile[buildingSize.x, buildingSize.z];
             for (int x = 0; x < buildingSize.x; x++) {
                 for (int z = 0; z < buildingSize.z; z++) {
-                    if (City.Instance.grid.IsInsideGrid(coordinate.x + x, coordinate.z + z)) {
+                    if (City.Instance.grid.IsInsideGrid(new IntVector2(coordinate.x + x, coordinate.z + z))) {
                         Tile t = City.Instance.grid.Grid[coordinate.x + x, coordinate.z + z];
                         tiles[x, z] = t;
                     }
