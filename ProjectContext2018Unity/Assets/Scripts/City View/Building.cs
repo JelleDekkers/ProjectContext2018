@@ -20,7 +20,7 @@ namespace CityView {
 
         public IntVector2 CalculateSize() {
             IntVector2 calcSize = IntVector2.Zero;
-            Renderer r = GetComponent<Renderer>();
+            Renderer r = transform.GetChild(0).GetComponent<Renderer>();
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);
             calcSize.z = (int)Mathf.Round(r.bounds.size.z);
             return calcSize;

@@ -11,28 +11,34 @@ namespace CityView.Construction {
 
         private BuildMode currentBuildMode;
 
-        // placeholder:
-        private void Start() {
-            currentBuildMode = placeMode;
-        }
-
         private void Update() {
             if (currentBuildMode != null)
                 currentBuildMode.UpdateMode();
         }
 
-        private void SetPlaceMode() {
-            if (currentBuildMode != null)
+        private void SetBuildMode(BuildMode mode) {
+            if (currentBuildMode != null) {
                 currentBuildMode.OnEnd();
-            currentBuildMode = placeMode;
-            currentBuildMode.OnStart(this);
+            } else {
+                currentBuildMode = mode;
+                currentBuildMode.OnStart(this);
+                return;
+            }
+
+            // toggle:
+            if (currentBuildMode.GetType() != mode.GetType()) {
+                currentBuildMode = mode;
+                currentBuildMode.OnStart(this);
+            } else {
+                currentBuildMode = null;
+            }
         }
 
-        private void SetDestroyMode() {
-            if (currentBuildMode != null)
-                currentBuildMode.OnEnd();
-            currentBuildMode = destroyMode;
-            currentBuildMode.OnStart(this);
+        private void OnGUI() {
+            if (GUI.Button(new Rect(10, 10, 150, 20), "Build Mode"))
+                SetBuildMode(placeMode);
+            if (GUI.Button(new Rect(10, 30, 150, 20), "Destroy Mode"))
+                SetBuildMode(destroyMode);
         }
 
 

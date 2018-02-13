@@ -11,48 +11,86 @@ namespace CityView.Construction {
         [SerializeField] private Building buildingPrefab;
         [SerializeField] private BuildingGhost buildingGhost;
 
+        private Tile[,] tilesHoveringOver;
+        private bool isHittingGrid;
+
         public override void OnStart(Builder builder) {
             Builder = builder;
+
+            //placeholder
+            if (buildingPrefab != null) {
+                buildingGhost.Setup(buildingPrefab);
+                buildingGhost.gameObject.SetActive(true);
+            }
         }
 
         public override void OnEnd() {
-            throw new System.NotImplementedException();
+            buildingGhost.gameObject.SetActive(false);
+            RevertTileColors();
         }
 
         public override void UpdateMode() {
+            //placeholder
             if (buildingPrefab == null)
                 return;
+
+            RevertTileColors();
+            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), buildingPrefab.Size);
+            HighlightUnbuildableTiles();
 
             if (Input.GetMouseButtonDown(0))
                 OnClick();
         }
 
+        private void HighlightUnbuildableTiles() {
+            foreach(Tile t in tilesHoveringOver) {
+                if (t == null)
+                    continue;
+                else if(!TileIsBuildable(t))
+                    t.SetColorToUnbuildable();
+            }
+        }
+
+        private void RevertTileColors() {
+            if (tilesHoveringOver != null) {
+                foreach (Tile t in tilesHoveringOver) {
+                    if (t != null)
+                        t.ResetColor();
+                }
+            }
+        }
+
         private void OnClick() {
-            bool isHittingGrid;
-            Tile[,] tiles = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), buildingPrefab.Size);
             if (!isHittingGrid)
                 return;
 
-            if(CanBePlaced(tiles))// && BuildingSelector.SelectedBuilding.CanBeBought())
-                Build(tiles);
+            if(CanBePlacedAtTiles(tilesHoveringOver))// && BuildingSelector.SelectedBuilding.CanBeBought())
+                Build(tilesHoveringOver);
         }
 
-        private bool CanBePlaced(Tile[,] tiles) {
+        private bool CanBePlacedAtTiles(Tile[,] tiles) {
             foreach(Tile t in tiles) {
-                if (t.occupant != null)
+                if (t == null || !TileIsBuildable(t))
                     return false;
             }
             return true;
         }
 
+        private bool TileIsBuildable(Tile t) {
+            return t.occupant == null;
+        }
+
         private void Build(Tile[,] tiles) {
-            Building b = Instantiate(buildingPrefab, tiles[0, 0].transform.position, Quaternion.identity, City.Instance.transform);
+            Vector3 pos = tiles[0, 0].transform.position;
+            pos.x += Tile.SIZE.x / 2;
+            pos.z += Tile.SIZE.z / 2;
+            Building b = Instantiate(buildingPrefab, pos, Quaternion.identity, City.Instance.transform);
             foreach (Tile t in tiles)
                 t.occupant = b;
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {
-            IntVector2 coordinate = ConvertToCoordinates(position);
+            IntVector2 coordinate = IntVector2.ConvertToCoordinates(position);
             Tile[,] tiles = new Tile[buildingSize.x, buildingSize.z];
             for (int x = 0; x < buildingSize.x; x++) {
                 for (int z = 0; z < buildingSize.z; z++) {
@@ -64,10 +102,6 @@ namespace CityView.Construction {
             }
 
             return tiles;
-        }
-
-        private IntVector2 ConvertToCoordinates(Vector3 point) {
-            return new IntVector2((int)Mathf.Round(point.x), (int)Mathf.Round(point.z));
         }
     }
 }

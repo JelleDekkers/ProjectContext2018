@@ -78,4 +78,8 @@ public struct IntVector2 {
     public static explicit operator IntVector2(Vector3 pos) {
         return new IntVector2((int)pos.x, (int)pos.z);
     }
+
+    public static IntVector2 ConvertToCoordinates(Vector3 point) {
+        return new IntVector2((int)Mathf.Round(point.x), (int)Mathf.Round(point.z));
+    }
 }
