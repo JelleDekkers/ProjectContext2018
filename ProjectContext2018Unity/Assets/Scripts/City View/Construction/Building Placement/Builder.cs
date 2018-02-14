@@ -11,9 +11,10 @@ namespace CityView.Construction {
 
         private BuildMode currentBuildMode;
 
-        private void Update() {
-            if (currentBuildMode != null)
-                currentBuildMode.UpdateMode();
+
+        private void Awake() {
+            placeMode.enabled = false;
+            destroyMode.enabled = false;
         }
 
         private void SetBuildMode(BuildMode mode) {
@@ -40,7 +41,6 @@ namespace CityView.Construction {
             if (GUI.Button(new Rect(10, 30, 150, 20), "Destroy Mode"))
                 SetBuildMode(destroyMode);
         }
-
 
         //private void DestroyBuilding(Tile hoveringOver) {
         //    Building b = tilesHoveringOver[0, 0].occupant;

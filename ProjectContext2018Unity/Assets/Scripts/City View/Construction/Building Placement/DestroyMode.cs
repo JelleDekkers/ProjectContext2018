@@ -8,13 +8,18 @@ namespace CityView.Construction {
 
         private bool isHittingGrid;
 
-        public override void OnStart() { }
-        public override void OnEnd() { }
+        public override void OnStart() {
+            enabled = true;
+        }
+
+        public override void OnEnd() {
+            enabled = false;
+        }
 
         [SerializeField]
         private AudioClip DemolishSFX;
 
-        public override void UpdateMode() {
+        public override void Update() {
             if (Input.GetMouseButtonDown(0))
                 OnClick();
         }

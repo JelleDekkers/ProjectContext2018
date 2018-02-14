@@ -9,7 +9,7 @@ namespace CityView.Construction {
         [SerializeField] float dropTime = 0.5f;
         [SerializeField] float startingHeight = 1;
         [SerializeField] AudioClip buildSFX;
-        [SerializeField] private AnimationCurve dropEffetCurve;
+        [SerializeField] private AnimationCurve dropEffectCurve;
 
         private Building building;
 
@@ -23,23 +23,23 @@ namespace CityView.Construction {
             float timer = 0;
             Vector3 target = transform.position;
             Vector3 start = building.transform.position;
-            Vector3 pos = start;
             start.y += startingHeight;
             building.transform.position = start;
+            float interpolation = 0;
 
             while(timer < dropTime) {
-                pos.y = dropEffetCurve.Evaluate(1 - timer / dropTime);
-                building.transform.position = pos;
+                interpolation = dropEffectCurve.Evaluate(timer / dropTime);
+                building.transform.position = Vector3.Lerp(start, target, interpolation);
                 timer += Time.deltaTime;
                 yield return null;
             }
 
             building.transform.position = target;
-            ParticleSystem p = GetComponent<ParticleSystem>();
+            ParticleSystem particleSystem = GetComponent<ParticleSystem>();
             CityCamera.Instance.audioSource.PlayOneShot(buildSFX);
             CityCamera.Instance.cameraShaker.Shake();
-            p.Play();
-            Destroy(gameObject, p.main.duration);
+            particleSystem.Play();
+            Destroy(gameObject, particleSystem.main.duration);
         }
     }
 }

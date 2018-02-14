@@ -7,6 +7,6 @@ namespace CityView.Construction {
     public abstract class BuildMode : MonoBehaviour {
         public abstract void OnStart();
         public abstract void OnEnd();
-        public abstract void UpdateMode();
+        public abstract void Update();
     }
 }

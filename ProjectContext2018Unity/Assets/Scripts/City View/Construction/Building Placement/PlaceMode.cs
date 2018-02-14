@@ -6,34 +6,56 @@ namespace CityView.Construction {
 
     public class PlaceMode : BuildMode {
 
-        [SerializeField] private Building buildingPrefab;
         [SerializeField] private BuildingGhost buildingGhost;
         [SerializeField] private BuildingPlacementEffectHandler placeEffect;
 
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
+        private Building selectedBuilding;
+
+        // placeholder
+        public Building[] buildingPrefabs;
 
         public override void OnStart() {
-            buildingGhost.Setup(buildingPrefab);
-            buildingGhost.gameObject.SetActive(true);
+            enabled = true;
         }
-        
+
         public override void OnEnd() {
             buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
+            enabled = false;
         }
 
-        public override void UpdateMode() {
-            //placeholder
-            if (buildingPrefab == null)
+        public override void Update() {
+            if (selectedBuilding == null)
                 return;
 
             RevertTileColors();
-            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), buildingPrefab.Size);
+            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), selectedBuilding.Size);
             HighlightUnbuildableTiles();
 
             if (Input.GetMouseButtonDown(0))
-                OnClick();
+                OnMouseClick();
+        }
+
+        // placeholder
+        private void OnGUI() {
+            for (int i = 0; i < buildingPrefabs.Length; i++) {
+                if (GUI.Button(new Rect(10, 100 + i * 20, 200, 15), buildingPrefabs[i].name))
+                    OnBuildingSelected(i);
+            }
+        }
+
+        private void OnBuildingSelected(int index) {
+            if (selectedBuilding == buildingPrefabs[index]) {
+                selectedBuilding = null;
+                buildingGhost.gameObject.SetActive(false);
+                RevertTileColors();
+            } else {
+                selectedBuilding = buildingPrefabs[index];
+                buildingGhost.Setup(selectedBuilding);
+                buildingGhost.gameObject.SetActive(true);
+            }
         }
 
         private void HighlightUnbuildableTiles() {
@@ -54,7 +76,7 @@ namespace CityView.Construction {
             }
         }
 
-        private void OnClick() {
+        private void OnMouseClick() {
             if (!isHittingGrid)
                 return;
 
@@ -76,9 +98,17 @@ namespace CityView.Construction {
 
         private void Build(Tile[,] tiles) {
             Vector3 pos = tiles[0, 0].transform.position;
-            pos.x += Tile.SIZE.x / 2;
-            pos.z += Tile.SIZE.z / 2;
-            Building b = Instantiate(buildingPrefab, pos, Quaternion.identity, City.Instance.transform);
+            pos.x += Mathf.Round(selectedBuilding.Size.x / 2);
+            pos.z += Mathf.Round(selectedBuilding.Size.z / 2);
+
+            Vector3 offset = Vector3.zero;
+            offset.x = (float)selectedBuilding.Size.x / 2 - Tile.SIZE.x / 2;
+            offset.z = (float)selectedBuilding.Size.z / 2 - Tile.SIZE.z / 2;
+
+            Debug.Log(selectedBuilding.Size + " " + offset);
+            pos -= offset;
+            
+            Building b = Instantiate(selectedBuilding, pos, Quaternion.identity, City.Instance.transform);
             foreach (Tile t in tiles)
                 t.occupant = b;
             Instantiate(placeEffect).Setup(b);

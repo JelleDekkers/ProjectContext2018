@@ -55,7 +55,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropTime: 0.18
   startingHeight: 5
-  audioClip: {fileID: 8300000, guid: a65928ec65346294b87bd8fa83875a24, type: 3}
+  buildSFX: {fileID: 8300000, guid: a65928ec65346294b87bd8fa83875a24, type: 3}
+  dropEffetCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.002832861
+      inSlope: 2.5042725
+      outSlope: 2.5042725
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.46345246
+      value: 0.72487646
+      inSlope: 1.0611227
+      outSlope: 1.0611227
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.99853516
+      value: 0.9971657
+      inSlope: 0.3326771
+      outSlope: 0.3326771
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!198 &198498918778190638
 ParticleSystem:
   m_ObjectHideFlags: 1

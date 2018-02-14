@@ -10,11 +10,13 @@ namespace CityView.Construction {
         private float alphaValue = 0.2f;
 
         private Transform ghost;
+        private Building building;
 
         public void Setup(Building prefab) {
             if (ghost != null)
                 Destroy(ghost.gameObject);
 
+            building = prefab;
             ghost = Instantiate(prefab, transform.position, Quaternion.identity, transform).transform;
             ghost.name = "Ghost " + ghost.name;
 
@@ -33,7 +35,10 @@ namespace CityView.Construction {
         public void FollowMouse() {
             bool isHittingGrid;
             Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out isHittingGrid);
-            ghost.transform.position = new Vector3(Mathf.Round(mousePos.x) + Tile.SIZE.x / 2, 0, Mathf.Round(mousePos.z) + Tile.SIZE.z / 2);
+            Vector3 offset = Vector3.zero;
+            offset.x = (float)building.Size.x / 2 - Tile.SIZE.x / 2;
+            offset.z = (float)building.Size.z / 2 - Tile.SIZE.z / 2;
+            ghost.transform.position = new Vector3(Mathf.Round(mousePos.x), 0, Mathf.Round(mousePos.z));
         }
 
         private void MakeTransparent() {
