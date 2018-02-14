@@ -6,15 +6,10 @@ public class CameraShake : MonoBehaviour {
 
     public float shakeStrength = 1;
     public float duration = 0.4f;
-
     public AnimationCurve verticalCurve;
-   
+
     [SerializeField]
     private Camera cam;
-
-    private void Start() {
-        cam = GetComponent<Camera>();
-    }
 
     public void Shake() {
         StopAllCoroutines();

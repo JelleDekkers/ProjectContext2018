@@ -9,6 +9,7 @@ namespace CityView.Construction {
         [SerializeField] float dropTime = 0.5f;
         [SerializeField] float startingHeight = 1;
         [SerializeField] AudioClip buildSFX;
+        [SerializeField] private AnimationCurve dropEffetCurve;
 
         private Building building;
 
@@ -22,11 +23,13 @@ namespace CityView.Construction {
             float timer = 0;
             Vector3 target = transform.position;
             Vector3 start = building.transform.position;
+            Vector3 pos = start;
             start.y += startingHeight;
             building.transform.position = start;
 
             while(timer < dropTime) {
-                building.transform.position = Vector3.Lerp(start, target, timer / dropTime);
+                pos.y = dropEffetCurve.Evaluate(1 - timer / dropTime);
+                building.transform.position = pos;
                 timer += Time.deltaTime;
                 yield return null;
             }

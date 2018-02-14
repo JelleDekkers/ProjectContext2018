@@ -6,7 +6,6 @@ namespace CityView.Construction {
 
     public class PlaceMode : BuildMode {
 
-
         [SerializeField] private Building buildingPrefab;
         [SerializeField] private BuildingGhost buildingGhost;
         [SerializeField] private BuildingPlacementEffectHandler placeEffect;
