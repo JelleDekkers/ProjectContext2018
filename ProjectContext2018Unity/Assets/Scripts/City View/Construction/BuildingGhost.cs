@@ -28,17 +28,26 @@ namespace CityView.Construction {
             MakeTransparent();
         }
 
-        private void Update() {
-            FollowMouse();
+        public void UpdatePosition(Tile[,] tilesHoveringOver) {
+            foreach (Tile t in tilesHoveringOver) {
+                if (t == null) {
+                    OnInValidMousePosition();
+                    return;
+                }
+            }
+            Vector3 centre = Tile.GetCentrePoint(tilesHoveringOver);
+            OnValidMousePosition(centre);
         }
 
-        public void FollowMouse() {
-            bool isHittingGrid;
-            Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out isHittingGrid);
-            Vector3 offset = Vector3.zero;
-            offset.x = (float)building.Size.x / 2 - Tile.SIZE.x / 2;
-            offset.z = (float)building.Size.z / 2 - Tile.SIZE.z / 2;
-            ghost.transform.position = new Vector3(Mathf.Round(mousePos.x), 0, Mathf.Round(mousePos.z));
+        private void OnInValidMousePosition() {
+            ghost.gameObject.SetActive(false);
+        }
+
+        private void OnValidMousePosition(Vector3 centre) {
+            if(!ghost.gameObject.activeInHierarchy)
+                ghost.gameObject.SetActive(true);
+
+            ghost.transform.position = new Vector3(centre.x, 0, centre.z);
         }
 
         private void MakeTransparent() {

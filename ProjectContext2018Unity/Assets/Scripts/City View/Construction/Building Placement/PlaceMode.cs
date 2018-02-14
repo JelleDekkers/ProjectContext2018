@@ -33,6 +33,7 @@ namespace CityView.Construction {
             RevertTileColors();
             tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), selectedBuilding.Size);
             HighlightUnbuildableTiles();
+            buildingGhost.UpdatePosition(tilesHoveringOver);
 
             if (Input.GetMouseButtonDown(0))
                 OnMouseClick();
@@ -97,18 +98,7 @@ namespace CityView.Construction {
         }
 
         private void Build(Tile[,] tiles) {
-            Vector3 pos = tiles[0, 0].transform.position;
-            pos.x += Mathf.Round(selectedBuilding.Size.x / 2);
-            pos.z += Mathf.Round(selectedBuilding.Size.z / 2);
-
-            Vector3 offset = Vector3.zero;
-            offset.x = (float)selectedBuilding.Size.x / 2 - Tile.SIZE.x / 2;
-            offset.z = (float)selectedBuilding.Size.z / 2 - Tile.SIZE.z / 2;
-
-            Debug.Log(selectedBuilding.Size + " " + offset);
-            pos -= offset;
-            
-            Building b = Instantiate(selectedBuilding, pos, Quaternion.identity, City.Instance.transform);
+            Building b = Instantiate(selectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, City.Instance.transform);
             foreach (Tile t in tiles)
                 t.occupant = b;
             Instantiate(placeEffect).Setup(b);

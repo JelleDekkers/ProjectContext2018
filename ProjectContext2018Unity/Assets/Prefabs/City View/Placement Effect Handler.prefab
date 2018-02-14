@@ -53,29 +53,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df0e8993f17c6f41971549530643f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropTime: 0.18
-  startingHeight: 5
+  dropTime: 0.2
+  startingHeight: 4
   buildSFX: {fileID: 8300000, guid: a65928ec65346294b87bd8fa83875a24, type: 3}
-  dropEffetCurve:
+  dropEffectCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.002832861
-      inSlope: 2.5042725
-      outSlope: 2.5042725
+      value: 0
+      inSlope: 0.029867781
+      outSlope: 0.029867781
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.46345246
-      value: 0.72487646
-      inSlope: 1.0611227
-      outSlope: 1.0611227
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.99853516
-      value: 0.9971657
-      inSlope: 0.3326771
-      outSlope: 0.3326771
+      time: 1
+      value: 1
+      inSlope: 2.9016366
+      outSlope: 2.9016366
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

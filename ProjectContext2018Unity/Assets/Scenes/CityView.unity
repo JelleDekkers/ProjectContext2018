@@ -198,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aa85a4c0bfca04ea25db8d09eadacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefab: {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba,
-    type: 2}
   buildingGhost: {fileID: 1760239632}
   placeEffect: {fileID: 114625599853400204, guid: dcdd17a1a6bfbac4fa2d1d38d948bf68,
     type: 2}

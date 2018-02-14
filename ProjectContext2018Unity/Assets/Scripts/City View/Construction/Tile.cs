@@ -29,5 +29,13 @@ namespace CityView.Construction {
         public void ResetColor() {
             rend.material.color = baseColor;
         }
+
+        public static Vector3 GetCentrePoint(Tile[,] tiles) {
+            Vector3 centre = Vector3.zero;
+            foreach (Tile t in tiles) {
+                centre += t.transform.position;
+            }
+            return centre /= tiles.Length;
+        }
     }
 }
