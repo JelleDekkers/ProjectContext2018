@@ -25,7 +25,7 @@ namespace CityView.Construction {
             Grid = new Tile[size.x, size.z];
             for (int x = 0; x < size.x; x++) {
                 for (int z = 0; z < size.z; z++) {
-                    Tile t = Instantiate(tilePrefab, new Vector3(x, 0, z), tilePrefab.transform.rotation, transform);
+                    Tile t = Instantiate(tilePrefab, new Vector3(x + Tile.SIZE.x / 2, 0, z + Tile.SIZE.z / 2), tilePrefab.transform.rotation, transform);
                     t.Coordinates = new IntVector2(x, z);
                     t.name += "(" + x + "," + z + ")";
                     Grid[x, z] = t;
