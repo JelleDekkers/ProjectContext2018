@@ -13,9 +13,6 @@ namespace CityView.Construction {
         private bool isHittingGrid;
         private Building selectedBuilding;
 
-        // placeholder
-        public Building[] buildingPrefabs;
-
         public override void OnStart() {
             enabled = true;
         }
@@ -41,19 +38,19 @@ namespace CityView.Construction {
 
         // placeholder
         private void OnGUI() {
-            for (int i = 0; i < buildingPrefabs.Length; i++) {
-                if (GUI.Button(new Rect(10, 100 + i * 20, 200, 15), buildingPrefabs[i].name))
+            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
+                if (GUI.Button(new Rect(10, 100 + i * 20, 200, 15), DataManager.BuildingData.dataArray[i].Name))
                     OnBuildingSelected(i);
             }
         }
 
         private void OnBuildingSelected(int index) {
-            if (selectedBuilding == buildingPrefabs[index]) {
+            if (selectedBuilding == DataManager.BuildingPrefabs.GetBuilding(index)) {
                 selectedBuilding = null;
                 buildingGhost.gameObject.SetActive(false);
                 RevertTileColors();
             } else {
-                selectedBuilding = buildingPrefabs[index];
+                selectedBuilding = DataManager.BuildingPrefabs.GetBuilding(index);
                 buildingGhost.Setup(selectedBuilding);
                 buildingGhost.gameObject.SetActive(true);
             }

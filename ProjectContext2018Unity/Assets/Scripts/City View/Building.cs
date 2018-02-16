@@ -14,6 +14,12 @@ namespace CityView {
             }
         }
 
+        public BuildingsData data;
+
+        public void Init(BuildingsData data) {
+            this.data = data;
+        }
+
         public bool CanBeBought() {
             throw new System.NotImplementedException();
         }

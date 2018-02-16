@@ -7,7 +7,7 @@ public static class SerializerExtension {
     public static int GetResourceID(string resourceName, out bool isResourceType) {
         try {
             int i = 0;
-            foreach (GameResourcesData resource in DataManager.Instance.gameResources.dataArray) {
+            foreach (GameResourcesData resource in DataManager.ResourcesData.dataArray) {
                 if (resourceName.ToLower() == resource.Name.ToLower()) {
                     isResourceType = true;
                     return resource.ID;
