@@ -80,6 +80,6 @@ public struct IntVector2 {
     }
 
     public static IntVector2 ConvertToCoordinates(Vector3 point) {
-        return new IntVector2((int)Mathf.Round(point.x), (int)Mathf.Round(point.z));
+        return new IntVector2(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.z));
     }
 }
