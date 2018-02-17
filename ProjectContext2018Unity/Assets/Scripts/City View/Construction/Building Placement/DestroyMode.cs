@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace CityView.Construction {
@@ -7,6 +6,8 @@ namespace CityView.Construction {
     public class DestroyMode : BuildMode {
 
         private bool isHittingGrid;
+
+        public static Action<Building> OnBuildingRemoved;
 
         public override void OnStart() {
             enabled = true;
@@ -35,6 +36,7 @@ namespace CityView.Construction {
         }
 
         private void DestroyBuilding(Building b) {
+            OnBuildingRemoved(b);
             Destroy(b.gameObject);
             CityCamera.Instance.audioSource.PlayOneShot(DemolishSFX);
         }

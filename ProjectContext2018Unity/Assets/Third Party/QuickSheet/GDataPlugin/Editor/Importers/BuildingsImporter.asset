@@ -6,7 +6,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdb4931813a361148a6651be452ff88e, type: 3}
   m_Name: BuildingsImporter
@@ -25,36 +25,44 @@ MonoBehaviour:
     name: Name
     isEnable: 0
     isArray: 0
-  - type: 5
+  - type: 0
+    name: Pollution
+    isEnable: 0
+    isArray: 0
+  - type: 0
     name: CostMoney
     isEnable: 0
     isArray: 0
-  - type: 5
+  - type: 0
     name: ResearchPointsNeeded
     isEnable: 0
     isArray: 0
-  - type: 9
+  - type: 0
     name: ResourceCost
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: ResourceCostAmount
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: IncomeMoney
     isEnable: 0
     isArray: 0
-  - type: 5
+  - type: 0
     name: IncomeResearch
     isEnable: 0
     isArray: 0
-  - type: 9
+  - type: 0
     name: IncomeResources
     isEnable: 0
-    isArray: 1
-  - type: 5
-    name: ProductionAmount
+    isArray: 0
+  - type: 0
+    name: IncomeResourcesAmount
     isEnable: 0
-    isArray: 1
+    isArray: 0
+  - type: 0
+    name: ProductionTime
+    isEnable: 0
+    isArray: 0
   AccessCode: 

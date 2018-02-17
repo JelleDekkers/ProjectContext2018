@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,22 +9,30 @@ namespace CityView {
         private IntVector2? size;
         public IntVector2 Size { get {
                 if (!size.HasValue)
-                    size = CalculateSize();
+                    size = CalculateTileSize();
                 return size.Value;
             }
         }
 
-        public BuildingsData data;
+        public int dataID;
+        public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
 
-        public void Init(BuildingsData data) {
-            this.data = data;
+        public ProductionCycle productionCycle;
+
+        public void Init(BuildingsData data, City city) {
+            dataID = data.ID;
+            productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
         }
 
-        public bool CanBeBought() {
-            throw new System.NotImplementedException();
+        public void Update() {
+            productionCycle.UpdateProduction();
         }
 
-        public IntVector2 CalculateSize() {
+        private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {
+            OnProductionCycleCompleted(this, result);
+        }
+
+        public IntVector2 CalculateTileSize() {
             IntVector2 calcSize = IntVector2.Zero;
             Renderer r = transform.GetChild(0).GetComponent<Renderer>();
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);

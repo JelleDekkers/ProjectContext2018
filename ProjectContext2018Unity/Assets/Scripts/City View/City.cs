@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using CityView.Construction;
@@ -16,9 +16,49 @@ namespace CityView {
         }
 
         public CityGrid grid;
+        public ResourcesStockpile resources;
+        public List<Building> buildings;
 
         private void Awake() {
             instance = this;
+            resources.Init();
+
+            PlaceMode.OnBuildingPlaced += AddBuilding;
+            DestroyMode.OnBuildingRemoved += RemoveBuilding;
+            Building.OnProductionCycleCompleted += ProcessProductionResult;
+        }
+
+        private void AddBuilding(Building building, BuildingsData data) {
+            buildings.Add(building);
+            building.Init(data, this);
+        }
+
+        private void RemoveBuilding(Building building) {
+            buildings.Remove(building);
+        }
+
+        // placeholder?
+        private void ProcessProductionResult(Building building, ProductionCycleResult result) {
+            if (result.money != 0)
+                AddMoney(result.money);// of via event?
+            if (result.researchPoints != 0)
+                AddResearchPoints(result.researchPoints);
+            if (result.producedResources.Length != 0)
+                resources.AddResources(result.producedResources);
+            if (result.pollutionPoints != 0)
+                AddPollution(result.pollutionPoints);
+        }
+
+        private void AddMoney(float amount) {
+
+        }
+
+        private void AddResearchPoints(float amount) {
+
+        }
+
+        private void AddPollution(float amount) {
+
         }
     }
 }

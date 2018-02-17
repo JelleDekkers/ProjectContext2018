@@ -17,6 +17,10 @@ public class BuildingsData
   public string Name { get {return name; } set { name = value;} }
   
   [SerializeField]
+  float pollution;
+  public float Pollution { get {return pollution; } set { pollution = value;} }
+  
+  [SerializeField]
   float costmoney;
   public float Costmoney { get {return costmoney; } set { costmoney = value;} }
   
@@ -45,7 +49,11 @@ public class BuildingsData
   public int[] Incomeresources { get {return incomeresources; } set { incomeresources = value;} }
   
   [SerializeField]
-  float[] productionamount = new float[0];
-  public float[] Productionamount { get {return productionamount; } set { productionamount = value;} }
+  float[] incomeresourcesamount = new float[0];
+  public float[] Incomeresourcesamount { get {return incomeresourcesamount; } set { incomeresourcesamount = value;} }
+  
+  [SerializeField]
+  float productiontime;
+  public float Productiontime { get {return productiontime; } set { productiontime = value;} }
   
 }

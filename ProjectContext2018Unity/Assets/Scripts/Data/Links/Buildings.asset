@@ -18,13 +18,14 @@ MonoBehaviour:
     name: Coal Factory
     costmoney: 100
     researchpointsneeded: 0
-    resourcecost: 0200000003000000
+    resourcecost: 
     resourcecostamount: []
     incomemoney: 5
     incomeresearch: 0
     incomeresources: 00000000
-    productionamount:
-    - 50
+    incomeresourcesamount:
+    - 5
+    productiontime: 10
   - id: 1
     name: Windmill
     costmoney: 200
@@ -35,17 +36,21 @@ MonoBehaviour:
     incomemoney: 50
     incomeresearch: 2
     incomeresources: 00000000
-    productionamount:
-    - 20
+    incomeresourcesamount:
+    - 2
+    productiontime: 5
   - id: 2
     name: Solar Panel
     costmoney: 100
     researchpointsneeded: 50
     resourcecost: 0000000002000000
     resourcecostamount:
-    - 55
-    incomemoney: 10
+    - 5
+    - 5
+    incomemoney: 0
     incomeresearch: 5
     incomeresources: 0100000002000000
-    productionamount:
-    - 4010
+    incomeresourcesamount:
+    - 5
+    - 2
+    productiontime: 5

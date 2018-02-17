@@ -218,10 +218,6 @@ MonoBehaviour:
   buildingGhost: {fileID: 1760239632}
   placeEffect: {fileID: 114625599853400204, guid: dcdd17a1a6bfbac4fa2d1d38d948bf68,
     type: 2}
-  buildingPrefabs:
-  - {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef, type: 2}
-  - {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba, type: 2}
-  - {fileID: 114122029507518404, guid: e7f541f1b9f4df943b8912cb45293066, type: 2}
 --- !u!114 &386444469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,28 +437,28 @@ MonoBehaviour:
       outSlope: -0.06870507
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.35361478
-      value: 0.2069029
+      time: 0.34192654
+      value: 0.07660811
       inSlope: 0.021180218
       outSlope: 0.021180218
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5559595
-      value: -0.1462474
+      time: 0.5486353
+      value: -0.07179977
       inSlope: -0.016158482
       outSlope: -0.016158482
       tangentMode: 0
     - serializedVersion: 2
       time: 0.74307805
-      value: 0.050462782
+      value: 0.0049610734
       inSlope: 0.0066693113
       outSlope: 0.0066693113
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 0
-      inSlope: -0.19641289
-      outSlope: -0.19641289
+      inSlope: -0.019309653
+      outSlope: -0.019309653
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -593,6 +589,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1654829773}
+  stockpile:
+    resources:
+      m_keys: []
+      m_values: []
+  buildings: []
 --- !u!1 &1760239630
 GameObject:
   m_ObjectHideFlags: 0

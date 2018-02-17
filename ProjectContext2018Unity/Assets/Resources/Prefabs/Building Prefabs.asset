@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Building Prefabs
   m_EditorClassIdentifier: Assembly-CSharp::BuildingPrefabs
-  errorBuilding: {fileID: 0}
-  buildings: []
+  errorBuilding: {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba,
+    type: 2}
+  buildings:
+  - {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef, type: 2}
+  - {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba, type: 2}
+  - {fileID: 114122029507518404, guid: e7f541f1b9f4df943b8912cb45293066, type: 2}
   errorImg: {fileID: 0}
   images: []

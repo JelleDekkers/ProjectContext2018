@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace CityView.Construction {
@@ -11,7 +10,12 @@ namespace CityView.Construction {
 
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
-        private Building selectedBuilding;
+
+        private int selectionIndex = -1;
+        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.buildings[selectionIndex]; } }
+        private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
+
+        public static Action<Building, BuildingsData> OnBuildingPlaced;
 
         public override void OnStart() {
             enabled = true;
@@ -24,11 +28,11 @@ namespace CityView.Construction {
         }
 
         public override void Update() {
-            if (selectedBuilding == null)
+            if (selectionIndex == -1)
                 return;
 
             RevertTileColors();
-            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), selectedBuilding.Size);
+            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), SelectedBuilding.Size);
             HighlightUnbuildableTiles();
             buildingGhost.UpdatePosition(tilesHoveringOver);
 
@@ -45,13 +49,13 @@ namespace CityView.Construction {
         }
 
         private void OnBuildingSelected(int index) {
-            if (selectedBuilding == DataManager.BuildingPrefabs.GetBuilding(index)) {
-                selectedBuilding = null;
+            if (index == selectionIndex) {
+                selectionIndex = -1;
                 buildingGhost.gameObject.SetActive(false);
                 RevertTileColors();
             } else {
-                selectedBuilding = DataManager.BuildingPrefabs.GetBuilding(index);
-                buildingGhost.Setup(selectedBuilding);
+                selectionIndex = index;
+                buildingGhost.Setup(SelectedBuilding);
                 buildingGhost.gameObject.SetActive(true);
             }
         }
@@ -78,7 +82,6 @@ namespace CityView.Construction {
             bool t;
             Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out t);
             IntVector2 converted = IntVector2.ConvertToCoordinates(mousePos);
-            Debug.Log(mousePos + " " + converted);
 
             if (!isHittingGrid)
                 return;
@@ -100,10 +103,11 @@ namespace CityView.Construction {
         }
 
         private void Build(Tile[,] tiles) {
-            Building b = Instantiate(selectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, City.Instance.transform);
+            Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, transform);
             foreach (Tile t in tiles)
                 t.occupant = b;
             Instantiate(placeEffect).Setup(b);
+            OnBuildingPlaced(b, SelectedBuildingData);
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {
