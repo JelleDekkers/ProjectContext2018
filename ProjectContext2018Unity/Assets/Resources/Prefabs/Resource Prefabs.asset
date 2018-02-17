@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Resource Prefabs
   m_EditorClassIdentifier: Assembly-CSharp::GameResourcePrefabs
+  errorImg: {fileID: 0}
   images: []

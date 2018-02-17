@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Building Prefabs
   m_EditorClassIdentifier: Assembly-CSharp::BuildingPrefabs
+  errorBuilding: {fileID: 0}
   buildings: []
+  errorImg: {fileID: 0}
   images: []
