@@ -16,13 +16,11 @@ namespace CityView {
         }
 
         public CityGrid grid;
-        public ResourcesStockpile resources;
         public List<Building> buildings;
 
         private void Awake() {
             instance = this;
-            resources.Init();
-
+            PlayerResources.Init();
             PlaceMode.OnBuildingPlaced += AddBuilding;
             DestroyMode.OnBuildingRemoved += RemoveBuilding;
             Building.OnProductionCycleCompleted += ProcessProductionResult;
@@ -44,7 +42,7 @@ namespace CityView {
             if (result.researchPoints != 0)
                 AddResearchPoints(result.researchPoints);
             if (result.producedResources.Length != 0)
-                resources.AddResources(result.producedResources);
+                PlayerResources.AddResources(result.producedResources);
             if (result.pollutionPoints != 0)
                 AddPollution(result.pollutionPoints);
         }
