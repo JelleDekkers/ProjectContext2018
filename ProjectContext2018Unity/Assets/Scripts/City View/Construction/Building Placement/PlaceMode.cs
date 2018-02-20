@@ -12,7 +12,7 @@ namespace CityView.Construction {
         private bool isHittingGrid;
 
         private int selectionIndex = -1;
-        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.buildings[selectionIndex]; } }
+        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
         public static Action<Building, BuildingsData> OnBuildingPlaced;

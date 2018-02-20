@@ -14,13 +14,13 @@ namespace CityView {
             }
         }
 
-        public int dataID;
+        public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
 
         public ProductionCycle productionCycle;
 
         public void Init(BuildingsData data, City city) {
-            dataID = data.ID;
+            this.data = data;
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
         }
 

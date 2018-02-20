@@ -6,16 +6,18 @@ using CityView;
 public class BuildingPrefabs : ScriptableObject {
 
     public Building errorBuilding;
-    public Building[] buildings;
+    [SerializeField]
+    private Building[] buildings;
 
     public Sprite errorImg;
-    public Sprite[] images;
+    [SerializeField]
+    private Sprite[] images;
 
     public Building GetBuilding(int index) {
         try {
             return buildings[index];
         } catch(Exception ex) {
-            Debug.LogError(ex);
+            Debug.LogWarning(ex + ", returning errorImg");
             return errorBuilding;
         }
     }
@@ -24,7 +26,7 @@ public class BuildingPrefabs : ScriptableObject {
         try {
             return images[index];
         } catch (Exception ex) {
-            Debug.LogError(ex);
+            Debug.LogWarning(ex + ", returning errorImg");
             return errorImg;
         }
     }
