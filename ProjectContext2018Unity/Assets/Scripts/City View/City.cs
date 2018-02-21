@@ -6,7 +6,6 @@ using CityView.Construction;
 namespace CityView {
 
     public class City : MonoBehaviour {
-
         private static City instance;
         public static City Instance {
             get {

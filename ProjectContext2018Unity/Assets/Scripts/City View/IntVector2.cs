@@ -21,6 +21,12 @@ public struct IntVector2 {
         z = intVector.z;
     }
 
+    public IntVector2(Vector2Int vector)
+    {
+        x = vector.x;
+        z = vector.y;
+    }
+
     public override string ToString() {
         return "(" + x.ToString() + ", " + z.ToString() + ")";
     }

@@ -32,7 +32,7 @@ namespace CityView.Construction {
                 return;
 
             RevertTileColors();
-            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), SelectedBuilding.Size);
+            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), new IntVector2(SelectedBuilding.Size));
             HighlightUnbuildableTiles();
             buildingGhost.UpdatePosition(tilesHoveringOver);
 
