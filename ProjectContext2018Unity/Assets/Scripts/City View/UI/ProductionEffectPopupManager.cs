@@ -11,12 +11,24 @@ namespace CityView.UI {
 
         private void Start() {
             Building.OnProductionCycleCompleted += InstantiateNewPopup;
+            //Construction.PlaceMode.OnBuildingPlaced += InstantiateNewPopup;
         }
 
         private void InstantiateNewPopup(Building building, ProductionCycleResult production) {
             ProductionEffectPopup popup = Instantiate(effect, building.transform.position, effect.transform.rotation, transform);
             popup.transform.localRotation = effect.transform.rotation;
             popup.Init(building, production);
+        }
+
+        private void InstantiateNewPopup(Building building, BuildingsData data) {
+            ProductionEffectPopup popup = Instantiate(effect, building.transform.position, effect.transform.rotation, transform);
+            popup.transform.localRotation = effect.transform.rotation;
+            popup.Init(building, data);
+        }
+
+        private void OnDestroy() {
+            Building.OnProductionCycleCompleted -= InstantiateNewPopup;
+            Construction.PlaceMode.OnBuildingPlaced -= InstantiateNewPopup;
         }
     }
 }

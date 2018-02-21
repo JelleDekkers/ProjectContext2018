@@ -21,22 +21,40 @@ namespace CityView.UI {
 
         public void Init(Building b, ProductionCycleResult production) {
             transform.position = new Vector3(b.transform.position.x, b.transform.position.y + spawnHeight, b.transform.position.z);
+            CreatePopupItems(production);
             StartCoroutine(Move());
             StartCoroutine(WaitForFade());
-            CreatePopupItems(production);
+        }
+
+        public void Init(Building b, BuildingsData data) {
+            transform.position = new Vector3(b.transform.position.x, b.transform.position.y + spawnHeight, b.transform.position.z);
+            CreatePopupItems(data);
+            StartCoroutine(Move());
+            StartCoroutine(WaitForFade());
         }
 
         private void CreatePopupItems(ProductionCycleResult production) {
-            // TODO: ook gebruiken wanneer sprites bescikbaar zijn
+            // TODO: gebruiken wanneer sprites bescikbaar zijn
             //if (production.money != 0)
-            //    InstantiatePopupItem(null, production.money);
+            //    InstantiateNewPopupItem(null, production.money);
             //if (production.researchPoints != 0)
-            //    InstantiatePopupItem(null, production.researchPoints);
+            //    InstantiateNewPopupItem(null, production.researchPoints);
             //if (production.pollutionPoints != 0)
-            //    InstantiatePopupItem(null, production.pollutionPoints);
+            //    InstantiateNewPopupItem(null, production.pollutionPoints);
 
-            foreach(ResourceContainer resource in production.producedResources) 
+            foreach (ResourceContainer resource in production.producedResources) 
                 InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetSprite(resource.id), resource.amount);
+        }
+
+        private void CreatePopupItems(BuildingsData data) {
+            // TODO: gebruiken wanneer sprites bescikbaar zijn
+            //if (data.Costmoney != 0)
+            //    InstantiateNewPopupItem(null, data.Costmoney);
+
+            for(int i = 0; i < data.Resourcecost.Length; i++) {
+                GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourcecost[i]];
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetSprite(resource.ID), -data.Resourcecostamount[i]);
+            }
         }
 
         private void InstantiateNewPopupItem(Sprite sprite, float amount) {
