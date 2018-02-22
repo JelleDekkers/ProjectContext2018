@@ -81,7 +81,6 @@ namespace CityView.Construction {
         private void OnMouseClick() {
             bool t;
             Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out t);
-            IntVector2 converted = IntVector2.ConvertToCoordinates(mousePos);
 
             if (!isHittingGrid)
                 return;
