@@ -6,6 +6,8 @@ public static class PlayerResources {
 
     public static Dictionary<string, float> Resources { get; private set; }
 
+    public static Action<int, float> OnResourceChanged;
+
     public static void Init() {
         Resources = new Dictionary<string, float>();
         foreach (GameResourcesData d in DataManager.ResourcesData.dataArray) {
@@ -14,14 +16,16 @@ public static class PlayerResources {
     }
 
     #region add resource
-    public static void AddResources(Dictionary<string, float> resources) {
-        foreach(KeyValuePair<string, float> pair in resources) {
+    public static void AddResources(Dictionary<int, float> resources) {
+        foreach(KeyValuePair<int, float> pair in resources) {
             AddResource(pair.Key, pair.Value);
         }
     }
 
-    public static void AddResource(string resourceName, float amount) {
+    public static void AddResource(int resourceID, float amount) {
+        string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
         Resources[resourceName] += amount;
+        OnResourceChanged(resourceID, Resources[resourceName]);
     }
 
     public static void AddResources(ResourceContainer[] resources) {
@@ -33,6 +37,7 @@ public static class PlayerResources {
     public static void AddResource(ResourceContainer product) {
         string resourceName = DataManager.ResourcesData.dataArray[product.id].Name;
         Resources[resourceName] += product.amount;
+        OnResourceChanged(product.id, Resources[resourceName]);
     }
     #endregion
 
@@ -64,16 +69,18 @@ public static class PlayerResources {
     #endregion
 
     #region remove resource
-    public static void RemoveResources(Dictionary<string, float> resources) {
-        foreach (KeyValuePair<string, float> pair in resources) {
+    public static void RemoveResources(Dictionary<int, float> resources) {
+        foreach (KeyValuePair<int, float> pair in resources) {
             RemoveResource(pair.Key, pair.Value);
         }
     }
 
-    public static void RemoveResource(string resourceName, float amount) {
+    public static void RemoveResource(int resourceID, float amount) {
+        string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
         Resources[resourceName] -= amount;
         if (Resources[resourceName] < 0)
             Resources[resourceName] = 0;
+        OnResourceChanged(resourceID, Resources[resourceName]);
     }
 
     public static void RemoveResources(ResourceContainer[] products) {
@@ -87,6 +94,7 @@ public static class PlayerResources {
         Resources[resourceName] -= product.amount;
         if (Resources[resourceName] < 0)
             Resources[resourceName] = 0;
+        OnResourceChanged(product.id, Resources[resourceName]);
     }
     #endregion
 }

@@ -15,10 +15,18 @@ MonoBehaviour:
   WorksheetName: GameResources
   dataArray:
   - id: 0
-    name: Energy
+    name: 0
   - id: 1
-    name: Eco_Material
+    name: 3
   - id: 2
-    name: Eco_Panels
+    name: Timber
   - id: 3
-    name: Food
+    name: Minerals
+  - id: 4
+    name: Sand
+  - id: 5
+    name: Electronics
+  - id: 6
+    name: Plastics
+  - id: 7
+    name: Metals

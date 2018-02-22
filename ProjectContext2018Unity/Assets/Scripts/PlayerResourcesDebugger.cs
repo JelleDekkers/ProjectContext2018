@@ -35,9 +35,9 @@ public class PlayerResourcesDebugger : MonoBehaviour {
 
         if(GUI.Button(new Rect(150, 400, 50, 20), "Add")) {
             if (cheatAmount > 0)
-                PlayerResources.AddResource(keys[cheatID], cheatAmount);
+                PlayerResources.AddResource(cheatID, cheatAmount);
             else 
-                PlayerResources.RemoveResource(keys[cheatID], cheatAmount);
+                PlayerResources.RemoveResource(cheatID, cheatAmount);
         }
     }
 }
