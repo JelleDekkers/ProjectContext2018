@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CityView.Construction {
 
-    public class DestroyMode : BuildMode {
+    public class BuildingDestroyMode : BuildMode {
 
         private bool isHittingGrid;
 

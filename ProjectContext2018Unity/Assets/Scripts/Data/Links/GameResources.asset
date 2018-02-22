@@ -15,9 +15,9 @@ MonoBehaviour:
   WorksheetName: GameResources
   dataArray:
   - id: 0
-    name: 0
+    name: Energy
   - id: 1
-    name: 3
+    name: Food
   - id: 2
     name: Timber
   - id: 3

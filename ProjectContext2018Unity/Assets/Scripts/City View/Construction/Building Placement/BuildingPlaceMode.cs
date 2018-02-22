@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace CityView.Construction {
 
-    public class PlaceMode : BuildMode {
+    public class BuildingPlaceMode : BuildMode {
 
         [SerializeField] private BuildingGhost buildingGhost;
         [SerializeField] private BuildingPlacementEffectHandler placeEffect;
+        [SerializeField] private Transform buildingsParent;
 
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
@@ -15,10 +16,19 @@ namespace CityView.Construction {
         private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
+        public static Action<BuildMode> OnModeToggled;
         public static Action<Building, BuildingsData> OnBuildingPlaced;
 
         public override void OnStart() {
-            enabled = true;
+            UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
+        }
+
+        private void OnEnable() {
+            OnModeToggled(this);
+        }
+
+        private void OnDisable() {
+            OnModeToggled(this);
         }
 
         public override void OnEnd() {
@@ -28,9 +38,9 @@ namespace CityView.Construction {
         }
 
         public override void Update() {
-            if (selectionIndex == -1)
+            if (selectionIndex == -1) 
                 return;
-
+            
             RevertTileColors();
             tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), new IntVector2(SelectedBuilding.Size));
             HighlightUnbuildableTiles();
@@ -38,14 +48,6 @@ namespace CityView.Construction {
 
             if (Input.GetMouseButtonDown(0))
                 OnMouseClick();
-        }
-
-        // placeholder
-        private void OnGUI() {
-            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
-                if (GUI.Button(new Rect(10, 100 + i * 20, 200, 15), DataManager.BuildingData.dataArray[i].Name))
-                    OnBuildingSelected(i);
-            }
         }
 
         private void OnBuildingSelected(int index) {
@@ -102,7 +104,7 @@ namespace CityView.Construction {
         }
 
         private void Build(Tile[,] tiles) {
-            Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, transform);
+            Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
             foreach (Tile t in tiles)
                 t.occupant = b;
             Instantiate(placeEffect).Setup(b);
@@ -122,6 +124,10 @@ namespace CityView.Construction {
             }
 
             return tiles;
+        }
+
+        private void OnDestroy() {
+            UI.BuildingSelectionWidget.OnBuildingSelected -= OnBuildingSelected;
         }
     }
 }

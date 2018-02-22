@@ -6,15 +6,10 @@ namespace CityView.Construction {
 
     public class Builder : MonoBehaviour {
 
-        [SerializeField] private PlaceMode placeMode;
-        [SerializeField] private DestroyMode destroyMode;
-
         private BuildMode currentBuildMode;
 
-
         private void Awake() {
-            placeMode.enabled = false;
-            destroyMode.enabled = false;
+            BuildingPlaceMode.OnModeToggled += SetBuildMode;
         }
 
         private void SetBuildMode(BuildMode mode) {
@@ -35,11 +30,8 @@ namespace CityView.Construction {
             }
         }
 
-        private void OnGUI() {
-            if (GUI.Button(new Rect(10, 10, 150, 20), "Build Mode"))
-                SetBuildMode(placeMode);
-            if (GUI.Button(new Rect(10, 30, 150, 20), "Destroy Mode"))
-                SetBuildMode(destroyMode);
+        private void OnDestroy() {
+            BuildingPlaceMode.OnModeToggled -= SetBuildMode;
         }
     }
 }
