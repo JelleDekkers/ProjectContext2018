@@ -1169,8 +1169,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 386444470}
-  - component: {fileID: 386444469}
-  - component: {fileID: 386444467}
   m_Layer: 0
   m_Name: City Builder
   m_TagString: Untagged
@@ -1178,29 +1176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &386444467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386444466}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5862bad286ebc4983cc1e1a21fb010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DemolishSFX: {fileID: 8300000, guid: 6783871dea2787442a4ee8db7885610f, type: 3}
---- !u!114 &386444469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386444466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376816893bb9e424ca31214d1c2fb858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &386444470
 Transform:
   m_ObjectHideFlags: 0
