@@ -24,11 +24,13 @@ namespace CityView.Construction {
         }
 
         private void OnEnable() {
-            OnModeToggled(this);
+            if(OnModeToggled != null)
+                OnModeToggled(this);
         }
 
         private void OnDisable() {
-            OnModeToggled(this);
+            if(OnModeToggled != null)
+                OnModeToggled(this);
         }
 
         public override void OnEnd() {
