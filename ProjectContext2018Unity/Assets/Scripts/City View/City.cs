@@ -14,6 +14,16 @@ namespace CityView {
                 return instance; }
         }
 
+        public CityType Type {
+            get {
+                return type;
+            }
+
+            private set {
+                type = value;
+            }
+        }
+
         public CityGrid grid;
         public List<Building> buildings;
         private CityType type;
@@ -25,8 +35,8 @@ namespace CityView {
             BuildingDestroyMode.OnBuildingRemoved += RemoveBuilding;
             Building.OnProductionCycleCompleted += ProcessProductionResult;
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
-            type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
-            type.DebugCall();
+            Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
+            Type.DebugCall();
         }
 
         private void AddBuilding(Building building, BuildingsData data) {
