@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using CityView.Construction;
@@ -26,6 +26,7 @@ namespace CityView {
 
         public CityGrid grid;
         public List<Building> buildings;
+        private CityType type;
 
         private void Awake() {
             instance = this;
@@ -33,12 +34,9 @@ namespace CityView {
             BuildingPlaceMode.OnBuildingPlaced += AddBuilding;
             BuildingDestroyMode.OnBuildingRemoved += RemoveBuilding;
             Building.OnProductionCycleCompleted += ProcessProductionResult;
-<<<<<<< HEAD
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
             Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
             Type.DebugCall();
-=======
->>>>>>> af96bb0270a0b8298c9eeacf64e2f392556b3609
         }
 
         private void AddBuilding(Building building, BuildingsData data) {
