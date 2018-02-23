@@ -41,10 +41,10 @@ namespace CityView
 
         public Color GetClimateCameraFillColor(Climate climate)
         {
-            Color color = Color.green;                                              // Default Color
-            if (climate == Climate.Island) color =        new Color(0, 105, 148);   // Blue - Sea Color
-            else if (climate == Climate.Desert) color =   new Color(193, 154, 107); // Yellow - Brown -ish Color
-            else if (climate == Climate.Highland) color = new Color(104, 161, 129); // Green, Cold Color
+            Color color = Color.green;                                                  // Default Color
+            if (climate == Climate.Island) color =        new Color(0, 105, 148)/255;   // Blue - Sea Color
+            else if (climate == Climate.Desert) color =   new Color(193, 154, 107)/255; // Yellow - Brown -ish Color
+            else if (climate == Climate.Highland) color = new Color(104, 161, 129)/255; // Green, Cold Color
             return color;
         }
 
