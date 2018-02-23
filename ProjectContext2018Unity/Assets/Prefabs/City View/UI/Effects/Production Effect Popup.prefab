@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114256602181816606}
   - component: {fileID: 225544099922828644}
   - component: {fileID: 114475417320725928}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Production Effect Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

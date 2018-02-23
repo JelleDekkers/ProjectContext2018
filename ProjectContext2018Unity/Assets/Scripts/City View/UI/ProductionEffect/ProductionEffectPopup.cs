@@ -21,6 +21,7 @@ namespace CityView.UI {
 
         public void Init(Building b, ProductionCycleResult production) {
             transform.position = new Vector3(b.transform.position.x, b.transform.position.y + spawnHeight, b.transform.position.z);
+            transform.SetAsFirstSibling();
             CreatePopupItems(production);
             StartCoroutine(Move());
             StartCoroutine(WaitForFade());
@@ -28,6 +29,7 @@ namespace CityView.UI {
 
         public void Init(Building b, BuildingsData data) {
             transform.position = new Vector3(b.transform.position.x, b.transform.position.y + spawnHeight, b.transform.position.z);
+            transform.SetAsFirstSibling();
             CreatePopupItems(data);
             StartCoroutine(Move());
             StartCoroutine(WaitForFade());
