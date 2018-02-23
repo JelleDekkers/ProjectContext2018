@@ -26,6 +26,10 @@ namespace CityView.UI {
             selectable.Select();
         }
 
+        private void OnDisable() {
+            selectedBuilding = null;
+        }
+
         private void Activate(Building building) {
             if (building == null || building == selectedBuilding) {
                 gameObject.SetActive(false);
