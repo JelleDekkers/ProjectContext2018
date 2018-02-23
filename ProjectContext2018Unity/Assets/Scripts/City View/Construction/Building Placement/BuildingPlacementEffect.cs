@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CityView.Construction {
 
-    public class BuildingPlacementEffectHandler : MonoBehaviour {
+    public class BuildingPlacementEffect : MonoBehaviour {
 
         [SerializeField] float dropTime = 0.5f;
         [SerializeField] float startingHeight = 1;

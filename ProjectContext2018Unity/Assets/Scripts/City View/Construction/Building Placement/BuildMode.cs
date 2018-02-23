@@ -6,7 +6,7 @@ namespace CityView.Construction {
     public class BuildMode : MonoBehaviour {
 
         [SerializeField] private BuildingGhost buildingGhost;
-        [SerializeField] private BuildingPlacementEffectHandler placeEffect;
+        [SerializeField] private BuildingPlacementEffect placeEffectPrefab;
         [SerializeField] private Transform buildingsParent;
 
         private Tile[,] tilesHoveringOver;
@@ -98,7 +98,7 @@ namespace CityView.Construction {
             Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
             foreach (Tile t in tiles)
                 t.occupant = b;
-            Instantiate(placeEffect).Setup(b);
+            Instantiate(placeEffectPrefab).Setup(b);
             OnBuildingPlaced(b, SelectedBuildingData);
         }
 

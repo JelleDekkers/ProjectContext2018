@@ -6,13 +6,16 @@ namespace CityView.Construction {
 
     public class BuildingDestroyEffectHandler : MonoBehaviour {
 
-        [SerializeField] private AudioClip demolishSFX;
-        [SerializeField] private new ParticleSystem particleSystem;
+        [SerializeField] private BuildingDestroyEffect destroyEffectPrefab;
 
         private void Start() {
-            CityCamera.Instance.audioSource.PlayOneShot(demolishSFX);
-            particleSystem.Play();
-            Destroy(gameObject, particleSystem.main.duration);
+            Building.OnDemolishInitiated += InstantiateDemolishEffect;
+        }
+
+        private void InstantiateDemolishEffect(Building building) {
+            BuildingDestroyEffect effect = Instantiate(destroyEffectPrefab);
+            effect.transform.position = building.transform.position;
+            effect.Init(building);
         }
     }
 }
