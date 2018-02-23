@@ -48,7 +48,7 @@ namespace CityView
             return color;
         }
 
-        public static Color GetClimateBaseMaterial(Climate climate)
+        public static Color GetClimateBaseMaterialColor(Climate climate)
         {
             Color color = Color.white;                                                          // Default Color
             if (climate == Climate.Island) color =        new Color(240, 230, 140) / 255;       // Shore / Sand Color
