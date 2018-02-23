@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4690364822523608}
   - component: {fileID: 114122029507518404}
-  m_Layer: 0
+  - component: {fileID: 65268749344122308}
+  m_Layer: 8
   m_Name: Building Placeholder 3x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,9 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4138718611195472}
   - component: {fileID: 33011161605195758}
-  - component: {fileID: 65711329087011030}
   - component: {fileID: 23000628129907780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,18 +113,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1813874217931254}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65711329087011030
+--- !u!65 &65268749344122308
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813874217931254}
+  m_GameObject: {fileID: 1336764842782612}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.8, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114122029507518404
 MonoBehaviour:
   m_ObjectHideFlags: 1

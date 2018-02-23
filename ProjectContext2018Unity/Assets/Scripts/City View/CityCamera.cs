@@ -17,6 +17,7 @@ namespace CityView {
         public CityCameraController controller;
         public AudioSource audioSource;
         public CameraShake cameraShaker;
+        public CityCameraInputHandler inputHandler;
 
         private void Awake() {
             instance = this;

@@ -11,14 +11,11 @@ public class CityCameraController : MonoBehaviour {
     [SerializeField]
     private float verticalBorderMin, verticalBorderMax;
 
-    private Ray ray;
-
     private void Update() {
         Movement();
     }
 
     private void Movement() {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButton(1)) {
             float horizontal = Input.GetAxis("Mouse X") / 2 + Input.GetAxis("Mouse Y") / 2;
             float vertical = Input.GetAxis("Mouse X") / 2 - Input.GetAxis("Mouse Y") / 2;
