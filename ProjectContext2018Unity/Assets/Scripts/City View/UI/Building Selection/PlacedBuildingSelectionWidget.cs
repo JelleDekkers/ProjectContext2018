@@ -23,6 +23,7 @@ namespace CityView.UI {
         private void Activate(Building building) {
             if (building == null || building == selectedBuilding) {
                 gameObject.SetActive(false);
+                selectedBuilding = null;
                 return;
             }
 
