@@ -37,7 +37,7 @@ namespace CityView {
 
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
             Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
-            Type.DebugCall();
+            //Type.DebugCall();
         }
 
         private void AddBuilding(Building building, BuildingsData data) {

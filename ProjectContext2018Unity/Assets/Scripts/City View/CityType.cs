@@ -36,15 +36,24 @@ namespace CityView
         ///</summary>
         public void DebugCall()
         {
-            //Debug.Log("Your city has a(n) " + climate + " climate");
+            Debug.Log("Your city has a(n) " + climate + " climate");
         }
 
-        public Color GetClimateCameraFillColor(Climate climate)
+        public static Color GetClimateCameraFillColor(Climate climate)
         {
             Color color = Color.green;                                                  // Default Color
-            if (climate == Climate.Island) color =        new Color(0, 105, 148)/255;   // Blue - Sea Color
-            else if (climate == Climate.Desert) color =   new Color(193, 154, 107)/255; // Yellow - Brown -ish Color
-            else if (climate == Climate.Highland) color = new Color(104, 161, 129)/255; // Green, Cold Color
+            if (climate == Climate.Island) color = new Color(0, 155, 198) / 255;   // Blue - Sea Color
+            else if (climate == Climate.Desert) color = new Color(193, 154, 107) / 255; // Yellow - Brown -ish Color
+            else if (climate == Climate.Highland) color = new Color(104, 161, 129) / 255; // Green, Cold Color
+            return color;
+        }
+
+        public static Color GetClimateBaseMaterialColor(Climate climate)
+        {
+            Color color = Color.white;                                                          // Default Color
+            if (climate == Climate.Island) color = new Color(240, 230, 140) / 255;       // Shore / Sand Color
+            else if (climate == Climate.Desert) color = new Color(253, 227, 141) / 255;       // Bright Sand Color
+            else if (climate == Climate.Highland) color = new Color(116, 88, 62) / 255;         // Brown Cold Dirt Color
             return color;
         }
 

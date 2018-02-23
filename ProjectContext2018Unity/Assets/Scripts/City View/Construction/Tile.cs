@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +20,11 @@ namespace CityView.Construction {
         private void Start() {
             rend = GetComponent<Renderer>();
             baseColor = rend.material.color;
+            if (City.Instance != null)
+            {
+                baseColor = CityType.GetClimateBaseMaterialColor(City.Instance.Type.climate);
+            }
+            ResetColor();
         }
 
         public void SetColorToUnbuildable() {
