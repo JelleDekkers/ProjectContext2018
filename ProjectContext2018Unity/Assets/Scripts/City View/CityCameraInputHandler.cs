@@ -5,18 +5,20 @@ namespace CityView {
 
     public class CityCameraInputHandler : MonoBehaviour {
 
-        public static Action<Building> OnBuildingSelected;
+        public static Action<Building> OnPlacedBuildingSelected;
 
         [SerializeField]
         private LayerMask layerMask;
 
         private Ray ray;
         private RaycastHit hit;
-        private Action<bool> myDelegate;
 
         private void Start() {
-            myDelegate = (bool toggle) => enabled = !toggle;
-            Construction.BuildMode.OnToggled += myDelegate;
+            Construction.BuildMode.OnBuildStateToggled += ToggleActiveState;
+        }
+
+        private void ToggleActiveState(bool toggle) {
+            enabled = !toggle;
         }
 
         private void Update() {
@@ -27,16 +29,14 @@ namespace CityView {
         private void OnClick() {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                Building[] building = hit.collider.gameObject.GetComponents<Building>();
+                Building[] building = hit.collider.gameObject.GetComponents<Building>();  // Uses getComponents to include disabled components
                 if (building.Length > 0)
-                    OnBuildingSelected(building[0]);
-            } //else {
-            //    OnBuildingSelected(null);
-            //}
+                    OnPlacedBuildingSelected(building[0]);
+            }
         }
 
         private void OnDestroy() {
-            Construction.BuildMode.OnToggled -= myDelegate;
+            Construction.BuildMode.OnBuildStateToggled -= ToggleActiveState;
         }
     }
 }

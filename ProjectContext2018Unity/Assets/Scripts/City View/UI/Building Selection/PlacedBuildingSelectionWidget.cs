@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace CityView.UI {
@@ -12,12 +13,17 @@ namespace CityView.UI {
         [SerializeField] private PlacedBuildingSelectionResourceGridItem resourceItemPrefab;
         [SerializeField] private GridLayoutGroup productionGrid;
         [SerializeField] private Vector3 posOffset;
+        [SerializeField] private Selectable selectable;
 
         private Building selectedBuilding;
 
         private void Start() {
             gameObject.SetActive(false);
-            CityCameraInputHandler.OnBuildingSelected += Activate;
+            CityCameraInputHandler.OnPlacedBuildingSelected += Activate;
+        }
+
+        private void OnEnable() {
+            selectable.Select();
         }
 
         private void Activate(Building building) {

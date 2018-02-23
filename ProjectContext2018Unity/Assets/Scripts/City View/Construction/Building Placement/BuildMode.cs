@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CityView.Construction {
 
@@ -16,21 +17,19 @@ namespace CityView.Construction {
         private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
-        public static Action<bool> OnToggled;
         public static Action<Building, BuildingsData> OnBuildingPlaced;
+        public static Action<bool> OnBuildStateToggled;
 
         private void Start() {
             UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
         }
 
-        private void OnEnable() {
-            OnToggled(true);
-        }
-
         private void OnDisable() {
             buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
-            OnToggled(false);
+            selectionIndex = -1;
+            if(OnBuildStateToggled != null)
+                OnBuildStateToggled(false);
         }
 
         private void Update() {
@@ -51,10 +50,12 @@ namespace CityView.Construction {
                 selectionIndex = -1;
                 buildingGhost.gameObject.SetActive(false);
                 RevertTileColors();
+                OnBuildStateToggled(false);
             } else {
                 selectionIndex = index;
                 buildingGhost.Setup(SelectedBuilding);
                 buildingGhost.gameObject.SetActive(true);
+                OnBuildStateToggled(true);
             }
         }
 
@@ -80,7 +81,7 @@ namespace CityView.Construction {
             bool t;
             Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out t);
 
-            if (!isHittingGrid)
+            if (!isHittingGrid || EventSystem.current.IsPointerOverGameObject())
                 return;
 
             if(CanBePlacedAtTiles(tilesHoveringOver))// && BuildingSelector.SelectedBuilding.CanBeBought())
