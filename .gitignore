@@ -33,4 +33,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+<<<<<<< HEAD
+=======
+ProjectContext2018Unity/.vs/ProjectContext2018Unity/v15/Server/sqlite3/db.lock
+ProjectContext2018Unity/.vs/ProjectContext2018Unity/v15/Server/sqlite3/storage.ide
+>>>>>>> ecd87315a2b4db2d6fd4fe407065645537b08adc
 *.lock

@@ -6,7 +6,6 @@ using CityView.Construction;
 namespace CityView {
 
     public class City : MonoBehaviour {
-
         private static City instance;
         public static City Instance {
             get {
@@ -22,8 +21,8 @@ namespace CityView {
         private void Awake() {
             instance = this;
             PlayerResources.Init();
-            PlaceMode.OnBuildingPlaced += AddBuilding;
-            DestroyMode.OnBuildingRemoved += RemoveBuilding;
+            BuildingPlaceMode.OnBuildingPlaced += AddBuilding;
+            BuildingDestroyMode.OnBuildingRemoved += RemoveBuilding;
             Building.OnProductionCycleCompleted += ProcessProductionResult;
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
             type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));

@@ -17,8 +17,16 @@ MonoBehaviour:
   - id: 0
     name: Energy
   - id: 1
-    name: Eco_Material
-  - id: 2
-    name: Eco_Panels
-  - id: 3
     name: Food
+  - id: 2
+    name: Timber
+  - id: 3
+    name: Minerals
+  - id: 4
+    name: Sand
+  - id: 5
+    name: Electronics
+  - id: 6
+    name: Plastics
+  - id: 7
+    name: Metals

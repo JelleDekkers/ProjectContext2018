@@ -6,21 +6,21 @@ namespace CityView {
 
     public class Building : MonoBehaviour {
 
-        private IntVector2? size;
-        public IntVector2 Size { get {
+        private Vector2Int? size;
+        public Vector2Int Size { get {
                 if (!size.HasValue)
                     size = CalculateTileSize();
                 return size.Value;
             }
         }
 
-        public int dataID;
+        public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
 
         public ProductionCycle productionCycle;
 
         public void Init(BuildingsData data, City city) {
-            dataID = data.ID;
+            this.data = data;
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
         }
 
@@ -32,11 +32,11 @@ namespace CityView {
             OnProductionCycleCompleted(this, result);
         }
 
-        public IntVector2 CalculateTileSize() {
-            IntVector2 calcSize = IntVector2.Zero;
+        public Vector2Int CalculateTileSize() {
+            Vector2Int calcSize = Vector2Int.zero;
             Renderer r = transform.GetChild(0).GetComponent<Renderer>();
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);
-            calcSize.z = (int)Mathf.Round(r.bounds.size.z);
+            calcSize.y = (int)Mathf.Round(r.bounds.size.z);
             return calcSize;
         }
     }

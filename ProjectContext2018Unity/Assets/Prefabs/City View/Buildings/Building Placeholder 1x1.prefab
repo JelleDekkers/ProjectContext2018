@@ -66,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500995305051282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0.5000001, z: 0}
+  m_LocalScale: {x: 0.8, y: 1, z: 0.8000005}
   m_Children: []
   m_Father: {fileID: 4379800314942236}
   m_RootOrder: 0
@@ -136,3 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    id: 0
+    name: 
+    pollution: 0
+    costmoney: 0
+    researchpointsneeded: 0
+    resourcecost: 
+    resourcecostamount: []
+    incomemoney: 0
+    incomeresearch: 0
+    incomeresources: 
+    incomeresourcesamount: []
+    productiontime: 0
+  productionCycle:
+    timer: 0

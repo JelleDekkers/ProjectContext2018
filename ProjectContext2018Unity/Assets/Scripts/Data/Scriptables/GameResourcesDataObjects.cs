@@ -5,13 +5,14 @@ using UnityEngine;
 public class GameResourcePrefabs : ScriptableObject {
 
     public Sprite errorImg;
-    public Sprite[] images;
+    [SerializeField]
+    private Sprite[] images;
 
     public Sprite GetSprite(int index) {
         try {
             return images[index];
         } catch (Exception ex) {
-            Debug.LogError(ex);
+            Debug.LogWarning(ex + ", returning errorImg");
             return errorImg;
         }
     }
