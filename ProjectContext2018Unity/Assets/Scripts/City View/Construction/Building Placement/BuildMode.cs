@@ -16,16 +16,21 @@ namespace CityView.Construction {
         private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
+        public static Action<bool> OnToggled;
         public static Action<Building, BuildingsData> OnBuildingPlaced;
 
         private void Start() {
             UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
         }
 
+        private void OnEnable() {
+            OnToggled(true);
+        }
+
         private void OnDisable() {
             buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
-            enabled = false;
+            OnToggled(false);
         }
 
         private void Update() {
