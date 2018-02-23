@@ -31,9 +31,10 @@ namespace CityView {
         private void Awake() {
             instance = this;
             PlayerResources.Init();
-            BuildingPlaceMode.OnBuildingPlaced += AddBuilding;
-            BuildingDestroyMode.OnBuildingRemoved += RemoveBuilding;
+            BuildMode.OnBuildingPlaced += AddBuilding;
             Building.OnProductionCycleCompleted += ProcessProductionResult;
+            Building.OnDestroyed += RemoveBuilding;
+
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
             Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
             Type.DebugCall();
@@ -48,10 +49,9 @@ namespace CityView {
             buildings.Remove(building);
         }
 
-        // placeholder?
         private void ProcessProductionResult(Building building, ProductionCycleResult result) {
             if (result.money != 0)
-                AddMoney(result.money);// of via event?
+                AddMoney(result.money);
             if (result.researchPoints != 0)
                 AddResearchPoints(result.researchPoints);
             if (result.producedResources.Length != 0)

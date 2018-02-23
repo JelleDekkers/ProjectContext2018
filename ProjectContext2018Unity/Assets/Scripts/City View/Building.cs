@@ -16,6 +16,7 @@ namespace CityView {
 
         public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
+        public static Action<Building> OnDestroyed;
 
         public ProductionCycle productionCycle;
 
@@ -38,6 +39,10 @@ namespace CityView {
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);
             calcSize.y = (int)Mathf.Round(r.bounds.size.z);
             return calcSize;
+        }
+
+        private void OnDestroy() {
+            OnDestroyed(this);
         }
     }
 }

@@ -29,12 +29,12 @@ namespace CityView {
         private void OnClick() {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                Building building = hit.collider.gameObject.GetComponent<Building>();
-                if (building != null)
-                    OnBuildingSelected(building);
-            } else {
-                OnBuildingSelected(null);
-            }
+                Building[] building = hit.collider.gameObject.GetComponents<Building>();
+                if (building.Length > 0)
+                    OnBuildingSelected(building[0]);
+            } //else {
+            //    OnBuildingSelected(null);
+            //}
         }
     }
 }
