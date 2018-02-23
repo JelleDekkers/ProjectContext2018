@@ -17,6 +17,7 @@ namespace CityView {
         public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
         public static Action<Building> OnDestroyed;
+        public static Action<Building> OnDemolishInitiated;
 
         public ProductionCycle productionCycle;
 

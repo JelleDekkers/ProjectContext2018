@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Data Manager
   m_EditorClassIdentifier: 
   resourcesData: {fileID: 11400000, guid: cfd55f95434f6294abb6b66d2af1e025, type: 2}
-  resourcePrefabs: {fileID: 11400000, guid: 15a6503a1f3c1bf489ae44dd50fdd119, type: 2}
+  resourcePrefabs: {fileID: 11400000, guid: 5a6d9e4cd8a27ba48b0d44be01d2a91b, type: 2}
   buildingData: {fileID: 11400000, guid: f74bc480708e3cb4e8fdf8353c61dc22, type: 2}
-  buildingPrefabs: {fileID: 11400000, guid: d8b79a4a951b00241ae2e25487b283fe, type: 2}
+  buildingPrefabs: {fileID: 11400000, guid: 758b9d00ad10dde49b51098dfe467175, type: 2}

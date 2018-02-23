@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224150608565981838}
   - component: {fileID: 222923456899387414}
   - component: {fileID: 114807535066013962}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AmountTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222699930710902818}
   - component: {fileID: 114311945997891826}
   - component: {fileID: 114091309292124190}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Production Popup Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}

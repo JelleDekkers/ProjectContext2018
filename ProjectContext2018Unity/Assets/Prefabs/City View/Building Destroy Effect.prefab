@@ -9,77 +9,59 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1861435854402924}
+  m_RootGameObject: {fileID: 1786787325384114}
   m_IsPrefabParent: 1
---- !u!1 &1861435854402924
+--- !u!1 &1786787325384114
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4462245855446312}
-  - component: {fileID: 114625599853400204}
-  - component: {fileID: 199216494948636140}
-  - component: {fileID: 198498918778190638}
+  - component: {fileID: 4444740660863660}
+  - component: {fileID: 114808757996900534}
+  - component: {fileID: 198112639267593600}
+  - component: {fileID: 199291453068202958}
   m_Layer: 0
-  m_Name: Placement Effect Handler
+  m_Name: Building Destroy Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4462245855446312
+--- !u!4 &4444740660863660
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1861435854402924}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1786787325384114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6409196, y: 1.4518368, z: 2.0113792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114625599853400204
+--- !u!114 &114808757996900534
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1861435854402924}
+  m_GameObject: {fileID: 1786787325384114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df0e8993f17c6f41971549530643f53, type: 3}
+  m_Script: {fileID: 11500000, guid: 68ee686a6f142e4439446e8ed5684649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropTime: 0.2
-  startingHeight: 4
-  buildSFX: {fileID: 8300000, guid: a65928ec65346294b87bd8fa83875a24, type: 3}
-  dropEffectCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0.029867781
-      outSlope: 0.029867781
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 2.9016366
-      outSlope: 2.9016366
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!198 &198498918778190638
+  demolishSFX: {fileID: 8300000, guid: 6783871dea2787442a4ee8db7885610f, type: 3}
+  particleSystem: {fileID: 198112639267593600}
+  shrinkTime: 2
+--- !u!198 &198112639267593600
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1861435854402924}
+  m_GameObject: {fileID: 1786787325384114}
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 1
@@ -134,14 +116,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -134010313
+  randomSeed: 1236399815
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -182,7 +164,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3435,13 +3417,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199216494948636140
+--- !u!199 &199291453068202958
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1861435854402924}
+  m_GameObject: {fileID: 1786787325384114}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

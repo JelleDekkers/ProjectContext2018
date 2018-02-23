@@ -15,11 +15,9 @@ namespace CityView {
         private Action<bool> myDelegate;
 
         private void Start() {
-            myDelegate = (bool toggle) => gameObject.SetActive(toggle);
-            //Construction.BuildingPlaceMode.OnModeToggled += myDelegate;
-            // moet naar boolean, on unsubscribe bij ondestroy
+            myDelegate = (bool toggle) => enabled = !toggle;
+            Construction.BuildMode.OnToggled += myDelegate;
         }
-
 
         private void Update() {
             if (Input.GetMouseButtonDown(0))
@@ -35,6 +33,10 @@ namespace CityView {
             } //else {
             //    OnBuildingSelected(null);
             //}
+        }
+
+        private void OnDestroy() {
+            Construction.BuildMode.OnToggled -= myDelegate;
         }
     }
 }

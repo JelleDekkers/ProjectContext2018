@@ -6,7 +6,7 @@ namespace CityView.Construction {
     public class BuildMode : MonoBehaviour {
 
         [SerializeField] private BuildingGhost buildingGhost;
-        [SerializeField] private BuildingPlacementEffectHandler placeEffect;
+        [SerializeField] private BuildingPlacementEffect placeEffectPrefab;
         [SerializeField] private Transform buildingsParent;
 
         private Tile[,] tilesHoveringOver;
@@ -16,16 +16,21 @@ namespace CityView.Construction {
         private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
+        public static Action<bool> OnToggled;
         public static Action<Building, BuildingsData> OnBuildingPlaced;
 
         private void Start() {
             UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
         }
 
+        private void OnEnable() {
+            OnToggled(true);
+        }
+
         private void OnDisable() {
             buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
-            enabled = false;
+            OnToggled(false);
         }
 
         private void Update() {
@@ -98,7 +103,7 @@ namespace CityView.Construction {
             Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
             foreach (Tile t in tiles)
                 t.occupant = b;
-            Instantiate(placeEffect).Setup(b);
+            Instantiate(placeEffectPrefab).Setup(b);
             OnBuildingPlaced(b, SelectedBuildingData);
         }
 

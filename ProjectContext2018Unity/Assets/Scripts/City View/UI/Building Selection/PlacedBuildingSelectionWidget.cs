@@ -53,7 +53,8 @@ namespace CityView.UI {
         }
 
         public void DestroySelectedBuilding() {
-            Destroy(selectedBuilding.gameObject);
+            Building.OnDemolishInitiated(selectedBuilding);
+            selectedBuilding.enabled = false;
             gameObject.SetActive(false);
         }
     }
