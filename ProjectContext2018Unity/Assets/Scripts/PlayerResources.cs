@@ -55,12 +55,16 @@ public static class PlayerResources {
     #endregion
 
     #region has resource amount
-    public static bool HasResourcesAmount(string[] resources, float amount) {
-        foreach(string resource in resources) {
-            if (!HasResourceAmount(resource, amount))
+    public static bool HasResourcesAmount(int[] resources, float[] amount) {
+        for(int i = 0; i < resources.Length; i++) { 
+            if (!HasResourceAmount(resources[i], amount[i]))
                 return false;
         }
         return true;
+    }
+
+    public static bool HasResourceAmount(int resourceID, float amount) {
+        return HasResourceAmount(DataManager.ResourcesData.dataArray[resourceID].Name, amount);
     }
 
     public static bool HasResourceAmount(string resourceName, float amount) {

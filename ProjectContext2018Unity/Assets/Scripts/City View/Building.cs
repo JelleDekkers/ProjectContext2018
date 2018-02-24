@@ -29,7 +29,7 @@ namespace CityView {
         public void Update() {
             productionCycle.UpdateProduction();
         }
-
+        
         private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {
             OnProductionCycleCompleted(this, result);
         }
@@ -40,6 +40,15 @@ namespace CityView {
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);
             calcSize.y = (int)Mathf.Round(r.bounds.size.z);
             return calcSize;
+        }
+
+        public static bool IsBuildable(int id) {
+            BuildingsData data = DataManager.BuildingData.dataArray[id];
+            if (!PlayerResources.HasMoneyAmount(data.Costmoney))
+                return false;
+            if (!PlayerResources.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
+                return false;
+            return true;
         }
 
         private void OnDestroy() {

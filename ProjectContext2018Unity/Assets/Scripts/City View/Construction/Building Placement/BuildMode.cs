@@ -84,7 +84,7 @@ namespace CityView.Construction {
             if (!isHittingGrid || EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if(CanBePlacedAtTiles(tilesHoveringOver))// && BuildingSelector.SelectedBuilding.CanBeBought())
+            if(CanBePlacedAtTiles(tilesHoveringOver))
                 Build(tilesHoveringOver);
         }
 

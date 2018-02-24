@@ -42,6 +42,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 114241160403052014}
+  button: {fileID: 114241614359688868}
+  buildable: 0
+  hasmoney: 0
+  hasResources: 0
+  cost: 0
 --- !u!114 &114241160403052014
 MonoBehaviour:
   m_ObjectHideFlags: 1
