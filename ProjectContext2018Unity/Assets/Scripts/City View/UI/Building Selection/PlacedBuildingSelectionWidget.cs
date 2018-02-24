@@ -10,7 +10,7 @@ namespace CityView.UI {
 
         [SerializeField] private Text nameTxt;
         [SerializeField] private Text pollutionAmountTxt;
-        [SerializeField] private PlacedBuildingSelectionResourceGridItem resourceItemPrefab;
+        [SerializeField] private ProductAmountItem resourceItemPrefab;
         [SerializeField] private GridLayoutGroup productionGrid;
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Selectable selectable;
@@ -44,16 +44,16 @@ namespace CityView.UI {
         }
 
         private void FillValues() {
+            productionGrid.transform.RemoveChildren();
+
             nameTxt.text = selectedBuilding.data.Name;
             pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
 
-            if (productionGrid.transform.childCount > 0) {
-                foreach (Transform t in productionGrid.transform) 
-                    Destroy(t.gameObject);
-            }
+            Sprite sprite = DataManager.ResourcePrefabs.MoneySprite;
+            Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Incomemoney);
 
-            for(int i = 0; i < selectedBuilding.data.Incomeresources.Length; i++) {
-                Sprite sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Incomeresources[i]);
+            for (int i = 0; i < selectedBuilding.data.Incomeresources.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Incomeresources[i]);
                 Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Incomeresourcesamount[i]);
             }
         }
