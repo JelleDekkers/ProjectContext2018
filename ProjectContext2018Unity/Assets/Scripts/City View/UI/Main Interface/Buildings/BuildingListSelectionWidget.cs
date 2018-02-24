@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,11 +14,17 @@ namespace CityView.UI {
         [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
 
+        private Action DisableGameObject;
+
         private void Start() {
-            BuildingSelectionWidget.OnBuildingSelected += UpdateInfo;
+            DisableGameObject = delegate () { gameObject.SetActive(false); };
+            BuildingSelectionWidgetItem.OnPointerEnterEvent += UpdateInfo;
+            BuildingSelectionWidgetItem.OnPointerExitEvent += DisableGameObject;
+            DisableGameObject();
         }
-        
+
         private void UpdateInfo(int id) {
+            gameObject.SetActive(true);
             costGrid.transform.RemoveChildren();
             productionGrid.transform.RemoveChildren();
 
@@ -27,7 +32,6 @@ namespace CityView.UI {
             nameTxt.text = selectedBuildingData.Name;
             pollutionAmountTxt.text = selectedBuildingData.Pollution.ToString();
             productionTime.text = selectedBuildingData.Productiontime.ToString();
-            
             
             // cost:
             Sprite sprite;
@@ -52,6 +56,11 @@ namespace CityView.UI {
                 Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Incomeresourcesamount[i]);
             }
 
+        }
+
+        private void OnDestroy() {
+            BuildingSelectionWidgetItem.OnPointerEnterEvent -= UpdateInfo;
+            BuildingSelectionWidgetItem.OnPointerExitEvent -= DisableGameObject;
         }
     }
 }
