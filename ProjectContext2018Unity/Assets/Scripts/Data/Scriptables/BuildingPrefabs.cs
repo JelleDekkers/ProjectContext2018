@@ -5,29 +5,27 @@ using CityView;
 [CreateAssetMenu(fileName = "Building Prefabs", menuName = "Tools/Building Prefabs", order = 3)]
 public class BuildingPrefabs : ScriptableObject {
 
-    public Building errorBuilding;
-    [SerializeField]
-    private Building[] buildings;
+    [SerializeField] private Building fallbackBuilding;
+    [SerializeField] private Building[] buildingsPrefabs;
 
-    public Sprite errorImg;
-    [SerializeField]
-    private Sprite[] images;
+    [SerializeField] private Sprite fallbackSprite;
+    [SerializeField] private Sprite[] buildingSprites;
 
     public Building GetBuilding(int index) {
         try {
-            return buildings[index];
+            return buildingsPrefabs[index];
         } catch(Exception ex) {
-            Debug.LogWarning(ex + ", returning errorImg");
-            return errorBuilding;
+            Debug.LogWarning("Returning fallback buildingPrefab, due to error: " + ex);
+            return fallbackBuilding;
         }
     }
 
     public Sprite GetSprite(int index) {
         try {
-            return images[index];
+            return buildingSprites[index];
         } catch (Exception ex) {
-            Debug.LogWarning(ex + ", returning errorImg");
-            return errorImg;
+            Debug.LogWarning("Returning fallback sprite, due to error: " + ex);
+            return fallbackSprite;
         }
     }
 }

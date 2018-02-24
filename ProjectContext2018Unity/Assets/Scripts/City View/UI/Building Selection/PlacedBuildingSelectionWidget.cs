@@ -53,7 +53,7 @@ namespace CityView.UI {
             }
 
             for(int i = 0; i < selectedBuilding.data.Incomeresources.Length; i++) {
-                Sprite sprite = DataManager.ResourcePrefabs.GetSprite(selectedBuilding.data.Incomeresources[i]);
+                Sprite sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Incomeresources[i]);
                 Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Incomeresourcesamount[i]);
             }
         }

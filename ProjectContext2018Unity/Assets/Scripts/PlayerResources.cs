@@ -5,8 +5,10 @@ using UnityEngine;
 public static class PlayerResources {
 
     public static Dictionary<string, float> Resources { get; private set; }
+    public static float Money { get; private set; }
 
     public static Action<int, float> OnResourceChanged;
+    public static Action<float> OnMoneyChanged;
 
     public static void Init() {
         Resources = new Dictionary<string, float>();
@@ -39,6 +41,11 @@ public static class PlayerResources {
         Resources[resourceName] += product.amount;
         OnResourceChanged(product.id, Resources[resourceName]);
     }
+
+    public static void AddMoney(float amount) {
+        Money += amount;
+        OnMoneyChanged(Money);
+    }
     #endregion
 
     #region has resource amount
@@ -65,6 +72,10 @@ public static class PlayerResources {
     public static bool HasResourceAmount(ResourceContainer product) {
         string resourceName = DataManager.ResourcesData.dataArray[product.id].Name;
         return Resources[resourceName] >= product.amount;
+    }
+
+    public static bool HasMoneyAmount(float amount) {
+        return Money >= amount;
     }
     #endregion
 
@@ -95,6 +106,14 @@ public static class PlayerResources {
         if (Resources[resourceName] < 0)
             Resources[resourceName] = 0;
         OnResourceChanged(product.id, Resources[resourceName]);
+    }
+
+    public static void RemoveMoney(float amount) {
+        Money -= amount;
+        OnMoneyChanged(Money);
+
+        if (Money < 0)
+            Money = 0;
     }
     #endregion
 }

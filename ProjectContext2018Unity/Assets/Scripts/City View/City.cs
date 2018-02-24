@@ -51,21 +51,11 @@ namespace CityView {
 
         private void ProcessProductionResult(Building building, ProductionCycleResult result) {
             if (result.money != 0)
-                AddMoney(result.money);
-            if (result.researchPoints != 0)
-                AddResearchPoints(result.researchPoints);
+                PlayerResources.AddMoney(result.money);
             if (result.producedResources.Length != 0)
                 PlayerResources.AddResources(result.producedResources);
             if (result.pollutionPoints != 0)
                 AddPollution(result.pollutionPoints);
-        }
-
-        private void AddMoney(float amount) {
-
-        }
-
-        private void AddResearchPoints(float amount) {
-
         }
 
         private void AddPollution(float amount) {

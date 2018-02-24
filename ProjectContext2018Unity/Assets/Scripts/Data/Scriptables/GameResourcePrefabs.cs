@@ -4,16 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Resource Prefabs", menuName = "Tools/Resource Prefabs", order = 1)]
 public class GameResourcePrefabs : ScriptableObject {
 
-    public Sprite errorImg;
-    [SerializeField]
-    private Sprite[] images;
+    [SerializeField] private Sprite fallbackSprite;
 
-    public Sprite GetSprite(int index) {
+    [SerializeField] private Sprite moneySprite;
+    public Sprite MoneySprite { get { return moneySprite; } }
+
+    [SerializeField] private Sprite[] resourceSprites;
+
+    public Sprite GetResourceSprite(int index) {
         try {
-            return images[index];
+            return resourceSprites[index];
         } catch (Exception ex) {
-            Debug.LogWarning(ex + ", returning errorImg");
-            return errorImg;
+            Debug.LogWarning("Returning fallback sprite, due to error: " + ex);
+            return fallbackSprite;
         }
     }
 }

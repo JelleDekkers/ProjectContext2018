@@ -36,26 +36,25 @@ namespace CityView.UI {
         }
 
         private void CreatePopupItems(ProductionCycleResult production) {
+            if (production.money != 0)
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, production.money);
+
             // TODO: gebruiken wanneer sprites bescikbaar zijn
-            //if (production.money != 0)
-            //    InstantiateNewPopupItem(null, production.money);
-            //if (production.researchPoints != 0)
-            //    InstantiateNewPopupItem(null, production.researchPoints);
             //if (production.pollutionPoints != 0)
             //    InstantiateNewPopupItem(null, production.pollutionPoints);
 
             foreach (ResourceContainer resource in production.producedResources) 
-                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetSprite(resource.id), resource.amount);
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetResourceSprite(resource.id), resource.amount);
         }
 
         private void CreatePopupItems(BuildingsData data) {
             // TODO: gebruiken wanneer sprites bescikbaar zijn
-            //if (data.Costmoney != 0)
-            //    InstantiateNewPopupItem(null, data.Costmoney);
+            if (data.Costmoney != 0)
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, data.Costmoney);
 
             for(int i = 0; i < data.Resourcecost.Length; i++) {
                 GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourcecost[i]];
-                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetSprite(resource.ID), -data.Resourcecostamount[i]);
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), -data.Resourcecostamount[i]);
             }
         }
 
