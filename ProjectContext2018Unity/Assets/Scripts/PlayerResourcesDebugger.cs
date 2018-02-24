@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerResourcesDebugger : MonoBehaviour {
 
     public bool useDebugOptions;
+    public float money;
     public StockPileResourceDictionary resourcesDict;
 
     private List<string> keys = new List<string>();
@@ -21,23 +22,40 @@ public class PlayerResourcesDebugger : MonoBehaviour {
     }
 
     private void Update() {
-        foreach (string key in keys) {
+        money = PlayerResources.Money;
+        foreach (string key in keys) 
             resourcesDict[key] = PlayerResources.Resources[key];
-        }
     }
 
     private void OnGUI() {
         if (!useDebugOptions)
             return;
 
-        cheatID = int.Parse(GUI.TextField(new Rect(10, 400, 40, 20), cheatID.ToString()));
-        cheatAmount = int.Parse(GUI.TextField(new Rect(50, 400, 100, 20), cheatAmount.ToString()));
+        ResourceCheat();
+        MoneyCheat();
+    }
 
-        if(GUI.Button(new Rect(150, 400, 50, 20), "Add")) {
+    private void ResourceCheat() {
+        cheatID = int.Parse(GUI.TextField(new Rect(10, 100, 40, 20), cheatID.ToString()));
+        cheatAmount = int.Parse(GUI.TextField(new Rect(50, 100, 100, 20), cheatAmount.ToString()));
+
+        if (GUI.Button(new Rect(150, 100, 50, 20), "Add")) {
             if (cheatAmount > 0)
                 PlayerResources.AddResource(cheatID, cheatAmount);
-            else 
+            else
                 PlayerResources.RemoveResource(cheatID, cheatAmount);
+        }
+    }
+
+    private void MoneyCheat() {
+        GUI.Label(new Rect(10, 125, 40, 20), "Cash: ");
+        cheatAmount = int.Parse(GUI.TextField(new Rect(50, 125, 100, 20), cheatAmount.ToString()));
+
+        if (GUI.Button(new Rect(150, 125, 50, 20), "Add")) {
+            if (cheatAmount > 0)
+                PlayerResources.AddMoney(cheatAmount);
+            else
+                PlayerResources.RemoveMoney(cheatAmount);
         }
     }
 }

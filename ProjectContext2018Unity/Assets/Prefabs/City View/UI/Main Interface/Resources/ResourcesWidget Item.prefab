@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224666669322681186}
   - component: {fileID: 222200761012585922}
   - component: {fileID: 114636567568979454}
-  - component: {fileID: 114611711039186688}
+  - component: {fileID: 114234212712558910}
   m_Layer: 5
   m_Name: ResourcesWidget Item
   m_TagString: Untagged
@@ -91,6 +91,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114234212712558910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073936574766774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9046c087530454f8a861afbf73133c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceID: 0
+  img: {fileID: 114122486120186134}
+  amountText: {fileID: 114505384187323838}
 --- !u!114 &114466777873628946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,19 +151,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &114611711039186688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1073936574766774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a44e179ab612b64fbb7dd7ea2726096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  img: {fileID: 114122486120186134}
-  amountText: {fileID: 114505384187323838}
 --- !u!114 &114636567568979454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,9 +220,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073936574766774}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00000044629}
+  m_LocalScale: {x: 0.99973106, y: 0.9997309, z: 0.99973106}
   m_Children:
   - {fileID: 224686021175983832}
   - {fileID: 224578140657060974}

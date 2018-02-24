@@ -10,11 +10,14 @@ public static class PlayerResources {
     public static Action<int, float> OnResourceChanged;
     public static Action<float> OnMoneyChanged;
 
+    private static float cheatAmount = 200;
+
     public static void Init() {
         Resources = new Dictionary<string, float>();
         foreach (GameResourcesData d in DataManager.ResourcesData.dataArray) {
-            Resources.Add(d.Name, 0);
+            Resources.Add(d.Name, cheatAmount); // debug
         }
+        Money = cheatAmount;
     }
 
     #region add resource
@@ -27,7 +30,8 @@ public static class PlayerResources {
     public static void AddResource(int resourceID, float amount) {
         string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
         Resources[resourceName] += amount;
-        OnResourceChanged(resourceID, Resources[resourceName]);
+        if(OnResourceChanged != null)
+            OnResourceChanged(resourceID, Resources[resourceName]);
     }
 
     public static void AddResources(ResourceContainer[] resources) {
@@ -39,12 +43,14 @@ public static class PlayerResources {
     public static void AddResource(ResourceContainer product) {
         string resourceName = DataManager.ResourcesData.dataArray[product.id].Name;
         Resources[resourceName] += product.amount;
-        OnResourceChanged(product.id, Resources[resourceName]);
+        if(OnResourceChanged != null)
+            OnResourceChanged(product.id, Resources[resourceName]);
     }
 
     public static void AddMoney(float amount) {
         Money += amount;
-        OnMoneyChanged(Money);
+        if(OnMoneyChanged != null)
+            OnMoneyChanged(Money);
     }
     #endregion
 
@@ -110,10 +116,9 @@ public static class PlayerResources {
 
     public static void RemoveMoney(float amount) {
         Money -= amount;
-        OnMoneyChanged(Money);
-
         if (Money < 0)
             Money = 0;
+        OnMoneyChanged(Money);
     }
     #endregion
 }

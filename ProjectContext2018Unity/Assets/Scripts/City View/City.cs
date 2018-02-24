@@ -43,6 +43,9 @@ namespace CityView {
         private void AddBuilding(Building building, BuildingsData data) {
             buildings.Add(building);
             building.Init(data, this);
+            PlayerResources.RemoveMoney(data.Costmoney);
+            for(int i = 0; i < data.Resourcecost.Length; i++)
+                PlayerResources.RemoveResource(data.Resourcecost[i], data.Resourcecostamount[i]); 
         }
 
         private void RemoveBuilding(Building building) {
