@@ -25,7 +25,8 @@ namespace CityView.Construction {
         }
 
         private void OnDisable() {
-            buildingGhost.gameObject.SetActive(false);
+            if(buildingGhost != null)
+                buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
             selectionIndex = -1;
             if(OnBuildStateToggled != null)
@@ -106,6 +107,9 @@ namespace CityView.Construction {
                 t.occupant = b;
             Instantiate(placeEffectPrefab).Setup(b);
             OnBuildingPlaced(b, SelectedBuildingData);
+
+            if (!Building.IsBuildable(selectionIndex))
+                selectionIndex = -1;
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {

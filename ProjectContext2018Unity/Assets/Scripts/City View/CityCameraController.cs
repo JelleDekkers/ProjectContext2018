@@ -34,7 +34,8 @@ namespace CityView {
         }
 
         private void Zoom() {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - Input.GetAxis("Mouse ScrollWheel"), zoomMin, zoomMax);
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+                Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - Input.GetAxis("Mouse ScrollWheel"), zoomMin, zoomMax);
         }
     }
 }

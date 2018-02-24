@@ -765,6 +765,8 @@ MonoBehaviour:
   horizontalBorderMax: 3
   verticalBorderMin: -3
   verticalBorderMax: 3
+  zoomMin: 3
+  zoomMax: 6
 --- !u!114 &176773016
 MonoBehaviour:
   m_ObjectHideFlags: 0
