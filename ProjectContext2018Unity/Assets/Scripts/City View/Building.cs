@@ -44,9 +44,9 @@ namespace CityView {
 
         public static bool IsBuildable(int id) {
             BuildingsData data = DataManager.BuildingData.dataArray[id];
-            if (!PlayerResources.HasMoneyAmount(data.Costmoney))
+            if (!PlayerResources.Instance.HasMoneyAmount(data.Costmoney))
                 return false;
-            if (!PlayerResources.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
+            if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
                 return false;
             return true;
         }

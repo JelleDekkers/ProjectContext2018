@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(StockPileResourceDictionary))]
+[CustomPropertyDrawer(typeof(ResourceAmountDictionary))]
 public class AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer {}

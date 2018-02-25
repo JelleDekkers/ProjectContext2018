@@ -11,6 +11,10 @@ public class WorldTemperatureHandler : MonoBehaviour {
         CityView.Building.OnProductionCycleCompleted += ProcessProductionResult;
     }
 
+    private void OnDestroy() {
+        CityView.Building.OnProductionCycleCompleted -= ProcessProductionResult;
+    }
+
     private void ProcessProductionResult(CityView.Building building, ProductionCycleResult result) {
         if (result.pollutionPoints > 0)
             worldTemperature.AddPollution(result.pollutionPoints);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "World Temperature", menuName = "Scriptables/World Temperature", order = 0)]
+[CreateAssetMenu(fileName = "World Temperature", menuName = "Scriptables/World Temperature", order = 1)]
 public class WorldTemperature : ScriptableObject {
 
     [SerializeField] private float temperatureIncreasePerPollution = 1f;
