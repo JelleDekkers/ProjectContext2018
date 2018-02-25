@@ -14,6 +14,7 @@ namespace CityView {
                 return instance; }
         }
 
+
         public CityType Type {
             get {
                 return type;
@@ -32,7 +33,6 @@ namespace CityView {
             instance = this;
             PlayerResources.Init();
             BuildMode.OnBuildingPlaced += AddBuilding;
-            Building.OnProductionCycleCompleted += ProcessProductionResult;
             Building.OnDestroyed += RemoveBuilding;
 
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
@@ -50,19 +50,6 @@ namespace CityView {
 
         private void RemoveBuilding(Building building) {
             buildings.Remove(building);
-        }
-
-        private void ProcessProductionResult(Building building, ProductionCycleResult result) {
-            if (result.money != 0)
-                PlayerResources.AddMoney(result.money);
-            if (result.producedResources.Length != 0)
-                PlayerResources.AddResources(result.producedResources);
-            if (result.pollutionPoints != 0)
-                AddPollution(result.pollutionPoints);
-        }
-
-        private void AddPollution(float amount) {
-
         }
     }
 }

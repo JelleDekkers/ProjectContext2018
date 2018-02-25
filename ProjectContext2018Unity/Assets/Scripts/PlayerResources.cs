@@ -18,6 +18,14 @@ public static class PlayerResources {
             Resources.Add(d.Name, cheatAmount); // debug
         }
         Money = cheatAmount;
+        CityView.Building.OnProductionCycleCompleted += ProcessProductionResult;
+    }
+
+    private static void ProcessProductionResult(CityView.Building building, ProductionCycleResult result) {
+        if (result.money != 0)
+            AddMoney(result.money);
+        if (result.producedResources.Length != 0)
+            AddResources(result.producedResources);
     }
 
     #region add resource

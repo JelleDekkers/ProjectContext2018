@@ -16,6 +16,7 @@ MonoBehaviour:
   dataArray:
   - id: 0
     name: Coal Factory
+    pollution: 10
     costmoney: 100
     researchpointsneeded: 0
     resourcecost: 
@@ -28,6 +29,7 @@ MonoBehaviour:
     productiontime: 10
   - id: 1
     name: Windmill
+    pollution: 20
     costmoney: 200
     researchpointsneeded: 50
     resourcecost: 01000000
@@ -41,6 +43,7 @@ MonoBehaviour:
     productiontime: 5
   - id: 2
     name: Solar Panel
+    pollution: 0
     costmoney: 100
     researchpointsneeded: 50
     resourcecost: 0000000002000000

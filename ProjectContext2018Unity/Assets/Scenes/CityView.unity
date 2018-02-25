@@ -4229,8 +4229,9 @@ GameObject:
   - component: {fileID: 1654829775}
   - component: {fileID: 1654829773}
   - component: {fileID: 1654829776}
+  - component: {fileID: 1654829777}
   m_Layer: 0
-  m_Name: City Manager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4296,6 +4297,18 @@ MonoBehaviour:
   resourcesDict:
     m_keys: []
     m_values: []
+--- !u!114 &1654829777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1654829772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f13f2f3fac52a74aa54bfff71d81aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldTemperature: {fileID: 11400000, guid: bab4035b9b66efd48b302c172b49122b, type: 2}
 --- !u!1 &1669667234
 GameObject:
   m_ObjectHideFlags: 0

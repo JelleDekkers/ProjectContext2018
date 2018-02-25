@@ -18,4 +18,7 @@ MonoBehaviour:
   - {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba, type: 2}
   - {fileID: 114122029507518404, guid: e7f541f1b9f4df943b8912cb45293066, type: 2}
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
-  buildingSprites: []
+  buildingSprites:
+  - {fileID: 21300000, guid: 708ff9c4e784ba840a6d6264dcef5b8a, type: 3}
+  - {fileID: 21300000, guid: 41f119b26848136478f4996468636e06, type: 3}
+  - {fileID: 21300000, guid: 414ccfcd2f3cd3b4aa53414f0f2063d8, type: 3}
