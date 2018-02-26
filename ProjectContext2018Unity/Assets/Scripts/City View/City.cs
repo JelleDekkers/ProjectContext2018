@@ -31,7 +31,6 @@ namespace CityView {
 
         private void Awake() {
             instance = this;
-            PlayerResources.Instance.Init();
             BuildMode.OnBuildingPlaced += AddBuilding;
             Building.OnDestroyed += RemoveBuilding;
 

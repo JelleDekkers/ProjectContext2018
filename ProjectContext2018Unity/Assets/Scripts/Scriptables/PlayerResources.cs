@@ -5,8 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player Resources", menuName = "Scriptables/Player Resources", order = 0)]
 public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
 
+    [SerializeField] private float startingMoney;
+    public static float StartingMoney { get { return Instance.startingMoney; } }
+
     [SerializeField] private float money;
     public static float Money { get { return Instance.money; } }
+
+    [SerializeField] private ResourceAmountDictionary startingResources;
+    public static ResourceAmountDictionary StartingResources { get { return Instance.startingResources; } }
 
     [SerializeField] private ResourceAmountDictionary resources;
     public static ResourceAmountDictionary Resources { get { return Instance.resources; } }
@@ -14,13 +20,13 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     public static Action<int, float> OnResourceChanged;
     public static Action<float> OnMoneyChanged;
 
-    //private float cheatAmount = 200;
-
     public void Init() {
-        //Resources = new Dictionary<string, float>();
-        //foreach (GameResourcesData d in DataManager.ResourcesData.dataArray) 
-        //    Resources.Add(d.Name, cheatAmount); // debug
-        //Money = cheatAmount;
+        money = startingMoney;
+
+        resources = new ResourceAmountDictionary();
+        foreach(KeyValuePair<string, float> pair in startingResources) {
+            resources.Add(pair.Key, pair.Value);
+        }
     }
 
     /// <summary>
@@ -28,9 +34,9 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     /// </summary>
     /// <param name="data"></param>
     public void SetResources() {
-        resources = new ResourceAmountDictionary();
+        startingResources = new ResourceAmountDictionary();
         for (int i = 0; i < DataManager.ResourcesData.dataArray.Length; i++)
-            resources.Add(DataManager.ResourcesData.dataArray[i].Name, 0);
+            startingResources.Add(DataManager.ResourcesData.dataArray[i].Name, 0);
     }
 
     public void ProcessBuildingProductionResult(CityView.Building building, ProductionCycleResult result) {

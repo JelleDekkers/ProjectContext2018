@@ -12,22 +12,9 @@ MonoBehaviour:
   m_Name: Player Resources
   m_EditorClassIdentifier: 
   money: 0
+  startingResources:
+    m_keys: []
+    m_values: []
   resources:
-    m_keys:
-    - Energy
-    - Food
-    - Timber
-    - Minerals
-    - Sand
-    - Electronics
-    - Plastics
-    - Metals
-    m_values:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    m_keys: []
+    m_values: []
