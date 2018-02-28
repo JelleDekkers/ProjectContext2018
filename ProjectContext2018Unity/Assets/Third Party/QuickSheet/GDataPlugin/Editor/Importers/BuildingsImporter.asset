@@ -29,40 +29,36 @@ MonoBehaviour:
     name: Pollution
     isEnable: 0
     isArray: 0
-  - type: 5
+  - type: 0
     name: CostMoney
     isEnable: 0
     isArray: 0
-  - type: 5
-    name: ResearchPointsNeeded
-    isEnable: 0
-    isArray: 0
-  - type: 9
+  - type: 0
     name: ResourceCost
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: ResourceCostAmount
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: IncomeMoney
     isEnable: 0
     isArray: 0
-  - type: 5
-    name: IncomeResearch
-    isEnable: 0
-    isArray: 0
-  - type: 9
+  - type: 0
     name: IncomeResources
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: IncomeResourcesAmount
     isEnable: 0
-    isArray: 1
-  - type: 5
+    isArray: 0
+  - type: 0
     name: ProductionTime
+    isEnable: 0
+    isArray: 0
+  - type: 0
+    name: ClimateExclusivity
     isEnable: 0
     isArray: 0
   AccessCode: 

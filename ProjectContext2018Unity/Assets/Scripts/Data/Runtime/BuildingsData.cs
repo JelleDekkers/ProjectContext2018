@@ -25,10 +25,6 @@ public class BuildingsData
   public float Costmoney { get {return costmoney; } set { costmoney = value;} }
   
   [SerializeField]
-  float researchpointsneeded;
-  public float Researchpointsneeded { get {return researchpointsneeded; } set { researchpointsneeded = value;} }
-  
-  [SerializeField]
   int[] resourcecost = new int[0];
   public int[] Resourcecost { get {return resourcecost; } set { resourcecost = value;} }
   
@@ -41,10 +37,6 @@ public class BuildingsData
   public float Incomemoney { get {return incomemoney; } set { incomemoney = value;} }
   
   [SerializeField]
-  float incomeresearch;
-  public float Incomeresearch { get {return incomeresearch; } set { incomeresearch = value;} }
-  
-  [SerializeField]
   int[] incomeresources = new int[0];
   public int[] Incomeresources { get {return incomeresources; } set { incomeresources = value;} }
   
@@ -55,5 +47,9 @@ public class BuildingsData
   [SerializeField]
   float productiontime;
   public float Productiontime { get {return productiontime; } set { productiontime = value;} }
+  
+  [SerializeField]
+  string climateexclusivity;
+  public string Climateexclusivity { get {return climateexclusivity; } set { climateexclusivity = value;} }
   
 }

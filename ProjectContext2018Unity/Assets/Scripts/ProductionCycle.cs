@@ -11,7 +11,6 @@ public class ProductionCycle {
 
     private float productionTime;
     private float money;
-    private float researchPoints;
     private int[] resourcesID;
     private float[] resourcesAmount;
     private float pollution;
@@ -19,7 +18,6 @@ public class ProductionCycle {
 	public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
         productionTime = data.Productiontime;
         money = data.Incomemoney;
-        researchPoints = data.Incomeresearch;
         resourcesID = data.Incomeresources;
         resourcesAmount = data.Incomeresourcesamount;
         pollution = data.Pollution;
@@ -40,7 +38,6 @@ public class ProductionCycle {
     private void OnCycleCompleted() {
         ProductionCycleResult result = new ProductionCycleResult {
             money = money,
-            researchPoints = researchPoints,
             pollutionPoints = pollution
         };
 
