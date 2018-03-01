@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+<<<<<<< .mine
+guid: 30b617bb8685d95439b283304843ecb2
+timeCreated: 1518014138
+||||||| .r36
+guid: 03ccc77d7d537464bb977f2bc2714813
+timeCreated: 1518016769
+=======
+guid: ff16c50379303d84288a77e6dbd34e73
+timeCreated: 1518016391
+>>>>>>> .r42
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

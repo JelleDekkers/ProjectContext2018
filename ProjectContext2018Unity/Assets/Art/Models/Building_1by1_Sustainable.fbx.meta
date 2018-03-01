@@ -1,0 +1,258 @@
+fileFormatVersion: 2
+guid: f65d74a0392dfd74ab47ca7e769d2f75
+timeCreated: 1518011905
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: pCube175
+    100004: pCube176
+    100006: pCube177
+    100008: pCube178
+    100010: pCube179
+    100012: pCube180
+    100014: pCube181
+    100016: pCube182
+    100018: pCube183
+    100020: pCube184
+    100022: pCube185
+    100024: pCube186
+    100026: pCube187
+    100028: pCube188
+    100030: pCube189
+    100032: pCube190
+    100034: pCube191
+    100036: pCube192
+    100038: pCube193
+    100040: pCube194
+    100042: pCube195
+    100044: pCube196
+    100046: pCylinder27
+    100048: pCylinder28
+    100050: pCylinder29
+    100052: pCylinder30
+    100054: pCylinder31
+    100056: transform40
+    100058: transform41
+    100060: transform42
+    100062: transform43
+    100064: transform44
+    100066: transform45
+    100068: transform46
+    100070: transform47
+    100072: transform48
+    100074: transform49
+    100076: transform50
+    100078: TE5
+    100080: SolarPanel
+    400000: //RootNode
+    400002: pCube175
+    400004: pCube176
+    400006: pCube177
+    400008: pCube178
+    400010: pCube179
+    400012: pCube180
+    400014: pCube181
+    400016: pCube182
+    400018: pCube183
+    400020: pCube184
+    400022: pCube185
+    400024: pCube186
+    400026: pCube187
+    400028: pCube188
+    400030: pCube189
+    400032: pCube190
+    400034: pCube191
+    400036: pCube192
+    400038: pCube193
+    400040: pCube194
+    400042: pCube195
+    400044: pCube196
+    400046: pCylinder27
+    400048: pCylinder28
+    400050: pCylinder29
+    400052: pCylinder30
+    400054: pCylinder31
+    400056: transform40
+    400058: transform41
+    400060: transform42
+    400062: transform43
+    400064: transform44
+    400066: transform45
+    400068: transform46
+    400070: transform47
+    400072: transform48
+    400074: transform49
+    400076: transform50
+    400078: TE5
+    400080: SolarPanel
+    2100000: lambert27
+    2100002: lambert26
+    2100004: lambert25
+    2100006: lambert24
+    2100008: lambert28
+    2100010: lambert14
+    2100012: lambert15
+    2100014: lambert13
+    2300000: pCube180
+    2300002: pCube181
+    2300004: pCube182
+    2300006: pCube183
+    2300008: pCube184
+    2300010: pCube185
+    2300012: pCube186
+    2300014: pCube187
+    2300016: pCube188
+    2300018: pCube189
+    2300020: pCube190
+    2300022: pCube191
+    2300024: pCube192
+    2300026: pCube195
+    2300028: pCube196
+    2300030: pCylinder31
+    2300032: TE5
+    3300000: pCube180
+    3300002: pCube181
+    3300004: pCube182
+    3300006: pCube183
+    3300008: pCube184
+    3300010: pCube185
+    3300012: pCube186
+    3300014: pCube187
+    3300016: pCube188
+    3300018: pCube189
+    3300020: pCube190
+    3300022: pCube191
+    3300024: pCube192
+    3300026: pCube195
+    3300028: pCube196
+    3300030: pCylinder31
+    3300032: TE5
+    4300000: pCylinder31
+    4300002: pCube180
+    4300004: pCube181
+    4300006: pCube182
+    4300008: pCube183
+    4300010: pCube184
+    4300012: pCube185
+    4300014: pCube186
+    4300016: pCube187
+    4300018: pCube188
+    4300020: pCube189
+    4300022: pCube190
+    4300024: pCube191
+    4300026: pCube192
+    4300028: pCube195
+    4300030: pCube196
+    4300032: TE5
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
