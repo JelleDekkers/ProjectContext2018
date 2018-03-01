@@ -35,9 +35,9 @@ namespace CityView.UI {
             
             // cost:
             Sprite sprite;
-            if (selectedBuildingData.Costmoney > 0) {
+            if (selectedBuildingData.Moneycost > 0) {
                 sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Costmoney);
+                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Moneycost);
             }
 
             for (int i = 0; i < selectedBuildingData.Resourcecost.Length; i++) {
@@ -46,14 +46,14 @@ namespace CityView.UI {
             }
 
             // production:
-            if (selectedBuildingData.Incomemoney > 0) {
+            if (selectedBuildingData.Moneyoutput > 0) {
                 sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Incomemoney);
+                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Moneyoutput);
             }
 
-            for (int i = 0; i < selectedBuildingData.Incomeresources.Length; i++) {
-                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Incomeresources[i]);
-                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Incomeresourcesamount[i]);
+            for (int i = 0; i < selectedBuildingData.Resourceoutput.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourceoutput[i]);
+                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Resourceoutputamount[i]);
             }
 
         }

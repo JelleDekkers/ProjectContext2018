@@ -17,14 +17,14 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     [SerializeField] private ResourceAmountDictionary resources;
     public static ResourceAmountDictionary Resources { get { return Instance.resources; } }
 
-    public static Action<int, float> OnResourceChanged;
+    public static Action<int, int> OnResourceChanged;
     public static Action<float> OnMoneyChanged;
 
     public void Init() {
         money = startingMoney;
 
         resources = new ResourceAmountDictionary();
-        foreach(KeyValuePair<string, float> pair in startingResources) {
+        foreach(KeyValuePair<string, int> pair in startingResources) {
             resources.Add(pair.Key, pair.Value);
         }
     }
@@ -47,13 +47,13 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     }
 
     #region add resource
-    public void AddResources(Dictionary<int, float> resources) {
-        foreach (KeyValuePair<int, float> pair in resources) {
+    public void AddResources(Dictionary<int, int> resources) {
+        foreach (KeyValuePair<int, int> pair in resources) {
             AddResource(pair.Key, pair.Value);
         }
     }
 
-    public void AddResource(int resourceID, float amount) {
+    public void AddResource(int resourceID, int amount) {
         string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
         resources[resourceName] += amount;
         if (OnResourceChanged != null)
@@ -81,7 +81,7 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     #endregion
 
     #region has resource amount
-    public bool HasResourcesAmount(int[] resources, float[] amount) {
+    public bool HasResourcesAmount(int[] resources, int[] amount) {
         for (int i = 0; i < resources.Length; i++) {
             if (!HasResourceAmount(resources[i], amount[i]))
                 return false;
@@ -89,11 +89,11 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
         return true;
     }
 
-    public bool HasResourceAmount(int resourceID, float amount) {
+    public bool HasResourceAmount(int resourceID, int amount) {
         return HasResourceAmount(DataManager.ResourcesData.dataArray[resourceID].Name, amount);
     }
 
-    public bool HasResourceAmount(string resourceName, float amount) {
+    public bool HasResourceAmount(string resourceName, int amount) {
         return resources[resourceName] >= amount;
     }
 
@@ -116,13 +116,13 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     #endregion
 
     #region remove resource
-    public void RemoveResources(Dictionary<int, float> resources) {
-        foreach (KeyValuePair<int, float> pair in resources) {
-            RemoveResource(pair.Key, pair.Value);
+    public void RemoveResources(int[] IDs, int[] amount) {
+        for(int i = 0; i < IDs.Length; i++) { 
+            RemoveResource(IDs[i], amount[i]);
         }
     }
 
-    public void RemoveResource(int resourceID, float amount) {
+    public void RemoveResource(int resourceID, int amount) {
         string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
         resources[resourceName] -= amount;
         if (resources[resourceName] < 0)

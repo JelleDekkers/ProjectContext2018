@@ -21,28 +21,40 @@ public class BuildingsData
   public float Pollution { get {return pollution; } set { pollution = value;} }
   
   [SerializeField]
-  float costmoney;
-  public float Costmoney { get {return costmoney; } set { costmoney = value;} }
+  float moneycost;
+  public float Moneycost { get {return moneycost; } set { moneycost = value;} }
   
   [SerializeField]
   int[] resourcecost = new int[0];
   public int[] Resourcecost { get {return resourcecost; } set { resourcecost = value;} }
   
   [SerializeField]
-  float[] resourcecostamount = new float[0];
-  public float[] Resourcecostamount { get {return resourcecostamount; } set { resourcecostamount = value;} }
+  int[] resourcecostamount = new int[0];
+  public int[] Resourcecostamount { get {return resourcecostamount; } set { resourcecostamount = value;} }
   
   [SerializeField]
-  float incomemoney;
-  public float Incomemoney { get {return incomemoney; } set { incomemoney = value;} }
+  int moneyinput;
+  public int Moneyinput { get {return moneyinput; } set { moneyinput = value;} }
   
   [SerializeField]
-  int[] incomeresources = new int[0];
-  public int[] Incomeresources { get {return incomeresources; } set { incomeresources = value;} }
+  int[] resourceinput = new int[0];
+  public int[] Resourceinput { get {return resourceinput; } set { resourceinput = value;} }
   
   [SerializeField]
-  float[] incomeresourcesamount = new float[0];
-  public float[] Incomeresourcesamount { get {return incomeresourcesamount; } set { incomeresourcesamount = value;} }
+  int[] resourceinputamount = new int[0];
+  public int[] Resourceinputamount { get {return resourceinputamount; } set { resourceinputamount = value;} }
+  
+  [SerializeField]
+  int moneyoutput;
+  public int Moneyoutput { get {return moneyoutput; } set { moneyoutput = value;} }
+  
+  [SerializeField]
+  int[] resourceoutput = new int[0];
+  public int[] Resourceoutput { get {return resourceoutput; } set { resourceoutput = value;} }
+  
+  [SerializeField]
+  int[] resourceoutputamount = new int[0];
+  public int[] Resourceoutputamount { get {return resourceoutputamount; } set { resourceoutputamount = value;} }
   
   [SerializeField]
   float productiontime;

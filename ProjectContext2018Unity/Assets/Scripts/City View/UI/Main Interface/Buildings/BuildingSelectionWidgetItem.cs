@@ -33,7 +33,7 @@ namespace CityView.UI {
             button.interactable = Building.IsBuildable(id);
         }
 
-        private void UpdateInteractableState(int resourceId, float resourceAmount) {
+        private void UpdateInteractableState(int resourceId, int resourceAmount) {
             button.interactable = Building.IsBuildable(id);
         }
         

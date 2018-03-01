@@ -49,8 +49,8 @@ namespace CityView.UI {
 
         private void CreatePopupItems(BuildingsData data) {
             // TODO: gebruiken wanneer sprites bescikbaar zijn
-            if (data.Costmoney != 0)
-                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, data.Costmoney);
+            if (data.Moneycost != 0)
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, data.Moneycost);
 
             for(int i = 0; i < data.Resourcecost.Length; i++) {
                 GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourcecost[i]];
