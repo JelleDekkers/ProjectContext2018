@@ -22,7 +22,7 @@ namespace CityView.Construction {
             baseColor = rend.material.color;
             if (City.Instance != null)
             {
-                baseColor = CityType.GetClimateBaseMaterialColor(City.Instance.Type.climate);
+                baseColor = City.Instance.Type.GetClimateBaseMaterialColor();
             }
             ResetColor();
         }

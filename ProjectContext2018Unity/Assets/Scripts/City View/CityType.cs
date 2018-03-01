@@ -39,7 +39,7 @@ namespace CityView
             Debug.Log("Your city has a(n) " + climate + " climate");
         }
 
-        public static Color GetClimateCameraFillColor(Climate climate)
+        public Color GetClimateCameraFillColor()
         {
             Color color = Color.green;                                                  // Default Color
             if (climate == Climate.Island) color = new Color(0, 155, 198) / 255;   // Blue - Sea Color
@@ -48,7 +48,7 @@ namespace CityView
             return color;
         }
 
-        public static Color GetClimateBaseMaterialColor(Climate climate)
+        public Color GetClimateBaseMaterialColor()
         {
             Color color = Color.white;                                                          // Default Color
             if (climate == Climate.Island) color = new Color(240, 230, 140) / 255;       // Shore / Sand Color
