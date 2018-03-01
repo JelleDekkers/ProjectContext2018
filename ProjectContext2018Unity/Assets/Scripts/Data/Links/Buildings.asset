@@ -16,44 +16,43 @@ MonoBehaviour:
   dataArray:
   - id: 0
     name: Coal Factory
-    pollution: 10
-    costmoney: 100
-    researchpointsneeded: 0
-    resourcecost: 
-    resourcecostamount: []
-    incomemoney: 5
-    incomeresearch: 0
-    incomeresources: 00000000
-    incomeresourcesamount:
-    - 5
+    pollution: 20
+    moneycost: 100
+    resourcecost: 00000000
+    resourcecostamount: 00000000
+    moneyinput: 0
+    resourceinput: 02000000
+    resourceinputamount: 05000000
+    moneyoutput: 5
+    resourceoutput: 00000000
+    resourceoutputamount: 05000000
     productiontime: 10
+    climateexclusivity: None
   - id: 1
     name: Windmill
-    pollution: 20
-    costmoney: 200
-    researchpointsneeded: 50
-    resourcecost: 01000000
-    resourcecostamount:
-    - 25
-    incomemoney: 50
-    incomeresearch: 2
-    incomeresources: 00000000
-    incomeresourcesamount:
-    - 2
+    pollution: 0
+    moneycost: 200
+    resourcecost: 00000000
+    resourcecostamount: 19000000
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 50
+    resourceoutput: 00000000
+    resourceoutputamount: 02000000
     productiontime: 5
+    climateexclusivity: Sea
   - id: 2
     name: Solar Panel
-    pollution: 0
-    costmoney: 100
-    researchpointsneeded: 50
-    resourcecost: 0000000002000000
-    resourcecostamount:
-    - 5
-    - 5
-    incomemoney: 0
-    incomeresearch: 5
-    incomeresources: 0100000002000000
-    incomeresourcesamount:
-    - 5
-    - 2
+    pollution: 5
+    moneycost: 100
+    resourcecost: 0000000001000000
+    resourcecostamount: 0500000005000000
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 0
+    resourceoutput: 0500000006000000
+    resourceoutputamount: 0500000002000000
     productiontime: 5
+    climateexclusivity: Desert

@@ -3,4 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ResourceAmountDictionary : SerializableDictionary<string, float> { }
+public class ResourceAmountDictionary : SerializableDictionary<string, int> { }

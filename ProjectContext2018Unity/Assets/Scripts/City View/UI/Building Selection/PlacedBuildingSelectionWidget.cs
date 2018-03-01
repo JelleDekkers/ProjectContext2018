@@ -50,11 +50,11 @@ namespace CityView.UI {
             pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
 
             Sprite sprite = DataManager.ResourcePrefabs.MoneySprite;
-            Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Incomemoney);
+            Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
 
-            for (int i = 0; i < selectedBuilding.data.Incomeresources.Length; i++) {
-                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Incomeresources[i]);
-                Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Incomeresourcesamount[i]);
+            for (int i = 0; i < selectedBuilding.data.Resourceoutput.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceoutput[i]);
+                Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutput[i]);
             }
         }
 

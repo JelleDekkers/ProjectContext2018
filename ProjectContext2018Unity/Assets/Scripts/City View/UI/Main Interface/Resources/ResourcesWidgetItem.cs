@@ -29,7 +29,7 @@ namespace CityView.UI {
             rect = GetComponent<RectTransform>();
         }
 
-        private void UpdateAmount(int id, float newAmount) {
+        private void UpdateAmount(int id, int newAmount) {
             if(id == resourceID)
                 amountText.text = Mathf.RoundToInt(newAmount).ToString(); 
         }

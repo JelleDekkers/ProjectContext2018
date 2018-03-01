@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -12,15 +13,18 @@ public class ProductionCycle {
     private float productionTime;
     private float money;
     private int[] resourcesID;
-    private float[] resourcesAmount;
+    private int[] resourcesAmount;
     private float pollution;
 
 	public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
         productionTime = data.Productiontime;
-        money = data.Incomemoney;
-        resourcesID = data.Incomeresources;
-        resourcesAmount = data.Incomeresourcesamount;
+        money = data.Moneyoutput;
+        resourcesID = data.Resourceoutput;
+        resourcesAmount = data.Resourceoutputamount;
         pollution = data.Pollution;
+
+        PlayerResources.Instance.RemoveResources(data.Resourceinput, data.Resourceinputamount);
+        PlayerResources.Instance.RemoveMoney(data.Moneyinput);
 
         this.OnComplete = OnComplete;
         timer = productionTime;

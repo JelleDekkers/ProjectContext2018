@@ -8,14 +8,14 @@ using UnityEngine;
 public class ResourceContainer {
 
     public int id;
-    public float amount;
+    public int amount;
 
     /// <summary>
     /// Container class for a production result
     /// </summary>
     /// <param name="id">Product ID</param>
     /// <param name="amount">Amount of product</param>
-    public ResourceContainer(int id, float amount) {
+    public ResourceContainer(int id, int amount) {
         this.id = id;
         this.amount = amount;
     }

@@ -23,7 +23,38 @@ namespace CityView {
 
         public void Init(BuildingsData data, City city) {
             this.data = data;
+            if (HasNecessaryResourcesForProductionCycle())
+                StartNewProduction();
+            else 
+                OnProductionNotAvailable();
+        }
+
+        private void OnProductionNotAvailable() {
+            PlayerResources.OnResourceChanged += OnResourcesChanged;
+            PlayerResources.OnMoneyChanged += OnMoneyChanged;
+            enabled = false;
+        }
+
+        private void OnResourcesChanged(int id, int amount) {
+            if (HasNecessaryResourcesForProductionCycle())
+                StartNewProduction();
+        }
+
+        private void OnMoneyChanged(float amount) {
+            if (HasNecessaryResourcesForProductionCycle())
+                StartNewProduction();
+        }
+
+        private bool HasNecessaryResourcesForProductionCycle() {
+            return (PlayerResources.Instance.HasResourcesAmount(data.Resourceinput, data.Resourceinputamount) &&
+                    PlayerResources.Instance.HasMoneyAmount(data.Moneyinput));
+        }
+
+        private void StartNewProduction() {
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
+            PlayerResources.OnResourceChanged -= OnResourcesChanged;
+            PlayerResources.OnMoneyChanged -= OnMoneyChanged;
+            enabled = true;
         }
 
         public void Update() {
@@ -32,6 +63,10 @@ namespace CityView {
         
         private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {
             OnProductionCycleCompleted(this, result);
+            if (HasNecessaryResourcesForProductionCycle())
+                StartNewProduction();
+            else
+                OnProductionNotAvailable();
         }
 
         public Vector2Int CalculateTileSize() {
@@ -44,7 +79,7 @@ namespace CityView {
 
         public static bool IsBuildable(int id) {
             BuildingsData data = DataManager.BuildingData.dataArray[id];
-            if (!PlayerResources.Instance.HasMoneyAmount(data.Costmoney))
+            if (!PlayerResources.Instance.HasMoneyAmount(data.Moneycost))
                 return false;
             if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
                 return false;
