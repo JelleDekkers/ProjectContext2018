@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,11 +15,16 @@ public class WorldTemperature : ScriptableObject {
     [SerializeField] private float currentTemperature;
     public float CurrentTemperature { get { return currentTemperature; } }
 
+    public static Action<float> OnWorldTemperatureChanged;
+
     public void Init() {
         currentTemperature = startingTemperature;
     }
 
     public void AddPollution(float pollution) {
         currentTemperature += pollution * temperatureIncreasePerPollution;
+        if (OnWorldTemperatureChanged != null) {
+            OnWorldTemperatureChanged(currentTemperature);
+        }
     }
 }
