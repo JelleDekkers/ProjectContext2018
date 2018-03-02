@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4271941329650208}
   - component: {fileID: 95117607690623272}
   - component: {fileID: 114542453649564992}
-  m_Layer: 0
+  - component: {fileID: 65085520384634652}
+  m_Layer: 8
   m_Name: Building_2by2_WindMill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004718773608546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.795}
+  m_LocalPosition: {x: -2.7949166, y: -18.102125, z: 4.417903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4781915828727178}
@@ -264,6 +265,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680790420810170}
   m_Mesh: {fileID: 4300080, guid: 09e3c65e2f4248b47a5ba731fd540a03, type: 3}
+--- !u!65 &65085520384634652
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004718773608546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 3, z: 0.7}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &95117607690623272
 Animator:
   serializedVersion: 3
@@ -307,5 +320,4 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
+  animation: {fileID: 0}

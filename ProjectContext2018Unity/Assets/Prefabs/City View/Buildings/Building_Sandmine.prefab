@@ -166,7 +166,8 @@ GameObject:
   - component: {fileID: 4913731324730378}
   - component: {fileID: 95316156913657400}
   - component: {fileID: 114599635415606090}
-  m_Layer: 0
+  - component: {fileID: 65098382256654286}
+  m_Layer: 8
   m_Name: Building_Sandmine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,6 +440,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333260605098166}
   m_Mesh: {fileID: 4300000, guid: 0ac89d8ff7699234ba31599d8b193c1b, type: 3}
+--- !u!65 &65098382256654286
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923129129530786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.8, z: 1}
+  m_Center: {x: 0, y: 0.4, z: -0.1}
 --- !u!95 &95316156913657400
 Animator:
   serializedVersion: 3
@@ -482,8 +495,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
 --- !u!198 &198001715594002486
 ParticleSystem:
   m_ObjectHideFlags: 1

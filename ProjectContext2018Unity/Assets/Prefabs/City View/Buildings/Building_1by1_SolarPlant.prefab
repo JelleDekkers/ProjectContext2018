@@ -106,7 +106,8 @@ GameObject:
   - component: {fileID: 4423181523884014}
   - component: {fileID: 95103980841172550}
   - component: {fileID: 114138787735936676}
-  m_Layer: 0
+  - component: {fileID: 65792159011939486}
+  m_Layer: 8
   m_Name: Building_1by1_SolarPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +486,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189800156243744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.55, y: 0, z: -3.3}
+  m_LocalPosition: {x: 7.0169716, y: -10.914562, z: 1.6165638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4971164857205690}
@@ -1298,6 +1299,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297104554126952}
   m_Mesh: {fileID: 4300024, guid: f65d74a0392dfd74ab47ca7e769d2f75, type: 3}
+--- !u!65 &65792159011939486
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189800156243744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.7, z: 0.8}
+  m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!95 &95103980841172550
 Animator:
   serializedVersion: 3
@@ -1341,5 +1354,4 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
+  animation: {fileID: 0}

@@ -55,7 +55,8 @@ GameObject:
   - component: {fileID: 4206521922802472}
   - component: {fileID: 95001714129410788}
   - component: {fileID: 114841997570811104}
-  m_Layer: 0
+  - component: {fileID: 65705209028668344}
+  m_Layer: 8
   m_Name: Building_ElectronicsFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,6 +262,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826707627353934}
   m_Mesh: {fileID: 4300000, guid: e21c7a2a7cf40ee4eab80a0e47d3be20, type: 3}
+--- !u!65 &65705209028668344
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1656674857260436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 1, z: 1}
+  m_Center: {x: -0.45, y: 0.5, z: -0.4}
 --- !u!95 &95001714129410788
 Animator:
   serializedVersion: 3
@@ -304,8 +317,7 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
+  animation: {fileID: 0}
 --- !u!198 &198384366772778654
 ParticleSystem:
   m_ObjectHideFlags: 1

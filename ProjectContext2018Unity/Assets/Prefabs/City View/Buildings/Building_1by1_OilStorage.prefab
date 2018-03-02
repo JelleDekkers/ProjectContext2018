@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4341575036007876}
   - component: {fileID: 114311666315614894}
-  m_Layer: 0
+  - component: {fileID: 65755420108344502}
+  m_Layer: 8
   m_Name: Building_1by1_OilStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211474286791068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.729, y: 0, z: -1.951}
+  m_LocalPosition: {x: 2.5368667, y: -4.1427426, z: -2.2941227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4214288591491978}
@@ -290,6 +291,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926647246225276}
   m_Mesh: {fileID: 4300038, guid: e84aa885860b4b04f841130cf31fc254, type: 3}
+--- !u!65 &65755420108344502
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211474286791068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.4, z: 0.8}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114311666315614894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,5 +329,4 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
+  animation: {fileID: 0}

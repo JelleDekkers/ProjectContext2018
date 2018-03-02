@@ -55,7 +55,9 @@ GameObject:
   - component: {fileID: 4749212684959344}
   - component: {fileID: 95980927631337976}
   - component: {fileID: 114945837603091720}
-  m_Layer: 0
+  - component: {fileID: 65852976265233342}
+  - component: {fileID: 65201921314468172}
+  m_Layer: 8
   m_Name: Building_2by2_Butchery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,6 +519,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403674595461990}
   m_Mesh: {fileID: 4300134, guid: 14e7dda62cbc1e74d9587678113d0449, type: 3}
+--- !u!65 &65201921314468172
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600848146382226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 0.4, z: 1.8}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!65 &65852976265233342
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600848146382226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.6, z: 1}
+  m_Center: {x: -0.4, y: 0.8, z: -0.4}
 --- !u!95 &95980927631337976
 Animator:
   serializedVersion: 3
@@ -560,5 +586,4 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
+  animation: {fileID: 0}
