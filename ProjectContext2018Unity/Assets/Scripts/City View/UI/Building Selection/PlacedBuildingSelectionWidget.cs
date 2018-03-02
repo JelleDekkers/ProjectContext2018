@@ -11,7 +11,8 @@ namespace CityView.UI {
         [SerializeField] private Text nameTxt;
         [SerializeField] private Text pollutionAmountTxt;
         [SerializeField] private ProductAmountItem resourceItemPrefab;
-        [SerializeField] private GridLayoutGroup productionGrid;
+        [SerializeField] private GridLayoutGroup outputGrid;
+        [SerializeField] private GridLayoutGroup inputGrid;
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Selectable selectable;
 
@@ -44,17 +45,17 @@ namespace CityView.UI {
         }
 
         private void FillValues() {
-            productionGrid.transform.RemoveChildren();
+            outputGrid.transform.RemoveChildren();
 
             nameTxt.text = selectedBuilding.data.Name;
             pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
 
             Sprite sprite = DataManager.ResourcePrefabs.MoneySprite;
-            Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
+            Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
 
             for (int i = 0; i < selectedBuilding.data.Resourceoutput.Length; i++) {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceoutput[i]);
-                Instantiate(resourceItemPrefab, productionGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutput[i]);
+                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutput[i]);
             }
         }
 

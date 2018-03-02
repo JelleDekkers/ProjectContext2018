@@ -10,6 +10,7 @@ namespace CityView.Construction {
         [SerializeField] float startingHeight = 1;
         [SerializeField] AudioClip buildSFX;
         [SerializeField] private AnimationCurve dropEffectCurve;
+        [SerializeField] private new ParticleSystem particleSystem;
 
         private Transform buildingMeshRoot;
 
@@ -35,7 +36,6 @@ namespace CityView.Construction {
             }
 
             buildingMeshRoot.transform.position = target;
-            ParticleSystem particleSystem = GetComponent<ParticleSystem>();
             CityCamera.Instance.audioSource.PlayOneShot(buildSFX);
             CityCamera.Instance.cameraShaker.Shake();
             particleSystem.Play();
