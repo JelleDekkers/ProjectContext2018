@@ -38,9 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: WorldSpaceCanvas
-    uniqueID: 341010855
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
