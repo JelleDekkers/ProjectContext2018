@@ -6,18 +6,9 @@ using UnityEngine.EventSystems;
 
 namespace CityView.UI {
 
-    public class MoneyWidgetItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public class MoneyWidgetItem : ResourcesWidgetItem, IPointerEnterHandler, IPointerExitHandler {
 
-        [SerializeField]
-        private Image img;
-        [SerializeField]
-        private Text amountText;
-
-        private string tooltipText;
-        private RectTransform rect;
-        private readonly Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
-
-        private void Start() {
+        protected override void Start() {
             img.sprite = DataManager.ResourcePrefabs.MoneySprite;
             amountText.text = Mathf.RoundToInt(PlayerResources.Money).ToString();
             PlayerResources.OnMoneyChanged += UpdateAmount;
@@ -27,14 +18,6 @@ namespace CityView.UI {
 
         private void UpdateAmount(float newAmount) {
             amountText.text = Mathf.RoundToInt(newAmount).ToString();
-        }
-
-        public void OnPointerEnter(PointerEventData eventData) {
-            TooltipWidget.Instance.Show(tooltipText, rect.position, tooltipOffset);
-        }
-
-        public void OnPointerExit(PointerEventData eventData) {
-            TooltipWidget.Instance.Hide();
         }
     }
 }

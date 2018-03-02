@@ -238,6 +238,11 @@ Prefab:
       propertyPath: resourceID
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 727017098997c1a4982f482aa0dba056, type: 2}
@@ -561,6 +566,11 @@ Prefab:
         type: 2}
       propertyPath: resourceID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -981,6 +991,11 @@ Prefab:
       propertyPath: resourceID
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 727017098997c1a4982f482aa0dba056, type: 2}
@@ -1168,10 +1183,10 @@ RectTransform:
   m_Father: {fileID: 111329509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -20}
+  m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &369607370
 GameObject:
@@ -1501,6 +1516,11 @@ Prefab:
         type: 2}
       propertyPath: resourceID
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3074,6 +3094,11 @@ Prefab:
       propertyPath: resourceID
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 727017098997c1a4982f482aa0dba056, type: 2}
@@ -3390,8 +3415,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a44e179ab612b64fbb7dd7ea2726096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceID: -1
   img: {fileID: 1700080981}
   amountText: {fileID: 1073768937}
+  tooltipOffset: {x: 0, y: -30, z: 0}
 --- !u!114 &1368136706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,6 +3583,11 @@ Prefab:
         type: 2}
       propertyPath: resourceID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4208,6 +4240,11 @@ Prefab:
         type: 2}
       propertyPath: resourceID
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4928,6 +4965,11 @@ Prefab:
     - target: {fileID: 1073936574766774, guid: 727017098997c1a4982f482aa0dba056, type: 2}
       propertyPath: m_Name
       value: ResourcesWidget Item (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114234212712558910, guid: 727017098997c1a4982f482aa0dba056,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 727017098997c1a4982f482aa0dba056, type: 2}

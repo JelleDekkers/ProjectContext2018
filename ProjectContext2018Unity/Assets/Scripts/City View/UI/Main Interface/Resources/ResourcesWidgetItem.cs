@@ -9,17 +9,18 @@ namespace CityView.UI {
     public class ResourcesWidgetItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler { 
 
         [SerializeField]
-        private int resourceID;
+        protected int resourceID;
         [SerializeField]
-        private Image img;
+        protected Image img;
         [SerializeField]
-        private Text amountText;
+        protected Text amountText;
+        [SerializeField]
+        protected Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
 
-        private string tooltipText;
-        private RectTransform rect;
-        private readonly Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
-
-        private void Start() {
+        protected string tooltipText;
+        protected RectTransform rect;
+        
+        protected virtual void Start() {
             img.sprite = DataManager.ResourcePrefabs.GetResourceSprite(resourceID);
             string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
             float amount = PlayerResources.Resources[resourceName];
@@ -29,7 +30,7 @@ namespace CityView.UI {
             rect = GetComponent<RectTransform>();
         }
 
-        private void UpdateAmount(int id, int newAmount) {
+        protected void UpdateAmount(int id, int newAmount) {
             if(id == resourceID)
                 amountText.text = Mathf.RoundToInt(newAmount).ToString(); 
         }

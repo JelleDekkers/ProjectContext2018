@@ -15,12 +15,6 @@ namespace CityView.UI {
                 return instance;
             }
         }
-
-        public bool IsActive {
-            get {
-                return gameObject.activeSelf;
-            }
-        }
        
         [SerializeField]
         private Text tooltipText;

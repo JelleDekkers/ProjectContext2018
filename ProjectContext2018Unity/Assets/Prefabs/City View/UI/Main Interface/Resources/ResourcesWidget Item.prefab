@@ -105,6 +105,7 @@ MonoBehaviour:
   resourceID: 0
   img: {fileID: 114122486120186134}
   amountText: {fileID: 114505384187323838}
+  tooltipOffset: {x: 0, y: -30, z: 0}
 --- !u!114 &114466777873628946
 MonoBehaviour:
   m_ObjectHideFlags: 1
