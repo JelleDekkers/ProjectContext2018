@@ -19,7 +19,7 @@ namespace CityView {
         public static Action<Building> OnDestroyed;
         public static Action<Building> OnDemolishInitiated;
 
-        public ProductionCycle productionCycle;
+        public ProductionCycle ProductionCycle { get; private set; }
 
         public void Init(BuildingsData data, City city) {
             this.data = data;
@@ -51,14 +51,14 @@ namespace CityView {
         }
 
         private void StartNewProduction() {
-            productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
+            ProductionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
             PlayerResources.OnResourceChanged -= OnResourcesChanged;
             PlayerResources.OnMoneyChanged -= OnMoneyChanged;
             enabled = true;
         }
 
         public void Update() {
-            productionCycle.UpdateProduction();
+            ProductionCycle.UpdateProduction();
         }
         
         private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {

@@ -15,6 +15,7 @@ namespace CityView.UI {
         [SerializeField] private GridLayoutGroup inputGrid;
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Selectable selectable;
+        [SerializeField] private Image productionCycleImg;
 
         private Building selectedBuilding;
 
@@ -31,6 +32,10 @@ namespace CityView.UI {
             selectedBuilding = null;
         }
 
+        private void Update() {
+            productionCycleImg.fillAmount = 1 - selectedBuilding.ProductionCycle.Timer / selectedBuilding.data.Productiontime;
+        }
+
         private void Activate(Building building) {
             if (building == null || building == selectedBuilding) {
                 gameObject.SetActive(false);
@@ -45,17 +50,38 @@ namespace CityView.UI {
         }
 
         private void FillValues() {
-            outputGrid.transform.RemoveChildren();
-
             nameTxt.text = selectedBuilding.data.Name;
             pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
 
-            Sprite sprite = DataManager.ResourcePrefabs.MoneySprite;
-            Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
+            InitInput();
+            InitOutput();
+        }
+
+        private void InitInput() {
+            inputGrid.transform.RemoveChildren();
+            Sprite sprite;
+            if (selectedBuilding.data.Moneyinput > 0) {
+                sprite = DataManager.ResourcePrefabs.MoneySprite;
+                Instantiate(resourceItemPrefab, inputGrid.transform).Init(sprite, selectedBuilding.data.Moneyinput);
+            }
+
+            for (int i = 0; i < selectedBuilding.data.Resourceinput.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceinput[i]);
+                Instantiate(resourceItemPrefab, inputGrid.transform).Init(sprite, selectedBuilding.data.Resourceinputamount[i]);
+            }
+        }
+
+        private void InitOutput() {
+            outputGrid.transform.RemoveChildren();
+            Sprite sprite;
+            if (selectedBuilding.data.Moneyoutput > 0) {
+                sprite = DataManager.ResourcePrefabs.MoneySprite;
+                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
+            }
 
             for (int i = 0; i < selectedBuilding.data.Resourceoutput.Length; i++) {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceoutput[i]);
-                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutput[i]);
+                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutputamount[i]);
             }
         }
 

@@ -5,29 +5,30 @@ using UnityEngine;
 [Serializable]
 public class ProductionCycle {
 
+    public float ProductionTime { get; private set; }
+    public float Money { get; private set; }
+    public int[] ResourcesID { get; private set; }
+    public int[] ResourcesAmount { get; private set; }
+    public float Pollution { get; private set; }
+
     [SerializeField]
     private float timer = 0;
+    public float Timer { get { return timer; } }
 
     private Action<ProductionCycleResult> OnComplete;
 
-    private float productionTime;
-    private float money;
-    private int[] resourcesID;
-    private int[] resourcesAmount;
-    private float pollution;
-
-	public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
-        productionTime = data.Productiontime;
-        money = data.Moneyoutput;
-        resourcesID = data.Resourceoutput;
-        resourcesAmount = data.Resourceoutputamount;
-        pollution = data.Pollution;
+    public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
+        ProductionTime = data.Productiontime;
+        Money = data.Moneyoutput;
+        ResourcesID = data.Resourceoutput;
+        ResourcesAmount = data.Resourceoutputamount;
+        Pollution = data.Pollution;
 
         PlayerResources.Instance.RemoveResources(data.Resourceinput, data.Resourceinputamount);
         PlayerResources.Instance.RemoveMoney(data.Moneyinput);
 
         this.OnComplete = OnComplete;
-        timer = productionTime;
+        timer = ProductionTime;
     }
 
     public void UpdateProduction() {
@@ -35,19 +36,19 @@ public class ProductionCycle {
             timer -= Time.deltaTime;
         } else {
             OnCycleCompleted();
-            timer = productionTime;
+            timer = ProductionTime;
         }
     }
 
     private void OnCycleCompleted() {
         ProductionCycleResult result = new ProductionCycleResult {
-            money = money,
-            pollutionPoints = pollution
+            money = Money,
+            pollutionPoints = Pollution
         };
 
-        ResourceContainer[] producedResources = new ResourceContainer[resourcesID.Length];
+        ResourceContainer[] producedResources = new ResourceContainer[ResourcesID.Length];
         for (int i = 0; i < producedResources.Length; i++) 
-            producedResources[i] = new ResourceContainer(resourcesID[i], resourcesAmount[i]);
+            producedResources[i] = new ResourceContainer(ResourcesID[i], ResourcesAmount[i]);
         result.producedResources = producedResources;
 
         OnComplete(result);

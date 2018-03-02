@@ -736,15 +736,17 @@ MonoBehaviour:
     id: 0
     name: 
     pollution: 0
-    costmoney: 0
-    researchpointsneeded: 0
+    moneycost: 0
     resourcecost: 
-    resourcecostamount: []
-    incomemoney: 0
-    incomeresearch: 0
-    incomeresources: 
-    incomeresourcesamount: []
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 0
+    resourceoutput: 
+    resourceoutputamount: 
     productiontime: 0
+    climateexclusivity: 
   productionCycle:
     timer: 0
 --- !u!198 &198286541940713422
