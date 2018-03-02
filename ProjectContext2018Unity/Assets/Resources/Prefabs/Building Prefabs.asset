@@ -14,9 +14,9 @@ MonoBehaviour:
   fallbackBuilding: {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef,
     type: 2}
   buildingsPrefabs:
-  - {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef, type: 2}
-  - {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba, type: 2}
-  - {fileID: 114122029507518404, guid: e7f541f1b9f4df943b8912cb45293066, type: 2}
+  - {fileID: 114945837603091720, guid: 2d0472b4c2af66d4fb700d5e6936b1c7, type: 2}
+  - {fileID: 114542453649564992, guid: 8a7911014b2fcdf47932fcc6403dca64, type: 2}
+  - {fileID: 114138787735936676, guid: 5c378152e6b5b0241a2135a34bb4cb5e, type: 2}
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
   buildingSprites:
   - {fileID: 21300000, guid: 708ff9c4e784ba840a6d6264dcef5b8a, type: 3}

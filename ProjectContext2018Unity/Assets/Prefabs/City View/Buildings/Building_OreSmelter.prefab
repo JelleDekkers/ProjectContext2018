@@ -222,7 +222,8 @@ GameObject:
   - component: {fileID: 4089087313418804}
   - component: {fileID: 95903724186424458}
   - component: {fileID: 114470645984753478}
-  m_Layer: 0
+  - component: {fileID: 65043406886188544}
+  m_Layer: 8
   m_Name: Building_OreSmelter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,6 +669,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1785847250660924}
   m_Mesh: {fileID: 4300010, guid: 8f7b53ee9867f624f896d3789a6931f4, type: 3}
+--- !u!65 &65043406886188544
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958743276472704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95903724186424458
 Animator:
   serializedVersion: 3
@@ -747,8 +760,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
 --- !u!198 &198286541940713422
 ParticleSystem:
   m_ObjectHideFlags: 1

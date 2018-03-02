@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4575630780049560}
   - component: {fileID: 95663997065679020}
   - component: {fileID: 114165829784871214}
-  m_Layer: 0
+  - component: {fileID: 65742018557765684}
+  m_Layer: 8
   m_Name: Building_CoalPowerPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,6 +318,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541850479216994}
   m_Mesh: {fileID: 4300002, guid: a249bf9a7d04d3a4fa6405246e706a52, type: 3}
+--- !u!65 &65742018557765684
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101835989534100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95663997065679020
 Animator:
   serializedVersion: 3
@@ -360,8 +373,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
 --- !u!198 &198276350142540672
 ParticleSystem:
   m_ObjectHideFlags: 1

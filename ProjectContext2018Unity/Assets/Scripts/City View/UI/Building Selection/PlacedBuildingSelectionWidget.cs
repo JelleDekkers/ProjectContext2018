@@ -86,6 +86,7 @@ namespace CityView.UI {
         }
 
         public void ToggleProduction() {
+            Debug.Log("toggle");
             selectedBuilding.enabled = !selectedBuilding.enabled;
         }
 
