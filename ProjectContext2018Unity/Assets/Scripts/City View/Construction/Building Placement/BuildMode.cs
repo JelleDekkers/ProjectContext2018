@@ -110,6 +110,8 @@ namespace CityView.Construction {
 
             if (!Building.IsBuildable(selectionIndex))
                 selectionIndex = -1;
+
+            b.enabled = true;
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {

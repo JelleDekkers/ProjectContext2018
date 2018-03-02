@@ -24,7 +24,11 @@ namespace CityView {
         private Animator animator;
         private ParticleSystem[] particles;
 
-        private void Start() {
+        private void Awake() {
+            Setup();
+        }
+
+        public void Setup() {
             animator = GetComponent<Animator>();
             particles = GetComponentsInChildren<ParticleSystem>();
         }
@@ -35,6 +39,15 @@ namespace CityView {
                 StartNewProduction();
             else 
                 OnProductionNotAvailable();
+        }
+
+        private void OnDisable() {
+            ToggleBuildingEffects(false);
+        }
+
+        private void OnEnable() {
+            if(ProductionCycle != null)
+                ToggleBuildingEffects(true);
         }
 
         private void OnProductionNotAvailable() {
@@ -69,7 +82,7 @@ namespace CityView {
             }
         }
 
-        private void ToggleBuildingEffects(bool toggle) {
+        public void ToggleBuildingEffects(bool toggle) {
             animator.enabled = toggle;
             foreach (ParticleSystem p in particles) {
                 if (toggle)

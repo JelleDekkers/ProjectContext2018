@@ -9,7 +9,7 @@ namespace CityView.Construction {
         [SerializeField]
         private float alphaValue = 0.2f;
 
-        private Transform ghost;
+        private Building ghost;
         private Building building;
 
         public void Setup(Building prefab) {
@@ -17,15 +17,13 @@ namespace CityView.Construction {
                 Destroy(ghost.gameObject);
 
             building = prefab;
-            ghost = Instantiate(prefab, transform.position, Quaternion.identity, transform).transform;
+            ghost = Instantiate(prefab, transform.position, Quaternion.identity, transform);
             ghost.name = "Ghost " + ghost.name;
-
-            foreach (Component c in ghost.GetComponents(typeof(Component))) {
-                if (c.GetType() != typeof(Transform) && c.GetType() != typeof(MeshFilter) && c.GetType() != typeof(MeshRenderer))
-                    Destroy(c);
-            }
-
-            MakeTransparent();
+            ghost.enabled = false;
+            ghost.Setup();
+            ghost.ToggleBuildingEffects(false);
+         
+            //MakeTransparent();
         }
 
         public void UpdatePosition(Tile[,] tilesHoveringOver) {
