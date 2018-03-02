@@ -108,10 +108,15 @@ namespace CityView.Construction {
             Instantiate(placeEffectPrefab).Setup(b);
             OnBuildingPlaced(b, SelectedBuildingData);
 
-            if (!Building.IsBuildable(selectionIndex))
-                selectionIndex = -1;
+            PlayerResources.Instance.RemoveMoney(SelectedBuildingData.Moneycost);
+            for (int i = 0; i < SelectedBuildingData.Resourcecost.Length; i++)
+                PlayerResources.Instance.RemoveResource(SelectedBuildingData.Resourcecost[i], SelectedBuildingData.Resourcecostamount[i]);
 
             b.enabled = true;
+            b.Init(SelectedBuildingData);
+
+            if (!Building.IsBuildable(selectionIndex))
+                selectionIndex = -1;
         }
 
         private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {

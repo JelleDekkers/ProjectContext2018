@@ -421,7 +421,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  animation: {fileID: 0}
 --- !u!198 &198430401165364396
 ParticleSystem:
   m_ObjectHideFlags: 1

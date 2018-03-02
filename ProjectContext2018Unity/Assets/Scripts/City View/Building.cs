@@ -19,7 +19,8 @@ namespace CityView {
         public static Action<Building> OnDestroyed;
         public static Action<Building> OnDemolishInitiated;
 
-        public ProductionCycle ProductionCycle { get; private set; }
+        [SerializeField] private ProductionCycle productionCycle;
+        public ProductionCycle ProductionCycle { get { return productionCycle; } }
 
         private Animator animator;
         private ParticleSystem[] particles;
@@ -33,7 +34,7 @@ namespace CityView {
             particles = GetComponentsInChildren<ParticleSystem>();
         }
 
-        public void Init(BuildingsData data, City city) {
+        public void Init(BuildingsData data) {
             this.data = data;
             if (HasNecessaryResourcesForProductionCycle())
                 StartNewProduction();
@@ -73,7 +74,7 @@ namespace CityView {
         }
 
         private void StartNewProduction() {
-            ProductionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
+            productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
             PlayerResources.OnResourceChanged -= OnResourcesChanged;
             PlayerResources.OnMoneyChanged -= OnMoneyChanged;
             if (!enabled) {
@@ -83,7 +84,8 @@ namespace CityView {
         }
 
         public void ToggleBuildingEffects(bool toggle) {
-            animator.enabled = toggle;
+            if(animator != null)
+                animator.enabled = toggle;
             foreach (ParticleSystem p in particles) {
                 if (toggle)
                     p.Play();
