@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 114945837603091720, guid: 2d0472b4c2af66d4fb700d5e6936b1c7, type: 2}
   - {fileID: 114542453649564992, guid: 8a7911014b2fcdf47932fcc6403dca64, type: 2}
   - {fileID: 114138787735936676, guid: 5c378152e6b5b0241a2135a34bb4cb5e, type: 2}
+  - {fileID: 114758779115381896, guid: 88d6382d7731b534aa8557e4c66d94c7, type: 2}
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
   buildingSprites:
   - {fileID: 21300000, guid: 708ff9c4e784ba840a6d6264dcef5b8a, type: 3}

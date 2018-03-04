@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using CityView.Terrain.Generator;
+
+namespace CityView.Terrain {
+
+    [System.Serializable, SelectionBase]
+    public class WaterSourceBlock : MonoBehaviour {
+
+        [SerializeField] private IntVector2 coordinates;
+        public IntVector2 Coordinates { get { return coordinates; } }
+
+        [SerializeField] private float startingheight;
+        public float Startingheight { get { return startingheight; } }
+
+        [SerializeField] private float currentHeight;
+        public float CurrentHeight { get { return currentHeight; } }
+
+        private new Renderer renderer;
+        private TerrainGenerator generator;
+
+        [SerializeField] private TerrainBlock blockBeneath;
+        public TerrainBlock BlockBeneath { get { return blockBeneath; } }
+
+        public TerrainBlock[] neighbours = new TerrainBlock[4];
+        public List<WaterSourceBlock> children;
+        public float flowHeightDecrease = 0.2f;
+        public Action OnDestroyEvent;
+
+        private void Start() {
+            generator = TerrainGenerator.Instance;
+            WaterLevel.OnLevelIncreased += IncreaseHeight;
+
+            GetNeighbours();
+
+            CheckForPossibleFlow();
+            blockBeneath.OnHeightChange += UpdateHeight;
+        }
+
+        private void GetNeighbours() {
+            for (int i = 0; i < neighbours.Length; i++) {
+                IntVector2 neighbourCoordinates = coordinates + IntVector2.NeighbourCoordinates[i];
+                if (generator.IsInsideGrid(neighbourCoordinates) && generator.GetWaterBlock(neighbourCoordinates) == null) {
+                    neighbours[i] = generator.GetTerrainBlock(neighbourCoordinates);
+                }
+            }
+        }
+
+        public void Init(IntVector2 coordinates, TerrainBlock blockBeneath, float height, TerrainGenerator generator) {
+            this.coordinates = coordinates;
+            this.generator = generator;
+            this.blockBeneath = blockBeneath;
+            renderer = transform.GetChild(0).GetComponent<Renderer>();
+            SetHeight(height);
+            startingheight = height;
+        }
+
+        private void UpdateHeight(float blockBeneathNewHeight) {
+            if (blockBeneathNewHeight >= currentHeight + transform.position.y)
+                Destroy(gameObject);
+        }
+
+        private void SetHeight(float height) {
+            transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
+            currentHeight = height;
+
+             CheckForPossibleFlow();
+        }
+
+        private void CheckForPossibleFlow() {
+            for (int i = 0; i < neighbours.Length; i++) {
+                if (neighbours[i] == null)
+                    continue;
+
+                if (neighbours[i].TotalHeight < currentHeight + blockBeneath.TotalHeight - flowHeightDecrease &&
+                    generator.IsInsideGrid(neighbours[i].Coordinates) &&
+                    generator.GetWaterBlock(neighbours[i].Coordinates) == null) { 
+                    //StartCoroutine(CreateNewFlow(neighbours[i].Coordinates, neighbours[i]));
+                    CreateNewFlow(neighbours[i].Coordinates, neighbours[i]);
+                }
+            }
+        }
+
+        private void CreateNewFlow(IntVector2 newCoordinates, TerrainBlock neighbourTerrainBlock) {
+            //creatingNewFlow = true;
+
+            //float timer = 0;
+            //float time = 1;
+
+            //while (timer < time) {
+            //    timer += Time.deltaTime;
+            //    yield return null;
+            //}
+
+            WaterSourceBlock waterBlock = Instantiate(this);
+            children.Add(waterBlock);
+            waterBlock.transform.position = new Vector3(neighbourTerrainBlock.transform.position.x, neighbourTerrainBlock.TotalHeight, neighbourTerrainBlock.transform.position.z);
+            waterBlock.transform.SetParent(transform.parent);
+            generator.AddToWaterGrid(waterBlock);
+            float height;
+            if ((neighbourTerrainBlock.TotalHeight + currentHeight) - blockBeneath.TotalHeight > 0)
+                height = (blockBeneath.TotalHeight + currentHeight) - neighbourTerrainBlock.TotalHeight - flowHeightDecrease;
+            else
+                height = currentHeight - flowHeightDecrease;
+            waterBlock.Init(newCoordinates, neighbourTerrainBlock, height, generator);
+        }
+
+        private void IncreaseHeight(float amount) {
+            SetHeight(currentHeight + amount);
+        }
+
+        public void ChangeHeight(float amount) {
+            transform.localScale = new Vector3(transform.localScale.x, currentHeight + amount, transform.localScale.z);
+        }
+
+        private void OnDestroy() {
+            if(OnDestroyEvent != null)
+                OnDestroyEvent();
+
+            foreach (WaterSourceBlock block in children) {
+                if(block != null)
+                    Destroy(block.gameObject);
+            }
+            WaterLevel.OnLevelIncreased -= IncreaseHeight;
+            blockBeneath.OnHeightChange -= UpdateHeight;
+        }
+    }
+}

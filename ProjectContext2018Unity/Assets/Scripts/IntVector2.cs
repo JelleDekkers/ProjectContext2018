@@ -11,6 +11,14 @@ public struct IntVector2 {
     /// </summary>
     public static IntVector2 Zero = new IntVector2(0, 0);
 
+    public static IntVector2[] NeighbourCoordinates = new IntVector2[] {
+        new IntVector2(1, 0),
+        new IntVector2(0, 1),
+        new IntVector2(-1, 0),
+        new IntVector2(0, - 1)
+    };
+
+
     public IntVector2(int x, int z) {
         this.x = x;
         this.z = z;

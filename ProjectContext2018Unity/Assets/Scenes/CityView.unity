@@ -1358,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 386444470}
   - component: {fileID: 386444467}
+  - component: {fileID: 386444468}
   m_Layer: 0
   m_Name: City Builder
   m_TagString: Untagged
@@ -1378,6 +1379,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyEffectPrefab: {fileID: 114808757996900534, guid: 134ecc5ba9d9036499d7af8c17989344,
     type: 2}
+--- !u!114 &386444468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386444466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e083e4fe94c11d4eb5026c47806fabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings: []
 --- !u!4 &386444470
 Transform:
   m_ObjectHideFlags: 0
@@ -4481,7 +4494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1654829773}
-  buildings: []
 --- !u!114 &1654829777
 MonoBehaviour:
   m_ObjectHideFlags: 0
