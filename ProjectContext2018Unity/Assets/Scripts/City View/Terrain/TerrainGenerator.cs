@@ -26,28 +26,10 @@ namespace CityView.Terrain.Generator {
         [SerializeField] private Color lowestHeightColor = Color.black;
         [SerializeField] private Color maxHeightColor = Color.white;
         [SerializeField] private float heightMin, heightMax;
-
         [SerializeField] private float waterStartingHeight = 2;
-        [SerializeField] private float waveModifier = 0.3f;
-        [SerializeField] private float waveSpeed = 0.8f;
-        [SerializeField] private float waveNoiseStrength = 0.5f;
 
         private void Awake() {
             instance = this;
-        }
-
-        private void Update() {
-            ExecuteWaves();
-        }
-
-        private void ExecuteWaves() {
-            foreach (WaterSourceBlock waterBlock in waterGrid) {
-                if (waterBlock == null)
-                    continue;
-                float height = Mathf.Sin(-Time.time * waveSpeed + waterBlock.Coordinates.z) * waveModifier;
-                height += Mathf.PerlinNoise(waterBlock.Coordinates.x, waterBlock.Coordinates.z + Mathf.Sin(Time.time * 0.1f) * Mathf.Cos(Time.time * 0.1f)) * waveNoiseStrength;
-                waterBlock.ChangeHeight(height);
-            }
         }
 
         private void CleanUp(Object[] grid, Transform parent) {

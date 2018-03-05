@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropTime: 0.2
   startingHeight: 4
-  buildSFX: {fileID: 8300000, guid: a65928ec65346294b87bd8fa83875a24, type: 3}
+  buildSFX: {fileID: 8300000, guid: 65680fe5f66815840a997b7ac11d59ed, type: 3}
   dropEffectCurve:
     serializedVersion: 2
     m_Curve:

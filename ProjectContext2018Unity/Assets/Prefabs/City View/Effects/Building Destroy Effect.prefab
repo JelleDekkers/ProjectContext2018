@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ee686a6f142e4439446e8ed5684649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demolishSFX: {fileID: 8300000, guid: 6783871dea2787442a4ee8db7885610f, type: 3}
+  demolishSFX: {fileID: 8300000, guid: e32b2b6408dca7941a4abdf3125bbacc, type: 3}
   particleSystem: {fileID: 198112639267593600}
   shrinkTime: 2
 --- !u!198 &198112639267593600

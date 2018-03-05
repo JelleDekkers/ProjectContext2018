@@ -18,28 +18,27 @@ namespace CityView.Terrain {
         [SerializeField] private float currentHeight;
         public float CurrentHeight { get { return currentHeight; } }
 
-        private new Renderer renderer;
-        private TerrainGenerator generator;
-
         [SerializeField] private TerrainBlock blockBeneath;
         public TerrainBlock BlockBeneath { get { return blockBeneath; } }
+
+        [HideInInspector]
+        public TerrainGenerator generator;
 
         public TerrainBlock[] neighbours = new TerrainBlock[4];
         public List<WaterSourceBlock> children;
         public float flowHeightDecrease = 0.2f;
         public Action OnDestroyEvent;
 
+        private new Renderer renderer;
+
         private void Start() {
-            generator = TerrainGenerator.Instance;
             WaterLevel.OnLevelIncreased += IncreaseHeight;
-
-            GetNeighbours();
-
-            CheckForPossibleFlow();
             blockBeneath.OnHeightChange += UpdateHeight;
+
+            StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
         }
 
-        private void GetNeighbours() {
+        private void UpdatePossibleNeighbours() {
             for (int i = 0; i < neighbours.Length; i++) {
                 IntVector2 neighbourCoordinates = coordinates + IntVector2.NeighbourCoordinates[i];
                 if (generator.IsInsideGrid(neighbourCoordinates) && generator.GetWaterBlock(neighbourCoordinates) == null) {
@@ -66,45 +65,60 @@ namespace CityView.Terrain {
             transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
             currentHeight = height;
 
-             CheckForPossibleFlow();
+            if(UnityEditor.EditorApplication.isPlaying)
+                StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
         }
 
-        private void CheckForPossibleFlow() {
+        private void CheckForPossibleNewWaterBlock() {
+            UpdatePossibleNeighbours();
+
             for (int i = 0; i < neighbours.Length; i++) {
                 if (neighbours[i] == null)
                     continue;
 
                 if (neighbours[i].TotalHeight < currentHeight + blockBeneath.TotalHeight - flowHeightDecrease &&
-                    generator.IsInsideGrid(neighbours[i].Coordinates) &&
-                    generator.GetWaterBlock(neighbours[i].Coordinates) == null) { 
-                    //StartCoroutine(CreateNewFlow(neighbours[i].Coordinates, neighbours[i]));
-                    CreateNewFlow(neighbours[i].Coordinates, neighbours[i]);
+                    generator.GetWaterBlock(neighbours[i].Coordinates) == null) {
+                    CreateNewWaterBlock(neighbours[i]);
                 }
             }
         }
 
-        private void CreateNewFlow(IntVector2 newCoordinates, TerrainBlock neighbourTerrainBlock) {
-            //creatingNewFlow = true;
+        private IEnumerator CheckForPossibleNewWaterBlockCoroutine() {
+            float timer = 0;
+            float time = 1;
 
-            //float timer = 0;
-            //float time = 1;
+            while (timer < time) {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            CheckForPossibleNewWaterBlock();
+        }
 
-            //while (timer < time) {
-            //    timer += Time.deltaTime;
-            //    yield return null;
-            //}
+        private IEnumerator CreateNewWaterBlockCoroutine(TerrainBlock neighbourTerrainBlock) {
+            float timer = 0;
+            float time = 1;
 
+            while (timer < time) {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        private void CreateNewWaterBlock(TerrainBlock neighbourTerrainBlock) {
             WaterSourceBlock waterBlock = Instantiate(this);
-            children.Add(waterBlock);
+
             waterBlock.transform.position = new Vector3(neighbourTerrainBlock.transform.position.x, neighbourTerrainBlock.TotalHeight, neighbourTerrainBlock.transform.position.z);
             waterBlock.transform.SetParent(transform.parent);
-            generator.AddToWaterGrid(waterBlock);
+
             float height;
             if ((neighbourTerrainBlock.TotalHeight + currentHeight) - blockBeneath.TotalHeight > 0)
                 height = (blockBeneath.TotalHeight + currentHeight) - neighbourTerrainBlock.TotalHeight - flowHeightDecrease;
             else
                 height = currentHeight - flowHeightDecrease;
-            waterBlock.Init(newCoordinates, neighbourTerrainBlock, height, generator);
+
+            waterBlock.Init(neighbourTerrainBlock.Coordinates, neighbourTerrainBlock, height, generator);
+            children.Add(waterBlock);
+            generator.AddToWaterGrid(waterBlock);
         }
 
         private void IncreaseHeight(float amount) {
@@ -123,6 +137,7 @@ namespace CityView.Terrain {
                 if(block != null)
                     Destroy(block.gameObject);
             }
+
             WaterLevel.OnLevelIncreased -= IncreaseHeight;
             blockBeneath.OnHeightChange -= UpdateHeight;
         }

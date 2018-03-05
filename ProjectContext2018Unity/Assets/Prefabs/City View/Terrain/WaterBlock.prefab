@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4906484967505996}
-  - component: {fileID: 114956118683525558}
+  - component: {fileID: 114430651317294706}
   m_Layer: 0
-  m_Name: WaterSourceBlock
+  m_Name: WaterBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c1c4ced1172656d458d678db8ed8b0b7, type: 2}
+  - {fileID: 2100000, guid: 44cbf2f4d699b5c4b9d1ae1742bf185b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350968954193644}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114956118683525558
+--- !u!114 &114430651317294706
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246494793101798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d31e50e6515ce439ecd74b889779e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 52c7d1905859efe4691b1fc0024b0e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates:
@@ -129,6 +129,7 @@ MonoBehaviour:
   startingheight: 0
   currentHeight: 0
   blockBeneath: {fileID: 0}
+  generator: {fileID: 0}
   neighbours:
   - {fileID: 0}
   - {fileID: 0}
