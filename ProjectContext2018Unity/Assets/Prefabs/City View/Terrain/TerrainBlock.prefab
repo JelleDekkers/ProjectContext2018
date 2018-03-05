@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33991360195481408}
   - component: {fileID: 23290399678343604}
   - component: {fileID: 65950285974573676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056912753291930}
   - component: {fileID: 114944113027481312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TerrainBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

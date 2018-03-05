@@ -7799,7 +7799,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176773012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 12.5, y: 0, z: 12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 723354014}
@@ -7817,13 +7817,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a098a699cd1954ca1cd25eac114564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 30
-  horizontalBorderMin: -6
-  horizontalBorderMax: 6
-  verticalBorderMin: -6
-  verticalBorderMax: 6
+  movementSpeed: 40
+  horizontalBorderMin: -10
+  horizontalBorderMax: 10
+  verticalBorderMin: -10
+  verticalBorderMax: 10
   zoomMin: 3
-  zoomMax: 9
+  zoomMax: 15
+  zoomSpeed: 2
 --- !u!114 &176773016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30242,7 +30243,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -30265,7 +30266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723354010}
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -8.2, y: 12.5, z: -8.5}
+  m_LocalPosition: {x: -14.93, y: 12.19, z: -14.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 176773014}
@@ -57112,6 +57113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightIncrease: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &1439005634
 MonoBehaviour:
   m_ObjectHideFlags: 0
