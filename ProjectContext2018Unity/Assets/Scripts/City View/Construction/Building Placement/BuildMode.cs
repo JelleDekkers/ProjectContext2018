@@ -12,6 +12,7 @@ namespace CityView.Construction {
         [SerializeField] private BuildingPlacementEffect placeEffectPrefab;
         [SerializeField] private Transform buildingsParent;
         [SerializeField] private LayerMask tileLayer;
+        //[SerializeField] private float maxTileHeightDistance;
 
         private Tile[,] tilesHoveringOver;
         private bool isHittingGrid;
@@ -66,10 +67,11 @@ namespace CityView.Construction {
         }
 
         private void HighlightUnbuildableTiles() {
+            bool tooHigh = false;// (GetTerrainAverageHeight(GetTerrainHoveringOver(tilesHoveringOver)) >= maxTileHeightDistance);
             foreach(Tile t in tilesHoveringOver) {
                 if (t == null)
                     continue;
-                else if(!TileIsBuildable(t))
+                else if(!TileIsBuildable(t) || tooHigh)
                     t.ShowTile();
             }
         }
@@ -106,8 +108,11 @@ namespace CityView.Construction {
 
         private void Build(Tile[,] tiles) {
             Building building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
+            AverageOutTerrain(tiles);
+
             foreach (Tile tile in tiles)
                 tile.SetOccupant(building);
+
             Instantiate(placeEffectPrefab).Setup(building);
             OnBuildingPlaced(building, SelectedBuildingData);
 
@@ -120,6 +125,34 @@ namespace CityView.Construction {
 
             if (!Building.IsBuildable(selectionIndex))
                 selectionIndex = -1;
+        }
+
+        private void AverageOutTerrain(Tile[,] tiles) {
+            TerrainBlock[] blocks = GetTerrainHoveringOver(tiles);
+            float avgHeight = GetTerrainAverageHeight(blocks);
+
+            foreach(TerrainBlock block in blocks) 
+                block.SetTotalHeight(avgHeight);
+        }
+
+        private float GetTerrainAverageHeight(TerrainBlock[] terrainBlocks) {
+            float totalheight = 0;
+            foreach (TerrainBlock block in terrainBlocks) {
+                totalheight += block.TotalHeight;
+            }
+            return totalheight / terrainBlocks.Length;
+        }
+
+        private TerrainBlock[] GetTerrainHoveringOver(Tile[,] tiles) {
+            TerrainBlock[] blocks = new TerrainBlock[tiles.Length];
+            int index = 0;
+            foreach (Tile tile in tiles) {
+                if (tile == null)
+                    continue;
+                blocks[index] = City.Instance.Terrain.GetTerrainBlock(tile.Coordinates);
+                index++;
+            }
+            return blocks;
         }
 
         private Tile[,] GetTilesHoveringOver(IntVector2 buildingSize) {
@@ -144,21 +177,6 @@ namespace CityView.Construction {
             }
             return null;
         }
-
-        //private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {
-        //    IntVector2 coordinates = IntVector2.ConvertToCoordinates(position);
-        //    Tile[,] tiles = new Tile[buildingSize.x, buildingSize.z];
-        //    for (int x = 0; x < buildingSize.x; x++) {
-        //        for (int z = 0; z < buildingSize.z; z++) {
-        //            if (City.Instance.TilesGrid.IsInsideGrid(new IntVector2(coordinates.x + x, coordinates.z + z))) {
-        //                Tile t = City.Instance.TilesGrid.GetTile(coordinates);
-        //                tiles[x, z] = t;
-        //            }
-        //        }
-        //    }
-
-        //    return tiles;
-        //}
 
         private void OnDestroy() {
             UI.BuildingSelectionWidget.OnBuildingSelected -= OnBuildingSelected;

@@ -19,15 +19,15 @@ namespace CityView.Terrain {
         public void Init(IntVector2 coordinates, Color c, float height) {
             this.coordinates = coordinates;
             renderer = transform.GetChild(0).GetComponent<Renderer>();
-            SetHeight(height);
+            SetTotalHeight(height);
             SetColor(c);
         }
 
-        public void ChangeHeight(float amount) {
-            SetHeight(totalHeight + amount);
+        public void AddHeight(float amount) {
+            SetTotalHeight(totalHeight + amount);
         }
 
-        private void SetHeight(float height) {
+        public void SetTotalHeight(float height) {
             if (height <= 0)
                 return;
 

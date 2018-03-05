@@ -25,7 +25,7 @@ namespace CityView.Terrain {
                 TerrainBlock block = hit.collider.gameObject.transform.parent.GetComponent<TerrainBlock>();
                 if (block == null)
                     return;
-                block.ChangeHeight(heightIncrease);
+                block.AddHeight(heightIncrease);
             }
         }
 
@@ -36,7 +36,7 @@ namespace CityView.Terrain {
                     return;
 
                 TerrainBlock block = hit.collider.transform.parent.gameObject.GetComponent<TerrainBlock>();
-                block.ChangeHeight(-heightIncrease);
+                block.AddHeight(-heightIncrease);
             }
         }
     }
