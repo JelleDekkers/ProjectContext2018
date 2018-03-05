@@ -10,7 +10,7 @@ public class ProductionEffectPopupItem : MonoBehaviour {
 
     public void Init(Sprite productSprite, float amount) {
         productImg.sprite = productSprite;
-        amountTxt.text = (amount > 0) ? "+" : "-";
-        amountTxt.text += Mathf.RoundToInt(amount).ToString();
+        //amountTxt.text = (amount > 0) ? "+" : "-";
+        amountTxt.text = Mathf.RoundToInt(amount).ToString();
     }
 }

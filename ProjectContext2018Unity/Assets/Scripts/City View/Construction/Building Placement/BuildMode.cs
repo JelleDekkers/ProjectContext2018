@@ -114,7 +114,6 @@ namespace CityView.Construction {
                 tile.SetOccupant(building);
 
             Instantiate(placeEffectPrefab).Setup(building);
-            OnBuildingPlaced(building, SelectedBuildingData);
 
             PlayerResources.Instance.RemoveMoney(SelectedBuildingData.Moneycost);
             for (int i = 0; i < SelectedBuildingData.Resourcecost.Length; i++)
@@ -122,6 +121,8 @@ namespace CityView.Construction {
 
             building.enabled = true;
             building.Init(SelectedBuildingData, tiles);
+
+            OnBuildingPlaced(building, SelectedBuildingData);
 
             if (!Building.IsBuildable(selectionIndex))
                 selectionIndex = -1;

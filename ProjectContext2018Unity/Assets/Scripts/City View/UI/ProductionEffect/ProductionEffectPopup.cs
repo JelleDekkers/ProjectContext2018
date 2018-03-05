@@ -27,8 +27,8 @@ namespace CityView.UI {
             StartCoroutine(WaitForFade());
         }
 
-        public void Init(Building b, BuildingsData data) {
-            transform.position = new Vector3(b.transform.position.x, b.transform.position.y + spawnHeight, b.transform.position.z);
+        public void Init(Building building, BuildingsData data) {
+            transform.position = new Vector3(building.transform.position.x, building.tilesStandingOn[0,0].transform.position.y + spawnHeight, building.transform.position.z);
             transform.SetAsFirstSibling();
             CreatePopupItems(data);
             StartCoroutine(Move());
@@ -50,7 +50,7 @@ namespace CityView.UI {
         private void CreatePopupItems(BuildingsData data) {
             // TODO: gebruiken wanneer sprites bescikbaar zijn
             if (data.Moneycost != 0)
-                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, data.Moneycost);
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, -data.Moneycost);
 
             for(int i = 0; i < data.Resourcecost.Length; i++) {
                 GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourcecost[i]];

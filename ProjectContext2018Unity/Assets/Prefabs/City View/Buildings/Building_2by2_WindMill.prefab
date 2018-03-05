@@ -320,3 +320,5 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
+  productionCycle:
+    timer: 0
