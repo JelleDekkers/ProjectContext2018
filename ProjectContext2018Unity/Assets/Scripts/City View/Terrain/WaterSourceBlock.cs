@@ -37,6 +37,9 @@ namespace CityView.Terrain {
             blockBeneath.OnHeightChange += UpdateHeight;
 
             StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
+
+            // TODO: nettere manier
+            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(true);
         }
 
         private void UpdatePossibleNeighbours() {
@@ -138,6 +141,8 @@ namespace CityView.Terrain {
                     Destroy(block.gameObject);
             }
 
+            // TODO: nettere manier:
+            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
             WaterLevel.OnLevelIncreased -= IncreaseHeight;
             blockBeneath.OnHeightChange -= UpdateHeight;
         }

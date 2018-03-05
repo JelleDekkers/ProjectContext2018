@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using CityView.Terrain;
 
@@ -9,15 +8,28 @@ namespace CityView.Construction {
 
         public static readonly Vector3 SIZE = new Vector3(1, 0.1f, 1);
 
-        public Building occupant;
+        public Building Occupant { get; private set; }
         public IntVector2 Coordinates { get; private set; }
+        public bool IsUnderWater { get; private set; }
 
         private new Renderer renderer;
-        
+        public Action<bool> OnWaterStateChanged;
+
         public void Init(IntVector2 coordinates) {
             Coordinates = coordinates;
             renderer = GetComponent<Renderer>();
             HideTile();
+        }
+
+        public void SetOccupant(Building building) {
+            Occupant = building;
+        }
+
+        public void OnWaterLevelChanged(bool water) {
+            IsUnderWater = water;
+
+            if (OnWaterStateChanged != null)
+                OnWaterStateChanged(water);
         }
 
         public void ShowTile() {

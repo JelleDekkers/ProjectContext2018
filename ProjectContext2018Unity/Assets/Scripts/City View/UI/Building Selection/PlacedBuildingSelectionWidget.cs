@@ -77,7 +77,10 @@ namespace CityView.UI {
         }
 
         public void ToggleProduction() {
-            selectedBuilding.enabled = !selectedBuilding.enabled;
+            if (!selectedBuilding.enabled && !selectedBuilding.TilesStandingOnAreUnderWater())
+                selectedBuilding.enabled = true;
+            else
+                selectedBuilding.enabled = false;
         }
 
         public void DestroySelectedBuilding() {

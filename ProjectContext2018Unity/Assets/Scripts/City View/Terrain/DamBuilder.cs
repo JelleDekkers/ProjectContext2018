@@ -20,11 +20,11 @@ namespace CityView.Terrain {
 
         private void BuildDam() {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (!hit.collider.gameObject.transform.parent.GetComponent<TerrainBlock>())
+                TerrainBlock block = hit.collider.gameObject.transform.parent.GetComponent<TerrainBlock>();
+                if (block == null)
                     return;
-
-                TerrainBlock block = hit.collider.transform.parent.gameObject.GetComponent<TerrainBlock>();
                 block.ChangeHeight(heightIncrease);
             }
         }

@@ -101,22 +101,22 @@ namespace CityView.Construction {
         }
 
         private bool TileIsBuildable(Tile tile) {
-            return tile.occupant == null && city.Terrain.GetWaterBlock(tile.Coordinates) == null;
+            return tile.Occupant == null && city.Terrain.GetWaterBlock(tile.Coordinates) == null;
         }
 
         private void Build(Tile[,] tiles) {
-            Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
-            foreach (Tile t in tiles)
-                t.occupant = b;
-            Instantiate(placeEffectPrefab).Setup(b);
-            OnBuildingPlaced(b, SelectedBuildingData);
+            Building building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
+            foreach (Tile tile in tiles)
+                tile.SetOccupant(building);
+            Instantiate(placeEffectPrefab).Setup(building);
+            OnBuildingPlaced(building, SelectedBuildingData);
 
             PlayerResources.Instance.RemoveMoney(SelectedBuildingData.Moneycost);
             for (int i = 0; i < SelectedBuildingData.Resourcecost.Length; i++)
                 PlayerResources.Instance.RemoveResource(SelectedBuildingData.Resourcecost[i], SelectedBuildingData.Resourcecostamount[i]);
 
-            b.enabled = true;
-            b.Init(SelectedBuildingData);
+            building.enabled = true;
+            building.Init(SelectedBuildingData, tiles);
 
             if (!Building.IsBuildable(selectionIndex))
                 selectionIndex = -1;

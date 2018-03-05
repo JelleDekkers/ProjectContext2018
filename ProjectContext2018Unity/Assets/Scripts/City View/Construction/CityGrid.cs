@@ -14,7 +14,7 @@ namespace CityView.Construction {
         [SerializeField] private Material lineMaterial;
         [SerializeField] private bool showGridLines;
 
-        private void Start() {
+        private void Awake() {
             Size = City.Instance.Terrain.MapSize;
             Generate(City.Instance.Terrain);
         }

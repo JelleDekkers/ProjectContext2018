@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using CityView.Construction;
 
 namespace CityView {
 
@@ -13,6 +14,8 @@ namespace CityView {
                 return size.Value;
             }
         }
+
+        public Tile[,] tilesStandingOn;
 
         public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
@@ -34,12 +37,16 @@ namespace CityView {
             particles = GetComponentsInChildren<ParticleSystem>();
         }
 
-        public void Init(BuildingsData data) {
+        public void Init(BuildingsData data, Tile[,] tilesStandingOn) {
             this.data = data;
+            this.tilesStandingOn = tilesStandingOn;
             if (HasNecessaryResourcesForProductionCycle())
                 StartNewProduction();
             else 
                 OnProductionNotAvailable();
+
+            foreach (Tile t in tilesStandingOn)
+                t.OnWaterStateChanged += CheckWaterState;
         }
 
         private void OnDisable() {
@@ -49,6 +56,13 @@ namespace CityView {
         private void OnEnable() {
             if(ProductionCycle != null)
                 ToggleBuildingEffects(true);
+        }
+
+        private void CheckWaterState(bool water) {
+            if (water == true)
+                enabled = false;
+            else 
+                enabled = !TilesStandingOnAreUnderWater();
         }
 
         private void OnProductionNotAvailable() {
@@ -123,7 +137,21 @@ namespace CityView {
             return true;
         }
 
+
+        public bool TilesStandingOnAreUnderWater() {
+            foreach (Tile tile in tilesStandingOn) { 
+                if (tile.IsUnderWater)
+                    return true;
+            }
+            return false;
+        }
+
         private void OnDestroy() {
+            if (tilesStandingOn != null) {
+                foreach (Tile t in tilesStandingOn)
+                    t.OnWaterStateChanged -= CheckWaterState;
+            }
+
             OnDestroyed(this);
         }
     }
