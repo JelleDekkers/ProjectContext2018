@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CityView.Terrain.Generator {
+namespace CityView.Terrain {
 
     public class WaveManager : MonoBehaviour {
 
-        [SerializeField] private TerrainGenerator generator;
+        [SerializeField] private GameTerrain generator;
 
         [Header("Variables")]
         [SerializeField] private float waveModifier = 0.3f;
@@ -22,7 +22,7 @@ namespace CityView.Terrain.Generator {
                 if (waterBlock == null)
                     continue;
                 float height = Mathf.Sin(-Time.time * waveSpeed + waterBlock.Coordinates.z) * waveModifier;
-                height += Mathf.PerlinNoise(waterBlock.Coordinates.x, waterBlock.Coordinates.z + Mathf.Sin(Time.time * 0.1f) * Mathf.Cos(Time.time * 0.1f)) * waveNoiseStrength;
+                height += Mathf.PerlinNoise(waterBlock.Coordinates.x, waterBlock.Coordinates.z + Mathf.Sin(Time.time * 0.1f / (waterBlock.Coordinates.z + 0.1f)) * Mathf.Cos(Time.time * 0.1f / (waterBlock.Coordinates.z + 0.1f))) * waveNoiseStrength;
                 waterBlock.ChangeHeight(height);
             }
         }

@@ -5,13 +5,13 @@ using UnityEditor;
 
 namespace CityView.Terrain.Generator.EditorTools {
 
-    [CustomEditor(typeof(TerrainGenerator))]
+    [CustomEditor(typeof(GameTerrain))]
     public class TerrainGeneratorInspector : Editor {
 
-        private TerrainGenerator generator;
+        private GameTerrain generator;
 
         private void OnEnable() {
-            generator = (TerrainGenerator)target;
+            generator = (GameTerrain)target;
         }
 
         public override void OnInspectorGUI() {

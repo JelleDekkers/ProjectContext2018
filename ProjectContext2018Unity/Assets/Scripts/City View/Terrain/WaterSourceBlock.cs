@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CityView.Terrain.Generator;
 
 namespace CityView.Terrain {
 
@@ -21,8 +20,10 @@ namespace CityView.Terrain {
         [SerializeField] private TerrainBlock blockBeneath;
         public TerrainBlock BlockBeneath { get { return blockBeneath; } }
 
+        [SerializeField] private float newWaterBlockCreationTimer = 2;
+
         [HideInInspector]
-        public TerrainGenerator generator;
+        public GameTerrain generator;
 
         public TerrainBlock[] neighbours = new TerrainBlock[4];
         public List<WaterSourceBlock> children;
@@ -47,7 +48,7 @@ namespace CityView.Terrain {
             }
         }
 
-        public void Init(IntVector2 coordinates, TerrainBlock blockBeneath, float height, TerrainGenerator generator) {
+        public void Init(IntVector2 coordinates, TerrainBlock blockBeneath, float height, GameTerrain generator) {
             this.coordinates = coordinates;
             this.generator = generator;
             this.blockBeneath = blockBeneath;
@@ -85,9 +86,8 @@ namespace CityView.Terrain {
 
         private IEnumerator CheckForPossibleNewWaterBlockCoroutine() {
             float timer = 0;
-            float time = 1;
 
-            while (timer < time) {
+            while (timer < newWaterBlockCreationTimer) {
                 timer += Time.deltaTime;
                 yield return null;
             }

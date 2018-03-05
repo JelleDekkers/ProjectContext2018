@@ -22,11 +22,14 @@ namespace CityView.Construction {
             ghost.enabled = false;
             ghost.Setup();
             ghost.ToggleBuildingEffects(false);
-         
-            //MakeTransparent();
         }
 
         public void UpdatePosition(Tile[,] tilesHoveringOver) {
+            if(tilesHoveringOver == null) {
+                OnInValidMousePosition();
+                return;
+            }
+
             foreach (Tile t in tilesHoveringOver) {
                 if (t == null) {
                     OnInValidMousePosition();
@@ -45,7 +48,7 @@ namespace CityView.Construction {
             if(!ghost.gameObject.activeInHierarchy)
                 ghost.gameObject.SetActive(true);
 
-            ghost.transform.position = new Vector3(centre.x, 0, centre.z);
+            ghost.transform.position = new Vector3(centre.x, centre.y, centre.z);
         }
 
         private void MakeTransparent() {

@@ -6,8 +6,8 @@ namespace CityView {
 
     public class Building : MonoBehaviour {
 
-        private Vector2Int? size;
-        public Vector2Int Size { get {
+        private IntVector2? size;
+        public IntVector2 Size { get {
                 if (!size.HasValue)
                     size = CalculateTileSize();
                 return size.Value;
@@ -106,11 +106,11 @@ namespace CityView {
                 OnProductionNotAvailable();
         }
 
-        public Vector2Int CalculateTileSize() {
-            Vector2Int calcSize = Vector2Int.zero;
+        public IntVector2 CalculateTileSize() {
+            IntVector2 calcSize = IntVector2.Zero;
             Renderer r = transform.GetChild(0).GetComponent<Renderer>();
             calcSize.x = (int)Mathf.Round(r.bounds.size.x);
-            calcSize.y = (int)Mathf.Round(r.bounds.size.z);
+            calcSize.z = (int)Mathf.Round(r.bounds.size.z);
             return calcSize;
         }
 

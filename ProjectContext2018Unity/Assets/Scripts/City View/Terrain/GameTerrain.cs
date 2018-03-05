@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CityView.Terrain.Generator {
+namespace CityView.Terrain {
 
     [System.Serializable]
-    public class TerrainGenerator : MonoBehaviour {
-
-        private static TerrainGenerator instance;
-        public static TerrainGenerator Instance { get { return instance; } }
+    public class GameTerrain : MonoBehaviour {
 
         [SerializeField] private IntVector2 mapSize;
         public IntVector2 MapSize { get { return mapSize; } }
@@ -27,10 +24,6 @@ namespace CityView.Terrain.Generator {
         [SerializeField] private Color maxHeightColor = Color.white;
         [SerializeField] private float heightMin, heightMax;
         [SerializeField] private float waterStartingHeight = 2;
-
-        private void Awake() {
-            instance = this;
-        }
 
         private void CleanUp(Object[] grid, Transform parent) {
             Transform[] childs = parent.GetComponentsInChildren<Transform>();
@@ -98,6 +91,12 @@ namespace CityView.Terrain.Generator {
             return terrainGrid[ConvertToSingleArrayIndex(coordinates.x, coordinates.z)];
         }
 
+        public TerrainBlock GetTerrainBlock(int x, int z) {
+            if (!IsInsideGrid(x, z))
+                return null;
+            return terrainGrid[ConvertToSingleArrayIndex(x, z)];
+        }
+
         public WaterSourceBlock GetWaterBlock(IntVector2 coordinates) {
             if (!IsInsideGrid(coordinates))
                 return null;
@@ -110,6 +109,10 @@ namespace CityView.Terrain.Generator {
 
         public bool IsInsideGrid(IntVector2 coordinates) {
             return (coordinates.x >= 0 && coordinates.x < MapSize.x && coordinates.z >= 0 && coordinates.z < MapSize.z);
+        }
+
+        public bool IsInsideGrid(int x, int z) {
+            return (x >= 0 && x < MapSize.x && z >= 0 && z < MapSize.z);
         }
 
         private int ConvertToSingleArrayIndex(int x, int z) {
