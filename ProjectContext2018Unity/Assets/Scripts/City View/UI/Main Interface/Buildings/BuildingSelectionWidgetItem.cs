@@ -22,7 +22,7 @@ namespace CityView.UI {
 
         public void Init(int id) {
             this.id = id;
-            img.sprite = DataManager.BuildingPrefabs.GetSprite(id);
+            img.sprite = DataManager.BuildingPrefabs.GetBuildingSprite(id);
             button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
             button.interactable = Building.IsBuildable(id);
             PlayerResources.OnResourceChanged += UpdateInteractableState;

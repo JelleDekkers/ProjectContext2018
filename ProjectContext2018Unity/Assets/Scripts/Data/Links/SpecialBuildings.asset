@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c153ebe126abb4fa791d12e622ea09, type: 3}
+  m_Name: SpecialBuildings
+  m_EditorClassIdentifier: 
+  SheetName: Game Database
+  WorksheetName: SpecialBuildings
+  dataArray:
+  - id: 0
+    name: Small Dike
+    moneycost: 100
+    resourcecost: 04000000
+    resourcecostamount: 05000000
+    climate: 1
+  - id: 1
+    name: Medium Dike
+    moneycost: 200
+    resourcecost: 0200000004000000
+    resourcecostamount: 0a0000000a000000
+    climate: 1
+  - id: 2
+    name: Large Dike
+    moneycost: 300
+    resourcecost: 020000000400000005000000
+    resourcecostamount: 0a0000000a0000000a000000
+    climate: 1
