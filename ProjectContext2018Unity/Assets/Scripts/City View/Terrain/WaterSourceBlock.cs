@@ -30,7 +30,8 @@ namespace CityView.Terrain {
         public float flowHeightDecrease = 0.2f;
         public Action OnDestroyEvent;
 
-        private new Renderer renderer;
+        [HideInInspector]
+        public new Renderer renderer;
 
         private void Start() {
             WaterLevel.OnLevelIncreased += IncreaseHeight;
@@ -129,6 +130,11 @@ namespace CityView.Terrain {
         }
 
         public void ChangeHeight(float amount) {
+            if (currentHeight + amount > 0)
+                renderer.enabled = true;
+            else
+                renderer.enabled = false;
+
             transform.localScale = new Vector3(transform.localScale.x, currentHeight + amount, transform.localScale.z);
         }
 
@@ -142,7 +148,9 @@ namespace CityView.Terrain {
             }
 
             // TODO: nettere manier:
-            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
+            try {
+                City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
+            } catch(Exception e) { }
             WaterLevel.OnLevelIncreased -= IncreaseHeight;
             blockBeneath.OnHeightChange -= UpdateHeight;
         }
