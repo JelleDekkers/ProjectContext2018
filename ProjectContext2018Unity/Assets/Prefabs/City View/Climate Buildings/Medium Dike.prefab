@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4808158212827756}
   - component: {fileID: 114848131738592230}
-  m_Layer: 0
+  - component: {fileID: 65839035543028594}
+  m_Layer: 8
   m_Name: Medium Dike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +113,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964010929438552}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65839035543028594
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312348028099284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114848131738592230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,3 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8daece05aea3246941d4aa93f9ff0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    id: 0
+    name: 
+    moneycost: 0
+    resourcecost: 
+    resourcecostamount: 
+    climate: 0
+    level: 0
+    description: 

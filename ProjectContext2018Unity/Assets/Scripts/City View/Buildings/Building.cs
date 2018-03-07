@@ -9,8 +9,8 @@ namespace CityView {
 
         public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
-        public static Action<Building> OnDestroyed;
-        public static Action<Building> OnDemolishInitiated;
+        public static Action<BuildingBase> OnDestroyed;
+        public static Action<BuildingBase> OnDemolishInitiated;
 
         [SerializeField] private ProductionCycle productionCycle;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }

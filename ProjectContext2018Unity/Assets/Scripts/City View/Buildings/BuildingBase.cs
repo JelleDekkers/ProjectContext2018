@@ -21,6 +21,8 @@ namespace CityView {
         public abstract void Setup();
         public abstract void ToggleBuildingEffects(bool toggle);
 
+        public virtual void OnDemolishStart() { }
+
         public IntVector2 CalculateTileSize() {
             IntVector2 calcSize = IntVector2.Zero;
             Renderer r = transform.GetChild(0).GetComponent<Renderer>();

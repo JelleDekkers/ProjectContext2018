@@ -12,7 +12,7 @@ namespace CityView.Construction {
             Building.OnDemolishInitiated += InstantiateDemolishEffect;
         }
 
-        private void InstantiateDemolishEffect(Building building) {
+        private void InstantiateDemolishEffect(BuildingBase building) {
             BuildingDestroyEffect effect = Instantiate(destroyEffectPrefab);
             effect.transform.position = building.transform.position;
             effect.Init(building);

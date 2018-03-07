@@ -71,7 +71,7 @@ namespace CityView.Construction {
         protected float GetTerrainAverageHeight(TerrainBlock[] terrainBlocks) {
             float totalheight = 0;
             foreach (TerrainBlock block in terrainBlocks) {
-                totalheight += block.TotalHeight;
+                totalheight += block.Height;
             }
             return totalheight / terrainBlocks.Length;
         }

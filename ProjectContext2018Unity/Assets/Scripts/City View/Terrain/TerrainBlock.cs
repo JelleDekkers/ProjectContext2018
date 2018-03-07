@@ -10,6 +10,7 @@ namespace CityView.Terrain {
 
         [SerializeField] private float height, extraHeight;
         public float TotalHeight { get { return height + extraHeight; } }
+        public float Height { get { return height; } }
 
         [SerializeField] private IntVector2 coordinates;
         public IntVector2 Coordinates { get { return coordinates; } }
@@ -39,7 +40,6 @@ namespace CityView.Terrain {
         }
 
         public void SetExtraHeight(float amount) {
-            Debug.Log(coordinates + " extra height added " + amount);
             extraHeight = amount;
 
             if (OnHeightChange != null)

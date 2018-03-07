@@ -10,7 +10,8 @@ namespace CityView.Construction {
         [SerializeField] private new ParticleSystem particleSystem;
         [SerializeField] private float shrinkTime = 1f;
 
-        public void Init(Building building) {
+        public void Init(BuildingBase building) {
+            building.OnDemolishStart();
             CityCamera.Instance.audioSource.PlayOneShot(demolishSFX);
             particleSystem.Play();
             float destroyTime = ((shrinkTime > particleSystem.main.duration) ? shrinkTime : particleSystem.main.duration) + 1f;

@@ -64,14 +64,23 @@ namespace CityView.Construction {
         }
 
         protected override bool TileIsBuildable(Tile tile) {
-            return tile.Occupant == null;
+            if (tile.Occupant == null)
+                return true;
+
+            if (tile.Occupant.GetType() == typeof(Dike) && (tile.Occupant as Dike).data.Level < SelectedBuildingData.Level)
+                return true;
+
+            return false;
         }
 
         protected override void Build(Tile[,] tiles) {
             ClimateBuilding building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
             AverageOutTerrain(tiles);
 
-            foreach (Tile tile in tiles) { 
+            foreach (Tile tile in tiles) {
+                if (tile.Occupant != null)
+                    Building.OnDemolishInitiated(tile.Occupant);
+
                 tile.SetOccupant(building);
                 TerrainBlock block = City.Instance.Terrain.GetTerrainBlock(tile.Coordinates);
                 block.SetExtraHeight(SelectedBuildingData.Level);
