@@ -22,13 +22,13 @@ namespace CityView {
             Setup();
         }
 
-        public void Setup() {
+        public override void Setup() {
             animator = GetComponent<Animator>();
             particles = GetComponentsInChildren<ParticleSystem>();
         }
 
-        public void Init(BuildingsData data, Tile[,] tilesStandingOn) {
-            this.data = data;
+        public override void Init(System.Object data, Tile[,] tilesStandingOn) {
+            this.data = data as BuildingsData;
             this.tilesStandingOn = tilesStandingOn;
             if (HasNecessaryResourcesForProductionCycle())
                 StartNewProduction();
@@ -87,7 +87,7 @@ namespace CityView {
             }
         }
 
-        public void ToggleBuildingEffects(bool toggle) {
+        public override void ToggleBuildingEffects(bool toggle) {
             if(animator != null)
                 animator.enabled = toggle;
             foreach (ParticleSystem p in particles) {

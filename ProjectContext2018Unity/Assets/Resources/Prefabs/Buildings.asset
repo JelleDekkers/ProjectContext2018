@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abbb1d7df72e41245a6cba0cf0b66075, type: 3}
-  m_Name: Building Prefabs
+  m_Script: {fileID: 11500000, guid: b3eb6e50fba02fd42bfc8c9f7f824bcd, type: 3}
+  m_Name: Buildings
   m_EditorClassIdentifier: 
   fallbackBuilding: {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef,
     type: 2}
@@ -18,10 +18,9 @@ MonoBehaviour:
   - {fileID: 114542453649564992, guid: 8a7911014b2fcdf47932fcc6403dca64, type: 2}
   - {fileID: 114138787735936676, guid: 5c378152e6b5b0241a2135a34bb4cb5e, type: 2}
   - {fileID: 114758779115381896, guid: 88d6382d7731b534aa8557e4c66d94c7, type: 2}
-  specialBuildingPrefabs: []
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
   buildingSprites:
   - {fileID: 21300000, guid: 708ff9c4e784ba840a6d6264dcef5b8a, type: 3}
   - {fileID: 21300000, guid: 41f119b26848136478f4996468636e06, type: 3}
   - {fileID: 21300000, guid: 414ccfcd2f3cd3b4aa53414f0f2063d8, type: 3}
-  specialBuildingSprites: []
+  - {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}

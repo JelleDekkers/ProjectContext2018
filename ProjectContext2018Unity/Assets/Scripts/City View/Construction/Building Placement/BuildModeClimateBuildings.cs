@@ -5,12 +5,12 @@ using CityView.Terrain;
 
 namespace CityView.Construction {
 
-    public class BuildMode : BuildModeBase {
+    public class BuildModeClimateBuildings : BuildModeBase {
 
-        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuildingPrefab(selectionIndex) as Building; } }
-        private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
+        private ClimateBuilding SelectedBuilding { get { return DataManager.ClimateBuildingPrefabs.GetBuildingPrefab(selectionIndex) as ClimateBuilding; } }
+        private ClimateBuildingsData SelectedBuildingData { get { return DataManager.ClimateBuildingData.dataArray[selectionIndex]; } }
 
-        public static Action<BuildingBase, BuildingsData> OnBuildingPlaced;
+        public static Action<BuildingBase, ClimateBuildingsData> OnBuildingPlaced;
         public static Action<bool> OnBuildStateToggled;
 
         private void OnEnable() {
@@ -23,12 +23,12 @@ namespace CityView.Construction {
             UI.BuildingSelectionWidget.OnBuildingSelected -= OnBuildingSelected;
 
             selectionIndex = -1;
-            if(OnBuildStateToggled != null)
+            if (OnBuildStateToggled != null)
                 OnBuildStateToggled(false);
         }
 
         protected override void Update() {
-            if (selectionIndex == -1) 
+            if (selectionIndex == -1)
                 return;
 
             RevertTileColors();
@@ -41,7 +41,7 @@ namespace CityView.Construction {
             base.Update();
         }
 
-        protected void OnBuildingSelected(int index) {
+        private void OnBuildingSelected(int index) {
             if (index == selectionIndex) {
                 selectionIndex = -1;
                 buildingGhost.gameObject.SetActive(false);
@@ -59,20 +59,23 @@ namespace CityView.Construction {
             if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if(CanBePlacedAtTiles(tilesHoveringOver))
+            if (CanBePlacedAtTiles(tilesHoveringOver))
                 Build(tilesHoveringOver);
         }
 
         protected override bool TileIsBuildable(Tile tile) {
-            return tile.Occupant == null && city.Terrain.GetWaterBlock(tile.Coordinates) == null;
+            return tile.Occupant == null;
         }
 
         protected override void Build(Tile[,] tiles) {
-            Building building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
+            ClimateBuilding building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
             AverageOutTerrain(tiles);
 
-            foreach (Tile tile in tiles)
+            foreach (Tile tile in tiles) { 
                 tile.SetOccupant(building);
+                TerrainBlock block = City.Instance.Terrain.GetTerrainBlock(tile.Coordinates);
+                block.SetExtraHeight(SelectedBuildingData.Level);
+            }
 
             Instantiate(placeEffectPrefab).Setup(building);
 

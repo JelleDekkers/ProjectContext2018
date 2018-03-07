@@ -4,34 +4,35 @@ using UnityEngine.UI;
 
 namespace CityView.UI {
 
-    public class BuildingListSelectionWidget : MonoBehaviour {
+    public class ClimateBuildingListSelectionInfoWidget : MonoBehaviour {
 
         [SerializeField] private Text nameTxt;
-        [SerializeField] private Text pollutionAmountTxt;
+        [SerializeField] private Text descriptionTxt;
         [SerializeField] private ProductAmountItem productItemPrefab;
         [SerializeField] private GridLayoutGroup costGrid;
-        [SerializeField] private GridLayoutGroup productionGrid;
-        [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
 
-        private Action DisableGameObject;
-
-        private void Start() {
-            DisableGameObject = delegate () { gameObject.SetActive(false); };
-            BuildingSelectionWidgetItem.OnPointerEnterEvent += UpdateInfo;
-            BuildingSelectionWidgetItem.OnPointerExitEvent += DisableGameObject;
-            DisableGameObject();
+        private void DisableGameObject() {
+            gameObject.SetActive(false);
         }
 
-        private void UpdateInfo(int id) {
+        public void SubscribeToBuildingWidget() {
+            BuildingSelectionWidgetItem.OnPointerEnterEvent += UpdateInfo;
+            BuildingSelectionWidgetItem.OnPointerExitEvent += DisableGameObject;
+        }
+
+        public void UnSubscribeToBuildingWidget() {
+            BuildingSelectionWidgetItem.OnPointerEnterEvent -= UpdateInfo;
+            BuildingSelectionWidgetItem.OnPointerExitEvent -= DisableGameObject;
+        }
+
+        private void UpdateInfo(int id, System.Object data) {
+            ClimateBuildingsData selectedBuildingData = data as ClimateBuildingsData;
+
             gameObject.SetActive(true);
             costGrid.transform.RemoveChildren();
-            productionGrid.transform.RemoveChildren();
-
-            BuildingsData selectedBuildingData = DataManager.BuildingData.dataArray[id];
             nameTxt.text = selectedBuildingData.Name;
-            pollutionAmountTxt.text = selectedBuildingData.Pollution.ToString();
-            productionTime.text = selectedBuildingData.Productiontime.ToString();
+            descriptionTxt.text = selectedBuildingData.Description;
             
             // cost:
             Sprite sprite;
@@ -44,18 +45,6 @@ namespace CityView.UI {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourcecost[i]);
                 Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Resourcecostamount[i]);
             }
-
-            // production:
-            if (selectedBuildingData.Moneyoutput > 0) {
-                sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Moneyoutput);
-            }
-
-            for (int i = 0; i < selectedBuildingData.Resourceoutput.Length; i++) {
-                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourceoutput[i]);
-                Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Resourceoutputamount[i]);
-            }
-
         }
 
         private void OnDestroy() {

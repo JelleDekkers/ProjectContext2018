@@ -15,6 +15,7 @@ namespace CityView {
 
         private void Start() {
             Construction.BuildMode.OnBuildStateToggled += ToggleActiveState;
+            Construction.BuildModeClimateBuildings.OnBuildStateToggled += ToggleActiveState;
         }
 
         private void ToggleActiveState(bool toggle) {
@@ -37,6 +38,7 @@ namespace CityView {
 
         private void OnDestroy() {
             Construction.BuildMode.OnBuildStateToggled -= ToggleActiveState;
+            Construction.BuildModeClimateBuildings.OnBuildStateToggled -= ToggleActiveState;
         }
     }
 }

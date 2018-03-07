@@ -14,4 +14,8 @@ MonoBehaviour:
   resourcesData: {fileID: 11400000, guid: cfd55f95434f6294abb6b66d2af1e025, type: 2}
   resourcePrefabs: {fileID: 11400000, guid: 5a6d9e4cd8a27ba48b0d44be01d2a91b, type: 2}
   buildingData: {fileID: 11400000, guid: f74bc480708e3cb4e8fdf8353c61dc22, type: 2}
-  buildingPrefabs: {fileID: 11400000, guid: 758b9d00ad10dde49b51098dfe467175, type: 2}
+  buildingPrefabs: {fileID: 11400000, guid: 87575c2568ec71246a56f25561b245c3, type: 2}
+  climateBuildingData: {fileID: 11400000, guid: 0adc23212ba3f6445a47cfe6f96ee947,
+    type: 2}
+  climateBuildingPrefabs: {fileID: 11400000, guid: 1b487b79094cfdd4595000b45ce8244e,
+    type: 2}

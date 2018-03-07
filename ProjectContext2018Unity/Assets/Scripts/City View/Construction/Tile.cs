@@ -8,7 +8,7 @@ namespace CityView.Construction {
 
         public static readonly Vector3 SIZE = new Vector3(1, 0.1f, 1);
 
-        public Building Occupant { get; private set; }
+        public BuildingBase Occupant { get; private set; }
         public IntVector2 Coordinates { get; private set; }
         public bool IsUnderWater { get; private set; }
 
@@ -21,7 +21,7 @@ namespace CityView.Construction {
             HideTile();
         }
 
-        public void SetOccupant(Building building) {
+        public void SetOccupant(BuildingBase building) {
             Occupant = building;
         }
 

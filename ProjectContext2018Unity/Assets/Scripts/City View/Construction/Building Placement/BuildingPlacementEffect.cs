@@ -14,7 +14,7 @@ namespace CityView.Construction {
 
         private Transform buildingMeshRoot;
 
-        public void Setup(Building building) {
+        public void Setup(BuildingBase building) {
             buildingMeshRoot = building.transform;
             transform.position = building.transform.position;
             StartCoroutine(DropEffect());

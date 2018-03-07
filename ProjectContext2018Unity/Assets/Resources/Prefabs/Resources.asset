@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce4e36d19c1c9240afd465e2e24989a, type: 3}
-  m_Name: Resource Prefabs
+  m_Name: Resources
   m_EditorClassIdentifier: 
   fallbackSprite: {fileID: 21300000, guid: 43d9c0b08619226468b813bb56bf4107, type: 3}
   moneySprite: {fileID: 21300000, guid: 76815f7667dfbc84f848b1b4ef8bf9f1, type: 3}

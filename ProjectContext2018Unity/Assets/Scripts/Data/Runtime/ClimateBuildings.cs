@@ -38,7 +38,7 @@ public class ClimateBuildings : ScriptableObject
     //
     // Write a proper query methods for retrieving data.
     //
-    //public SpecialBuildingsData FindByKey(string key)
+    //public ClimateBuildingsData FindByKey(string key)
     //{
     //    return Array.Find(dataArray, d => d.Key == key);
     //}

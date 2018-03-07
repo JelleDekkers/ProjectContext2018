@@ -9,10 +9,10 @@ namespace CityView.Construction {
         [SerializeField]
         private float alphaValue = 0.2f;
 
-        private Building ghost;
-        private Building building;
+        private BuildingBase ghost;
+        private BuildingBase building;
 
-        public void Setup(Building prefab) {
+        public void Setup(BuildingBase prefab) {
             if (ghost != null)
                 Destroy(ghost.gameObject);
 

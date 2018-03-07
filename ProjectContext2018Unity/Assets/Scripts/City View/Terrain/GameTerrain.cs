@@ -26,7 +26,6 @@ namespace CityView.Terrain {
         [SerializeField] private float waterStartingHeight = 2;
 
         private void CleanUp(Object[] grid, Transform parent) {
-            Transform[] childs = parent.GetComponentsInChildren<Transform>();
             for (int i = parent.childCount - 1; i >= 0; i--)
                 DestroyImmediate(parent.GetChild(i).gameObject);
             grid = null;

@@ -4,7 +4,7 @@ using UnityEngine;
 using CityView.Construction;
 
 namespace CityView {
-    public class BuildingBase : MonoBehaviour {
+    public abstract class BuildingBase : MonoBehaviour {
 
         protected IntVector2? size;
         public IntVector2 Size {
@@ -16,6 +16,10 @@ namespace CityView {
         }
 
         public Tile[,] tilesStandingOn;
+
+        public abstract void Init(System.Object data, Tile[,] tilesStandingOn);
+        public abstract void Setup();
+        public abstract void ToggleBuildingEffects(bool toggle);
 
         public IntVector2 CalculateTileSize() {
             IntVector2 calcSize = IntVector2.Zero;

@@ -32,4 +32,12 @@ public class ClimateBuildingsData
   Climate climate;
   public Climate Climate { get {return climate; } set { climate = value;} }
   
+  [SerializeField]
+  int level;
+  public int Level { get {return level; } set { level = value;} }
+  
+  [SerializeField]
+  string description;
+  public string Description { get {return description; } set { description = value;} }
+  
 }

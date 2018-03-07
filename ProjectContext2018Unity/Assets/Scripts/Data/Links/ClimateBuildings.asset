@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9c153ebe126abb4fa791d12e622ea09, type: 3}
-  m_Name: SpecialBuildings
+  m_Name: ClimateBuildings
   m_EditorClassIdentifier: 
   SheetName: Game Database
-  WorksheetName: SpecialBuildings
+  WorksheetName: ClimateBuildings
   dataArray:
   - id: 0
     name: Small Dike
@@ -20,15 +20,21 @@ MonoBehaviour:
     resourcecost: 04000000
     resourcecostamount: 05000000
     climate: 1
+    level: 1
+    description: Stops a small amount of water
   - id: 1
     name: Medium Dike
     moneycost: 200
     resourcecost: 0200000004000000
     resourcecostamount: 0a0000000a000000
     climate: 1
+    level: 2
+    description: Stops a medium amount of water
   - id: 2
     name: Large Dike
     moneycost: 300
     resourcecost: 020000000400000005000000
     resourcecostamount: 0a0000000a0000000a000000
     climate: 1
+    level: 3
+    description: Stops a large amount of water
