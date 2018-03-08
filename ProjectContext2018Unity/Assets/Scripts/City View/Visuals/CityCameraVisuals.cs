@@ -25,8 +25,8 @@ namespace CityView.Visuals
         private void InitVisuals()
         {
             Color cameraFillColor;
-            cameraFillColor = city.Type.GetClimateCameraFillColor();
-            mainCam.backgroundColor = cameraFillColor;
+            //cameraFillColor = city.ClimateType.GetClimateCameraFillColor();
+            //mainCam.backgroundColor = cameraFillColor;
         }
     }
 }

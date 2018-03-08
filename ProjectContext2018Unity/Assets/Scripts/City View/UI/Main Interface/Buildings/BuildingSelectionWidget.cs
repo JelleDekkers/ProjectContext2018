@@ -16,15 +16,21 @@ namespace CityView.UI {
         public void FillGridBuildingData() {
             contentParent.RemoveChildren();
             gameObject.SetActive(true);
-            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++)
-                Instantiate(itemPrefab, contentParent).Init(i, buildings, DataManager.BuildingData.dataArray[i]);
+            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
+                BuildingsData data = DataManager.BuildingData.dataArray[i];
+                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
+                    Instantiate(itemPrefab, contentParent).Init(i, buildings, data);
+            }
         }
 
         public void FillGridClimateBuildingData() {
             contentParent.RemoveChildren();
             gameObject.SetActive(true);
-            for (int i = 0; i < DataManager.ClimateBuildingData.dataArray.Length; i++)
-                Instantiate(itemPrefab, contentParent).Init(i, climateBuildings, DataManager.ClimateBuildingData.dataArray[i]);
+            for (int i = 0; i < DataManager.ClimateBuildingData.dataArray.Length; i++) {
+                ClimateBuildingsData data = DataManager.ClimateBuildingData.dataArray[i];
+                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
+                    Instantiate(itemPrefab, contentParent).Init(i, climateBuildings, data);
+            }
         }
     }
 }

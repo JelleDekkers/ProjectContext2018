@@ -41,7 +41,7 @@ MonoBehaviour:
     name: ResourceCostAmount
     isEnable: 0
     isArray: 1
-  - type: 3
+  - type: 5
     name: MoneyInput
     isEnable: 0
     isArray: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     name: ResourceInputAmount
     isEnable: 0
     isArray: 1
-  - type: 3
+  - type: 5
     name: MoneyOutput
     isEnable: 0
     isArray: 0
@@ -69,8 +69,8 @@ MonoBehaviour:
     name: ProductionTime
     isEnable: 0
     isArray: 0
-  - type: 1
-    name: ClimateExclusivity
+  - type: 7
+    name: Climate
     isEnable: 0
     isArray: 0
   AccessCode: 

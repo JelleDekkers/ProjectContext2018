@@ -33,8 +33,8 @@ public class BuildingsData
   public int[] Resourcecostamount { get {return resourcecostamount; } set { resourcecostamount = value;} }
   
   [SerializeField]
-  int moneyinput;
-  public int Moneyinput { get {return moneyinput; } set { moneyinput = value;} }
+  float moneyinput;
+  public float Moneyinput { get {return moneyinput; } set { moneyinput = value;} }
   
   [SerializeField]
   int[] resourceinput = new int[0];
@@ -45,8 +45,8 @@ public class BuildingsData
   public int[] Resourceinputamount { get {return resourceinputamount; } set { resourceinputamount = value;} }
   
   [SerializeField]
-  int moneyoutput;
-  public int Moneyoutput { get {return moneyoutput; } set { moneyoutput = value;} }
+  float moneyoutput;
+  public float Moneyoutput { get {return moneyoutput; } set { moneyoutput = value;} }
   
   [SerializeField]
   int[] resourceoutput = new int[0];
@@ -61,7 +61,7 @@ public class BuildingsData
   public float Productiontime { get {return productiontime; } set { productiontime = value;} }
   
   [SerializeField]
-  string climateexclusivity;
-  public string Climateexclusivity { get {return climateexclusivity; } set { climateexclusivity = value;} }
+  Climate climate;
+  public Climate Climate { get {return climate; } set { climate = value;} }
   
 }

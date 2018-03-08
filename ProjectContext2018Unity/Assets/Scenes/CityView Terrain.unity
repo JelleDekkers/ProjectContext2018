@@ -60172,6 +60172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c38fde56eae4843ae22ea81529277a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  climateType: 1
   tilesGrid: {fileID: 1573424868}
   terrain: {fileID: 1439005636}
 --- !u!114 &1654829777

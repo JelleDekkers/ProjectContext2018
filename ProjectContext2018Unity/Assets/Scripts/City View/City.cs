@@ -15,16 +15,8 @@ namespace CityView {
                 return instance; }
         }
 
-        private CityType type;
-        public CityType Type {
-            get {
-                return type;
-            }
-
-            private set {
-                type = value;
-            }
-        }
+        [SerializeField] private Climate climateType;
+        public Climate ClimateType { get { return climateType; } }
 
         [SerializeField] private CityGrid tilesGrid;
         public CityGrid TilesGrid { get { return tilesGrid; } }
@@ -36,7 +28,7 @@ namespace CityView {
             instance = this;
 
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
-            Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
+            //Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
             //Type.DebugCall();
         }       
     }
