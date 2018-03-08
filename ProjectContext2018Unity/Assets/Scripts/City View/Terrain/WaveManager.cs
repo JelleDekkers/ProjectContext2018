@@ -23,7 +23,7 @@ namespace CityView.Terrain {
                     continue;
                 float height = Mathf.Sin(-Time.time * waveSpeed + waterBlock.Coordinates.z) * waveModifier;
                 height += Mathf.PerlinNoise(waterBlock.Coordinates.x, waterBlock.Coordinates.z + Mathf.Sin(Time.time * 0.1f / (waterBlock.Coordinates.z + 0.1f)) * Mathf.Cos(Time.time * 0.1f / (waterBlock.Coordinates.z + 0.1f))) * waveNoiseStrength;
-                waterBlock.ChangeHeight(height);
+                waterBlock.AdjustScaleToWaves(height);
             }
         }
     }

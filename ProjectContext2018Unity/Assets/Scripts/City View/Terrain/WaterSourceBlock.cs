@@ -21,6 +21,7 @@ namespace CityView.Terrain {
         public TerrainBlock BlockBeneath { get { return blockBeneath; } }
 
         [SerializeField] private float newWaterBlockCreationTimer = 2;
+        [SerializeField] private float scaleIncreasePerDegree = 0.01f;
 
         [HideInInspector]
         public GameTerrain generator;
@@ -33,9 +34,11 @@ namespace CityView.Terrain {
         [HideInInspector]
         public new Renderer renderer;
 
+        private Coroutine heightCoroutine;
+
         private void Start() {
-            WaterLevel.OnLevelIncreased += IncreaseHeight;
-            blockBeneath.OnHeightChange += UpdateHeight;
+            WorldTemperature.OnWorldTemperatureChanged += AddHeightToTemperature;
+            blockBeneath.OnHeightChange += CheckBlockBeneathSize;
 
             StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
 
@@ -61,17 +64,46 @@ namespace CityView.Terrain {
             startingheight = height;
         }
 
-        private void UpdateHeight(float blockBeneathNewHeight) {
-            if (blockBeneathNewHeight >= currentHeight + transform.position.y)
-                Destroy(gameObject);
+        private void SetHeight(float height) {
+            if (UnityEditor.EditorApplication.isPlaying) {
+                if (heightCoroutine != null)
+                    StopCoroutine(heightCoroutine);
+                heightCoroutine = StartCoroutine(SetHeightCoroutine(height));
+                StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
+            } else {
+                transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
+                currentHeight = height;
+            }
         }
 
-        private void SetHeight(float height) {
-            transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
-            currentHeight = height;
+        private IEnumerator SetHeightCoroutine(float target) {
+            float height = currentHeight;
+            float time = 1;
+            float timer = 0;
 
-            if(UnityEditor.EditorApplication.isPlaying)
-                StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
+            while(timer < time) {
+                currentHeight = Mathf.Lerp(height, target, time / timer);
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        private void AddHeightToTemperature(float amount) {
+            SetHeight(currentHeight + (amount * scaleIncreasePerDegree));
+        }
+
+        public void AdjustScaleToWaves(float amount) {
+            if (currentHeight + amount > 0)
+                renderer.enabled = true;
+            else
+                renderer.enabled = false;
+
+            transform.localScale = new Vector3(transform.localScale.x, currentHeight + amount, transform.localScale.z);
+        }
+
+        private void CheckBlockBeneathSize(float blockBeneathNewHeight) {
+            if (blockBeneathNewHeight >= currentHeight + transform.position.y)
+                Destroy(gameObject);
         }
 
         private void CheckForPossibleNewWaterBlock() {
@@ -98,16 +130,6 @@ namespace CityView.Terrain {
             CheckForPossibleNewWaterBlock();
         }
 
-        private IEnumerator CreateNewWaterBlockCoroutine(TerrainBlock neighbourTerrainBlock) {
-            float timer = 0;
-            float time = 1;
-
-            while (timer < time) {
-                timer += Time.deltaTime;
-                yield return null;
-            }
-        }
-
         private void CreateNewWaterBlock(TerrainBlock neighbourTerrainBlock) {
             WaterSourceBlock waterBlock = Instantiate(this);
 
@@ -125,19 +147,6 @@ namespace CityView.Terrain {
             generator.AddToWaterGrid(waterBlock);
         }
 
-        private void IncreaseHeight(float amount) {
-            SetHeight(currentHeight + amount);
-        }
-
-        public void ChangeHeight(float amount) {
-            if (currentHeight + amount > 0)
-                renderer.enabled = true;
-            else
-                renderer.enabled = false;
-
-            transform.localScale = new Vector3(transform.localScale.x, currentHeight + amount, transform.localScale.z);
-        }
-
         private void OnDestroy() {
             if(OnDestroyEvent != null)
                 OnDestroyEvent();
@@ -151,8 +160,8 @@ namespace CityView.Terrain {
             try {
                 City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
             } catch(Exception e) { }
-            WaterLevel.OnLevelIncreased -= IncreaseHeight;
-            blockBeneath.OnHeightChange -= UpdateHeight;
+            WorldTemperature.OnWorldTemperatureChanged += AddHeightToTemperature;
+            blockBeneath.OnHeightChange -= CheckBlockBeneathSize;
         }
     }
 }
