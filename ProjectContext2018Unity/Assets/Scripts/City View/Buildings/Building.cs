@@ -36,11 +36,11 @@ namespace CityView {
                 t.OnWaterStateChanged += CheckWaterState;
         }
 
-        private void OnDisable() {
+        protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
         }
 
-        private void OnEnable() {
+        protected virtual void OnEnable() {
             if(ProductionCycle != null)
                 ToggleBuildingEffects(true);
         }
