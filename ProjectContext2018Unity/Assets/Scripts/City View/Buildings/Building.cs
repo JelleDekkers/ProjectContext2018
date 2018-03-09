@@ -17,12 +17,9 @@ namespace CityView {
 
         private Animator animator;
         private ParticleSystem[] particles;
+        private bool effectsCached;
 
-        private void Awake() {
-            Setup();
-        }
-
-        public override void Setup() {
+        public override void CacheEffects() {
             animator = GetComponent<Animator>();
             particles = GetComponentsInChildren<ParticleSystem>();
         }
@@ -88,13 +85,19 @@ namespace CityView {
         }
 
         public override void ToggleBuildingEffects(bool toggle) {
-            if(animator != null)
+            if (!effectsCached)
+                CacheEffects();
+
+            if (animator != null) 
                 animator.enabled = toggle;
-            foreach (ParticleSystem p in particles) {
-                if (toggle)
-                    p.Play();
-                else
-                    p.Stop();
+
+            if (particles != null) {
+                foreach (ParticleSystem p in particles) {
+                    if (toggle)
+                        p.Play();
+                    else
+                        p.Stop();
+                }
             }
         }
 

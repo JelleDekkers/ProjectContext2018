@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d23ea419458494ba4b6be6294ab916, type: 3}
   m_Name: World Temperature
   m_EditorClassIdentifier: 
-  temperatureIncreasePerPollution: 0.1
+  temperatureIncreasePerPollution: 0.001
   startingTemperature: 22
-  currentTemperature: 32
+  currentTemperature: 23.060024

@@ -12809,8 +12809,8 @@ GameObject:
   m_Component:
   - component: {fileID: 369607371}
   - component: {fileID: 369607373}
-  - component: {fileID: 369607372}
   - component: {fileID: 369607374}
+  - component: {fileID: 369607372}
   m_Layer: 5
   m_Name: Tooltip Widget
   m_TagString: Untagged
@@ -12833,8 +12833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240, y: 390}
-  m_SizeDelta: {x: 130.93, y: 23.71}
+  m_AnchoredPosition: {x: -249.68, y: 390}
+  m_SizeDelta: {x: 111.58, y: 23.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369607372
 MonoBehaviour:
@@ -49865,7 +49865,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1439005637}
   - component: {fileID: 1439005636}
-  - component: {fileID: 1439005635}
   - component: {fileID: 1439005634}
   m_Layer: 0
   m_Name: Terrain
@@ -49889,18 +49888,6 @@ MonoBehaviour:
   waveModifier: 0.3
   waveSpeed: 0.6
   waveNoiseStrength: 0.1
---- !u!114 &1439005635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1439005632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f631c2bf2464fc14ab5a206f5bd501b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  increaseAmount: 0.1
 --- !u!114 &1439005636
 MonoBehaviour:
   m_ObjectHideFlags: 0

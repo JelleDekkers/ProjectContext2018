@@ -9,19 +9,17 @@ namespace CityView.Construction {
         [SerializeField]
         private float alphaValue = 0.2f;
 
-        private BuildingBase ghost;
         private BuildingBase building;
 
         public void Setup(BuildingBase prefab) {
-            if (ghost != null)
-                Destroy(ghost.gameObject);
+            if (building != null)
+                Destroy(building.gameObject);
 
-            building = prefab;
-            ghost = Instantiate(prefab, transform.position, Quaternion.identity, transform);
-            ghost.name = "Ghost " + ghost.name;
-            ghost.enabled = false;
-            ghost.Setup();
-            ghost.ToggleBuildingEffects(false);
+            building = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            building.name = "Ghost " + building.name;
+            building.CacheEffects();
+            building.enabled = false;
+            building.ToggleBuildingEffects(false);
         }
 
         public void UpdatePosition(Tile[,] tilesHoveringOver) {
@@ -41,18 +39,18 @@ namespace CityView.Construction {
         }
 
         private void OnInValidMousePosition() {
-            ghost.gameObject.SetActive(false);
+            building.gameObject.SetActive(false);
         }
 
         private void OnValidMousePosition(Vector3 centre) {
-            if(!ghost.gameObject.activeInHierarchy)
-                ghost.gameObject.SetActive(true);
+            if(!building.gameObject.activeInHierarchy)
+                building.gameObject.SetActive(true);
 
-            ghost.transform.position = new Vector3(centre.x, centre.y, centre.z);
+            building.transform.position = new Vector3(centre.x, centre.y, centre.z);
         }
 
         private void MakeTransparent() {
-            Renderer[] renderers = ghost.GetComponentsInChildren<Renderer>();
+            Renderer[] renderers = building.GetComponentsInChildren<Renderer>();
             Color c;
 
             foreach(Renderer r in renderers) {

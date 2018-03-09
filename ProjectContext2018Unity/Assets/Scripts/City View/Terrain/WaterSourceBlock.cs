@@ -156,10 +156,6 @@ namespace CityView.Terrain {
                     Destroy(block.gameObject);
             }
 
-            // TODO: nettere manier:
-            try {
-                City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
-            } catch(Exception e) { }
             WorldTemperature.OnWorldTemperatureChanged += AddHeightToTemperature;
             blockBeneath.OnHeightChange -= CheckBlockBeneathSize;
         }

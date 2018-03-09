@@ -18,7 +18,7 @@ namespace CityView {
         public Tile[,] tilesStandingOn;
 
         public abstract void Init(System.Object data, Tile[,] tilesStandingOn);
-        public abstract void Setup();
+        public abstract void CacheEffects();
         public abstract void ToggleBuildingEffects(bool toggle);
 
         public virtual void OnDemolishStart() { }

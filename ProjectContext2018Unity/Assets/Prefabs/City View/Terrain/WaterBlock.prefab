@@ -130,6 +130,7 @@ MonoBehaviour:
   currentHeight: 0
   blockBeneath: {fileID: 0}
   newWaterBlockCreationTimer: 2
+  scaleIncreasePerDegree: 0.001
   generator: {fileID: 0}
   neighbours:
   - {fileID: 0}
@@ -138,3 +139,4 @@ MonoBehaviour:
   - {fileID: 0}
   children: []
   flowHeightDecrease: 0.02
+  renderer: {fileID: 0}

@@ -23,7 +23,7 @@ namespace CityView {
             }
         }
 
-        public override void Setup() { }
+        public override void CacheEffects() { }
 
         public override void ToggleBuildingEffects(bool toggle) { }
     }
