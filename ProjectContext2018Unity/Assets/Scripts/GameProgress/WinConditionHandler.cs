@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinConditionHandler : MonoBehaviour {
-    
-	// Use this for initialization
-	private void Start () {
-    }
+namespace GameProgress {
+    public class WinConditionHandler : MonoBehaviour {
 
-    // Update is called once per frame
-    private void Update () {
-		
-	}
+        // Use this for initialization
+        private void Start() {
+        }
 
-    private void CheckWinCondition() {
-        if(/*WIN CONDITIONS MET*/true) {
-            Debug.Log("GAME WON");
-            // IMPLEMENT WIN GAME METHOD HERE
+        // Update is called once per frame
+        private void Update() {
+
+        }
+
+        private void CheckWinCondition() {
+            if (/*WIN CONDITIONS MET*/true) {
+                Debug.Log("GAME WON");
+                // IMPLEMENT WIN GAME METHOD HERE
+            }
         }
     }
 }
