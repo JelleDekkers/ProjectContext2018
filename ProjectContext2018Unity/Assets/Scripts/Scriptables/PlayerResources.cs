@@ -46,6 +46,11 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
             AddResources(result.producedResources);
     }
 
+    public void ProcessTradeOffer(TradeOffer tradeOffer) {
+            RemoveMoney(tradeOffer.cost);
+            AddResource(tradeOffer.productId, tradeOffer.amount);
+    }
+
     #region add resource
     public void AddResources(Dictionary<int, int> resources) {
         foreach (KeyValuePair<int, int> pair in resources) {

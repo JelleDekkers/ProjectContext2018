@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CityView.UI {
+namespace UI {
 
     public class ProductAmountItem : MonoBehaviour {
 
