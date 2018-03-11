@@ -15,58 +15,254 @@ MonoBehaviour:
   WorksheetName: Buildings
   dataArray:
   - id: 0
-    name: Coal Factory
+    name: Coal Plant
     pollution: 20
-    moneycost: 100
-    resourcecost: 00000000
-    resourcecostamount: 00000000
+    moneycost: 1000
+    resourcecost: 
+    resourcecostamount: 
     moneyinput: 0
     resourceinput: 02000000
-    resourceinputamount: 05000000
-    moneyoutput: 5
+    resourceinputamount: 4b000000
+    moneyoutput: 50
     resourceoutput: 00000000
-    resourceoutputamount: 05000000
-    productiontime: 10
-    climateexclusivity: None
+    resourceoutputamount: f4010000
+    productiontime: 2.5
+    climate: 0
   - id: 1
-    name: Windmill
-    pollution: 0
-    moneycost: 200
-    resourcecost: 00000000
-    resourcecostamount: 19000000
+    name: Butchery
+    pollution: 10
+    moneycost: 1500
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 100
+    resourceoutput: 01000000
+    resourceoutputamount: 90010000
+    productiontime: 5
+    climate: 0
+  - id: 2
+    name: Sawmill
+    pollution: 5
+    moneycost: 1000
+    resourcecost: 
+    resourcecostamount: 
     moneyinput: 0
     resourceinput: 
     resourceinputamount: 
     moneyoutput: 50
-    resourceoutput: 00000000
-    resourceoutputamount: 02000000
+    resourceoutput: 02000000
+    resourceoutputamount: c8000000
     productiontime: 5
-    climateexclusivity: Sea
-  - id: 2
-    name: Solar Panel
-    pollution: 5
-    moneycost: 100
-    resourcecost: 0000000001000000
-    resourcecostamount: 0500000005000000
+    climate: 0
+  - id: 3
+    name: Mine
+    pollution: 20
+    moneycost: 750
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 200
+    resourceoutput: 03000000
+    resourceoutputamount: fa000000
+    productiontime: 2.5
+    climate: 0
+  - id: 4
+    name: Digging Facility
+    pollution: 20
+    moneycost: 500
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 
+    resourceinputamount: 
+    moneyoutput: 75
+    resourceoutput: 04000000
+    resourceoutputamount: 2c010000
+    productiontime: 4
+    climate: 0
+  - id: 5
+    name: Electronics Factory
+    pollution: 20
+    moneycost: 1000
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 03000000
+    resourceinputamount: 64000000
+    moneyoutput: 10
+    resourceoutput: 05000000
+    resourceoutputamount: c8000000
+    productiontime: 25
+    climate: 2
+  - id: 6
+    name: Plastic Factory
+    pollution: 20
+    moneycost: 1000
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 04000000
+    resourceinputamount: 7d000000
+    moneyoutput: 10
+    resourceoutput: 06000000
+    resourceoutputamount: c8000000
+    productiontime: 3
+    climate: 1
+  - id: 7
+    name: Ore Smelting
+    pollution: 10
+    moneycost: 900
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 03000000
+    resourceinputamount: fa000000
+    moneyoutput: 20
+    resourceoutput: 07000000
+    resourceoutputamount: fa000000
+    productiontime: 5
+    climate: 3
+  - id: 8
+    name: House
+    pollution: 10
+    moneycost: 1000
+    resourcecost: 02000000
+    resourcecostamount: 32000000
+    moneyinput: 0
+    resourceinput: 0000000001000000
+    resourceinputamount: 580200002c010000
+    moneyoutput: 1000
+    resourceoutput: 
+    resourceoutputamount: 
+    productiontime: 5
+    climate: 0
+  - id: 9
+    name: Wind Mill
+    pollution: 0
+    moneycost: 10000
+    resourcecost: 050000000600000007000000
+    resourcecostamount: 08c0be00dc050000
     moneyinput: 0
     resourceinput: 
     resourceinputamount: 
     moneyoutput: 0
-    resourceoutput: 0500000006000000
-    resourceoutputamount: 0500000002000000
+    resourceoutput: 00000000
+    resourceoutputamount: ee020000
+    productiontime: 2.5
+    climate: 0
+  - id: 10
+    name: Hyrdroponic Farm
+    pollution: 0
+    moneycost: 15000
+    resourcecost: 050000000600000007000000
+    resourcecostamount: b00400004c040000aa050000
+    moneyinput: 0
+    resourceinput: 00000000
+    resourceinputamount: 96000000
+    moneyoutput: 0
+    resourceoutput: 01000000
+    resourceoutputamount: 58020000
     productiontime: 5
-    climateexclusivity: Desert
-  - id: 3
-    name: House
-    pollution: 20
-    moneycost: 20
-    resourcecost: 
-    resourcecostamount: 
+    climate: 0
+  - id: 11
+    name: 'Lumberyard '
+    pollution: 0
+    moneycost: 4000
+    resourcecost: 05000000
+    resourcecostamount: ee020000
+    moneyinput: 0
+    resourceinput: 00000000
+    resourceinputamount: 19000000
+    moneyoutput: 0
+    resourceoutput: 02000000
+    resourceoutputamount: 2c010000
+    productiontime: 5
+    climate: 0
+  - id: 12
+    name: Recyling Plant
+    pollution: 0
+    moneycost: 5000
+    resourcecost: 06000000
+    resourcecostamount: ee020000
+    moneyinput: 0
+    resourceinput: 00000000
+    resourceinputamount: 64000000
+    moneyoutput: 0
+    resourceoutput: 03000000
+    resourceoutputamount: 77010000
+    productiontime: 2.5
+    climate: 0
+  - id: 13
+    name: Soil Extraction Facility
+    pollution: 0
+    moneycost: 7000
+    resourcecost: 07000000
+    resourcecostamount: ee020000
+    moneyinput: 0
+    resourceinput: 00000000
+    resourceinputamount: 64000000
+    moneyoutput: 0
+    resourceoutput: 04000000
+    resourceoutputamount: c2010000
+    productiontime: 4
+    climate: 0
+  - id: 14
+    name: Silicon Factory
+    pollution: 0
+    moneycost: 8000
+    resourcecost: 02000000
+    resourcecostamount: e8030000
+    moneyinput: 0
+    resourceinput: 03000000
+    resourceinputamount: 96000000
+    moneyoutput: 0
+    resourceoutput: 05000000
+    resourceoutputamount: 2c010000
+    productiontime: 2.5
+    climate: 2
+  - id: 15
+    name: Plastic Processing
+    pollution: 0
+    moneycost: 10000
+    resourcecost: 03000000
+    resourcecostamount: e8030000
+    moneyinput: 0
+    resourceinput: 04000000
+    resourceinputamount: fa000000
+    moneyoutput: 0
+    resourceoutput: 06000000
+    resourceoutputamount: 2c010000
+    productiontime: 3
+    climate: 1
+  - id: 16
+    name: Powder Metallurgy
+    pollution: 0
+    moneycost: 10000
+    resourcecost: 04000000
+    resourcecostamount: e8030000
+    moneyinput: 0
+    resourceinput: 03000000
+    resourceinputamount: 77010000
+    moneyoutput: 0
+    resourceoutput: 07000000
+    resourceoutputamount: 77010000
+    productiontime: 5
+    climate: 3
+  - id: 17
+    name: Eco-House
+    pollution: 0
+    moneycost: 12000
+    resourcecost: 02000000
+    resourcecostamount: e8030000
     moneyinput: 0
     resourceinput: 0000000001000000
-    resourceinputamount: 0500000005000000
-    moneyoutput: 200
+    resourceinputamount: 2c0100002c010000
+    moneyoutput: 1500
     resourceoutput: 
     resourceoutputamount: 
-    productiontime: 25
-    climateexclusivity: None
+    productiontime: 5
+    climate: 0
