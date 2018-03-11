@@ -16,6 +16,7 @@ namespace CityView.UI {
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Selectable selectable;
         [SerializeField] private Image productionCycleImg;
+        [SerializeField] private Material overlayMaterial;
 
         private Building selectedBuilding;
 
@@ -53,40 +54,33 @@ namespace CityView.UI {
             nameTxt.text = selectedBuilding.data.Name;
             pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
 
-            InitInput();
-            InitOutput();
+            FillGridValues(inputGrid, selectedBuilding.data.Moneyinput, selectedBuilding.data.Resourceinput, selectedBuilding.data.Resourceinputamount);
+            FillGridValues(outputGrid, selectedBuilding.data.Moneyoutput, selectedBuilding.data.Resourceoutput, selectedBuilding.data.Resourceoutputamount);
         }
 
-        private void InitInput() {
-            inputGrid.transform.RemoveChildren();
+        private void FillGridValues(GridLayoutGroup grid, float money, int[] resources, int[] resourcesAmount) {
+            grid.transform.RemoveChildren();
             Sprite sprite;
-            if (selectedBuilding.data.Moneyinput > 0) {
+            if (money > 0) {
                 sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(resourceItemPrefab, inputGrid.transform).Init(sprite, selectedBuilding.data.Moneyinput);
+                ProductAmountItem item = Instantiate(resourceItemPrefab, grid.transform);
+                item.Init(sprite, money);
+                item.SetMaterial(overlayMaterial);
             }
 
-            for (int i = 0; i < selectedBuilding.data.Resourceinput.Length; i++) {
-                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceinput[i]);
-                Instantiate(resourceItemPrefab, inputGrid.transform).Init(sprite, selectedBuilding.data.Resourceinputamount[i]);
-            }
-        }
-
-        private void InitOutput() {
-            outputGrid.transform.RemoveChildren();
-            Sprite sprite;
-            if (selectedBuilding.data.Moneyoutput > 0) {
-                sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Moneyoutput);
-            }
-
-            for (int i = 0; i < selectedBuilding.data.Resourceoutput.Length; i++) {
-                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuilding.data.Resourceoutput[i]);
-                Instantiate(resourceItemPrefab, outputGrid.transform).Init(sprite, selectedBuilding.data.Resourceoutputamount[i]);
+            for (int i = 0; i < resources.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(resources[i]);
+                ProductAmountItem item = Instantiate(resourceItemPrefab, grid.transform);
+                item.Init(sprite, resourcesAmount[i]);
+                item.SetMaterial(overlayMaterial);
             }
         }
 
         public void ToggleProduction() {
-            selectedBuilding.enabled = !selectedBuilding.enabled;
+            if (!selectedBuilding.enabled && !selectedBuilding.TilesStandingOnAreUnderWater())
+                selectedBuilding.enabled = true;
+            else
+                selectedBuilding.enabled = false;
         }
 
         public void DestroySelectedBuilding() {

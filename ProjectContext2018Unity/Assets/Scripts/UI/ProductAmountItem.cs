@@ -14,5 +14,10 @@ namespace CityView.UI {
             productImg.sprite = productSprite;
             amountTxt.text = Mathf.RoundToInt(amount).ToString();
         }
+
+        public void SetMaterial(Material mat) {
+            productImg.material = mat;
+            amountTxt.material = mat;
+        }
     }
 }

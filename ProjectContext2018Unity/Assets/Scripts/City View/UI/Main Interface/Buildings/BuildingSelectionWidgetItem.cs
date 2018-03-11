@@ -10,9 +10,7 @@ namespace CityView.UI {
         [SerializeField] private Image img;
         [SerializeField] private Button button;
 
-        private int id;
-
-        public static Action<int> OnPointerEnterEvent;
+        public static Action<int, System.Object> OnPointerEnterEvent;
         public static Action OnPointerExitEvent;
 
         public bool buildable;
@@ -20,25 +18,28 @@ namespace CityView.UI {
         public bool hasResources;
         public float cost;
 
-        public void Init(int id) {
-            this.id = id;
-            img.sprite = DataManager.BuildingPrefabs.GetSprite(id);
+        private int id;
+        private System.Object data;
+
+        public void Init(int id, BuildingPrefabs prefab, System.Object data) {
+            this.data = data;
+            img.sprite = prefab.GetBuildingSprite(id);
             button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
-            button.interactable = Building.IsBuildable(id);
+            button.interactable = BuildingBase.IsBuildable(id);
             PlayerResources.OnResourceChanged += UpdateInteractableState;
             PlayerResources.OnMoneyChanged += UpdateInteractableState;
         }
 
         private void UpdateInteractableState(float money) {
-            button.interactable = Building.IsBuildable(id);
+            button.interactable = BuildingBase.IsBuildable(id);
         }
 
         private void UpdateInteractableState(int resourceId, int resourceAmount) {
-            button.interactable = Building.IsBuildable(id);
+            button.interactable = BuildingBase.IsBuildable(id);
         }
         
         public void OnPointerEnter(PointerEventData eventData) {
-            OnPointerEnterEvent(id);
+            OnPointerEnterEvent(id, data);
         }
 
         public void OnPointerExit(PointerEventData eventData) {

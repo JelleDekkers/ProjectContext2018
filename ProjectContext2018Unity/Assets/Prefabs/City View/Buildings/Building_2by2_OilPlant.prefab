@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4820690502036730}
   - component: {fileID: 95324965668297144}
   - component: {fileID: 114936663991949170}
-  m_Layer: 0
+  - component: {fileID: 65499682536628624}
+  m_Layer: 8
   m_Name: Building_2by2_OilPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,6 +298,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1117065056233862}
   m_Mesh: {fileID: 4300226, guid: d539bef51d6c75e4c8b2afb850b99041, type: 3}
+--- !u!65 &65499682536628624
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076400615600808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95324965668297144
 Animator:
   serializedVersion: 3
@@ -340,8 +353,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climateexclusivity: 
-  productionCycle:
-    timer: 0
 --- !u!198 &198594548498393696
 ParticleSystem:
   m_ObjectHideFlags: 1

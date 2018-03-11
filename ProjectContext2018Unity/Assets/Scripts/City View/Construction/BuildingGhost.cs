@@ -9,26 +9,25 @@ namespace CityView.Construction {
         [SerializeField]
         private float alphaValue = 0.2f;
 
-        private Transform ghost;
-        private Building building;
+        private BuildingBase building;
 
-        public void Setup(Building prefab) {
-            if (ghost != null)
-                Destroy(ghost.gameObject);
+        public void Setup(BuildingBase prefab) {
+            if (building != null)
+                Destroy(building.gameObject);
 
-            building = prefab;
-            ghost = Instantiate(prefab, transform.position, Quaternion.identity, transform).transform;
-            ghost.name = "Ghost " + ghost.name;
-
-            foreach (Component c in ghost.GetComponents(typeof(Component))) {
-                if (c.GetType() != typeof(Transform) && c.GetType() != typeof(MeshFilter) && c.GetType() != typeof(MeshRenderer))
-                    Destroy(c);
-            }
-
-            MakeTransparent();
+            building = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            building.name = "Ghost " + building.name;
+            building.CacheEffects();
+            building.enabled = false;
+            building.ToggleBuildingEffects(false);
         }
 
         public void UpdatePosition(Tile[,] tilesHoveringOver) {
+            if(tilesHoveringOver == null) {
+                OnInValidMousePosition();
+                return;
+            }
+
             foreach (Tile t in tilesHoveringOver) {
                 if (t == null) {
                     OnInValidMousePosition();
@@ -40,18 +39,18 @@ namespace CityView.Construction {
         }
 
         private void OnInValidMousePosition() {
-            ghost.gameObject.SetActive(false);
+            building.gameObject.SetActive(false);
         }
 
         private void OnValidMousePosition(Vector3 centre) {
-            if(!ghost.gameObject.activeInHierarchy)
-                ghost.gameObject.SetActive(true);
+            if(!building.gameObject.activeInHierarchy)
+                building.gameObject.SetActive(true);
 
-            ghost.transform.position = new Vector3(centre.x, 0, centre.z);
+            building.transform.position = new Vector3(centre.x, centre.y, centre.z);
         }
 
         private void MakeTransparent() {
-            Renderer[] renderers = ghost.GetComponentsInChildren<Renderer>();
+            Renderer[] renderers = building.GetComponentsInChildren<Renderer>();
             Color c;
 
             foreach(Renderer r in renderers) {

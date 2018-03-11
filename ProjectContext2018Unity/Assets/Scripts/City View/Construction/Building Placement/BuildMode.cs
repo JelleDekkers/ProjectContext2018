@@ -1,52 +1,47 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using CityView.Terrain;
 
 namespace CityView.Construction {
 
-    public class BuildMode : MonoBehaviour {
+    public class BuildMode : BuildModeBase {
 
-        [SerializeField] private BuildingGhost buildingGhost;
-        [SerializeField] private BuildingPlacementEffect placeEffectPrefab;
-        [SerializeField] private Transform buildingsParent;
-
-        private Tile[,] tilesHoveringOver;
-        private bool isHittingGrid;
-
-        private int selectionIndex = -1;
-        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuilding(selectionIndex); } }
+        private Building SelectedBuilding { get { return DataManager.BuildingPrefabs.GetBuildingPrefab(selectionIndex) as Building; } }
         private BuildingsData SelectedBuildingData { get { return DataManager.BuildingData.dataArray[selectionIndex]; } }
 
-        public static Action<Building, BuildingsData> OnBuildingPlaced;
+        public static Action<BuildingBase, BuildingsData> OnBuildingPlaced;
         public static Action<bool> OnBuildStateToggled;
 
-        private void Start() {
+        private void OnEnable() {
             UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
         }
 
-        private void OnDisable() {
-            if(buildingGhost != null)
-                buildingGhost.gameObject.SetActive(false);
-            RevertTileColors();
+        protected override void OnDisable() {
+            base.OnDisable();
+
+            UI.BuildingSelectionWidget.OnBuildingSelected -= OnBuildingSelected;
+
             selectionIndex = -1;
             if(OnBuildStateToggled != null)
                 OnBuildStateToggled(false);
         }
 
-        private void Update() {
+        protected override void Update() {
             if (selectionIndex == -1) 
                 return;
-            
-            RevertTileColors();
-            tilesHoveringOver = GetTilesAtPosition(RaycastHelper.GetMousePositionInScene(out isHittingGrid), new IntVector2(SelectedBuilding.Size));
-            HighlightUnbuildableTiles();
-            buildingGhost.UpdatePosition(tilesHoveringOver);
 
-            if (Input.GetMouseButtonDown(0))
-                OnMouseClick();
+            RevertTileColors();
+            tilesHoveringOver = GetTilesHoveringOver(SelectedBuilding.Size);
+            if (tilesHoveringOver != null) {
+                HighlightUnbuildableTiles();
+                buildingGhost.UpdatePosition(tilesHoveringOver);
+            }
+
+            base.Update();
         }
 
-        private void OnBuildingSelected(int index) {
+        protected void OnBuildingSelected(int index) {
             if (index == selectionIndex) {
                 selectionIndex = -1;
                 buildingGhost.gameObject.SetActive(false);
@@ -60,71 +55,38 @@ namespace CityView.Construction {
             }
         }
 
-        private void HighlightUnbuildableTiles() {
-            foreach(Tile t in tilesHoveringOver) {
-                if (t == null)
-                    continue;
-                else if(!TileIsBuildable(t))
-                    t.SetColorToUnbuildable();
-            }
-        }
-
-        private void RevertTileColors() {
-            if (tilesHoveringOver != null) {
-                foreach (Tile t in tilesHoveringOver) {
-                    if (t != null)
-                        t.ResetColor();
-                }
-            }
-        }
-
-        private void OnMouseClick() {
-            bool t;
-            Vector3 mousePos = RaycastHelper.GetMousePositionInScene(out t);
-
-            if (!isHittingGrid || EventSystem.current.IsPointerOverGameObject())
+        protected override void OnMouseClick() {
+            if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject())
                 return;
 
             if(CanBePlacedAtTiles(tilesHoveringOver))
                 Build(tilesHoveringOver);
         }
 
-        private bool CanBePlacedAtTiles(Tile[,] tiles) {
-            foreach(Tile t in tiles) {
-                if (t == null || !TileIsBuildable(t))
-                    return false;
-            }
-            return true;
+        protected override bool TileIsBuildable(Tile tile) {
+            return tile.Occupant == null && city.Terrain.GetWaterBlock(tile.Coordinates) == null;
         }
 
-        private bool TileIsBuildable(Tile t) {
-            return t.occupant == null;
-        }
+        protected override void Build(Tile[,] tiles) {
+            Building building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
+            AverageOutTerrain(tiles);
 
-        private void Build(Tile[,] tiles) {
-            Building b = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
-            foreach (Tile t in tiles)
-                t.occupant = b;
-            Instantiate(placeEffectPrefab).Setup(b);
-            OnBuildingPlaced(b, SelectedBuildingData);
+            foreach (Tile tile in tiles)
+                tile.SetOccupant(building);
 
-            if (!Building.IsBuildable(selectionIndex))
+            Instantiate(placeEffectPrefab).Setup(building);
+
+            PlayerResources.Instance.RemoveMoney(SelectedBuildingData.Moneycost);
+            for (int i = 0; i < SelectedBuildingData.Resourcecost.Length; i++)
+                PlayerResources.Instance.RemoveResource(SelectedBuildingData.Resourcecost[i], SelectedBuildingData.Resourcecostamount[i]);
+
+            building.enabled = true;
+            building.Init(SelectedBuildingData, tiles);
+
+            OnBuildingPlaced(building, SelectedBuildingData);
+
+            if (!BuildingBase.IsBuildable(selectionIndex))
                 selectionIndex = -1;
-        }
-
-        private Tile[,] GetTilesAtPosition(Vector3 position, IntVector2 buildingSize) {
-            IntVector2 coordinate = IntVector2.ConvertToCoordinates(position);
-            Tile[,] tiles = new Tile[buildingSize.x, buildingSize.z];
-            for (int x = 0; x < buildingSize.x; x++) {
-                for (int z = 0; z < buildingSize.z; z++) {
-                    if (City.Instance.grid.IsInsideGrid(new IntVector2(coordinate.x + x, coordinate.z + z))) {
-                        Tile t = City.Instance.grid.Grid[coordinate.x + x, coordinate.z + z];
-                        tiles[x, z] = t;
-                    }
-                }
-            }
-
-            return tiles;
         }
 
         private void OnDestroy() {

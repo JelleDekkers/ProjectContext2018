@@ -8,14 +8,10 @@ namespace CityView.UI {
 
     public class ResourcesWidgetItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler { 
 
-        [SerializeField]
-        protected int resourceID;
-        [SerializeField]
-        protected Image img;
-        [SerializeField]
-        protected Text amountText;
-        [SerializeField]
-        protected Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
+        [SerializeField] protected int resourceID;
+        [SerializeField] protected Image img;
+        [SerializeField] protected Text amountText;
+        [SerializeField] protected Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
 
         protected string tooltipText;
         protected RectTransform rect;

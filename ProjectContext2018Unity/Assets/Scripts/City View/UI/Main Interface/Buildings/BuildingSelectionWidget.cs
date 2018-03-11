@@ -7,21 +7,30 @@ namespace CityView.UI {
 
         public static Action<int> OnBuildingSelected;
 
-        [SerializeField]
-        private BuildingSelectionWidgetItem itemPrefab;
-        [SerializeField]
-        private Transform contentParent;
+        [SerializeField] private BuildingSelectionWidgetItem itemPrefab;
+        [SerializeField] private Transform contentParent;
+        [SerializeField] private BuildingPrefabs buildings, climateBuildings;
 
         private bool cached;
 
-        private void Start() {
-            Fill();
+        public void FillGridBuildingData() {
+            contentParent.RemoveChildren();
+            gameObject.SetActive(true);
+            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
+                BuildingsData data = DataManager.BuildingData.dataArray[i];
+                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
+                    Instantiate(itemPrefab, contentParent).Init(i, buildings, data);
+            }
         }
 
-        private void Fill() {
-            for(int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) 
-                Instantiate(itemPrefab, contentParent).Init(i);
-            cached = true;
+        public void FillGridClimateBuildingData() {
+            contentParent.RemoveChildren();
+            gameObject.SetActive(true);
+            for (int i = 0; i < DataManager.ClimateBuildingData.dataArray.Length; i++) {
+                ClimateBuildingsData data = DataManager.ClimateBuildingData.dataArray[i];
+                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
+                    Instantiate(itemPrefab, contentParent).Init(i, climateBuildings, data);
+            }
         }
     }
 }

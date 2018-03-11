@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using CityView.Terrain;
 
 namespace CityView.Construction {
 
@@ -8,31 +8,36 @@ namespace CityView.Construction {
 
         public static readonly Vector3 SIZE = new Vector3(1, 0.1f, 1);
 
-        public Building occupant;
-        public IntVector2 Coordinates { get; set; }
+        public BuildingBase Occupant { get; private set; }
+        public IntVector2 Coordinates { get; private set; }
+        public bool IsUnderWater { get; private set; }
 
-        [SerializeField]
-        private Color unBuildableColor;
+        private new Renderer renderer;
+        public Action<bool> OnWaterStateChanged;
 
-        private Color baseColor;
-        private Renderer rend;
-
-        private void Start() {
-            rend = GetComponent<Renderer>();
-            baseColor = rend.material.color;
-            if (City.Instance != null)
-            {
-                baseColor = City.Instance.Type.GetClimateBaseMaterialColor();
-            }
-            ResetColor();
+        public void Init(IntVector2 coordinates) {
+            Coordinates = coordinates;
+            renderer = GetComponent<Renderer>();
+            HideTile();
         }
 
-        public void SetColorToUnbuildable() {
-            rend.material.color = unBuildableColor;
+        public void SetOccupant(BuildingBase building) {
+            Occupant = building;
         }
 
-        public void ResetColor() {
-            rend.material.color = baseColor;
+        public void OnWaterLevelChanged(bool water) {
+            IsUnderWater = water;
+
+            if (OnWaterStateChanged != null)
+                OnWaterStateChanged(water);
+        }
+
+        public void ShowTile() {
+            renderer.enabled = true;
+        }
+
+        public void HideTile() {
+            renderer.enabled = false;
         }
 
         public static Vector3 GetCentrePoint(Tile[,] tiles) {

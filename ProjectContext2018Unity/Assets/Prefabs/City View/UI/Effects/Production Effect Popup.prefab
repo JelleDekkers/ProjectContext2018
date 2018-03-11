@@ -89,7 +89,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  spawnHeight: 0
+  spawnHeight: -1
   duration: 3
   targetHeight: 4
   startFadeAfter: 2.2

@@ -16,4 +16,10 @@ public class DataManager : ScriptableObjectSingleton<DataManager> {
 
     [SerializeField] private BuildingPrefabs buildingPrefabs;
     public static BuildingPrefabs BuildingPrefabs { get { return Instance.buildingPrefabs; } }
+
+    [SerializeField] private ClimateBuildings climateBuildingData;
+    public static ClimateBuildings ClimateBuildingData { get { return Instance.climateBuildingData; } }
+
+    [SerializeField] private BuildingPrefabs climateBuildingPrefabs;
+    public static BuildingPrefabs ClimateBuildingPrefabs { get { return Instance.climateBuildingPrefabs; } }
 }

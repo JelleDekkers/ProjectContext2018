@@ -56,3 +56,17 @@ MonoBehaviour:
     resourceoutputamount: 0500000002000000
     productiontime: 5
     climateexclusivity: Desert
+  - id: 3
+    name: House
+    pollution: 20
+    moneycost: 20
+    resourcecost: 
+    resourcecostamount: 
+    moneyinput: 0
+    resourceinput: 0000000001000000
+    resourceinputamount: 0500000005000000
+    moneyoutput: 200
+    resourceoutput: 
+    resourceoutputamount: 
+    productiontime: 25
+    climateexclusivity: None
