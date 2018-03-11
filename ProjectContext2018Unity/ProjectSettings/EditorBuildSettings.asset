@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CityView.unity
+    guid: 0c824231e5227f34385bd87df292dd9e
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 72129b2c31f9d9b4daf05fcfa28e8cff

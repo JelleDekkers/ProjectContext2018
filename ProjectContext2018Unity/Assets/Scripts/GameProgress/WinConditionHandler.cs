@@ -18,6 +18,7 @@ namespace GameProgress {
             if (/*WIN CONDITIONS MET*/true) {
                 Debug.Log("GAME WON");
                 // IMPLEMENT WIN GAME METHOD HERE
+                SceneManager.LoadScene(SceneManager.WinScene, SceneManager.AdditiveLoad);
             }
         }
     }

@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: d7e1fc00ed058054b9dc76bf46a24bca
+timeCreated: 1520761980
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Karma
+  fontNames:
+  - Karma
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1738596260d16b94cbdf3697f7d3ffed, type: 3}
+  - {fileID: 12800000, guid: c57c6ac310833384ea059b0608cd61a0, type: 3}
+  - {fileID: 12800000, guid: 78f92eba0a7f31d4c9060a7daa4fe1c6, type: 3}
+  - {fileID: 12800000, guid: ae43b8ad2da986040878eb7c1639860e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
