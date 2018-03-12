@@ -38510,6 +38510,7 @@ MonoBehaviour:
   dropDown: {fileID: 1101501413}
   amountInput: {fileID: 74600056}
   costInput: {fileID: 335642180}
+  addBtn: {fileID: 1573726695}
 --- !u!1 &1077972490
 GameObject:
   m_ObjectHideFlags: 0
