@@ -8,6 +8,9 @@ public class NewTradeOfferWidget : MonoBehaviour {
     [SerializeField] private MarketPlace marketPlace;
     [SerializeField] private Dropdown dropDown;
     [SerializeField] private InputField amountInput, costInput;
+    [SerializeField] private Button addBtn;
+
+    private int amountValue;
 
     private void Start() {
         dropDown.options = new List<Dropdown.OptionData>();
@@ -17,6 +20,11 @@ public class NewTradeOfferWidget : MonoBehaviour {
             dropDown.options[i].image = DataManager.ResourcePrefabs.GetResourceSprite(i);
         }
         dropDown.value = 0;
+    }
+
+    private void Update() {
+        if(int.TryParse(amountInput.text, out amountValue))
+            addBtn.interactable = PlayerResources.Instance.HasResourceAmount(dropDown.value, amountValue);
     }
 
     public void NewTradeOfferDone() {
