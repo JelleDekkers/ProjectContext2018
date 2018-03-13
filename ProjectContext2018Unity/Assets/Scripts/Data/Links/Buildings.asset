@@ -26,7 +26,7 @@ MonoBehaviour:
     moneyoutput: 50
     resourceoutput: 00000000
     resourceoutputamount: f4010000
-    productiontime: 2.5
+    productiontime: 3
     climate: 0
   - id: 1
     name: Butchery
@@ -68,7 +68,7 @@ MonoBehaviour:
     moneyoutput: 200
     resourceoutput: 03000000
     resourceoutputamount: fa000000
-    productiontime: 2.5
+    productiontime: 3
     climate: 0
   - id: 4
     name: Digging Facility
@@ -96,7 +96,7 @@ MonoBehaviour:
     moneyoutput: 10
     resourceoutput: 05000000
     resourceoutputamount: c8000000
-    productiontime: 25
+    productiontime: 3
     climate: 2
   - id: 6
     name: Plastic Factory
@@ -143,9 +143,9 @@ MonoBehaviour:
   - id: 9
     name: Wind Mill
     pollution: 0
-    moneycost: 10000
+    moneycost: 5000
     resourcecost: 050000000600000007000000
-    resourcecostamount: 08c0be00dc050000
+    resourcecostamount: e2040000e8030000dc050000
     moneyinput: 0
     resourceinput: 
     resourceinputamount: 
@@ -157,7 +157,7 @@ MonoBehaviour:
   - id: 10
     name: Hyrdroponic Farm
     pollution: 0
-    moneycost: 15000
+    moneycost: 7000
     resourcecost: 050000000600000007000000
     resourcecostamount: b00400004c040000aa050000
     moneyinput: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     moneyoutput: 0
     resourceoutput: 03000000
     resourceoutputamount: 77010000
-    productiontime: 2.5
+    productiontime: 3
     climate: 0
   - id: 13
     name: Soil Extraction Facility
@@ -222,7 +222,7 @@ MonoBehaviour:
     moneyoutput: 0
     resourceoutput: 05000000
     resourceoutputamount: 2c010000
-    productiontime: 2.5
+    productiontime: 3
     climate: 2
   - id: 15
     name: Plastic Processing
@@ -255,7 +255,7 @@ MonoBehaviour:
   - id: 17
     name: Eco-House
     pollution: 0
-    moneycost: 12000
+    moneycost: 5000
     resourcecost: 02000000
     resourcecostamount: e8030000
     moneyinput: 0
