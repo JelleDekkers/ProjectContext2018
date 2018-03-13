@@ -7037,9 +7037,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 40
   horizontalBorderMin: -10
-  horizontalBorderMax: 10
+  horizontalBorderMax: 30
   verticalBorderMin: -10
-  verticalBorderMax: 10
+  verticalBorderMax: 30
   zoomMin: 3
   zoomMax: 15
   zoomSpeed: 2
