@@ -8,9 +8,13 @@ ModelImporter:
     100000: //RootNode
     100002: Floor_Unit
     100004: Mesh13
+    100006: Floor_Unit3
+    100008: Mesh12
     400000: //RootNode
     400002: Floor_Unit
     400004: Mesh13
+    400006: Floor_Unit3
+    400008: Mesh12
     2100000: lambert12
     2100002: lambert13
     2100004: lambert114
@@ -29,10 +33,16 @@ ModelImporter:
     2100030: lambert77
     2300000: Floor_Unit
     2300002: Mesh13
+    2300004: Floor_Unit3
+    2300006: Mesh12
     3300000: Floor_Unit
     3300002: Mesh13
+    3300004: Floor_Unit3
+    3300006: Mesh12
     4300000: Floor_Unit
     4300002: Mesh13
+    4300004: Mesh12
+    4300006: Floor_Unit3
     9500000: //RootNode
   externalObjects: {}
   materials:

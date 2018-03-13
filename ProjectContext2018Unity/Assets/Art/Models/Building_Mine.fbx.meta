@@ -13,6 +13,7 @@ ModelImporter:
     100010: pPlane1
     100012: transform40
     100014: transform41
+    100016: Floor_Unit2
     400000: //RootNode
     400002: Floor_Unit
     400004: group31
@@ -21,6 +22,7 @@ ModelImporter:
     400010: pPlane1
     400012: transform40
     400014: transform41
+    400016: Floor_Unit2
     2100000: lambert12
     2100002: lambert95
     2100004: lambert98
@@ -35,10 +37,13 @@ ModelImporter:
     2100022: lambert96
     2300000: Floor_Unit
     2300002: Mesh9
+    2300004: Floor_Unit2
     3300000: Floor_Unit
     3300002: Mesh9
+    3300004: Floor_Unit2
     4300000: Floor_Unit
     4300002: Mesh9
+    4300004: Floor_Unit2
     9500000: //RootNode
   externalObjects: {}
   materials:

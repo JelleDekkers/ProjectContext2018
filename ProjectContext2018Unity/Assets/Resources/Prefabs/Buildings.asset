@@ -11,16 +11,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3eb6e50fba02fd42bfc8c9f7f824bcd, type: 3}
   m_Name: Buildings
   m_EditorClassIdentifier: 
-  fallbackBuilding: {fileID: 114506272447749260, guid: 9991eae20a48df3469c87129e2d536ef,
+  fallbackBuilding: {fileID: 114509649158420112, guid: a4f2448d7815a3c46aac3edea48f1fba,
     type: 2}
   buildingPrefabs:
   - {fileID: 114165829784871214, guid: 301e96950b1891b4bbe10b075edc6cae, type: 2}
+  - {fileID: 114945837603091720, guid: 2d0472b4c2af66d4fb700d5e6936b1c7, type: 2}
+  - {fileID: 114105079795405392, guid: 269364efd706336438d8b84ba8e1dbe1, type: 2}
+  - {fileID: 114911723404325616, guid: c7ff572cc70f4884b8a6fff8df7096fd, type: 2}
+  - {fileID: 114599635415606090, guid: 3f66282699078ae42ae4fc401aca60c3, type: 2}
+  - {fileID: 114841997570811104, guid: 1a51398f4f80b2940b2dd44edd8fc78a, type: 2}
+  - {fileID: 114091592905726160, guid: f9dd1366a1e53014c8de08249521baea, type: 2}
+  - {fileID: 114470645984753478, guid: 060b462f7bae6434eacb913db74e669e, type: 2}
+  - {fileID: 114436575096298102, guid: 9ab49a9f1e84b104897a60bfd7deda6a, type: 2}
   - {fileID: 114542453649564992, guid: 8a7911014b2fcdf47932fcc6403dca64, type: 2}
-  - {fileID: 114138787735936676, guid: 5c378152e6b5b0241a2135a34bb4cb5e, type: 2}
-  - {fileID: 114758779115381896, guid: 88d6382d7731b534aa8557e4c66d94c7, type: 2}
+  - {fileID: 114150301062271666, guid: c90751e97b977a8489e9a4ea6a4884fd, type: 2}
+  - {fileID: 114385613551894096, guid: 5fbc43df84a80d940ae781b65a0c9de6, type: 2}
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
   buildingSprites:
-  - {fileID: 21300000, guid: 708ff9c4e784ba840a6d6264dcef5b8a, type: 3}
-  - {fileID: 21300000, guid: 41f119b26848136478f4996468636e06, type: 3}
-  - {fileID: 21300000, guid: 414ccfcd2f3cd3b4aa53414f0f2063d8, type: 3}
-  - {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
+  - {fileID: 21300000, guid: d450709e89480d5418dcfc7a0aa67a18, type: 3}
+  - {fileID: 21300000, guid: 19bf4bb1e15d2df4c89fb2bd09d05b45, type: 3}
