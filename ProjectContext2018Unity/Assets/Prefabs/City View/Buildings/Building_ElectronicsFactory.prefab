@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4206521922802472}
   - component: {fileID: 114841997570811104}
   - component: {fileID: 65705209028668344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_ElectronicsFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,4 +235,6 @@ MonoBehaviour:
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 0
-    climateexclusivity: 
+    climate: 0
+  productionCycle:
+    timer: 0

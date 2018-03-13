@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4575630780049560}
   - component: {fileID: 65742018557765684}
   - component: {fileID: 114165829784871214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_CoalPowerPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,9 @@ MonoBehaviour:
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 0
-    climateexclusivity: 
+    climate: 0
+  productionCycle:
+    timer: 0
 --- !u!198 &198276350142540672
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4820690502036730}
   - component: {fileID: 114936663991949170}
   - component: {fileID: 65499682536628624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_2by2_OilPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,4 +231,6 @@ MonoBehaviour:
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 0
-    climateexclusivity: 
+    climate: 0
+  productionCycle:
+    timer: 0

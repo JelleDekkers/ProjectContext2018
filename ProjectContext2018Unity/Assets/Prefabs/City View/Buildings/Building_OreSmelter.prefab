@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 95903724186424458}
   - component: {fileID: 114470645984753478}
   - component: {fileID: 65043406886188544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_OreSmelter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,9 @@ MonoBehaviour:
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 0
-    climateexclusivity: 
+    climate: 0
+  productionCycle:
+    timer: 0
 --- !u!198 &198286541940713422
 ParticleSystem:
   m_ObjectHideFlags: 1

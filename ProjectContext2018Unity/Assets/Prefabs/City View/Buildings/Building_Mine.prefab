@@ -428,7 +428,9 @@ MonoBehaviour:
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 0
-    climateexclusivity: 
+    climate: 0
+  productionCycle:
+    timer: 0
 --- !u!198 &198378750991305066
 ParticleSystem:
   m_ObjectHideFlags: 1
