@@ -26,5 +26,8 @@ public class WorldTemperature : ScriptableObject {
         if (OnWorldTemperatureChanged != null) {
             OnWorldTemperatureChanged(currentTemperature);
         }
+        else {
+            Debug.Log("banzai");
+        }
     }
 }

@@ -28,6 +28,6 @@ public class CameraShake : MonoBehaviour {
             timer += Time.deltaTime;
             yield return null;
         }
-        cam.transform.position = originalPosition;
+        cam.transform.localPosition = Vector3.zero;
     }
 }

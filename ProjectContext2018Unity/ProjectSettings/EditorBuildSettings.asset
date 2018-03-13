@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/CityView Terrain.unity
+    guid: b1770ab88ba9fc64bbd77d184cf7ab1a
   - enabled: 1
-    path: Assets/Scenes/CityView.unity
-    guid: 0c824231e5227f34385bd87df292dd9e
+    path: Assets/Scenes/CityView Terrain 1.unity
+    guid: 275d01d87bf78d54eb02a029f5d924c6
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 72129b2c31f9d9b4daf05fcfa28e8cff

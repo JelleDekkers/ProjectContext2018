@@ -21,6 +21,7 @@ namespace GameProgress {
                 Debug.Log("GAME LOST");
                 // IMPLEMENT LOSE GAME METHOD HERE
                 SceneManager.LoadScene(SceneManager.LoseScene, SceneManager.AdditiveLoad);
+                WorldTemperature.OnWorldTemperatureChanged -= CheckLoseCondition;
             }
         }
     }
