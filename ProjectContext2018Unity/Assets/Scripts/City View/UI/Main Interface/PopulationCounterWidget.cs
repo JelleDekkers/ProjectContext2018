@@ -16,7 +16,7 @@ public class PopulationCounterWidget : MonoBehaviour {
         Population.OnInhabitantsCountChanged -= UpdateCounter;
     }
 
-    private void UpdateCounter(float amount) {
+    private void UpdateCounter(int amount) {
         counter.text = amount.ToString();
     }
 }

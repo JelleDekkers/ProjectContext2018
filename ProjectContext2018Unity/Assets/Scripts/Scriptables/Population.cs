@@ -4,13 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Population", menuName = "Scriptables/Population", order = 5)]
 public class Population : ScriptableObjectSingleton<Population> {
 
-    [SerializeField] private float inhabitants = 1f;
-    public float Inhabitants { get { return inhabitants; } }
+    [SerializeField] private int inhabitants = 1;
+    public int Inhabitants { get { return inhabitants; } }
 
-    [SerializeField] private float inhabitantsPerHouse = 10;
-    public float InhabitantsPerHouse { get { return inhabitantsPerHouse; } }
+    [SerializeField] private int inhabitantsPerHouse = 9;
+    public int InhabitantsPerHouse { get { return inhabitantsPerHouse; } }
 
-    public static Action<float> OnInhabitantsCountChanged;
+    public static Action<int> OnInhabitantsCountChanged;
 
     public void Init() {
         CityView.House.OnHouseHabited += OnHouseBuilt;

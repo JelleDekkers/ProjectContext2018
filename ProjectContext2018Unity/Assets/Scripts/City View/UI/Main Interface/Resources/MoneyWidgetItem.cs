@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace CityView.UI {
 
-    public class MoneyWidgetItem : ResourcesWidgetItem, IPointerEnterHandler, IPointerExitHandler {
+    public class MoneyWidgetItem : ResourcesWidgetItem {
 
         protected override void Start() {
             img.sprite = DataManager.ResourcePrefabs.MoneySprite;
