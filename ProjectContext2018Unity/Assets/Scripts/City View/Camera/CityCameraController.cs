@@ -6,6 +6,7 @@ namespace CityView {
 
     public class CityCameraController : MonoBehaviour {
 
+        [SerializeField] private bool canZoom, canRotate;
         [SerializeField] private float movementSpeed = 30;
         [SerializeField] private float horizontalBorderMin, horizontalBorderMax;
         [SerializeField] private float verticalBorderMin, verticalBorderMax;
@@ -20,8 +21,12 @@ namespace CityView {
 
         private void Update() {
             Movement();
-            Zoom();
-            Rotate();
+
+            if(canZoom)
+                Zoom();
+
+            if(canRotate)
+                Rotate();
         }
 
         private void Movement() {

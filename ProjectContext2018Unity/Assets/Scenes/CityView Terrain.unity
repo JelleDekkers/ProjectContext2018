@@ -7035,6 +7035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a098a699cd1954ca1cd25eac114564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canZoom: 1
+  canRotate: 0
   movementSpeed: 40
   horizontalBorderMin: -10
   horizontalBorderMax: 30
@@ -27011,7 +27013,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -1000
+  near clip plane: -10
   far clip plane: 1000
   field of view: 60
   orthographic: 1
