@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95594231519448492}
   - component: {fileID: 65429055959804034}
   - component: {fileID: 114385613551894096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_Lumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}

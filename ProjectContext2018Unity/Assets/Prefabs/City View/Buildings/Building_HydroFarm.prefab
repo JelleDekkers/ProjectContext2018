@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 4381974604572116}
   - component: {fileID: 114150301062271666}
   - component: {fileID: 65014970930281506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_HydroFarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
