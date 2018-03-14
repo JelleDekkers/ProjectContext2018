@@ -44,12 +44,11 @@ namespace CityView.UI {
         }
 
         private void CreatePopupItems(ProductionCycleResult production) {
+            if (production.pollutionPoints != 0)
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.PollutionSprite, production.pollutionPoints);
+
             if (production.money != 0)
                 InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, production.money);
-
-            // TODO: gebruiken wanneer sprites bescikbaar zijn
-            //if (production.pollutionPoints != 0)
-            //    InstantiateNewPopupItem(null, production.pollutionPoints);
 
             foreach (ResourceContainer resource in production.producedResources) 
                 InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetResourceSprite(resource.id), resource.amount);

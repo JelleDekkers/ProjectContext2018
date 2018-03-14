@@ -9,6 +9,9 @@ public class GameResourcePrefabs : ScriptableObject {
     [SerializeField] private Sprite moneySprite;
     public Sprite MoneySprite { get { return moneySprite; } }
 
+    [SerializeField] private Sprite pollutionSprite;
+    public Sprite PollutionSprite { get { return pollutionSprite; } }
+
     [SerializeField] private Sprite[] resourceSprites;
 
     public Sprite GetResourceSprite(int index) {
