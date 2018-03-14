@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CityView {
 
@@ -43,6 +44,9 @@ namespace CityView {
         }
 
         private void Zoom() {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             if (Input.GetAxis("Mouse ScrollWheel") != 0)
                 Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - Input.GetAxis("Mouse ScrollWheel") * zoomSpeed, zoomMin, zoomMax);
         }
