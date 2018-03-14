@@ -9,8 +9,12 @@ namespace CityView {
 
         public BuildingsData data;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
-        public static Action<BuildingBase> OnDestroyed;
+        public static Action<BuildingBase> OnDestroyedGlobal;
         public static Action<BuildingBase> OnDemolishInitiated;
+        public static Action<Building> OnProductionStopped;
+
+        public Action OnProductionResumed;
+        public Action OnDestroyed;
 
         [SerializeField] private ProductionCycle productionCycle;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }
@@ -38,11 +42,15 @@ namespace CityView {
 
         protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
+            if(OnProductionStopped != null)
+                OnProductionStopped(this);
         }
 
         protected virtual void OnEnable() {
             if(ProductionCycle != null)
                 ToggleBuildingEffects(true);
+            if(OnProductionResumed != null)
+                OnProductionResumed();
         }
 
         private void CheckWaterState(bool water) {
@@ -127,7 +135,7 @@ namespace CityView {
                     t.OnWaterStateChanged -= CheckWaterState;
             }
 
-            OnDestroyed(this);
+            OnDestroyedGlobal(this);
         }
     }
 }

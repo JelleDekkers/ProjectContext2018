@@ -16,8 +16,9 @@ namespace CityView.UI {
 
         [Header("References")]
         [SerializeField] private ProductionEffectPopupItem item;
-        [SerializeField] private Sprite placeholderSprite;
         [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private Transform itemParent;
+        [SerializeField] private GameObject emissionSprite;
 
         public void Init(BuildingBase building, ProductionCycleResult production) {
             transform.position = new Vector3(building.transform.position.x, building.transform.position.y + spawnHeight, building.transform.position.z);
@@ -44,8 +45,7 @@ namespace CityView.UI {
         }
 
         private void CreatePopupItems(ProductionCycleResult production) {
-            if (production.pollutionPoints != 0)
-                InstantiateNewPopupItem(DataManager.ResourcePrefabs.PollutionSprite, production.pollutionPoints);
+            emissionSprite.SetActive(production.pollutionPoints != 0);
 
             if (production.money != 0)
                 InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, production.money);
@@ -75,7 +75,7 @@ namespace CityView.UI {
         }
 
         private void InstantiateNewPopupItem(Sprite sprite, float amount) {
-            Instantiate(item, transform).Init(sprite, amount);
+            Instantiate(item, itemParent).Init(sprite, amount);
         }
  
         private IEnumerator Move() {

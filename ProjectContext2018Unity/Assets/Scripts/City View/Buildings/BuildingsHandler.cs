@@ -13,7 +13,7 @@ namespace CityView {
         private void Start() {
             BuildMode.OnBuildingPlaced += AddBuilding;
             BuildModeClimateBuildings.OnBuildingPlaced += AddBuilding;
-            Building.OnDestroyed += RemoveBuilding;
+            Building.OnDestroyedGlobal += RemoveBuilding;
         }
 
         private void AddBuilding(BuildingBase building, BuildingsData data) {

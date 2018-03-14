@@ -14,7 +14,9 @@ namespace CityView {
 
         protected override void OnDisable() {
             base.OnDisable();
-            OnHouseUninhabitated();
+
+            if(OnHouseUninhabitated != null)
+                OnHouseUninhabitated();
         }
     }
 }
