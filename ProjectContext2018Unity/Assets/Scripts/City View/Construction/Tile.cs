@@ -17,7 +17,7 @@ namespace CityView.Construction {
 
         public void Init(IntVector2 coordinates) {
             Coordinates = coordinates;
-            renderer = GetComponent<Renderer>();
+            renderer = transform.GetChild(0).GetComponent<Renderer>();
             HideTile();
         }
 
