@@ -40,17 +40,17 @@ namespace CityView {
                 t.OnWaterStateChanged += CheckWaterState;
         }
 
+        protected virtual void OnEnable() {
+            if (ProductionCycle != null)
+                ToggleBuildingEffects(true);
+            if (OnProductionResumed != null)
+                OnProductionResumed();
+        }
+
         protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
             if(OnProductionStopped != null)
                 OnProductionStopped(this);
-        }
-
-        protected virtual void OnEnable() {
-            if(ProductionCycle != null)
-                ToggleBuildingEffects(true);
-            if(OnProductionResumed != null)
-                OnProductionResumed();
         }
 
         private void CheckWaterState(bool water) {
