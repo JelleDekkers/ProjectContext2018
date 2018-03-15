@@ -17,6 +17,15 @@ namespace CityView {
 
         public Tile[,] tilesStandingOn;
 
+        private Renderer floorObjectRenderer;
+        private Renderer FloorObjectRenderer {
+            get {
+                if (floorObjectRenderer == null)
+                    floorObjectRenderer = transform.GetChild(0).GetComponent<Renderer>();
+                return floorObjectRenderer;
+            }
+        }
+
         public abstract void Init(System.Object data, Tile[,] tilesStandingOn);
         public abstract void CacheEffects();
         public abstract void ToggleBuildingEffects(bool toggle);
@@ -25,9 +34,8 @@ namespace CityView {
 
         public IntVector2 CalculateTileSize() {
             IntVector2 calcSize = IntVector2.Zero;
-            Renderer r = transform.GetChild(0).GetComponent<Renderer>();
-            calcSize.x = (int)Mathf.Round(r.bounds.size.x);
-            calcSize.z = (int)Mathf.Round(r.bounds.size.z);
+            calcSize.x = (int)Mathf.Round(FloorObjectRenderer.bounds.size.x);
+            calcSize.z = (int)Mathf.Round(FloorObjectRenderer.bounds.size.z);
             return calcSize;
         }
 
@@ -38,6 +46,14 @@ namespace CityView {
             if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
                 return false;
             return true;
+        }
+
+        public virtual void OnHoverEnter(float outlineWidth) {
+            FloorObjectRenderer.material.SetFloat("_Outline", outlineWidth);
+        }
+
+        public virtual void OnHoverExit() {
+            FloorObjectRenderer.material.SetFloat("_Outline", 0);
         }
     }
 }

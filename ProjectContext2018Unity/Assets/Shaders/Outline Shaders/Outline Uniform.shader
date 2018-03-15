@@ -4,7 +4,7 @@
 	{
 		_Color("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex("Texture", 2D) = "white" {}
-	_OutlineColor("Outline color", Color) = (0,0,0,1)
+		_OutlineColor("Outline color", Color) = (0,0,0,1)
 		_OutlineWidth("Outlines width", Range(0.0, 20.0)) = 1.1
 	}
 
@@ -26,13 +26,11 @@
 
 	ENDCG
 
-		SubShader
-	{
+		SubShader {
 		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" }
-
-		Pass //Outline
-	{
-		ZWrite Off
+		
+		Pass {
+		
 		Cull Back
 		CGPROGRAM
 
