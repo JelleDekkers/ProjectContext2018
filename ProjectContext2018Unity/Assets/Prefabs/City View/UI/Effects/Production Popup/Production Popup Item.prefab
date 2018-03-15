@@ -59,6 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productImg: {fileID: 114311945997891826}
   amountTxt: {fileID: 114807535066013962}
+  plusColor: {r: 1, g: 1, b: 1, a: 1}
+  minColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114311945997891826
 MonoBehaviour:
   m_ObjectHideFlags: 1
