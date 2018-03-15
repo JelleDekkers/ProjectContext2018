@@ -56,7 +56,7 @@ namespace CityView.Construction {
         }
 
         protected override void OnMouseClick() {
-            if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject())
+            if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject() || !BuildingBase.IsBuildable(selectionIndex))
                 return;
 
             if(CanBePlacedAtTiles(tilesHoveringOver))
@@ -84,9 +84,6 @@ namespace CityView.Construction {
             building.Init(SelectedBuildingData, tiles);
 
             OnBuildingPlaced(building, SelectedBuildingData);
-
-            if (!BuildingBase.IsBuildable(selectionIndex))
-                selectionIndex = -1;
         }
 
         private void OnDestroy() {

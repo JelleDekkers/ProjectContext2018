@@ -6,10 +6,13 @@ namespace CityView.Construction {
 
     public class BuildingGhost : MonoBehaviour {
 
-        [SerializeField]
-        private float alphaValue = 0.2f;
+        [SerializeField] private float AlphaValue = 0.8f;
+        [SerializeField] private Color unbuildableColor = Color.red;
 
         private BuildingBase building;
+
+        private Transform Mesh { get { return building.transform.GetChild(1); } }
+        private List<Material> meshMaterials;
 
         public void Setup(BuildingBase prefab) {
             if (building != null)
@@ -20,6 +23,29 @@ namespace CityView.Construction {
             building.CacheEffects();
             building.enabled = false;
             building.ToggleBuildingEffects(false);
+
+            Renderer renderer = Mesh.GetComponent<Renderer>();
+            meshMaterials = new List<Material>();
+            foreach (Material m in renderer.materials) {
+                meshMaterials.Add(m);
+            }
+            MakeBuildingMeshTransparent();
+            
+        }
+
+        private void MakeBuildingMeshTransparent() {
+            foreach (Material m in meshMaterials) {
+                StandardShaderUtils.ChangeRenderMode(m, StandardShaderUtils.BlendMode.Transparent);
+                Color c = m.color;
+                c.a = AlphaValue;
+                m.color = c;
+            }
+        }
+
+        private void AdjustBuildingMeshToUnavailableColor() {
+            foreach (Material m in meshMaterials) {
+                m.color = unbuildableColor;
+            }
         }
 
         public void UpdatePosition(Tile[,] tilesHoveringOver) {
@@ -47,17 +73,6 @@ namespace CityView.Construction {
                 building.gameObject.SetActive(true);
 
             building.transform.position = new Vector3(centre.x, centre.y, centre.z);
-        }
-
-        private void MakeTransparent() {
-            Renderer[] renderers = building.GetComponentsInChildren<Renderer>();
-            Color c;
-
-            foreach(Renderer r in renderers) {
-                c = r.material.color;
-                c.a = alphaValue;
-                r.material.color = c;
-            }
         }
     }
 }
