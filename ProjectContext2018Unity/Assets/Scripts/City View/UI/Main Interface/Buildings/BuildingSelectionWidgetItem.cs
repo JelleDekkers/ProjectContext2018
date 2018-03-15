@@ -45,5 +45,10 @@ namespace CityView.UI {
         public void OnPointerExit(PointerEventData eventData) {
             OnPointerExitEvent();
         }
+
+        private void OnDestroy() {
+            PlayerResources.OnResourceChanged -= UpdateInteractableState;
+            PlayerResources.OnMoneyChanged -= UpdateInteractableState;
+        }
     }
 }

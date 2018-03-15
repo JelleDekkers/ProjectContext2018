@@ -159,7 +159,7 @@ namespace CityView.Terrain {
                     Destroy(block.gameObject);
             }
 
-            WorldTemperature.OnWorldTemperatureChanged += AddHeightToTemperature;
+            WorldTemperature.OnWorldTemperatureChanged -= AddHeightToTemperature;
             blockBeneath.OnHeightChange -= CheckBlockBeneathSize;
         }
     }
