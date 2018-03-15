@@ -26,5 +26,21 @@ namespace CityView {
         public override void CacheEffects() { }
 
         public override void ToggleBuildingEffects(bool toggle) { }
+
+        public override bool IsBuildable(int dataID) {
+            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.ClimateBuildingData.dataArray[dataID].Moneycost))
+                return false;
+            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.ClimateBuildingData.dataArray[dataID].Resourcecost, DataManager.ClimateBuildingData.dataArray[dataID].Resourcecostamount))
+                return false;
+            return true;
+        }
+
+        public static bool IsBuildingBuildable(int dataID) {
+            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.ClimateBuildingData.dataArray[dataID].Moneycost))
+                return false;
+            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.ClimateBuildingData.dataArray[dataID].Resourcecost, DataManager.ClimateBuildingData.dataArray[dataID].Resourcecostamount))
+                return false;
+            return true;
+        }
     }
 }

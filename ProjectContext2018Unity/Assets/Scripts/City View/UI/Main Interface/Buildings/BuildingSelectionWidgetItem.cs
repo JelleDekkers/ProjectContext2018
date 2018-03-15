@@ -21,21 +21,30 @@ namespace CityView.UI {
         private int id;
         private System.Object data;
 
-        public void Init(int id, BuildingPrefabs prefab, System.Object data) {
+        public void Init(int id, BuildingPrefabs prefab, BuildingsData data) {
             this.data = data;
             img.sprite = prefab.GetBuildingSprite(id);
             button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
-            button.interactable = BuildingBase.IsBuildable(id);
+            button.interactable = Building.IsBuildingBuildable(id);
+            PlayerResources.OnResourceChanged += UpdateInteractableState;
+            PlayerResources.OnMoneyChanged += UpdateInteractableState;
+        }
+
+        public void Init(int id, BuildingPrefabs prefab, ClimateBuildingsData data) {
+            this.data = data;
+            img.sprite = prefab.GetBuildingSprite(id);
+            button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
+            button.interactable = ClimateBuilding.IsBuildingBuildable(id);
             PlayerResources.OnResourceChanged += UpdateInteractableState;
             PlayerResources.OnMoneyChanged += UpdateInteractableState;
         }
 
         private void UpdateInteractableState(float money) {
-            button.interactable = BuildingBase.IsBuildable(id);
+            button.interactable = PlayerResources.Instance.HasMoneyAmount(money);
         }
 
         private void UpdateInteractableState(int resourceId, int resourceAmount) {
-            button.interactable = BuildingBase.IsBuildable(id);
+            button.interactable = PlayerResources.Instance.HasResourceAmount(resourceId, resourceAmount);
         }
         
         public void OnPointerEnter(PointerEventData eventData) {

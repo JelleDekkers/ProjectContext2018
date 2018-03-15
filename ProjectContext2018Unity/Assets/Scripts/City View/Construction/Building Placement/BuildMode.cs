@@ -49,14 +49,14 @@ namespace CityView.Construction {
                 OnBuildStateToggled(false);
             } else {
                 selectionIndex = index;
-                buildingGhost.Setup(SelectedBuilding);
+                buildingGhost.Setup(SelectedBuilding, SelectedBuildingData.ID);
                 buildingGhost.gameObject.SetActive(true);
                 OnBuildStateToggled(true);
             }
         }
 
         protected override void OnMouseClick() {
-            if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject() || !BuildingBase.IsBuildable(selectionIndex))
+            if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject() || !Building.IsBuildingBuildable(SelectedBuildingData.ID))
                 return;
 
             if(CanBePlacedAtTiles(tilesHoveringOver))
@@ -84,6 +84,8 @@ namespace CityView.Construction {
             building.Init(SelectedBuildingData, tiles);
 
             OnBuildingPlaced(building, SelectedBuildingData);
+
+            buildingGhost.Setup(SelectedBuilding, SelectedBuildingData.ID);
         }
 
         private void OnDestroy() {

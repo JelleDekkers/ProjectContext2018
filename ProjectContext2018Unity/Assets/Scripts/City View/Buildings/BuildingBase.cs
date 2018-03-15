@@ -39,14 +39,7 @@ namespace CityView {
             return calcSize;
         }
 
-        public static bool IsBuildable(int id) {
-            BuildingsData data = DataManager.BuildingData.dataArray[id];
-            if (!PlayerResources.Instance.HasMoneyAmount(data.Moneycost))
-                return false;
-            if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
-                return false;
-            return true;
-        }
+        public abstract bool IsBuildable(int dataId);
 
         public virtual void OnHoverEnter(float outlineWidth) {
             FloorObjectRenderer.material.SetFloat("_Outline", outlineWidth);

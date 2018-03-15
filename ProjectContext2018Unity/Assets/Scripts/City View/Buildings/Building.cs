@@ -137,5 +137,21 @@ namespace CityView {
 
             OnDestroyedGlobal(this);
         }
+
+        public override bool IsBuildable(int dataID) {
+            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.BuildingData.dataArray[dataID].Moneycost))
+                return false;
+            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.BuildingData.dataArray[dataID].Resourcecost, DataManager.BuildingData.dataArray[dataID].Resourcecostamount))
+                return false;
+            return true;
+        }
+
+        public static bool IsBuildingBuildable(int dataID) {
+            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.BuildingData.dataArray[dataID].Moneycost))
+                return false;
+            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.BuildingData.dataArray[dataID].Resourcecost, DataManager.BuildingData.dataArray[dataID].Resourcecostamount))
+                return false;
+            return true;
+        }
     }
 }

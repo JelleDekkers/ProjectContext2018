@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,31 +10,60 @@ namespace CityView.Construction {
         [SerializeField] private Color unbuildableColor = Color.red;
 
         private BuildingBase building;
+        private int dataID;
 
-        private Transform Mesh { get { return building.transform.GetChild(1); } }
-        private List<Material> meshMaterials;
+        private List<Material> materials;
+        private List<Color> startingColors;
 
-        public void Setup(BuildingBase prefab) {
+        public void Setup(BuildingBase prefab, int dataID) {
             if (building != null)
                 Destroy(building.gameObject);
 
+            this.dataID = dataID;
             building = Instantiate(prefab, transform.position, Quaternion.identity, transform);
             building.name = "Ghost " + building.name;
             building.CacheEffects();
             building.enabled = false;
             building.ToggleBuildingEffects(false);
 
-            Renderer renderer = Mesh.GetComponent<Renderer>();
-            meshMaterials = new List<Material>();
-            foreach (Material m in renderer.materials) {
-                meshMaterials.Add(m);
+            materials = new List<Material>();
+            startingColors = new List<Color>();
+
+            foreach(Renderer rend in building.GetComponentsInChildren<Renderer>()) {
+                foreach(Material m in rend.materials) {
+                    if (!m.HasProperty("_Color"))
+                        continue;
+
+                    materials.Add(m);
+                    Color c = m.color;
+                    c.a = AlphaValue;
+                    m.color = c;
+                    startingColors.Add(m.color);
+                }
             }
-            MakeBuildingMeshTransparent();
             
+            MakeBuildingMeshTransparent();
+
+            AdjustBuildingMeshToUnavailableColor(building.IsBuildable(dataID));
+        }
+
+        private void OnEnable() {
+            PlayerResources.OnResourceChanged += (x, y) => CheckForIsBuildableState();
+            PlayerResources.OnMoneyChanged += (x) => CheckForIsBuildableState();
+        }
+
+        private void OnDestroy() {
+            PlayerResources.OnResourceChanged -= (x, y) => CheckForIsBuildableState();
+            PlayerResources.OnMoneyChanged -= (x) => CheckForIsBuildableState();
+        }
+
+        private void CheckForIsBuildableState() {
+            Debug.Log(dataID + " " + building.IsBuildable(dataID));
+            AdjustBuildingMeshToUnavailableColor(building.IsBuildable(dataID));
         }
 
         private void MakeBuildingMeshTransparent() {
-            foreach (Material m in meshMaterials) {
+            foreach(Material m in materials) { 
                 StandardShaderUtils.ChangeRenderMode(m, StandardShaderUtils.BlendMode.Transparent);
                 Color c = m.color;
                 c.a = AlphaValue;
@@ -42,9 +71,12 @@ namespace CityView.Construction {
             }
         }
 
-        private void AdjustBuildingMeshToUnavailableColor() {
-            foreach (Material m in meshMaterials) {
-                m.color = unbuildableColor;
+        private void AdjustBuildingMeshToUnavailableColor(bool buildable) {
+            for(int i = 0; i < materials.Count; i++) {
+                if (buildable)
+                    materials[i].color = startingColors[i];
+                else 
+                    materials[i].color = unbuildableColor;
             }
         }
 

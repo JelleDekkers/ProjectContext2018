@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Resources
   m_EditorClassIdentifier: 
   fallbackSprite: {fileID: 21300000, guid: 43d9c0b08619226468b813bb56bf4107, type: 3}
-  moneySprite: {fileID: 21300000, guid: 76815f7667dfbc84f848b1b4ef8bf9f1, type: 3}
-  pollutionSprite: {fileID: 21300000, guid: fe6a47a9811f00a49b54d8d33802cb09, type: 3}
-  populationSprite: {fileID: 21300000, guid: 29b0ad9e92acd1f48a6ed8f41a512288, type: 3}
+  moneySprite: {fileID: 21300000, guid: 210d5a58be593f740957a42a4ec03384, type: 3}
+  pollutionSprite: {fileID: 21300000, guid: 2b41023a2765ffc4da1d812138da6997, type: 3}
+  populationSprite: {fileID: 21300000, guid: 24a25442f4281494ea06152e0b7166c3, type: 3}
   resourceSprites:
   - {fileID: 21300000, guid: ffd27ee84c31ead47983907bfde07c43, type: 3}
   - {fileID: 21300000, guid: cc591d1130be51942be3b47a6bcc397b, type: 3}
