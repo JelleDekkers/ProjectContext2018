@@ -20,16 +20,25 @@ namespace CityView.UI {
         [SerializeField] private Transform itemParent;
         [SerializeField] private GameObject emissionSprite;
 
-        public void Init(BuildingBase building, ProductionCycleResult production) {
+        public void InitProductionResult(BuildingBase building, ProductionCycleResult production) {
             transform.position = new Vector3(building.transform.position.x, building.transform.position.y + spawnHeight, building.transform.position.z);
             transform.SetAsFirstSibling();
-            CreatePopupItems(production);
+            CreateOutputPopupItems(production);
+            StartCoroutine(Move());
+            StartCoroutine(WaitForFade());
+        }
+
+        public void InitInputCost(Building building, BuildingsData data) {
+            float horizontalOffset = 1;
+            transform.position = new Vector3(building.transform.position.x + horizontalOffset, building.tilesStandingOn[0,0].transform.position.y + spawnHeight, building.transform.position.z);
+            transform.SetAsFirstSibling();
+            CreateInputPopupItems(data);
             StartCoroutine(Move());
             StartCoroutine(WaitForFade());
         }
 
         public void Init(BuildingBase building, BuildingsData data) {
-            transform.position = new Vector3(building.transform.position.x, building.tilesStandingOn[0,0].transform.position.y + spawnHeight, building.transform.position.z);
+            transform.position = new Vector3(building.transform.position.x, building.tilesStandingOn[0, 0].transform.position.y + spawnHeight, building.transform.position.z);
             transform.SetAsFirstSibling();
             CreatePopupItems(data);
             StartCoroutine(Move());
@@ -44,7 +53,7 @@ namespace CityView.UI {
             StartCoroutine(WaitForFade());
         }
 
-        private void CreatePopupItems(ProductionCycleResult production) {
+        private void CreateOutputPopupItems(ProductionCycleResult production) {
             emissionSprite.SetActive(production.pollutionPoints != 0);
 
             if (production.money != 0)
@@ -61,6 +70,16 @@ namespace CityView.UI {
             for(int i = 0; i < data.Resourcecost.Length; i++) {
                 GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourcecost[i]];
                 InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), -data.Resourcecostamount[i]);
+            }
+        }
+
+        private void CreateInputPopupItems(BuildingsData data) {
+            if (data.Moneyinput != 0)
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.MoneySprite, -data.Moneyinput);
+
+            for (int i = 0; i < data.Resourceinput.Length; i++) {
+                GameResourcesData resource = DataManager.ResourcesData.dataArray[data.Resourceinput[i]];
+                InstantiateNewPopupItem(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), -data.Resourceinputamount[i]);
             }
         }
 

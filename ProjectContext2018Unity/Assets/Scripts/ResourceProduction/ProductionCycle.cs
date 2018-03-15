@@ -7,7 +7,7 @@ public class ProductionCycle {
 
     public float ProductionTime { get; private set; }
     public float Money { get; private set; }
-    public int[] ResourcesID { get; private set; }
+    public int[] ResourcesIDs { get; private set; }
     public int[] ResourcesAmount { get; private set; }
     public float Pollution { get; private set; }
 
@@ -20,7 +20,7 @@ public class ProductionCycle {
     public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
         ProductionTime = data.Productiontime;
         Money = data.Moneyoutput;
-        ResourcesID = data.Resourceoutput;
+        ResourcesIDs = data.Resourceoutput;
         ResourcesAmount = data.Resourceoutputamount;
         Pollution = data.Pollution;
 
@@ -46,9 +46,9 @@ public class ProductionCycle {
             pollutionPoints = Pollution
         };
 
-        ResourceContainer[] producedResources = new ResourceContainer[ResourcesID.Length];
+        ResourceContainer[] producedResources = new ResourceContainer[ResourcesIDs.Length];
         for (int i = 0; i < producedResources.Length; i++) 
-            producedResources[i] = new ResourceContainer(ResourcesID[i], ResourcesAmount[i]);
+            producedResources[i] = new ResourceContainer(ResourcesIDs[i], ResourcesAmount[i]);
         result.producedResources = producedResources;
 
         OnComplete(result);

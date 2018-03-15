@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using CityView.Construction;
 
@@ -12,10 +12,12 @@ namespace CityView {
         public static Action<BuildingBase> OnDestroyedGlobal;
         public static Action<BuildingBase> OnDemolishInitiated;
         public static Action<Building> OnProductionStopped;
-        public static Action<float, int[]> OnProductionInput;
+        public static Action<Building, BuildingsData> OnProductionInputProcessed;
 
         public Action OnProductionResumed;
         public Action OnDestroyed;
+
+        private float timeBetweenProduction = 2;
 
         [SerializeField] private ProductionCycle productionCycle;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }
@@ -34,7 +36,7 @@ namespace CityView {
             this.tilesStandingOn = tilesStandingOn;
             if (HasNecessaryResourcesForProductionCycle())
                 StartNewProduction();
-            else 
+            else
                 OnProductionNotAvailable();
 
             foreach (Tile t in tilesStandingOn)
@@ -83,11 +85,17 @@ namespace CityView {
                     PlayerResources.Instance.HasMoneyAmount(data.Moneyinput));
         }
 
+        private IEnumerator WaitForNewProductionStart() {
+            WaitForSeconds wait = new WaitForSeconds(timeBetweenProduction);
+            yield return wait;
+            StartNewProduction();
+        }
+
         private void StartNewProduction() {
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
             PlayerResources.OnResourceChanged -= OnResourcesChanged;
             PlayerResources.OnMoneyChanged -= OnMoneyChanged;
-            //OnProductionInput(data.Moneyinput, data.Resourceinput);
+            OnProductionInputProcessed(this, data);
 
             if (!enabled) {
                 enabled = true;
@@ -119,7 +127,7 @@ namespace CityView {
         private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {
             OnProductionCycleCompleted(this, result);
             if (HasNecessaryResourcesForProductionCycle())
-                StartNewProduction();
+                StartCoroutine(WaitForNewProductionStart());
             else
                 OnProductionNotAvailable();
         }
