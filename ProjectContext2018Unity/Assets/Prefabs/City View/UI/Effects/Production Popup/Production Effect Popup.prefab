@@ -83,7 +83,7 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 3, y: 3}
   m_Spacing: {x: 0.4, y: 0}
-  m_Constraint: 2
+  m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!114 &114229519988905710
 MonoBehaviour:
@@ -151,22 +151,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 3.1553535
-      outSlope: 3.1553535
+      time: -0.001461029
+      value: 0.002861023
+      inSlope: 2.7486606
+      outSlope: 2.7486606
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.26339823
-      value: 0.9969895
+      time: 0.33317834
+      value: 1.0133855
       inSlope: -0.030535275
       outSlope: -0.030535275
       tangentMode: 0
     - serializedVersion: 2
-      time: 1.0001026
-      value: 0.9984625
-      inSlope: -0.04739297
-      outSlope: -0.04739297
+      time: 0.7307161
+      value: 0.99649155
+      inSlope: -0.029206276
+      outSlope: -0.029206276
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0030295
+      value: 0.75799453
+      inSlope: -3.6509385
+      outSlope: -3.6509385
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -226,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.66, y: 12.588728}
+  m_AnchoredPosition: {x: 0.66, y: 16.31}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224849633466660620
@@ -244,7 +250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.9999995, y: 2.06}
+  m_AnchoredPosition: {x: 1.16, y: 3.9743538}
   m_SizeDelta: {x: 5.6215, y: 5.621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225544099922828644

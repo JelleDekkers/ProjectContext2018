@@ -12,6 +12,7 @@ namespace CityView {
         public static Action<BuildingBase> OnDestroyedGlobal;
         public static Action<BuildingBase> OnDemolishInitiated;
         public static Action<Building> OnProductionStopped;
+        public static Action<float, int[]> OnProductionInput;
 
         public Action OnProductionResumed;
         public Action OnDestroyed;
@@ -86,6 +87,8 @@ namespace CityView {
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
             PlayerResources.OnResourceChanged -= OnResourcesChanged;
             PlayerResources.OnMoneyChanged -= OnMoneyChanged;
+            //OnProductionInput(data.Moneyinput, data.Resourceinput);
+
             if (!enabled) {
                 enabled = true;
                 ToggleBuildingEffects(true);

@@ -58,7 +58,6 @@ namespace CityView.Construction {
         }
 
         private void CheckForIsBuildableState() {
-            Debug.Log(dataID + " " + building.IsBuildable(dataID));
             AdjustBuildingMeshToUnavailableColor(building.IsBuildable(dataID));
         }
 
