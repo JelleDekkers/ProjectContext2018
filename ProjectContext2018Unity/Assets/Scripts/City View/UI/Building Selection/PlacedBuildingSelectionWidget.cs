@@ -35,7 +35,10 @@ namespace CityView.UI {
         }
 
         private void Update() {
-            productionCycleImg.fillAmount = 1 - selectedBuilding.ProductionCycle.Timer / selectedBuilding.data.Productiontime;
+            if (selectedBuilding.ProductionCycle != null)
+                productionCycleImg.fillAmount = 1 - selectedBuilding.ProductionCycle.Timer / selectedBuilding.data.Productiontime;
+            else
+                productionCycleImg.fillAmount = 0;
         }
 
         private void Activate(Building building) {

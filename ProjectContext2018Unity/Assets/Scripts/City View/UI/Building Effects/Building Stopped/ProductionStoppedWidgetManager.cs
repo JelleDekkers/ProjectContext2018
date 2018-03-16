@@ -10,14 +10,15 @@ namespace CityView.UI {
         [SerializeField] private ProductionStoppedWidget widgetPrefab;
 
         private void Start() {
-            Building.OnProductionStopped += CreateNewItem;
+            Building.OnNotEnoughInputResourcesAvailable += CreateNewItem;
         }
 
         private void OnDestroy() {
-            Building.OnProductionStopped -= CreateNewItem;
+            Building.OnNotEnoughInputResourcesAvailable -= CreateNewItem;
         }
 
         private void CreateNewItem(Building building) {
+            //Debug.Log("spawn new item");
             Vector3 spawnPos = building.transform.position;
             spawnPos.y += spawnHeight;
             ProductionStoppedWidget widget = Instantiate(widgetPrefab);

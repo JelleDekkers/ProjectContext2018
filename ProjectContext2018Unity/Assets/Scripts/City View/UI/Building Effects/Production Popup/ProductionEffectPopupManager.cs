@@ -16,9 +16,11 @@ namespace CityView.UI {
         }
 
         private void InstantiateNewInputPopup(Building building, BuildingsData data) {
-            ProductionEffectPopup popup = Instantiate(effect, building.transform.position, effect.transform.rotation, transform);
-            popup.transform.localRotation = effect.transform.rotation;
-            popup.InitInputCost(building, data);
+            if (data.Moneyinput > 0 || data.Resourceinput.Length > 0) {
+                ProductionEffectPopup popup = Instantiate(effect, building.transform.position, effect.transform.rotation, transform);
+                popup.transform.localRotation = effect.transform.rotation;
+                popup.InitInputCost(building, data);
+            }
         }
 
         private void InstantiateNewProductionPopup(BuildingBase building, ProductionCycleResult production) {

@@ -9715,7 +9715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.57, y: -41.3}
+  m_AnchoredPosition: {x: 50.8, y: -41.3}
   m_SizeDelta: {x: 60.75, y: 16.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238648182
@@ -9734,7 +9734,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 5
+  m_ChildAlignment: 3
   m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 15, y: 15}
@@ -22594,7 +22594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71929ed112299846b68ec23eba8ae92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHeight: -1
+  spawnHeight: 2
   widgetPrefab: {fileID: 114140480291690916, guid: 748164435cf061d4d8b51fcc6b012eb7,
     type: 2}
 --- !u!21 &620700638
@@ -66896,7 +66896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50.8, y: -41.3}
+  m_AnchoredPosition: {x: -52.5, y: -41.3}
   m_SizeDelta: {x: 60.75, y: 16.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1738017285
@@ -66915,7 +66915,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 5
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 15, y: 15}

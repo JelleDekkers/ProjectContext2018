@@ -11,7 +11,7 @@ namespace CityView {
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
         public static Action<BuildingBase> OnDestroyedGlobal;
         public static Action<BuildingBase> OnDemolishInitiated;
-        public static Action<Building> OnProductionStopped;
+        public static Action<Building> OnNotEnoughInputResourcesAvailable;
         public static Action<Building, BuildingsData> OnProductionInputProcessed;
 
         public Action OnProductionResumed;
@@ -19,7 +19,7 @@ namespace CityView {
 
         private float timeBetweenProduction = 2;
 
-        [SerializeField] private ProductionCycle productionCycle;
+        private ProductionCycle productionCycle = null;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }
 
         private Animator animator;
@@ -34,10 +34,7 @@ namespace CityView {
         public override void Init(System.Object data, Tile[,] tilesStandingOn) {
             this.data = data as BuildingsData;
             this.tilesStandingOn = tilesStandingOn;
-            if (HasNecessaryResourcesForProductionCycle())
-                StartNewProduction();
-            else
-                OnProductionNotAvailable();
+            StartCoroutine(WaitForNewProductionStart());
 
             foreach (Tile t in tilesStandingOn)
                 t.OnWaterStateChanged += CheckWaterState;
@@ -52,8 +49,6 @@ namespace CityView {
 
         protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
-            if(OnProductionStopped != null)
-                OnProductionStopped(this);
         }
 
         private void CheckWaterState(bool water) {
@@ -64,20 +59,17 @@ namespace CityView {
         }
 
         private void OnProductionNotAvailable() {
-            PlayerResources.OnResourceChanged += OnResourcesChanged;
-            PlayerResources.OnMoneyChanged += OnMoneyChanged;
+            PlayerResources.OnResourceChanged += CheckIfNecessaryInputResourcesAreAvailable;
+            //PlayerResources.OnMoneyChanged += (x) => CheckIfNecessaryInputResourcesAreAvailable();
             enabled = false;
             ToggleBuildingEffects(false);
+            if (OnNotEnoughInputResourcesAvailable != null)
+                OnNotEnoughInputResourcesAvailable(this);
         }
 
-        private void OnResourcesChanged(int id, int amount) {
+        private void CheckIfNecessaryInputResourcesAreAvailable(int x, int y) {
             if (HasNecessaryResourcesForProductionCycle())
-                StartNewProduction();
-        }
-
-        private void OnMoneyChanged(float amount) {
-            if (HasNecessaryResourcesForProductionCycle())
-                StartNewProduction();
+                StartCoroutine(WaitForNewProductionStart());
         }
 
         private bool HasNecessaryResourcesForProductionCycle() {
@@ -88,19 +80,23 @@ namespace CityView {
         private IEnumerator WaitForNewProductionStart() {
             WaitForSeconds wait = new WaitForSeconds(timeBetweenProduction);
             yield return wait;
-            StartNewProduction();
+            if (productionCycle == null) {
+                if (HasNecessaryResourcesForProductionCycle())
+                    StartNewProduction();
+                else
+                    OnProductionNotAvailable();
+            }
         }
 
         private void StartNewProduction() {
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
-            PlayerResources.OnResourceChanged -= OnResourcesChanged;
-            PlayerResources.OnMoneyChanged -= OnMoneyChanged;
+            PlayerResources.OnResourceChanged -= CheckIfNecessaryInputResourcesAreAvailable; 
+            //PlayerResources.OnMoneyChanged -= (x) => CheckIfNecessaryInputResourcesAreAvailable();
             OnProductionInputProcessed(this, data);
 
-            if (!enabled) {
+            if (!enabled) 
                 enabled = true;
-                ToggleBuildingEffects(true);
-            }
+            ToggleBuildingEffects(true);
         }
 
         public override void ToggleBuildingEffects(bool toggle) {
@@ -121,15 +117,14 @@ namespace CityView {
         }
 
         public void Update() {
-            ProductionCycle.UpdateProduction();
+            if(productionCycle != null)
+                ProductionCycle.UpdateProduction();
         }
         
         private void OnProductionCycleCompletedHandler(ProductionCycleResult result) {
+            productionCycle = null;
             OnProductionCycleCompleted(this, result);
-            if (HasNecessaryResourcesForProductionCycle())
-                StartCoroutine(WaitForNewProductionStart());
-            else
-                OnProductionNotAvailable();
+            StartCoroutine(WaitForNewProductionStart());
         }
 
         public bool TilesStandingOnAreUnderWater() {

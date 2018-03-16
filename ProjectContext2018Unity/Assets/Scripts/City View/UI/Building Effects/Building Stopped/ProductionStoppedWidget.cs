@@ -35,13 +35,12 @@ namespace CityView.UI {
         }
 
         private void DestroySelf() {
-            if (building != null) {
-                building.OnProductionResumed -= DestroySelf;
-                building.OnDestroyed -= DestroySelf;
-            }
+            Destroy(gameObject);
+        }
 
-            if(gameObject != null)
-                Destroy(gameObject);
+        private void OnDestroy() {
+            building.OnProductionResumed -= DestroySelf;
+            building.OnDestroyed -= DestroySelf;
         }
 
         private IEnumerator Scale() {
