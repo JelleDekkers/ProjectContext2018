@@ -12,6 +12,7 @@ namespace CityView.UI {
         [SerializeField] private ProductAmountItem productItemPrefab;
         [SerializeField] private GridLayoutGroup costGrid;
         [SerializeField] private GridLayoutGroup productionGrid;
+        [SerializeField] private GridLayoutGroup inputGrid;
         [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
 
@@ -35,10 +36,11 @@ namespace CityView.UI {
             gameObject.SetActive(true);
             costGrid.transform.RemoveChildren();
             productionGrid.transform.RemoveChildren();
+            inputGrid.transform.RemoveChildren();
 
             nameTxt.text = selectedBuildingData.Name;
             pollutionAmountTxt.text = selectedBuildingData.Pollution.ToString();
-            productionTime.text = selectedBuildingData.Productiontime.ToString();
+            productionTime.text = selectedBuildingData.Productiontime.ToString() + " seconds";
             
             // cost:
             Sprite sprite;
@@ -51,6 +53,18 @@ namespace CityView.UI {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourcecost[i]);
                 Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Resourcecostamount[i]);
             }
+
+            // input:
+            if (selectedBuildingData.Moneyinput > 0) {
+                sprite = DataManager.ResourcePrefabs.MoneySprite;
+                Instantiate(productItemPrefab, inputGrid.transform).Init(sprite, selectedBuildingData.Moneyinput);
+            }
+
+            for (int i = 0; i < selectedBuildingData.Resourceinput.Length; i++) {
+                sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourceinput[i]);
+                Instantiate(productItemPrefab, inputGrid.transform).Init(sprite, selectedBuildingData.Resourceinputamount[i]);
+            }
+
 
             // production:
             if (selectedBuildingData.Moneyoutput > 0) {
