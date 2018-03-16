@@ -31,7 +31,7 @@ namespace CityView {
         }
 
         private void Movement() {
-            if (Input.GetMouseButton(1)) {
+            if (Input.GetMouseButton(2)) {
                 float horizontal = Input.GetAxis("Mouse X") / 2 + Input.GetAxis("Mouse Y") / 2;
                 float vertical = Input.GetAxis("Mouse X") / 2 - Input.GetAxis("Mouse Y") / 2;
                 transform.Translate(-horizontal * movementSpeed * Time.deltaTime, 0, -vertical * movementSpeed * -Time.deltaTime, Space.Self);

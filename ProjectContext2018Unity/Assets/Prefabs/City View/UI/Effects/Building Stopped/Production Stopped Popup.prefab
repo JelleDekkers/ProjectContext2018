@@ -56,6 +56,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7b8c740e7143c41be51f29149ead76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemParent: {fileID: 224375338256646940}
+  scaleCurveAtStart:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 5.8682995
+      outSlope: 5.8682995
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 0.43754533
+      value: 2.567647
+      inSlope: 1.5405735
+      outSlope: 1.5405735
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: -2.7871525
+      outSlope: -2.7871525
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  scaleAtStartDuration: 0.7
+  itemPrefab: {fileID: 114343262984714222, guid: 15b4434071e7e1f4e87bf60543832680,
+    type: 2}
+  disappearCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  disappearTime: 1
 --- !u!114 &114479566492213016
 MonoBehaviour:
   m_ObjectHideFlags: 1
