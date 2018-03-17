@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudController : MonoBehaviour {
+namespace EarthView {
 
-    [SerializeField] private float rotateSpeed = 10;
-    [SerializeField] private Vector3 direction = Vector3.right;
+    public class CloudController : MonoBehaviour {
 
-    private void Update() {
-        transform.Rotate(direction * rotateSpeed * Time.deltaTime);
+        [SerializeField] private float rotateSpeed = 10;
+        [SerializeField] private Vector3 direction = Vector3.right;
+
+        private void Update() {
+            transform.Rotate(direction * rotateSpeed * Time.deltaTime);
+        }
     }
 }

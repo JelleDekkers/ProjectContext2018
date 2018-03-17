@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EarthController : MonoBehaviour {
+namespace EarthView {
 
-    public float rotationSpeed = 2;
+    public class EarthController : MonoBehaviour {
 
-    private void Update() {
-        if(EventSystem.current.IsPointerOverGameObject() == false && Input.GetMouseButton(0)) {
-            transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed * -Time.deltaTime), 0, Space.World);
+        public float rotationSpeed = 2;
+
+        private void Update() {
+            if (EventSystem.current.IsPointerOverGameObject() == false && Input.GetMouseButton(0)) {
+                transform.Rotate(0, (Input.GetAxis("Mouse X") * rotationSpeed * -Time.deltaTime), 0, Space.World);
+            }
         }
     }
 }
