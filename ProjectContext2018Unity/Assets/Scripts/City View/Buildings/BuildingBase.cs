@@ -26,6 +26,8 @@ namespace CityView {
             }
         }
 
+        protected SpriteRenderer outline;
+
         public abstract void Init(System.Object data, Tile[,] tilesStandingOn);
         public abstract void CacheEffects();
         public abstract void ToggleBuildingEffects(bool toggle);
@@ -41,12 +43,21 @@ namespace CityView {
 
         public abstract bool IsBuildable(int dataId);
 
+        public void AddOutline(SpriteRenderer sprite) {
+            outline = Instantiate(sprite, transform);
+            outline.transform.position = transform.position;
+            outline.size = new Vector2(Size.x + 0.1f, Size.z + 0.1f);
+            outline.enabled = false;
+        }
+
         public virtual void OnHoverEnter(float outlineWidth) {
-            FloorObjectRenderer.material.SetFloat("_Outline", outlineWidth);
+            //FloorObjectRenderer.material.SetFloat("_Outline", outlineWidth);
+            outline.enabled = true;
         }
 
         public virtual void OnHoverExit() {
-            FloorObjectRenderer.material.SetFloat("_Outline", 0);
+            //FloorObjectRenderer.material.SetFloat("_Outline", 0);
+            outline.enabled = false;
         }
     }
 }

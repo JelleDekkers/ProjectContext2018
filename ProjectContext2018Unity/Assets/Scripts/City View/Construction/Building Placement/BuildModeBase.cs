@@ -12,6 +12,7 @@ namespace CityView.Construction {
         [SerializeField] protected BuildingPlacementEffect placeEffectPrefab;
         [SerializeField] protected Transform buildingsParent;
         [SerializeField] protected LayerMask tileLayer;
+        [SerializeField] protected SpriteRenderer outlinePrefab;
         //[SerializeField] protected float maxTileHeightDistance;
 
         protected int selectionIndex = -1;

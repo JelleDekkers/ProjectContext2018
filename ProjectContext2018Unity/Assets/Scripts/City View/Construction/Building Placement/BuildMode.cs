@@ -82,6 +82,7 @@ namespace CityView.Construction {
 
             building.enabled = true;
             building.Init(SelectedBuildingData, tiles);
+            building.AddOutline(outlinePrefab);
 
             OnBuildingPlaced(building, SelectedBuildingData);
 
