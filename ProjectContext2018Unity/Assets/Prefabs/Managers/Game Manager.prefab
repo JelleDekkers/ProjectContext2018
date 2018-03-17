@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1927902049873260}
+  m_IsPrefabParent: 1
+--- !u!1 &1927902049873260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4354487494182332}
+  - component: {fileID: 114419430013482200}
+  - component: {fileID: 114932762733378232}
+  - component: {fileID: 114384831341065306}
+  - component: {fileID: 114765653874563038}
+  - component: {fileID: 114457490444702394}
+  - component: {fileID: 114029240045855384}
+  - component: {fileID: 114256466945747132}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4354487494182332
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114029240045855384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31749f6eae6e58e46820caa458b520c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tradeOffers:
+  - player: {fileID: 0}
+    productId: 2
+    amount: 500
+    cost: 100
+  - player: {fileID: 0}
+    productId: 6
+    amount: 1000
+    cost: 5000
+--- !u!114 &114256466945747132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d93a331551e9e47b5240853c5eda44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114384831341065306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac480b24cf3794d81329fb03368dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources: {fileID: 11400000, guid: 6f38c66f1a2d198448844323b7e369df, type: 2}
+--- !u!114 &114419430013482200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c38fde56eae4843ae22ea81529277a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climateType: 1
+  tilesGrid: {fileID: 0}
+  terrain: {fileID: 0}
+--- !u!114 &114457490444702394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbe41d8ae18ce94f99abebda14c391c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: TestUser
+  resourcesHandler: {fileID: 0}
+--- !u!114 &114765653874563038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5754848d3dd78cd4cabe8ab55cf7f056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  population: {fileID: 11400000, guid: d117f2d139811094f8e5e91de358e466, type: 2}
+--- !u!114 &114932762733378232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f13f2f3fac52a74aa54bfff71d81aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldTemperature: {fileID: 11400000, guid: bab4035b9b66efd48b302c172b49122b, type: 2}
