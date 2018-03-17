@@ -4,36 +4,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Population", menuName = "Scriptables/Population", order = 5)]
 public class Population : ScriptableObjectSingleton<Population> {
 
-    [SerializeField] private int inhabitants = 1;
-    public int Inhabitants { get { return inhabitants; } }
+    [SerializeField] private int totalPopulation = 1;
+    public int TotalPopulation { get { return totalPopulation; } }
 
-    [SerializeField] private int inhabitantsPerHouse = 9;
-    public int InhabitantsPerHouse { get { return inhabitantsPerHouse; } }
-
-    public static Action<int> OnInhabitantsCountChanged;
+    public static Action<int> OnPopulationCountChanged;
 
     public void Init() {
-        CityView.House.OnHouseHabited += OnHouseBuilt;
-        CityView.House.OnHouseUninhabitated += OnHouseUninhabitable;
+        CityView.House.OnHousePaused += OnHousePaused;
+        CityView.House.OnNewInhabitant += OnNewInhabitant;
     }
 
     public void Reset() {
-        inhabitants = 0;
-        CityView.House.OnHouseHabited -= OnHouseBuilt;
-        CityView.House.OnHouseUninhabitated -= OnHouseUninhabitable;
+        totalPopulation = 0;
+        CityView.House.OnHousePaused -= OnHousePaused;
+        CityView.House.OnNewInhabitant -= OnNewInhabitant;
     }
 
-    public void OnHouseBuilt() {
-        inhabitants += inhabitantsPerHouse;
-
-        if (OnInhabitantsCountChanged != null)
-            OnInhabitantsCountChanged(Inhabitants);
+    public void OnNewInhabitant(CityView.Building building, int amount) {
+        totalPopulation += amount; 
+        if (OnPopulationCountChanged != null)
+            OnPopulationCountChanged(TotalPopulation);
     }
 
-    public void OnHouseUninhabitable() {
-        inhabitants -= inhabitantsPerHouse;
-
-        if (OnInhabitantsCountChanged != null)
-            OnInhabitantsCountChanged(Inhabitants);
+    public void OnHousePaused(CityView.Building building, int inhabitants) {
+        totalPopulation -= inhabitants;
     }
 }

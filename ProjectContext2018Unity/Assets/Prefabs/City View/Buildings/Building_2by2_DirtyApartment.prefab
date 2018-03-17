@@ -401,7 +401,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014421122864848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
   m_Name: 
@@ -421,8 +421,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climate: 0
-  productionCycle:
-    timer: 0
 --- !u!198 &198430401165364396
 ParticleSystem:
   m_ObjectHideFlags: 1

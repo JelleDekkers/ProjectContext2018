@@ -16,6 +16,7 @@ namespace CityView {
         private RaycastHit hit;
 
         private BuildingBase buildingHoveringOver;
+        private BuildingBase[] buildingsHoveringOver;
 
         private void Start() {
             Construction.BuildMode.OnBuildStateToggled += ToggleActiveState;
@@ -41,9 +42,9 @@ namespace CityView {
         private void OnHover() {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                BuildingBase[] building = hit.collider.gameObject.GetComponents<BuildingBase>();  // Uses getComponents to include disabled components
-                if (building.Length > 0) 
-                    SetBuildingHoveringOver(building[0]);
+                buildingsHoveringOver = hit.collider.gameObject.GetComponents<BuildingBase>();  // Uses getComponents to include disabled components
+                if (buildingsHoveringOver.Length > 0) 
+                    SetBuildingHoveringOver(buildingsHoveringOver[0]);
             } else {
                 SetBuildingHoveringOver(null);
             }
@@ -53,7 +54,7 @@ namespace CityView {
             if (buildingHoveringOver == null)
                 return;
 
-            if (buildingHoveringOver.GetType() == typeof(Building))
+            if (buildingHoveringOver.GetType() == typeof(Building) || buildingHoveringOver.GetType() == typeof(House))
                 OnPlacedBuildingSelected(buildingHoveringOver as Building);
             else if(buildingHoveringOver.GetType() == typeof(Dike))
                 OnPlacedClimateBuildingSelected(buildingHoveringOver as Dike);

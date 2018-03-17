@@ -22487,6 +22487,7 @@ GameObject:
   - component: {fileID: 619988880}
   - component: {fileID: 619988879}
   - component: {fileID: 619988883}
+  - component: {fileID: 619988884}
   m_Layer: 5
   m_Name: World Space Canvas
   m_TagString: Untagged
@@ -22596,6 +22597,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHeight: 2
   widgetPrefab: {fileID: 114140480291690916, guid: 748164435cf061d4d8b51fcc6b012eb7,
+    type: 2}
+--- !u!114 &619988884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619988877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7d0c7750451ef42bd70571a8c5880f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupPrefab: {fileID: 114346035614965508, guid: 9b8674551ea2eab4b85703d0cf1ece9e,
     type: 2}
 --- !u!21 &620700638
 Material:

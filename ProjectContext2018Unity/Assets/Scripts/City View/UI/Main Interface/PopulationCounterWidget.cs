@@ -8,12 +8,12 @@ public class PopulationCounterWidget : MonoBehaviour {
     [SerializeField] private Text counter;
 
     private void Start() {
-        counter.text = Population.Instance.Inhabitants.ToString();
-        Population.OnInhabitantsCountChanged += UpdateCounter;
+        counter.text = Population.Instance.TotalPopulation.ToString();
+        Population.OnPopulationCountChanged += UpdateCounter;
     }
 
     private void OnDestroy() {
-        Population.OnInhabitantsCountChanged -= UpdateCounter;
+        Population.OnPopulationCountChanged -= UpdateCounter;
     }
 
     private void UpdateCounter(int amount) {

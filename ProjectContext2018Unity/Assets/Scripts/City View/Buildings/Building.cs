@@ -22,6 +22,7 @@ namespace CityView {
         private ProductionCycle productionCycle = null;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }
 
+        protected bool initialized;
         private Animator animator;
         private ParticleSystem[] particles;
         private bool effectsCached;
@@ -38,6 +39,8 @@ namespace CityView {
 
             foreach (Tile t in tilesStandingOn)
                 t.OnWaterStateChanged += CheckWaterState;
+
+            initialized = true;
         }
 
         protected virtual void OnEnable() {

@@ -10,10 +10,10 @@ namespace CityView.UI {
 
         protected override void Start() {
             img.sprite = DataManager.ResourcePrefabs.PopulationSprite;
-            amountText.text = Population.Instance.Inhabitants.ToString();
+            amountText.text = Population.Instance.TotalPopulation.ToString();
             tooltipText = "Population";
             rect = GetComponent<RectTransform>();
-            Population.OnInhabitantsCountChanged += UpdateAmount;
+            Population.OnPopulationCountChanged += UpdateAmount;
         }
 
         private void UpdateAmount(int newAmount) {
@@ -21,7 +21,7 @@ namespace CityView.UI {
         }
 
         private void OnDestroy() {
-            Population.OnInhabitantsCountChanged -= UpdateAmount;
+            Population.OnPopulationCountChanged -= UpdateAmount;
         }
 
     }
