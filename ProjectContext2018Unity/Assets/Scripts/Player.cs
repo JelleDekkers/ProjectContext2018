@@ -64,7 +64,7 @@ public class Player : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdAddGlobalPollution(int amount) {
+    public void CmdAddGlobalPollution(float amount) {
         globalPollution += amount;
         RpcUpdateGlobalPollution(globalPollution);
     }

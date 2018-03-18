@@ -65,6 +65,7 @@ namespace CityView.Terrain {
         }
 
         private void SetHeight(float height) {
+#if UNITY_EDITOR 
             if (UnityEditor.EditorApplication.isPlaying) {
                 if (heightCoroutine != null) {
                     StopCoroutine(heightCoroutine);
@@ -77,6 +78,15 @@ namespace CityView.Terrain {
                 transform.localScale = new Vector3(transform.localScale.x, height, transform.localScale.z);
                 currentHeight = height;
             }
+#else
+            if (heightCoroutine != null) {
+                StopCoroutine(heightCoroutine);
+                heightCoroutine = null;
+            }
+
+            heightCoroutine = StartCoroutine(SetHeightCoroutine(height));
+            StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
+#endif
         }
 
         private IEnumerator SetHeightCoroutine(float target) {

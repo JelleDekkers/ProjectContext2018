@@ -18,6 +18,9 @@ public class WorldTemperatureHandler : MonoBehaviour {
     private void ProcessProductionResult(CityView.Building building, ProductionCycleResult result) {
         if (result.pollutionPoints > 0)
             worldTemperature.AddPollution(result.pollutionPoints);
+
+        if (Player.LocalPlayer != null)
+            Player.LocalPlayer.CmdAddGlobalPollution(result.pollutionPoints);
     }
 
     private void OnGUI() {

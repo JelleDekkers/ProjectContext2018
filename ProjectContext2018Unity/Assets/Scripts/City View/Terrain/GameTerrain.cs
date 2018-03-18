@@ -45,7 +45,7 @@ namespace CityView.Terrain {
 #if UNITY_EDITOR
                     gObject = UnityEditor.PrefabUtility.InstantiatePrefab(terrainBlockPrefab) as TerrainBlock;
 #else
-                    gObject = Instantiate(tilePrefab);
+                    gObject = Instantiate(terrainBlockPrefab);
 #endif
                     gObject.transform.position = new Vector3(x, 0, z);
                     gObject.transform.SetParent(terrainParent);
@@ -74,7 +74,7 @@ namespace CityView.Terrain {
 #if UNITY_EDITOR
                     gObject = UnityEditor.PrefabUtility.InstantiatePrefab(waterBlockPrefab) as WaterSourceBlock;
 #else
-                    gObject = Instantiate(waterPrefab);
+                    gObject = Instantiate(waterBlockPrefab);
 #endif
                     gObject.transform.position = new Vector3(x, tileBeneath.TotalHeight, z);
                     gObject.transform.SetParent(waterParent);
