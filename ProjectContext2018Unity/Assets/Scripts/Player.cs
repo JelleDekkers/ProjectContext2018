@@ -20,6 +20,9 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private float globalPollution;
     public float GlobalPollution { get { return globalPollution; } }
 
+    [SyncVar, SerializeField] private float cityPollution;
+    public float CityPollution { get { return cityPollution; } }
+
     public PlayerList PlayerList { get; private set; }
 
     [SerializeField] PlayerResourcesHandler resourcesHandler;
