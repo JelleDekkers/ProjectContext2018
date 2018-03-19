@@ -18,17 +18,22 @@ public class Player : NetworkBehaviour {
     public int PlayerID { get { return playerID; } }
 
     [SyncVar, SerializeField] private float globalPollution;
-    public float GlobalPollution { get { return globalPollution; } }
+    public float WorldPollution { get { return globalPollution; } }
 
-    [SyncVar, SerializeField] private float cityPollution;
-    public float CityPollution { get { return cityPollution; } }
+    [SyncVar, SerializeField] private float playerPollution;
+    public float PlayerPollution { get { return playerPollution; } }
 
     public PlayerList PlayerList { get; private set; }
+
+    //[SyncVar, SerializeField] private float money;
+    //public float Money { get { return money; } }
 
     [SerializeField] PlayerResourcesHandler resourcesHandler;
     public PlayerResourcesHandler ResourcesHandler { get { return resourcesHandler; } }
      
-    public SyncListUInt resources = new SyncListUInt();
+    // Hack because syncliststruct won't work properly
+    public SyncListInt resourcesAmountForTrade = new SyncListInt();
+    public SyncListInt resourcesCostForTrade = new SyncListInt();
 
     [SerializeField] private SceneAsset gameOverScene;
 
@@ -43,39 +48,59 @@ public class Player : NetworkBehaviour {
             gameObject.name += "(LOCAL)";
         }
 
-        for (int i = 0; i < DataManager.ResourcesData.dataArray.Length; i++)
-            resources.Add(0);
+        for (int i = 0; i < DataManager.ResourcesData.dataArray.Length; i++) {
+            resourcesAmountForTrade.Add(50);
+            resourcesCostForTrade.Add(100);
+        }
     }
 
     [Command]
-    public void CmdUpateResourceList(int index, uint value) {
-        resources[index] = value;
+    public void CmdUpateResourceList(int index, int value) {
+        // TODO: update
+        resourcesCostForTrade[index] = value;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tradeAcceptant">The player who accepted the offer</param>
+    /// <param name="tradeProvider">The player whos offer it is</param>
+    /// <param name="resoruceID">ID of resource</param>
+    /// <param name="amount">Amount of resource bought</param>
     [Command]
-    public void CmdTradeWithPlayer(int senderID, int recieverID, int amount) {
-        TargetTradeWithPlayer(PlayerList.Players[recieverID].connectionToClient, senderID, recieverID, amount);
+    public void CmdTradeWithPlayer(int tradeAcceptant, int tradeProvider, int resourceID, int amount) {
+        TargetTradeWithPlayer(PlayerList.Players[tradeProvider].connectionToClient, tradeAcceptant, tradeProvider, resourceID, amount);
     }
 
     [TargetRpc]
-    public void TargetTradeWithPlayer(NetworkConnection target, int senderID, int recieverID, int amount) {
-        PlayerList.Players[recieverID].AddResourceFromTrade(senderID, amount);
+    public void TargetTradeWithPlayer(NetworkConnection target, int tradeAcceptant, int tradeProvider, int resourceID, int amount) {
+        PlayerList.Players[tradeProvider].SellTradeOffer(tradeAcceptant, resourceID, amount);
     }
 
-    private void AddResourceFromTrade(int senderID, int amount) {
-        Debug.Log(gameObject.name + " Recieved trade, player: " + Name + " id: " + playerID + " from sender " + senderID + " amount: " + amount);
+    private void SellTradeOffer(int tradeAcceptant, int resourceID, int amount) {
+        resourcesAmountForTrade[resourceID] -= amount;
+        if (resourcesAmountForTrade[resourceID] < 0)
+            resourcesAmountForTrade[resourceID] = 0;
+
+        float value = resourcesCostForTrade[resourceID] * amount;
+        TradeOffer tradeOffer = new TradeOffer(this, resourceID, amount, value);
+        MarketPlace.OnTradeOfferSold(tradeOffer);
     }
 
     [Command]
-    public void CmdAddGlobalPollution(float amount) {
+    public void CmdAddGlobalPollution(int playerID, float amount) {
         globalPollution += amount;
-        RpcUpdateGlobalPollution(globalPollution);
+        RpcUpdateGlobalPollution(playerID, globalPollution);
     }
 
     [ClientRpc]
-    public void RpcUpdateGlobalPollution(float amount) {
-        foreach (Player player in PlayerList.Players)
+    public void RpcUpdateGlobalPollution(int playerID, float amount) {
+        foreach (Player player in PlayerList.Players) {
+            if (player.PlayerID == playerID)
+                playerPollution += amount;
+
             player.globalPollution = amount;
+        }
     }
 
     [Command]

@@ -11,6 +11,10 @@ namespace EarthView {
         private void Awake() {
             cityObjects = GetComponentsInChildren<CityObject>(true);
             
+            for(int i = 0; i < PlayerList.Instance.Players.Count; i++) {
+                cityObjects[i].SetObjectActive(true);
+                cityObjects[i].Init(PlayerList.Instance.Players[i]);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ public class MarketPlace : MonoBehaviour {
     [SerializeField] private List<TradeOffer> tradeOffers = new List<TradeOffer>();
     public List<TradeOffer> TradeOffers { get { return tradeOffers; } }
 
-    public static Action<TradeOffer> OnTradeOfferBought;
+    public static Action<TradeOffer> OnTradeOfferBought, OnTradeOfferSold;
 
     public Action OnTradeOffersChanged;
 

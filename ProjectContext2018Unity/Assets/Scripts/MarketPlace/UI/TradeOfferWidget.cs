@@ -19,7 +19,7 @@ namespace UI {
 
             GameResourcesData resource = DataManager.ResourcesData.dataArray[offer.productId];
             productOffer.Init(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), offer.amount);
-            offerCost.Init(DataManager.ResourcePrefabs.MoneySprite, offer.cost);
+            offerCost.Init(DataManager.ResourcePrefabs.MoneySprite, offer.totalValue);
 
             if (offer.player != null)
                 playerFromTxt.text = offer.player.Name;

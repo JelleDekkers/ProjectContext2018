@@ -20,7 +20,7 @@ public class WorldTemperatureHandler : MonoBehaviour {
             worldTemperature.AddPollution(result.pollutionPoints);
 
         if (Player.LocalPlayer != null)
-            Player.LocalPlayer.CmdAddGlobalPollution(result.pollutionPoints);
+            Player.LocalPlayer.CmdAddGlobalPollution(Player.LocalPlayer.PlayerID, result.pollutionPoints);
     }
 
     private void OnGUI() {

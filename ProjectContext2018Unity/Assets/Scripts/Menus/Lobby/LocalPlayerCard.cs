@@ -8,6 +8,6 @@ public class LocalPlayerCard : PlayerCard {
     [SerializeField] private InputField nameInputField;
 
     public void UpdateName() {
-        //player.CmdUpdateName(nameInputField.text);
+        player.CmdUpdateName(nameInputField.text);
     }
 }

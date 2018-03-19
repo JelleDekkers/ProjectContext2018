@@ -46,9 +46,13 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
             AddResources(result.producedResources);
     }
 
-    public void ProcessTradeOffer(TradeOffer tradeOffer) {
-            RemoveMoney(tradeOffer.cost);
-            AddResource(tradeOffer.productId, tradeOffer.amount);
+    public void TradeOfferBought(TradeOffer tradeOffer) {
+        RemoveMoney(tradeOffer.totalValue);
+        AddResource(tradeOffer.productId, tradeOffer.amount);
+    }
+
+    public void TradeOfferSold(TradeOffer tradeOffer) {
+        AddMoney(tradeOffer.totalValue);
     }
 
     #region add resource

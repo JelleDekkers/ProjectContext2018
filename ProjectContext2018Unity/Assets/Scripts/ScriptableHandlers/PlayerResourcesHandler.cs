@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerResourcesHandler : MonoBehaviour {
 
-    [SerializeField] private PlayerResources resources;
-    public PlayerResources Resources { get { return resources; } }
+    [SerializeField] private PlayerResources playerResources;
+    public PlayerResources Resources { get { return playerResources; } }
 
     private void Awake() {
-        resources.Init();
-        CityView.Building.OnProductionCycleCompleted += resources.ProcessBuildingProductionResult;
-        MarketPlace.OnTradeOfferBought += resources.ProcessTradeOffer;
+        playerResources.Init();
+        CityView.Building.OnProductionCycleCompleted += playerResources.ProcessBuildingProductionResult;
+        MarketPlace.OnTradeOfferBought += playerResources.TradeOfferBought;
+        MarketPlace.OnTradeOfferSold += playerResources.TradeOfferSold;
     }
 
     private void OnDestroy() {
-        CityView.Building.OnProductionCycleCompleted -= resources.ProcessBuildingProductionResult;
-        MarketPlace.OnTradeOfferBought -= resources.ProcessTradeOffer;
+        CityView.Building.OnProductionCycleCompleted -= playerResources.ProcessBuildingProductionResult;
+        MarketPlace.OnTradeOfferBought -= playerResources.TradeOfferBought;
+        MarketPlace.OnTradeOfferSold -= playerResources.TradeOfferSold;
     }
 }
