@@ -23,6 +23,7 @@ namespace EarthView.UI {
         private int tradeOfferSelectionID;
         private int amount = 0;
         private float cost;
+        private TradeOfferWidget[] tradeOfferWidgets;
 
         private void Awake() {
             CityObject.OnSelected += Init;
@@ -30,13 +31,13 @@ namespace EarthView.UI {
         }
 
         public void Init(CityObject city, Player player) {
-            // if is localPlayer return;
             playerInspecting = player;
             cityObject = city;
 
             nameTxt.text = player.Name;
             if (player == Player.LocalPlayer)
                 nameTxt.text += "(You)";
+
             gameObject.SetActive(true);
             pollutionPerMinuteTxt.text = player.PlayerPollutionPerMinute.ToString();
             InstantiateTradeOffers();
@@ -54,8 +55,10 @@ namespace EarthView.UI {
 
         private void InstantiateTradeOffers() {
             tradeOffers.transform.RemoveChildren();
+            tradeOfferWidgets = new TradeOfferWidget[playerInspecting.resourcesAmountForTrade.Count];
             for(int i = 0; i < playerInspecting.resourcesAmountForTrade.Count; i++) {
-                Instantiate(tradeOfferWidgetPrefab, tradeOffers.transform).Init(this, playerInspecting, i);
+                tradeOfferWidgets[i] = Instantiate(tradeOfferWidgetPrefab, tradeOffers.transform);
+                tradeOfferWidgets[i].Init(this, playerInspecting, i);
             }
         }
 
@@ -93,11 +96,12 @@ namespace EarthView.UI {
         }
 
         public void AcceptOffer() {
+            tradeOfferWidgets[tradeOfferSelectionID].SetAmount(playerInspecting.resourcesAmountForTrade[tradeOfferSelectionID] - amount);
             Player.LocalPlayer.CmdTradeWithPlayer(Player.LocalPlayer.PlayerID, playerInspecting.PlayerID, tradeOfferSelectionID, amount);
             TradeOffer tradeOffer = new TradeOffer(PlayerList.Instance.Players[playerInspecting.PlayerID], tradeOfferSelectionID, amount, cost);
             MarketPlace.OnTradeOfferBought(tradeOffer);
             tradeInfoObject.gameObject.SetActive(false);
-            Init(cityObject, playerInspecting);
+            //Init(cityObject, playerInspecting);
         }
         
         private void OnDestroy() {

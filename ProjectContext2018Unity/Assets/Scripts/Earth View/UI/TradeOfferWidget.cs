@@ -29,5 +29,9 @@ namespace EarthView.UI {
         public void UpdateSelection() {
             infoWidget.UpdateTradeOfferSelection(id);
         }
+
+        public void SetAmount(float newAmount) {
+            amount.text = newAmount.ToString();
+        }
     }
 }
