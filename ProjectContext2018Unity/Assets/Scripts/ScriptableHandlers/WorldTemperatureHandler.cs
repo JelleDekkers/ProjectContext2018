@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +9,12 @@ public class WorldTemperatureHandler : MonoBehaviour {
     private void Start() {
         worldTemperature.Init();
         CityView.Building.OnProductionCycleCompleted += ProcessProductionResult;
+        Player.OnOtherPlayerPollutionRecieved += ProcessOtherPlayerPollution;
     }
 
     private void OnDestroy() {
         CityView.Building.OnProductionCycleCompleted -= ProcessProductionResult;
+        Player.OnOtherPlayerPollutionRecieved -= ProcessOtherPlayerPollution;
     }
 
     private void ProcessProductionResult(CityView.Building building, ProductionCycleResult result) {
@@ -21,6 +23,10 @@ public class WorldTemperatureHandler : MonoBehaviour {
 
         if (Player.LocalPlayer != null)
             Player.LocalPlayer.CmdAddGlobalPollution(Player.LocalPlayer.PlayerID, result.pollutionPoints);
+    }
+
+    private void ProcessOtherPlayerPollution(float amount) {
+        worldTemperature.AddPollution(amount);
     }
 
     private void OnGUI() {

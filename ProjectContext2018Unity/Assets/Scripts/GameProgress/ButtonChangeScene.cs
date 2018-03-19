@@ -9,7 +9,7 @@ namespace GameProgress {
             base.Start();
         }
         public override void TaskOnClick() {
-            SceneManager.LoadScene(SceneManager.GameScene, SceneManager.SingleLoad);
+            SceneManager.LoadScene(SceneManager.GameScene);
         }
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   temperatureIncreasePerPollution: 0.001
   startingTemperature: 22
   currentTemperature: 23.060024
+  maxTemperature: 40

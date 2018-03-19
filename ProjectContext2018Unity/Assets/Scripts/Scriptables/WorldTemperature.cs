@@ -15,7 +15,11 @@ public class WorldTemperature : ScriptableObject {
     [SerializeField] private float currentTemperature;
     public float CurrentTemperature { get { return currentTemperature; } }
 
+    [SerializeField] private float maxTemperature;
+    public float MaxTemperature { get { return maxTemperature; } }
+
     public static Action<float> OnWorldTemperatureChanged;
+    public static Action OnWorldTemperatureMaxReached;
 
     public void Init() {
         currentTemperature = startingTemperature;
@@ -26,8 +30,8 @@ public class WorldTemperature : ScriptableObject {
         if (OnWorldTemperatureChanged != null) {
             OnWorldTemperatureChanged(currentTemperature);
         }
-        else {
-            Debug.Log("banzai");
-        }
+
+        if (currentTemperature >= MaxTemperature)
+            OnWorldTemperatureMaxReached();
     }
 }

@@ -4,25 +4,15 @@ using UnityEngine;
 
 namespace GameProgress {
     public class LoseConditionHandler : MonoBehaviour {
-        private float polutionTemperatureLimit = 40;
 
-        // Use this for initialization
         private void Start() {
-            WorldTemperature.OnWorldTemperatureChanged += CheckLoseCondition;
+            WorldTemperature.OnWorldTemperatureMaxReached += GameOver;
         }
 
-        // Update is called once per frame
-        private void Update() {
-
-        }
-
-        private void CheckLoseCondition(float temperature) {
-            if (temperature >= polutionTemperatureLimit) {
-                Debug.Log("GAME LOST");
-                // IMPLEMENT LOSE GAME METHOD HERE
-                SceneManager.LoadScene(SceneManager.LoseScene, SceneManager.AdditiveLoad);
-                WorldTemperature.OnWorldTemperatureChanged -= CheckLoseCondition;
-            }
+        private void GameOver() {
+            Debug.Log("GAME LOST");
+            Player.LocalPlayer.LoadGameOverLobby();
+            WorldTemperature.OnWorldTemperatureMaxReached -= GameOver;
         }
     }
 }

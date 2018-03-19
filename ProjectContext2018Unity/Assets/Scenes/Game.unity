@@ -31965,7 +31965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'per minute:'
+  m_Text: per minute
 --- !u!222 &716850125
 CanvasRenderer:
   m_ObjectHideFlags: 0

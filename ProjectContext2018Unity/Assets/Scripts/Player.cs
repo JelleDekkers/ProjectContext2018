@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,6 +10,7 @@ public class Player : NetworkBehaviour {
     public static Player Instance { get { return instance; } }
 
     public static Player LocalPlayer { get; private set; }
+    public static Action<float> OnOtherPlayerPollutionRecieved;
 
     [SyncVar, SerializeField] private new string name;
     public string Name { get { return name; } }
@@ -17,8 +18,8 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private int playerID;
     public int PlayerID { get { return playerID; } }
 
-    [SyncVar, SerializeField] private float globalPollution;
-    public float WorldPollution { get { return globalPollution; } }
+    //[SyncVar, SerializeField] private float globalPollution;
+    //public float WorldPollution { get { return globalPollution; } }
 
     [SyncVar, SerializeField] private float playerPollution;
     public float PlayerPollution { get { return playerPollution; } }
@@ -54,12 +55,6 @@ public class Player : NetworkBehaviour {
         }
     }
 
-    [Command]
-    public void CmdUpateResourceList(int index, int value) {
-        // TODO: update
-        resourcesCostForTrade[index] = value;
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -89,17 +84,15 @@ public class Player : NetworkBehaviour {
 
     [Command]
     public void CmdAddGlobalPollution(int playerID, float amount) {
-        globalPollution += amount;
-        RpcUpdateGlobalPollution(playerID, globalPollution);
+        RpcAddGlobalPollution(playerID, amount);
     }
 
     [ClientRpc]
-    public void RpcUpdateGlobalPollution(int playerID, float amount) {
+    public void RpcAddGlobalPollution(int playerID, float amount) {
         foreach (Player player in PlayerList.Players) {
-            if (player.PlayerID == playerID)
+            if (player.PlayerID == playerID) 
                 playerPollution += amount;
-
-            player.globalPollution = amount;
+            OnOtherPlayerPollutionRecieved(amount);
         }
     }
 
@@ -108,8 +101,7 @@ public class Player : NetworkBehaviour {
         this.name = name;
     }
 
-    public void GameOver() {
-        Debug.Log("Game Over");
+    public void LoadGameOverLobby() {
         NetworkLoadScene.LoadSceneStatic(gameOverScene);
     }
 }
