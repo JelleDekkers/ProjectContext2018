@@ -8,7 +8,7 @@ namespace UI {
     public class TradeOfferWidget : MonoBehaviour {
 
         [SerializeField] private ProductAmountItem productOffer;
-        [SerializeField] private ProductAmountItem offerCost;
+        [SerializeField] private Text offerCost;
         [SerializeField] private Text playerFromTxt;
         [SerializeField] private Button buyBtn;
 
@@ -17,16 +17,12 @@ namespace UI {
         public void Init(MarketPlaceScreen marketPlaceScreen, TradeOffer offer) {
             this.offer = offer;
 
+            playerFromTxt.text = offer.player.Name;
             GameResourcesData resource = DataManager.ResourcesData.dataArray[offer.productId];
             productOffer.Init(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), offer.amount);
-            offerCost.Init(DataManager.ResourcePrefabs.MoneySprite, offer.totalValue);
+            offerCost.text = offer.totalValue.ToString();
 
-            if (offer.player != null)
-                playerFromTxt.text = offer.player.Name;
-            else
-                playerFromTxt.text = "Null Player";
-
-            buyBtn.onClick.AddListener(() => marketPlaceScreen.BuyTradeOffer(offer));
+            buyBtn.onClick.AddListener(() => marketPlaceScreen.OpenBuyScreen(offer));
         }
     }
 }

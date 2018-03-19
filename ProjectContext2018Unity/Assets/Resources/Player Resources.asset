@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3681be271244b79468c1721ab04bbb43, type: 3}
   m_Name: Player Resources
   m_EditorClassIdentifier: 
-  startingMoney: 2450
-  money: 2450
+  startingMoney: 2000
+  money: 2000
   startingResources:
     m_keys:
     - Energy
@@ -34,4 +34,4 @@ MonoBehaviour:
     - Electronics
     - Plastics
     - Metals
-    m_values: 1027000090d003006400000090d003000500000090d0030090d0030090d00300
+    m_values: 2427000090d003006400000090d003000500000090d0030090d0030090d00300

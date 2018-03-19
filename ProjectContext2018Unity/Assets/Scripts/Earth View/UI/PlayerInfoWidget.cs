@@ -7,6 +7,7 @@ namespace EarthView.UI {
 
     public class PlayerInfoWidget : MonoBehaviour {
 
+        [SerializeField] private CityObjectsManager cityManager;
         [SerializeField] private Text nameTxt;
         [SerializeField] private Text pollutionPerMinuteTxt;
         [SerializeField] private GridLayoutGroup tradeOffers;
@@ -15,6 +16,7 @@ namespace EarthView.UI {
         [SerializeField] private Text costTxt;
         [SerializeField] private GameObject tradeInfoObject;
         [SerializeField] private Button acceptButton;
+        [SerializeField] private Image resourceImg;
 
         private Player playerInspecting;
         private CityObject cityObject;
@@ -40,6 +42,16 @@ namespace EarthView.UI {
             InstantiateTradeOffers();
         }
 
+        public void CycleToNextPlayer(int direction) {
+            int next = playerInspecting.PlayerID + direction;
+            if (next >= PlayerList.Instance.Players.Count)
+                next = 0;
+            else if (next < 0)
+                next = PlayerList.Instance.Players.Count - 1;
+
+            Init(cityManager.cityObjects[next], PlayerList.Instance.Players[next]);
+        }
+
         private void InstantiateTradeOffers() {
             tradeOffers.transform.RemoveChildren();
             for(int i = 0; i < playerInspecting.resourcesAmountForTrade.Count; i++) {
@@ -50,6 +62,7 @@ namespace EarthView.UI {
         public void UpdateTradeOfferSelection(int newID) {
             tradeOfferSelectionID = newID;
             amountInputField.text = (0).ToString();
+            resourceImg.sprite = DataManager.ResourcePrefabs.GetResourceSprite(newID);
             tradeInfoObject.gameObject.SetActive(true);
         }
 

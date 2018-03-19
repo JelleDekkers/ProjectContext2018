@@ -87,8 +87,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4715296507058660}
-  - component: {fileID: 135641236135281428}
   - component: {fileID: 114478110272116750}
+  - component: {fileID: 65312152605539030}
   m_Layer: 11
   m_Name: Mesh Pivot
   m_TagString: Untagged
@@ -2286,6 +2286,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685505946453636}
   m_Mesh: {fileID: 4300020, guid: f65d74a0392dfd74ab47ca7e769d2f75, type: 3}
+--- !u!65 &65312152605539030
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268159928151010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: -0.03, y: 0, z: 0}
 --- !u!95 &95561843264353422
 Animator:
   serializedVersion: 3
@@ -2314,18 +2326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56df4537da387b4c8632a37c2124224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135641236135281428
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268159928151010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: -0.05, y: -0.01, z: 0}
 --- !u!198 &198063350042693712
 ParticleSystem:
   m_ObjectHideFlags: 1

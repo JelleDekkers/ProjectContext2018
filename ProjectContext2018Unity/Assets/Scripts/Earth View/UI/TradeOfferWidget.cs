@@ -9,6 +9,7 @@ namespace EarthView.UI {
 
         [SerializeField] private Image img;
         [SerializeField] private Text amount, cost;
+        [SerializeField] private Button button;
 
         private PlayerInfoWidget infoWidget;
         private Player player;
@@ -22,6 +23,7 @@ namespace EarthView.UI {
             img.sprite = DataManager.ResourcePrefabs.GetResourceSprite(id);
             amount.text = player.resourcesAmountForTrade[id].ToString() + "x";
             cost.text = player.resourcesCostForTrade[id].ToString();
+            button.interactable = (player != Player.LocalPlayer);
         }
 
         public void UpdateSelection() {
