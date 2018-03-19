@@ -20,7 +20,7 @@ namespace CityView.Construction {
                 Destroy(building.gameObject);
 
             this.dataID = dataID;
-            building = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            building = Instantiate(prefab, transform.position, prefab.transform.rotation, transform);
             building.name = "Ghost " + building.name;
             building.CacheEffects();
             building.enabled = false;

@@ -75,7 +75,7 @@ namespace CityView.Construction {
         }
 
         protected override void Build(Tile[,] tiles) {
-            ClimateBuilding building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), Quaternion.identity, buildingsParent);
+            ClimateBuilding building = Instantiate(SelectedBuilding, Tile.GetCentrePoint(tiles), SelectedBuilding.transform.rotation, buildingsParent);
             AverageOutTerrain(tiles);
 
             foreach (Tile tile in tiles) {
