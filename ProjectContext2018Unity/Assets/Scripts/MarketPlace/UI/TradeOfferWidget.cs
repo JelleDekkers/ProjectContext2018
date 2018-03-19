@@ -22,7 +22,11 @@ namespace UI {
             productOffer.Init(DataManager.ResourcePrefabs.GetResourceSprite(resource.ID), offer.amount);
             offerCost.text = offer.totalValue.ToString();
 
-            buyBtn.onClick.AddListener(() => marketPlaceScreen.OpenBuyScreen(offer));
+            buyBtn.onClick.AddListener(() => marketPlaceScreen.OpenBuyScreen(this, offer));
+        }
+
+        public void SetProductAmount(float newAmount) {
+            productOffer.SetAmount(newAmount);
         }
     }
 }

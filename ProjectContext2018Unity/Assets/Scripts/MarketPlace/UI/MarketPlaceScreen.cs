@@ -14,6 +14,7 @@ namespace UI {
         [SerializeField] private BuyWidget buyWidget;
 
         private int currentFilterIndex;
+        private TradeOfferWidget selectedWidget;
 
         private void Start() {
             FillFilterGrid();
@@ -60,17 +61,18 @@ namespace UI {
             widget.Init(this, offer);
         }
 
-        public void OpenBuyScreen(TradeOffer offer) {
+        public void OpenBuyScreen(TradeOfferWidget widget, TradeOffer offer) {
             buyWidget.gameObject.SetActive(true);
             buyWidget.Init(this, offer);
+            selectedWidget = widget;
         }
 
         public void BuyTradeOffer(TradeOffer offer) {
+            selectedWidget.SetProductAmount(offer.player.resourcesAmountForTrade[offer.productId] - offer.amount);
             Player.LocalPlayer.CmdTradeWithPlayer(Player.LocalPlayer.PlayerID, offer.player.PlayerID, offer.productId, offer.amount);
             MarketPlace.OnTradeOfferBought(offer);
-
             buyWidget.gameObject.SetActive(false);
-            RefreshTradeOffersList();
+            //RefreshTradeOffersList();
         }
     }
 }

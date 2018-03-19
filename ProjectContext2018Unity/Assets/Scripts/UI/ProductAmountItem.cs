@@ -19,5 +19,9 @@ namespace UI {
             productImg.material = mat;
             amountTxt.material = mat;
         }
+
+        public void SetAmount(float newAmount) {
+            amountTxt.text = newAmount.ToString();
+        }
     }
 }
