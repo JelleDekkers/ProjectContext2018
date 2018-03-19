@@ -39,6 +39,11 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
             startingResources.Add(DataManager.ResourcesData.dataArray[i].Name, 0);
     }
 
+    public int GetResource(int index) {
+        string resourceName = DataManager.ResourcesData.dataArray[index].Name;
+        return resources[resourceName];
+    }
+
     public void ProcessBuildingProductionResult(CityView.Building building, ProductionCycleResult result) {
         if (result.money != 0)
             AddMoney(result.money);

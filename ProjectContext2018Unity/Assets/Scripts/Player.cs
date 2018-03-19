@@ -45,8 +45,8 @@ public class Player : NetworkBehaviour {
         }
 
         for (int i = 0; i < DataManager.ResourcesData.dataArray.Length; i++) {
-            resourcesAmountForTrade.Add(UnityEngine.Random.Range(10, 100));
-            resourcesCostForTrade.Add(UnityEngine.Random.Range(3, 20));
+            resourcesAmountForTrade.Add(0);
+            resourcesCostForTrade.Add(0);
         }
 
         //CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
@@ -71,6 +71,12 @@ public class Player : NetworkBehaviour {
     [ClientRpc]
     public void RpcTradeWithPlayer(int tradeAcceptant, int tradeOfferer, int resourceID, int amount) {
         PlayerList.Players[tradeOfferer].SellTradeOffer(tradeAcceptant, resourceID, amount);
+    }
+
+    [Command]
+    public void CmdSendTradeOffer(int index, int amount, int value) {
+        resourcesAmountForTrade[index] = value;
+        resourcesCostForTrade[index] = amount;
     }
 
     private void SellTradeOffer(int tradeAcceptant, int resourceID, int amount) {

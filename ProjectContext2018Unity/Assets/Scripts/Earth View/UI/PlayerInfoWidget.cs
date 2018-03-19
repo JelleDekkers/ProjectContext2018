@@ -17,6 +17,7 @@ namespace EarthView.UI {
         [SerializeField] private GameObject tradeInfoObject;
         [SerializeField] private Button acceptButton;
         [SerializeField] private Image resourceImg;
+        [SerializeField] private Button setTradeOffersBtn;
 
         private Player playerInspecting;
         private CityObject cityObject;
@@ -37,7 +38,7 @@ namespace EarthView.UI {
             nameTxt.text = player.Name;
             if (player == Player.LocalPlayer)
                 nameTxt.text += "(You)";
-
+            setTradeOffersBtn.gameObject.SetActive(player == Player.LocalPlayer);
             gameObject.SetActive(true);
             pollutionPerMinuteTxt.text = player.PlayerPollutionPerMinute.ToString();
             InstantiateTradeOffers();
