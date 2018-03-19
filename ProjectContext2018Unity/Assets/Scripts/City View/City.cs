@@ -15,6 +15,8 @@ namespace CityView {
                 return instance; }
         }
 
+        public static Action OnGameSceneWasLoaded;
+
         [SerializeField] private Climate climateType;
         public Climate ClimateType { get { return climateType; } }
 
@@ -26,6 +28,9 @@ namespace CityView {
 
         private void Awake() {
             instance = this;
+
+            if(OnGameSceneWasLoaded != null)
+                OnGameSceneWasLoaded();
 
             // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
             //Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));

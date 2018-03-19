@@ -13,6 +13,18 @@ namespace CityView.UI {
 
         private bool cached;
 
+        private void OnEnable() {
+            SwitchView.OnSceneViewSwitched += Disable;
+        }
+
+        private void OnDisable() {
+            SwitchView.OnSceneViewSwitched -= Disable;
+        }
+
+        private void Disable() {
+            gameObject.SetActive(false);
+        }
+
         public void FillGridBuildingData() {
             contentParent.RemoveChildren();
             gameObject.SetActive(true);

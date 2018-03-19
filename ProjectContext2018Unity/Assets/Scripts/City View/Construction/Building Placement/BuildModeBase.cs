@@ -19,10 +19,19 @@ namespace CityView.Construction {
         protected Tile[,] tilesHoveringOver;
         protected bool isHittingGrid;
 
+        protected virtual void OnEnable() {
+            SwitchView.OnSceneViewSwitched += Disable;
+        }
+
         protected virtual void OnDisable() {
             if(buildingGhost != null)
                 buildingGhost.gameObject.SetActive(false);
             RevertTileColors();
+            SwitchView.OnSceneViewSwitched -= Disable;
+        }
+
+        private void Disable() {
+            enabled = false;
         }
 
         protected virtual void Update() {

@@ -13,7 +13,8 @@ namespace CityView.Construction {
         public static Action<BuildingBase, BuildingsData> OnBuildingPlaced;
         public static Action<bool> OnBuildStateToggled;
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
             UI.BuildingSelectionWidget.OnBuildingSelected += OnBuildingSelected;
         }
 

@@ -36,7 +36,7 @@ namespace EarthView.UI {
             if (player == Player.LocalPlayer)
                 nameTxt.text += "(You)";
             gameObject.SetActive(true);
-            pollutionPerMinuteTxt.text = player.PlayerPollution.ToString();
+            pollutionPerMinuteTxt.text = player.PlayerPollutionPerMinute.ToString();
             InstantiateTradeOffers();
         }
 

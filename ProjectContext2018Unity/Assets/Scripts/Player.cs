@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Player : NetworkBehaviour {
 
@@ -18,16 +19,10 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private int playerID;
     public int PlayerID { get { return playerID; } }
 
-    //[SyncVar, SerializeField] private float globalPollution;
-    //public float WorldPollution { get { return globalPollution; } }
-
-    [SyncVar, SerializeField] private float playerPollution;
-    public float PlayerPollution { get { return playerPollution; } }
+    [SyncVar, SerializeField] private float playerPollutionPerMinute;
+    public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
 
     public PlayerList PlayerList { get; private set; }
-
-    //[SyncVar, SerializeField] private float money;
-    //public float Money { get { return money; } }
 
     [SerializeField] PlayerResourcesHandler resourcesHandler;
     public PlayerResourcesHandler ResourcesHandler { get { return resourcesHandler; } }
@@ -53,23 +48,29 @@ public class Player : NetworkBehaviour {
             resourcesAmountForTrade.Add(50);
             resourcesCostForTrade.Add(100);
         }
+
+        //CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
+        //CityView.BuildingsHandler.OnBuildingListChanged += CmdUpdatePollutionPerMinute;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="tradeAcceptant">The player who accepted the offer</param>
-    /// <param name="tradeProvider">The player whos offer it is</param>
-    /// <param name="resoruceID">ID of resource</param>
-    /// <param name="amount">Amount of resource bought</param>
+    //private void OnDestroy() {
+    //    CityView.City.OnGameSceneWasLoaded -= CmdUpdatePollutionPerMinute;
+    //    CityView.BuildingsHandler.OnBuildingListChanged -= CmdUpdatePollutionPerMinute;
+    //}
+
     [Command]
-    public void CmdTradeWithPlayer(int tradeAcceptant, int tradeProvider, int resourceID, int amount) {
-        TargetTradeWithPlayer(PlayerList.Players[tradeProvider].connectionToClient, tradeAcceptant, tradeProvider, resourceID, amount);
+    private void CmdUpdatePollutionPerMinute() {
+        playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
+    }
+
+    [Command]
+    public void CmdTradeWithPlayer(int tradeAcceptant, int tradeofferer, int resourceID, int amount) {
+        TargetTradeWithPlayer(PlayerList.Players[tradeofferer].connectionToClient, tradeAcceptant, tradeofferer, resourceID, amount);
     }
 
     [TargetRpc]
-    public void TargetTradeWithPlayer(NetworkConnection target, int tradeAcceptant, int tradeProvider, int resourceID, int amount) {
-        PlayerList.Players[tradeProvider].SellTradeOffer(tradeAcceptant, resourceID, amount);
+    public void TargetTradeWithPlayer(NetworkConnection target, int tradeAcceptant, int tradeOfferer, int resourceID, int amount) {
+        PlayerList.Players[tradeOfferer].SellTradeOffer(tradeAcceptant, resourceID, amount);
     }
 
     private void SellTradeOffer(int tradeAcceptant, int resourceID, int amount) {
@@ -90,8 +91,6 @@ public class Player : NetworkBehaviour {
     [ClientRpc]
     public void RpcAddGlobalPollution(int playerID, float amount) {
         foreach (Player player in PlayerList.Players) {
-            if (player.PlayerID == playerID) 
-                playerPollution += amount;
             OnOtherPlayerPollutionRecieved(amount);
         }
     }
