@@ -9,12 +9,14 @@ namespace CityView.UI {
 
         [SerializeField] private Image img;
         [SerializeField] private Button button;
+        [SerializeField] private Color incorrectClimateColor = Color.red;
 
         public static Action<int, System.Object> OnPointerEnterEvent;
         public static Action OnPointerExitEvent;
 
         private int id;
         private System.Object data;
+        private bool isCorrectClimate;
         
         private void OnDisable() {
             PlayerResources.OnResourceChanged -= UpdateInteractableStateBuilding;
@@ -26,30 +28,43 @@ namespace CityView.UI {
             Construction.BuildModeClimateBuildings.OnBuildingPlaced -= UpdateInteractableStateClimateBuilding;
         }
 
-        public void Init(int id, BuildingPrefabs prefab, BuildingsData data) {
+        public void Init(int id, BuildingPrefabs prefab, BuildingsData data, bool isCorrectClimate) {
             this.id = id;
             this.data = data;
+            this.isCorrectClimate = isCorrectClimate;
             img.sprite = prefab.GetBuildingSprite(id);
             button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
             button.interactable = Building.IsBuildingBuildable(id);
             PlayerResources.OnResourceChanged += UpdateInteractableStateBuilding;
             PlayerResources.OnMoneyChanged += UpdateInteractableStateBuilding;
             Construction.BuildMode.OnBuildingPlaced += UpdateInteractableStateBuilding;
+
+            if (!isCorrectClimate) {
+                button.interactable = false;
+                img.color = incorrectClimateColor;
+            }
         }
 
-        public void Init(int id, BuildingPrefabs prefab, ClimateBuildingsData data) {
+        public void Init(int id, BuildingPrefabs prefab, ClimateBuildingsData data, bool isCorrectClimate) {
             this.id = id;
             this.data = data;
+            this.isCorrectClimate = isCorrectClimate;
             img.sprite = prefab.GetBuildingSprite(id);
             button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
             button.interactable = ClimateBuilding.IsBuildingBuildable(id);
             PlayerResources.OnResourceChanged += (x, y) => UpdateInteractableStateClimateBuilding();
             PlayerResources.OnMoneyChanged += (x) => UpdateInteractableStateClimateBuilding();
             Construction.BuildModeClimateBuildings.OnBuildingPlaced += (x, y) => UpdateInteractableStateClimateBuilding();
+
+            if(!isCorrectClimate) {
+                button.interactable = false;
+                img.color = incorrectClimateColor;
+            }
         }
 
         private void UpdateInteractableStateBuilding() {
-            button.interactable = Building.IsBuildingBuildable(id);
+            if(isCorrectClimate)
+                button.interactable = Building.IsBuildingBuildable(id);
         }
 
         private void UpdateInteractableStateBuilding(float money) {

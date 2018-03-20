@@ -30,8 +30,8 @@ namespace CityView.UI {
             gameObject.SetActive(true);
             for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
                 BuildingsData data = DataManager.BuildingData.dataArray[i];
-                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
-                    Instantiate(itemPrefab, contentParent).Init(i, buildings, data);
+                bool correctClimate = (data.Climate == Climate.None || data.Climate == Player.LocalPlayer.ClimateType);
+                Instantiate(itemPrefab, contentParent).Init(i, buildings, data, correctClimate);
             }
         }
 
@@ -40,8 +40,8 @@ namespace CityView.UI {
             gameObject.SetActive(true);
             for (int i = 0; i < DataManager.ClimateBuildingData.dataArray.Length; i++) {
                 ClimateBuildingsData data = DataManager.ClimateBuildingData.dataArray[i];
-                if(data.Climate == Climate.None || data.Climate == City.Instance.ClimateType)
-                    Instantiate(itemPrefab, contentParent).Init(i, climateBuildings, data);
+                bool correctClimate = (data.Climate == Climate.None || data.Climate == City.Instance.ClimateType);
+                Instantiate(itemPrefab, contentParent).Init(i, climateBuildings, data, correctClimate);
             }
         }
     }
