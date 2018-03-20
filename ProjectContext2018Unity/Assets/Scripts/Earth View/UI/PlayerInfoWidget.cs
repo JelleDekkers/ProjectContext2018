@@ -8,7 +8,7 @@ namespace EarthView.UI {
     public class PlayerInfoWidget : MonoBehaviour {
 
         [SerializeField] private CityObjectsManager cityManager;
-        [SerializeField] private Text nameTxt;
+        [SerializeField] private Text nameTxt, climateTxt;
         [SerializeField] private Text pollutionPerMinuteTxt;
         [SerializeField] private GridLayoutGroup tradeOffers;
         [SerializeField] private TradeOfferWidget tradeOfferWidgetPrefab;
@@ -38,6 +38,7 @@ namespace EarthView.UI {
             nameTxt.text = player.Name;
             if (player == Player.LocalPlayer)
                 nameTxt.text += "(You)";
+            climateTxt.text = playerInspecting.ClimateType.ToString();
             setTradeOffersBtn.gameObject.SetActive(player == Player.LocalPlayer);
             gameObject.SetActive(true);
             pollutionPerMinuteTxt.text = player.PlayerPollutionPerMinute.ToString();
