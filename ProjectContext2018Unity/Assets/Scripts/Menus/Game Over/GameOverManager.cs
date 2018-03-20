@@ -8,12 +8,20 @@ namespace UI {
     public class GameOverManager : MonoBehaviour {
 
         [SerializeField] private SceneAsset menu;
-        [SerializeField] private GameObject gameWonDesc, gameLostDesc;
+        [SerializeField] private WorldTemperature worldTemperature;
+        [SerializeField] private Text gameOverDescriptionTxt;
+        [SerializeField] private string temperatureThresholdReachedDescription, timeThresholdReachedDescription, sustainableConditionMetDescription;
         [SerializeField] private Transform playerList;
         [SerializeField] private PlayerInfoItem infoItemPrefab;
 
         private void Start() {
             FillPlayerList();
+            // zelf via code invoeren, ook voor als er te veel dagen voorbij zijn
+            if (worldTemperature.IsWorldTemperatureThresholdReached())
+                gameOverDescriptionTxt.text = temperatureThresholdReachedDescription;
+            else
+                gameOverDescriptionTxt.text = sustainableConditionMetDescription;
+            // else if days 
         }
 
         private void FillPlayerList() {

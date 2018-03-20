@@ -31,7 +31,11 @@ public class WorldTemperature : ScriptableObject {
             OnWorldTemperatureChanged(currentTemperature);
         }
 
-        if (currentTemperature >= MaxTemperature)
+        if (IsWorldTemperatureThresholdReached())
             OnWorldTemperatureMaxReached();
+    }
+
+    public bool IsWorldTemperatureThresholdReached() {
+        return currentTemperature >= MaxTemperature;
     }
 }
