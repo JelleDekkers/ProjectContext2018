@@ -28,6 +28,6 @@ public class PlayerResourcesHandler : MonoBehaviour {
         if (amount > 0)
             Resources.AddResource(id, amount);
         else
-            Resources.RemoveResource(id, amount);
+            Resources.RemoveResource(id, amount * -1);
     }
 }
