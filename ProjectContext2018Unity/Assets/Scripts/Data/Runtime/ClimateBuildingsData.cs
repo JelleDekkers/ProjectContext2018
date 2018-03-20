@@ -33,8 +33,8 @@ public class ClimateBuildingsData
   public Climate Climate { get {return climate; } set { climate = value;} }
   
   [SerializeField]
-  int level;
-  public int Level { get {return level; } set { level = value;} }
+  float level;
+  public float Level { get {return level; } set { level = value;} }
   
   [SerializeField]
   string description;

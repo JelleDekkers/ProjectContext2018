@@ -20,21 +20,21 @@ MonoBehaviour:
     resourcecost: 04000000
     resourcecostamount: 05000000
     climate: 1
-    level: 1
-    description: Stops a small amount of water
+    level: 0.4
+    description: Stops up to 4 meters of water
   - id: 1
     name: Medium Dike
     moneycost: 200
     resourcecost: 0200000004000000
     resourcecostamount: 0a0000000a000000
     climate: 1
-    level: 2
-    description: Stops a medium amount of water
+    level: 0.8
+    description: Stops up to 8 meters of water
   - id: 2
     name: Large Dike
     moneycost: 300
     resourcecost: 020000000400000005000000
     resourcecostamount: 0a0000000a0000000a000000
     climate: 1
-    level: 3
-    description: Stops a large amount of water
+    level: 1.2
+    description: Stops up to 12 meters of water

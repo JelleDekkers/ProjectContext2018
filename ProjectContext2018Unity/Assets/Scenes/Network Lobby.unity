@@ -113,6 +113,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &65519725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 65519726}
+  - component: {fileID: 65519729}
+  - component: {fileID: 65519728}
+  m_Layer: 5
+  m_Name: ObjectivesInfo 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &65519726
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65519725}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 690394938}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 228.78, y: -39.37}
+  m_SizeDelta: {x: 375.55, y: 99}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &65519728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65519725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '2) Get the highest score by having the largest population and money
+
+'
+--- !u!222 &65519729
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65519725}
 --- !u!1 &147274181
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,8 +273,9 @@ GameObject:
   - component: {fileID: 288329671}
   - component: {fileID: 288329673}
   - component: {fileID: 288329672}
+  - component: {fileID: 288329674}
   m_Layer: 5
-  m_Name: ObjectivesInfo (1)
+  m_Name: ObjectivesInfo 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,8 +296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 206.3, y: 7.32}
-  m_SizeDelta: {x: 330.6, y: 183.4}
+  m_AnchoredPosition: {x: 228.8, y: 54.58}
+  m_SizeDelta: {x: 375.5, y: 88.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288329672
 MonoBehaviour:
@@ -254,16 +331,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1) Rid the world of all unsustainable(polluting) buildings
-
-
-    2) Get the highest score by having the largest population and money'
+  m_Text: "1) Rid the world of all unsustainable(polluting) buildings by \n"
 --- !u!222 &288329673
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 288329670}
+--- !u!114 &288329674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288329670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087fc9a455aa4d746aa78a2a6c344812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTime: {fileID: 11400000, guid: 4c66a6454839f284caa0da56566a4690, type: 2}
+  text: {fileID: 288329672}
 --- !u!1 &396012444
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +504,7 @@ RectTransform:
   - {fileID: 1366731787}
   - {fileID: 1402641356}
   - {fileID: 288329671}
+  - {fileID: 65519726}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -724,7 +812,7 @@ GameObject:
   - component: {fileID: 1402641358}
   - component: {fileID: 1402641357}
   m_Layer: 5
-  m_Name: ObjectivesInfo
+  m_Name: Objectives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
