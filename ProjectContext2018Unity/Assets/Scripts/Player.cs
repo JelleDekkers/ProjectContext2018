@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : NetworkBehaviour {
 
-    // TODO: remove
-    private static Player instance;
-    public static Player Instance { get { return instance; } }
-
     public static Player LocalPlayer { get; private set; }
     public static Action<float> OnOtherPlayerPollutionRecieved;
 
@@ -22,16 +18,18 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private float playerPollutionPerMinute;
     public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
 
-    public PlayerList PlayerList { get; private set; }
+    [SyncVar, SerializeField] private float score;
+    public float Score { get { return score; } }
 
-    [SerializeField] PlayerResourcesHandler resourcesHandler;
-    public PlayerResourcesHandler ResourcesHandler { get { return resourcesHandler; } }
+    public PlayerList PlayerList { get; private set; }
      
-    // Hack because syncliststruct won't work properly
+    // Temporary hack because syncliststruct won't work properly
     public SyncListInt resourcesAmountForTrade = new SyncListInt();
     public SyncListInt resourcesCostForTrade = new SyncListInt();
 
     [SerializeField] private SceneAsset gameOverScene;
+    [SerializeField] private ScoreManager scoreManager;
+    public ScoreManager ScoreManager { get { return scoreManager; } }
 
     public void Start() {
         transform.SetParent(NetworkManager.singleton.transform);
@@ -58,10 +56,10 @@ public class Player : NetworkBehaviour {
     //    CityView.BuildingsHandler.OnBuildingListChanged -= CmdUpdatePollutionPerMinute;
     //}
 
-    [Command]
-    private void CmdUpdatePollutionPerMinute() {
-        playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
-    }
+    //[Command]
+    //private void CmdUpdatePollutionPerMinute() {
+    //    playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
+    //}
 
     [Command]
     public void CmdTradeWithPlayer(int tradeAcceptant, int tradeOfferer, int resourceID, int amount) {

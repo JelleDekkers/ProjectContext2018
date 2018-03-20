@@ -240,4 +240,4 @@ MonoBehaviour:
     climate: 0
   inhabitants: 0
   maxInhabitantsPerHouse: 12
-  newInhabitantTime: 3
+  newInhabitantTime: 6
