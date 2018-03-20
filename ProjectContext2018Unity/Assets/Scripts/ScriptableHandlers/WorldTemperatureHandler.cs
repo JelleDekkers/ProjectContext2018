@@ -28,8 +28,4 @@ public class WorldTemperatureHandler : MonoBehaviour {
     private void ProcessOtherPlayerPollution(float amount) {
         worldTemperature.AddPollution(amount);
     }
-
-    private void OnGUI() {
-        GUI.Label(new Rect(10, 200, 1000, 20), "Temperature: " + worldTemperature.CurrentTemperature.ToString());
-    }
 }
