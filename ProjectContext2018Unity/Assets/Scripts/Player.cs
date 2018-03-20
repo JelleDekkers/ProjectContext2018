@@ -15,6 +15,9 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private int playerID;
     public int PlayerID { get { return playerID; } }
 
+    [SyncVar, SerializeField] private Climate climateType;
+    public Climate ClimateType { get { return climateType; } }
+
     [SyncVar, SerializeField] private float playerPollutionPerMinute;
     public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
 
@@ -44,8 +47,14 @@ public class Player : NetworkBehaviour {
             resourcesCostForTrade.Add(0);
         }
 
+        AssignSemiRandomizedClimateType();
+
         //CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
         //CityView.BuildingsHandler.OnBuildingListChanged += CmdUpdatePollutionPerMinute;
+    }
+
+    private void AssignSemiRandomizedClimateType() {
+        climateType = (Climate)((playerID % (Enum.GetNames(typeof(Climate)).Length - 1)) + 1); // -1 and +1 to prevent Climate.None
     }
 
     //private void OnDestroy() {
