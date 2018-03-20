@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ScoreManager : NetworkBehaviour {
 
-    [SyncVar, SerializeField] private float score;
+    [SyncVar(hook = "OnScoreChangedFunction"), SerializeField] private float score;
     public float Score { get { return score; } }
 
     [SyncVar] public int inhabitants;
@@ -17,6 +16,8 @@ public class ScoreManager : NetworkBehaviour {
     [SerializeField] private float pointsPerInhabitant = 1;
     [SerializeField] private float pointsPerMoney = 1;
 
+    public Action<float> OnScoreChanged;
+
     public void Start() {
         if (player == Player.LocalPlayer) {
             Population.OnPopulationCountChanged += OnInhabitantsChange;
@@ -24,25 +25,28 @@ public class ScoreManager : NetworkBehaviour {
         }
     }
 
-    private void Update() {
-        if (player != Player.LocalPlayer)
-            return;
-    }
     private void OnDestroy() {
         Population.OnPopulationCountChanged -= OnInhabitantsChange;
         PlayerResources.OnMoneyChanged -= OnMoneyChange;
     }
 
+    public void OnScoreChangedFunction(float newScore) {
+        if (OnScoreChanged != null)
+            OnScoreChanged(newScore);
+    }
+
     public void OnInhabitantsChange(int change) {
         inhabitants = population.TotalPopulation;
-        if(inhabitants > 0)
-            CmdUpdateScore(inhabitants, money);
+        score = inhabitants* pointsPerInhabitant + money * pointsPerMoney;
+        if (inhabitants > 0)
+            CmdUpdateScore(score, inhabitants, money);
     }
 
     public void OnMoneyChange(float change) {
         money = PlayerResources.Money;
+        score = inhabitants* pointsPerInhabitant + money * pointsPerMoney;
         if(money > 0)
-            CmdUpdateScore(inhabitants, money);
+            CmdUpdateScore(score, inhabitants, money);
     }
 
     [Command]
@@ -51,8 +55,8 @@ public class ScoreManager : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdUpdateScore(int inhabitants, float money) {
-        score = inhabitants * pointsPerInhabitant + money * pointsPerMoney;
+    public void CmdUpdateScore(float score, int inhabitants, float money) {
+        this.score = score;
         this.money = money;
         this.inhabitants = inhabitants;
     }

@@ -18,9 +18,6 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private float playerPollutionPerMinute;
     public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
 
-    [SyncVar, SerializeField] private float score;
-    public float Score { get { return score; } }
-
     public PlayerList PlayerList { get; private set; }
      
     // Temporary hack because syncliststruct won't work properly
@@ -106,5 +103,17 @@ public class Player : NetworkBehaviour {
 
     public void LoadGameOverLobby() {
         NetworkLoadScene.LoadSceneStatic(gameOverScene);
+    }
+
+    public void DisconnectFromNetwork() {
+        MasterServer.UnregisterHost();
+        NetworkManager.singleton.StopClient();
+        NetworkManager.singleton.StopHost();
+        NetworkManager.singleton.StopMatchMaker();
+        NetworkServer.Reset();
+        Network.Disconnect();
+
+        Destroy(gameObject);
+        Destroy(NetworkManager.singleton.gameObject);
     }
 }

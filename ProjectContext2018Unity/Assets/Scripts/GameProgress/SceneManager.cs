@@ -11,5 +11,9 @@ public static class SceneManager {
     public static void LoadScene(int index, LoadSceneMode loadSceneMode = LoadSceneMode.Single) {
         UnityEngine.SceneManagement.SceneManager.LoadScene(index, loadSceneMode);
     }
+
+    public static void LoadScene(SceneAsset sceneAsset) {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneAsset);
+    }
 }
 
