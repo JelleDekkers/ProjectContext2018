@@ -31,8 +31,10 @@ namespace EarthView {
         }
 
         private void OnClick() {
+            Debug.Log("onclick");
             ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, float.MaxValue)) {
+            Debug.Log(hit.collider.gameObject.GetComponent<CityObject>());
                 if (hit.collider.gameObject.GetComponent<CityObject>())
                     hit.collider.gameObject.GetComponent<CityObject>().Select();
             }
