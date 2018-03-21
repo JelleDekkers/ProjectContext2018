@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222057728328423370}
   - component: {fileID: 114642040116496606}
   m_Layer: 0
-  m_Name: Production Stopped Resource Item
+  m_Name: Production Stopped Widget Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

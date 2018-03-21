@@ -24,6 +24,7 @@ ModelImporter:
     100032: pCylinder59
     100034: pCylinder60
     100036: polySurface757
+    100038: Mesh16
     400000: //RootNode
     400002: Floor_Unit2
     400004: pCube531
@@ -43,6 +44,7 @@ ModelImporter:
     400032: pCylinder59
     400034: pCylinder60
     400036: polySurface757
+    400038: Mesh16
     2100000: lambert12
     2100002: lambert14
     2100004: lambert15
@@ -68,6 +70,7 @@ ModelImporter:
     2300030: pCylinder59
     2300032: pCylinder60
     2300034: polySurface757
+    2300036: Mesh16
     3300000: Floor_Unit2
     3300002: pCube531
     3300004: pCube532
@@ -86,6 +89,7 @@ ModelImporter:
     3300030: pCylinder59
     3300032: pCylinder60
     3300034: polySurface757
+    3300036: Mesh16
     4300000: Floor_Unit2
     4300002: polySurface757
     4300004: pCylinder46
@@ -104,6 +108,7 @@ ModelImporter:
     4300030: pCylinder59
     4300032: pCylinder60
     4300034: pCube533
+    4300036: Mesh16
     9500000: //RootNode
   externalObjects: {}
   materials:

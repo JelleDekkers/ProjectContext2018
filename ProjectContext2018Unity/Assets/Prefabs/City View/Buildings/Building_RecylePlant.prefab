@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114243427639314696}
   - component: {fileID: 65622064276474124}
   m_Layer: 8
-  m_Name: Building_2by2_RecycleCenter
+  m_Name: Building_RecylePlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907646756107720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 6.0599995, y: 0, z: -16.470001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -95,7 +95,7 @@ Transform:
   - {fileID: 4350295687948508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4158783836246646
 Transform:
   m_ObjectHideFlags: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907646756107720}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
   m_Name: 
