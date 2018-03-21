@@ -9,6 +9,7 @@ namespace UI {
 
         [SerializeField] private SceneAsset menu;
         [SerializeField] private WorldTemperature worldTemperature;
+        [SerializeField] private GameTime gameTime;
         [SerializeField] private Text gameOverDescriptionTxt;
         [SerializeField] private string temperatureThresholdReachedDescription, timeThresholdReachedDescription, sustainableConditionMetDescription;
         [SerializeField] private Transform playerList;
@@ -16,12 +17,12 @@ namespace UI {
 
         private void Start() {
             FillPlayerList();
-            // zelf via code invoeren, ook voor als er te veel dagen voorbij zijn
             if (worldTemperature.IsWorldTemperatureThresholdReached())
                 gameOverDescriptionTxt.text = temperatureThresholdReachedDescription;
+            else if (gameTime.IsMaxYearReached())
+                gameOverDescriptionTxt.text = timeThresholdReachedDescription;
             else
                 gameOverDescriptionTxt.text = sustainableConditionMetDescription;
-            // else if days 
         }
 
         private void FillPlayerList() {
