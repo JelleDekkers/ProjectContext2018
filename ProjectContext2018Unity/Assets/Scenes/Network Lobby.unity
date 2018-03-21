@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 1366731788}
   - component: {fileID: 1366731793}
   - component: {fileID: 1366731794}
+  - component: {fileID: 1366731792}
   m_Layer: 5
   m_Name: Start Game Btn
   m_TagString: Untagged
@@ -758,6 +759,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366731786}
+--- !u!114 &1366731792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366731786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e736accc4df03d42b32fc384322b088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1366731793
 MonoBehaviour:
   m_ObjectHideFlags: 0

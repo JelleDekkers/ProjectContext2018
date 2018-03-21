@@ -49,23 +49,25 @@ public class Player : NetworkBehaviour {
 
         AssignSemiRandomizedClimateType();
 
-        //CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
-        //CityView.BuildingsHandler.OnBuildingListChanged += CmdUpdatePollutionPerMinute;
+        if (isLocalPlayer) {
+            CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
+            CityView.BuildingsHandler.OnBuildingListChanged += CmdUpdatePollutionPerMinute;
+        }
     }
 
     private void AssignSemiRandomizedClimateType() {
         climateType = (Climate)((playerID % (Enum.GetNames(typeof(Climate)).Length - 1)) + 1); // -1 and +1 to prevent Climate.None
     }
 
-    //private void OnDestroy() {
-    //    CityView.City.OnGameSceneWasLoaded -= CmdUpdatePollutionPerMinute;
-    //    CityView.BuildingsHandler.OnBuildingListChanged -= CmdUpdatePollutionPerMinute;
-    //}
+    private void OnDestroy() {
+        CityView.City.OnGameSceneWasLoaded -= CmdUpdatePollutionPerMinute;
+        CityView.BuildingsHandler.OnBuildingListChanged -= CmdUpdatePollutionPerMinute;
+    }
 
-    //[Command]
-    //private void CmdUpdatePollutionPerMinute() {
-    //    playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
-    //}
+    [Command]
+    private void CmdUpdatePollutionPerMinute() {
+        playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
+    }
 
     [Command]
     public void CmdTradeWithPlayer(int tradeAcceptant, int tradeOfferer, int resourceID, int amount) {
