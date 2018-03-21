@@ -17,6 +17,9 @@ namespace CityView.Terrain {
         [SerializeField] private float currentHeight;
         public float CurrentHeight { get { return currentHeight; } }
 
+        [SerializeField] private float maxHeight = 1.1f;
+        public float MaxHeight { get { return maxHeight; } }
+
         [SerializeField] private TerrainBlock blockBeneath;
         public TerrainBlock BlockBeneath { get { return blockBeneath; } }
 
@@ -102,7 +105,11 @@ namespace CityView.Terrain {
         }
 
         private void AddHeightToTemperature(float amount) {
-            SetHeight(currentHeight + (amount * scaleIncreasePerDegree));
+            float newHeight = currentHeight + (amount * scaleIncreasePerDegree);
+            if (newHeight < maxHeight)
+                SetHeight(newHeight);
+            else
+                WorldTemperature.OnWorldTemperatureChanged -= AddHeightToTemperature;
         }
 
         public void AdjustScaleToWaves(float amount) {
