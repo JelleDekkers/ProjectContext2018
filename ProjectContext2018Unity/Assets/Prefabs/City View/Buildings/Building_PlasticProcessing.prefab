@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4558657982079752}
   - component: {fileID: 114790654147137806}
   - component: {fileID: 65042858576611360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_PlasticProcessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280505649815152}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
   m_Name: 

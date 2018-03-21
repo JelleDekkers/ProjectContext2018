@@ -36,9 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4997896737930694}
-  - component: {fileID: 114046238220390668}
   - component: {fileID: 65653439728964024}
-  m_Layer: 0
+  - component: {fileID: 114309036000576538}
+  m_Layer: 8
   m_Name: Building_House_Sustainable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,15 +205,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7409469, y: 0.639503, z: 0.77951}
   m_Center: {x: 0.038454473, y: 0.30635166, z: -0.035698652}
---- !u!114 &114046238220390668
+--- !u!114 &114309036000576538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666316092165274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c6f9ae5f97e7174eabf7e404027b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data:
@@ -231,3 +231,6 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 0
     climate: 0
+  inhabitants: 0
+  maxInhabitantsPerHouse: 12
+  newInhabitantTime: 3

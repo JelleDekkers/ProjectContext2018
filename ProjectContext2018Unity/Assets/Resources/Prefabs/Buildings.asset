@@ -22,10 +22,16 @@ MonoBehaviour:
   - {fileID: 114841997570811104, guid: 1a51398f4f80b2940b2dd44edd8fc78a, type: 2}
   - {fileID: 114091592905726160, guid: f9dd1366a1e53014c8de08249521baea, type: 2}
   - {fileID: 114470645984753478, guid: 060b462f7bae6434eacb913db74e669e, type: 2}
-  - {fileID: 114436575096298102, guid: 9ab49a9f1e84b104897a60bfd7deda6a, type: 2}
+  - {fileID: 114218443224083602, guid: 241597c404a5db24c9cd12c275c54281, type: 2}
   - {fileID: 114542453649564992, guid: 8a7911014b2fcdf47932fcc6403dca64, type: 2}
   - {fileID: 114150301062271666, guid: c90751e97b977a8489e9a4ea6a4884fd, type: 2}
   - {fileID: 114385613551894096, guid: 5fbc43df84a80d940ae781b65a0c9de6, type: 2}
+  - {fileID: 114243427639314696, guid: 0169406f1c3279a45a6edfc5ee269e0b, type: 2}
+  - {fileID: 114051151436172790, guid: 8ef85ba745e2a7d41aea1d84367b01e2, type: 2}
+  - {fileID: 114274460137627220, guid: f55401979e37b674588a7d3ce75ee3cc, type: 2}
+  - {fileID: 114790654147137806, guid: accefe03e9934da49833c80d6c271ce9, type: 2}
+  - {fileID: 114053348048478034, guid: aa0a8fcc5900a1b4696e34565d8b23bd, type: 2}
+  - {fileID: 114309036000576538, guid: 075d4de559c296a469cba926811d24a0, type: 2}
   fallbackSprite: {fileID: 21300000, guid: 7372b8940b5d9394e8507abbd8aae121, type: 3}
   buildingSprites:
   - {fileID: 21300000, guid: d450709e89480d5418dcfc7a0aa67a18, type: 3}

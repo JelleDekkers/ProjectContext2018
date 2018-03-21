@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4453736794678900}
   - component: {fileID: 65578399808406236}
   - component: {fileID: 114051151436172790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building_SoilExtraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059356245260934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf81f775bb18b554a88507d724d557ca, type: 3}
   m_Name: 
