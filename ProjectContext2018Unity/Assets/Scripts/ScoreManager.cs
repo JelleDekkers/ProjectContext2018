@@ -61,14 +61,14 @@ public class ScoreManager : NetworkBehaviour {
         this.inhabitants = inhabitants;
     }
 
-    private void OnGUI() {
-        if (player != Player.LocalPlayer)
-            return;
+    //private void OnGUI() {
+    //    if (player != Player.LocalPlayer)
+    //        return;
 
-        for (int i = 0; i < PlayerList.Instance.Players.Count; i++) {
-            Player p = PlayerList.Instance.Players[i];
-            GUI.Label(new Rect(10, 250 + (20 * i), 1000, 20), p.Name + " Score: " + p.ScoreManager.Score.ToString() + 
-                                " money: " + p.ScoreManager.money.ToString() + " pop: " + p.ScoreManager.inhabitants.ToString());
-        }
-    }
+    //    for (int i = 0; i < PlayerList.Instance.Players.Count; i++) {
+    //        Player p = PlayerList.Instance.Players[i];
+    //        GUI.Label(new Rect(10, 250 + (20 * i), 1000, 20), p.Name + " Score: " + p.ScoreManager.Score.ToString() + 
+    //                            " money: " + p.ScoreManager.money.ToString() + " pop: " + p.ScoreManager.inhabitants.ToString());
+    //    }
+    //}
 }

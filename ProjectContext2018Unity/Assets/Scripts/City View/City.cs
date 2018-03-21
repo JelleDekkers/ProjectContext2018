@@ -31,10 +31,6 @@ namespace CityView {
 
             if(OnGameSceneWasLoaded != null)
                 OnGameSceneWasLoaded();
-
-            // Climate type is still randomly assigned, it still needs to check whether certain "Climates" have already been claimed by other players.
-            //Type = new CityType((CityType.Climate)UnityEngine.Random.Range(0, (Enum.GetNames(typeof(CityType.Climate)).Length)));
-            //Type.DebugCall();
         }       
     }
 }

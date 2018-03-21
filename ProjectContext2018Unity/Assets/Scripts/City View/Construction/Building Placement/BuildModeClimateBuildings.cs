@@ -59,7 +59,6 @@ namespace CityView.Construction {
         protected override void OnMouseClick() {
             if (tilesHoveringOver == null || EventSystem.current.IsPointerOverGameObject() || !ClimateBuilding.IsBuildingBuildable(SelectedBuildingData.ID))
                 return;
-            Debug.Log(ClimateBuilding.IsBuildingBuildable(SelectedBuildingData.ID));
             if (CanBePlacedAtTiles(tilesHoveringOver))
                 Build(tilesHoveringOver);
         }

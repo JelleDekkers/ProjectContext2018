@@ -8,13 +8,14 @@ namespace CityView.UI {
     public class BuildingListSelectionInfoWidget : MonoBehaviour {
 
         [SerializeField] private Text nameTxt;
-        [SerializeField] private Text pollutionAmountTxt;
+        [SerializeField] private Text pollutionAmountTxt, climateTxt;
         [SerializeField] private ProductAmountItem productItemPrefab;
         [SerializeField] private GridLayoutGroup costGrid;
         [SerializeField] private GridLayoutGroup productionGrid;
         [SerializeField] private GridLayoutGroup inputGrid;
         [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
+        [SerializeField] private Color correctClimateColor, incorrectClimateColor;
 
         private void DisableGameObject() {
             gameObject.SetActive(false);
@@ -41,7 +42,16 @@ namespace CityView.UI {
             nameTxt.text = selectedBuildingData.Name;
             pollutionAmountTxt.text = selectedBuildingData.Pollution.ToString();
             productionTime.text = selectedBuildingData.Productiontime.ToString() + " seconds";
+
+            climateTxt.gameObject.SetActive(selectedBuildingData.Climate != Climate.None);
+            if (selectedBuildingData.Climate != Climate.None)
+                climateTxt.text = selectedBuildingData.Climate.ToString();
             
+            if (selectedBuildingData.Climate != Player.LocalPlayer.ClimateType)
+                climateTxt.color = incorrectClimateColor;
+            else
+                climateTxt.color = correctClimateColor;
+
             // cost:
             Sprite sprite;
             if (selectedBuildingData.Moneycost > 0) {
