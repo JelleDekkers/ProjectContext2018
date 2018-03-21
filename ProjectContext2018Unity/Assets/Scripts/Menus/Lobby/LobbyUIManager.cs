@@ -9,8 +9,8 @@ public class LobbyUIManager : MonoBehaviour {
     [SerializeField] private Text infoTxt;
     [SerializeField] private string serverInfoTxt, clientInfoTxt;
 
-    private void Awake() {
-        if (NetworkManager.singleton.numPlayers == 1)
+    private void Start() {
+        if (NetworkManager.singleton.numPlayers == 0)
             infoTxt.text = serverInfoTxt;
         else
             infoTxt.text = clientInfoTxt;

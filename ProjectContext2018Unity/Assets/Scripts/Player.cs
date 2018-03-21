@@ -22,8 +22,9 @@ public class Player : NetworkBehaviour {
     public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
 
     public PlayerList PlayerList { get; private set; }
-     
-    // Temporary hack because syncliststruct won't work properly
+    public Action OnUpdatePollutionPerMinuteChanged;
+
+    // Temporary hack because syncliststruct didn't work properly
     public SyncListInt resourcesAmountForTrade = new SyncListInt();
     public SyncListInt resourcesCostForTrade = new SyncListInt();
 
@@ -50,24 +51,44 @@ public class Player : NetworkBehaviour {
         AssignSemiRandomizedClimateType();
 
         if (isLocalPlayer) {
-            CityView.City.OnGameSceneWasLoaded += CmdUpdatePollutionPerMinute;
-            CityView.BuildingsHandler.OnBuildingListChanged += CmdUpdatePollutionPerMinute;
+            CityView.City.OnGameSceneWasLoaded += SendUpdatePollutionPerMinute;
+            CityView.BuildingsHandler.OnBuildingListChanged += SendUpdatePollutionPerMinute;
         }
     }
 
     private void AssignSemiRandomizedClimateType() {
-        climateType = (Climate)((playerID % (Enum.GetNames(typeof(Climate)).Length - 1)) + 1); // -1 and +1 to prevent Climate.None
+        climateType = (Climate)((playerID % (Enum.GetNames(typeof(Climate)).Length - 1)) + 1); // -1 and +1 to exclude Climate.None
     }
 
     private void OnDestroy() {
-        CityView.City.OnGameSceneWasLoaded -= CmdUpdatePollutionPerMinute;
-        CityView.BuildingsHandler.OnBuildingListChanged -= CmdUpdatePollutionPerMinute;
+        CityView.City.OnGameSceneWasLoaded -= SendUpdatePollutionPerMinute;
+        CityView.BuildingsHandler.OnBuildingListChanged -= SendUpdatePollutionPerMinute;
+    }
+
+    public void SendUpdatePollutionPerMinute() {
+        CmdUpdatePollutionPerMinute(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
     }
 
     [Command]
-    private void CmdUpdatePollutionPerMinute() {
-        playerPollutionPerMinute = CityView.BuildingsHandler.Instance.GetPollutionPerMinute();
+    private void CmdUpdatePollutionPerMinute(int playerID, float pollution) {
+        if (isServer && playerID == this.playerID) {
+            playerPollutionPerMinute = pollution;
+        }
+
+        RpcUpdatePlayerPollutionPerMinute(playerID, pollution);
     }
+
+    [ClientRpc]
+    public void RpcUpdatePlayerPollutionPerMinute(int playerID, float amount) {
+        foreach (Player player in PlayerList.Players) {
+            if (player.PlayerID == playerID)
+                player.playerPollutionPerMinute = amount;
+        }
+
+        if (OnUpdatePollutionPerMinuteChanged != null)
+            OnUpdatePollutionPerMinuteChanged();
+    }
+
 
     [Command]
     public void CmdTradeWithPlayer(int tradeAcceptant, int tradeOfferer, int resourceID, int amount) {
@@ -110,6 +131,11 @@ public class Player : NetworkBehaviour {
     [Command]
     public void CmdUpdateName(string name) {
         this.name = name;
+    }
+
+    [Command]
+    public void CmdLoadGameOverLobby() {
+        LoadGameOverLobby();
     }
 
     public void LoadGameOverLobby() {

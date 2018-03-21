@@ -6,12 +6,33 @@ namespace GameProgress {
 
     public class WinConditionHandler : MonoBehaviour {
 
+        public float checkTimeInSeconds = 5;
+        private float timer = 0;
+
+        public void Start() {
+            Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged += CheckWinCondition;
+        }
+
+        //private void Update() {
+        //    if (timer > checkTimeInSeconds) {
+        //        CheckWinCondition();
+        //        timer = 0;
+        //    }
+        //    timer += Time.deltaTime;
+        //}
+
         private void CheckWinCondition() {
-            if (/*WIN CONDITIONS MET*/true) {
-                Debug.Log("GAME WON");
-                // IMPLEMENT WIN GAME METHOD HERE
-                SceneManager.LoadScene(SceneManager.GameOverLobby);
+          foreach(Player player in Player.LocalPlayer.PlayerList.Players) {
+                if (player.PlayerPollutionPerMinute > 0)
+                    return;
             }
+            WinConditionMet();
+        }
+
+        private void WinConditionMet() {
+            Debug.Log("GAME WON");
+            Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged -= CheckWinCondition;
+            Player.LocalPlayer.CmdLoadGameOverLobby();
         }
     }
 }
