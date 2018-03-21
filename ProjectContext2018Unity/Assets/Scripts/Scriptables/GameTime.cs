@@ -17,24 +17,22 @@ public class GameTime : ScriptableObjectSingleton<GameTime> {
     public int CurrentYear { get { return currentYear; } }
 
     [SerializeField] private float timeInSecondsToReachMaxYear;
- 
-    public float counter;
-    public float year;
-    public float deltaTimePerYear;
+
+    public float Counter { get; private set; }
+    public float TimePerYear { get; private set; }
 
     public void Init() {
         currentYear = startingYear;
-        deltaTimePerYear = (maxYear - startingYear) / timeInSecondsToReachMaxYear;
-
-        year = startingYear;
+        TimePerYear = timeInSecondsToReachMaxYear / (maxYear - startingYear);
+        Counter = 0;
     }
 
     public void Update() {
         if (IsMaxYearReached())
             OnMaxYearReached();
 
-        counter += deltaTimePerYear / Time.deltaTime;
-        year += counter;
+        Counter += Time.deltaTime;
+        currentYear = (int)(Counter / TimePerYear) + startingYear;
     }
 
     public bool IsMaxYearReached() {

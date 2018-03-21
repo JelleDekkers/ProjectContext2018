@@ -13,7 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingYear: 2018
   maxYear: 2040
-  currentYear: 0
-  timeInSecondsToReachMaxYear: 600
-  counter: 0
-  deltaTimePerYear: 0
+  currentYear: 2026
+  timeInSecondsToReachMaxYear: 10
