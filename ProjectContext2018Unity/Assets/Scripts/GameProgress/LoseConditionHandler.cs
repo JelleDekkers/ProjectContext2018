@@ -13,6 +13,10 @@ namespace GameProgress {
         private void GameOver() {
             Debug.Log("GAME LOST");
             Player.LocalPlayer.LoadGameOverLobby();
+
+        }
+
+        private void OnDestroy() {
             WorldTemperature.OnWorldTemperatureMaxReached -= GameOver;
             GameTime.OnMaxYearReached -= GameOver;
         }

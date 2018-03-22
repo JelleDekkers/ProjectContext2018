@@ -142,9 +142,8 @@ namespace CityView {
             if (tilesStandingOn != null) {
                 foreach (Tile t in tilesStandingOn)
                     t.OnWaterStateChanged -= CheckWaterState;
+                OnDestroyedGlobal(this);
             }
-
-            OnDestroyedGlobal(this);
         }
 
         public override bool IsBuildable(int dataID) {

@@ -66,14 +66,14 @@ public class Player : NetworkBehaviour {
     }
 
     public void SendUpdatePollutionPerMinute() {
+        //Debug.Log("SendUpdatePollutionPerMinute " + CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
         CmdUpdatePollutionPerMinute(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
     }
 
     [Command]
     private void CmdUpdatePollutionPerMinute(int playerID, float pollution) {
-        if (isServer && playerID == this.playerID) {
+        if (isServer && playerID == this.playerID) 
             playerPollutionPerMinute = pollution;
-        }
 
         RpcUpdatePlayerPollutionPerMinute(playerID, pollution);
     }

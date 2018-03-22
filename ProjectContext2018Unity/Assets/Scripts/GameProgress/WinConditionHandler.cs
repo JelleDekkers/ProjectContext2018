@@ -31,8 +31,11 @@ namespace GameProgress {
 
         private void WinConditionMet() {
             Debug.Log("GAME WON");
-            Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged -= CheckWinCondition;
             Player.LocalPlayer.CmdLoadGameOverLobby();
+        }
+
+        private void OnDestroy() {
+            Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged -= CheckWinCondition;
         }
     }
 }
