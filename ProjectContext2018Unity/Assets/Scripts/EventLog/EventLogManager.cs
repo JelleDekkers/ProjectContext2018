@@ -6,10 +6,13 @@ using CityView;
 public static class EventLogManager {
 
     public static Queue<IEventLog> EventLogs = new Queue<IEventLog>();
+    public static Action<IEventLog> OnNewEventLog;
 
     public static void AddEventLogs(IEventLog eventLog) {
         EventLogs.Enqueue(eventLog);
-        Debug.Log(eventLog.Text);
+
+        if(OnNewEventLog != null)
+            OnNewEventLog(eventLog);
     }
 
     public static void AddNewResourceUnavailableLog(Building building, int missingResourceID) {

@@ -95,28 +95,29 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
     #endregion
 
     #region has resource amount
-    public bool HasResourcesAmount(int[] resources, int[] amount) {
-        for (int i = 0; i < resources.Length; i++) {
-            if (!HasResourceAmount(resources[i], amount[i]))
+    public bool HasResourcesAmount(int[] resourceIDs, int[] amount) {
+        for (int i = 0; i < resourceIDs.Length; i++) {
+            if (!HasResourceAmount(resourceIDs[i], amount[i]))
                 return false;
         }
         return true;
     }
 
-    public bool HasResourcesAmount(int[] resources, int[] amount, out int missingResources) {
-        for (int i = 0; i < resources.Length; i++) {
-            if (!HasResourceAmount(resources[i], amount[i])) {
-                missingResources = i;
+    public bool HasResourcesAmount(int[] resourceIDs, int[] amount, out int missingResourceID) {
+        for (int i = 0; i < resourceIDs.Length; i++) {
+            if (!HasResourceAmount(resourceIDs[i], amount[i])) {
+                missingResourceID = resourceIDs[i];
                 return false;
             }
         }
-        missingResources = -1;
+        missingResourceID = -1;
         return true;
     }
 
 
     public bool HasResourceAmount(int resourceID, int amount) {
-        return HasResourceAmount(DataManager.ResourcesData.dataArray[resourceID].Name, amount);
+        string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;
+        return HasResourceAmount(resourceName, amount);
     }
 
     public bool HasResourceAmount(string resourceName, int amount) {
