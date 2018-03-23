@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be481223e66a1348be25ff14a12af7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aliveTime: 5
   stringOneTxt: {fileID: 114212796958037632}
   stringTwoTxt: {fileID: 114532767992506600}
 --- !u!114 &114212796958037632

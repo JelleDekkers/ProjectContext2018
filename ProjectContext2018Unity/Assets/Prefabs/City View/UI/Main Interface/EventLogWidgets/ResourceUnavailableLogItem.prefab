@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a0ac9299325954cbaefe41fced2650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aliveTime: 5
   stringOne: {fileID: 114503490090598836}
   stringTwo: {fileID: 114615166951236730}
   buildingNameTxt: {fileID: 114220716537770348}

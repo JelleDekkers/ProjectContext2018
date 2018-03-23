@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee076f28e7efec4988449760f195d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aliveTime: 5
   playerNameTxt: {fileID: 114633070636198464}
   stringOneTxt: {fileID: 114110754261632306}
   stringTwoTxt: {fileID: 114959049040402442}

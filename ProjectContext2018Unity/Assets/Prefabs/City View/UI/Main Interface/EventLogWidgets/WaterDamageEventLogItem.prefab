@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf1579c81964d64fb3c98b7063742d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aliveTime: 5
   buildingNameTxt: {fileID: 114784931704958648}
   stringOneTxt: {fileID: 114092607353101430}
 --- !u!114 &114784931704958648
