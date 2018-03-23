@@ -28,6 +28,10 @@ namespace CityView.UI {
         }
 
         private void UpdateInfo(int id, System.Object data) {
+            if (data.GetType() != typeof(ClimateBuildingsData)) {
+                Debug.Log("wrong type");
+                return;
+            }
             ClimateBuildingsData selectedBuildingData = data as ClimateBuildingsData;
 
             gameObject.SetActive(true);

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: World Temperature
   m_EditorClassIdentifier: 
   temperatureIncreasePerPollution: 0.001
-  startingTemperature: 15
-  currentTemperature: 23.600197
+  startingTemperature: 30
+  currentTemperature: 30
   maxTemperature: 40

@@ -39958,31 +39958,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223166769128056106, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 723354013}
-    - target: {fileID: 114539141848602030, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
-      value: 
-      objectReference: {fileID: 386444469}
-    - target: {fileID: 114539141848602030, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
-      value: 
-      objectReference: {fileID: 386444471}
-    - target: {fileID: 114290080199918500, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
-      value: 
-      objectReference: {fileID: 386444471}
-    - target: {fileID: 114290080199918500, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
-      value: 
-      objectReference: {fileID: 386444469}
     - target: {fileID: 114854666201209350, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -39993,21 +39968,31 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 386444471}
-    - target: {fileID: 114459127756496292, guid: b9577b31f83e844458365af80b5434a6,
+    - target: {fileID: 114290080199918500, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114459127756496292, guid: b9577b31f83e844458365af80b5434a6,
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 386444471}
+    - target: {fileID: 114290080199918500, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224743296216563324, guid: b9577b31f83e844458365af80b5434a6,
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 386444469}
+    - target: {fileID: 114539141848602030, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 53.19995
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 386444469}
+    - target: {fileID: 114539141848602030, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 386444471}
+    - target: {fileID: 223166769128056106, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 723354013}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9577b31f83e844458365af80b5434a6, type: 2}
   m_IsPrefabParent: 0
@@ -95091,6 +95076,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78a16944eee0a514093fb612229e91c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2013546620 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1811451763666584, guid: 78a16944eee0a514093fb612229e91c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 2013546619}
+--- !u!114 &2013546621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013546620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3dbb948f1680f047a183c83458a6b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnHeight: 2
+  popupPrefab: {fileID: 114929622838526128, guid: 8217d7fd910864a4fa995b3ad2b43334,
+    type: 2}
 --- !u!21 &2016836136
 Material:
   serializedVersion: 6

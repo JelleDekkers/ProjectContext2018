@@ -13,11 +13,14 @@ namespace CityView {
         public static Action<BuildingBase> OnDemolishInitiated;
         public static Action<Building> OnNotEnoughInputResourcesAvailable;
         public static Action<Building, BuildingsData> OnProductionInputProcessed;
+        public static Action<Building> OnWaterReachedBuilding;
 
+        public Action OnWaterIsGone;
         public Action OnProductionResumed;
         public Action OnDestroyed;
 
         private float timeBetweenProduction = 2;
+        private bool isUnderWater;
 
         private ProductionCycle productionCycle = null;
         public ProductionCycle ProductionCycle { get { return productionCycle; } }
@@ -48,6 +51,12 @@ namespace CityView {
                 ToggleBuildingEffects(true);
             if (OnProductionResumed != null)
                 OnProductionResumed();
+
+            if (isUnderWater) {
+                isUnderWater = false;
+                if (OnWaterIsGone != null)
+                    OnWaterIsGone();
+            }
         }
 
         protected virtual void OnDisable() {
@@ -55,12 +64,24 @@ namespace CityView {
         }
 
         private void CheckWaterState(bool water) {
-            if (water == true)
-                enabled = false;
-            else 
+            if (water == true) {
+                if (isUnderWater == false) {
+                    enabled = false;
+                    isUnderWater = true;
+                    if (OnWaterReachedBuilding != null)
+                        OnWaterReachedBuilding(this);
+                }
+            } else {
                 enabled = !TilesStandingOnAreUnderWater();
+                if (enabled) {
+                    Debug.Log("continuing work");
+                    isUnderWater = false;
+                    if (OnWaterIsGone != null)
+                        OnWaterIsGone();
+                }
+            }
         }
-
+        
         private void OnProductionNotAvailable() {
             PlayerResources.OnResourceChanged += CheckIfNecessaryInputResourcesAreAvailable;
             //PlayerResources.OnMoneyChanged += (x) => CheckIfNecessaryInputResourcesAreAvailable();

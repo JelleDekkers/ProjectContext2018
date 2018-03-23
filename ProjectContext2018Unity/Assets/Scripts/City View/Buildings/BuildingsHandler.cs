@@ -45,8 +45,11 @@ namespace CityView {
 
         public float GetPollutionPerMinute() {
             float amount = 0;
-            foreach(Building building in buildings) {
-                amount += building.data.Pollution / building.data.Productiontime;
+            foreach (BuildingBase building in buildings) {
+                if (building.GetType() == typeof(Building)) {
+                    Building b = building as Building;
+                    amount += b.data.Pollution / b.data.Productiontime;
+                }
             }
             return amount * 60;
         }
