@@ -41,7 +41,7 @@ namespace EarthView.UI {
             climateTxt.text = playerInspecting.ClimateType.ToString();
             setTradeOffersBtn.gameObject.SetActive(player == Player.LocalPlayer);
             gameObject.SetActive(true);
-            pollutionPerMinuteTxt.text = player.PlayerPollutionPerMinute.ToString();
+            pollutionPerMinuteTxt.text = string.Format("{0:0}", player.PlayerPollutionPerYear);
             InstantiateTradeOffers();
         }
 

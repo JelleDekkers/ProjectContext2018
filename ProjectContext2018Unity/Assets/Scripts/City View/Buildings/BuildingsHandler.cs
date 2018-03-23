@@ -15,6 +15,8 @@ namespace CityView {
         [SerializeField] private List<BuildingBase> buildings;
         public List<BuildingBase> Buildings { get { return buildings; } }
 
+        [SerializeField] private GameTime gameTime;
+
         private void Awake() {
             instance = this;
         }
@@ -43,15 +45,21 @@ namespace CityView {
                 OnBuildingListChanged();
         }
 
-        public float GetPollutionPerMinute() {
+        public float GetPollutionPerYear() {
             float amount = 0;
             foreach (BuildingBase building in buildings) {
                 if (building.GetType() == typeof(Building)) {
                     Building b = building as Building;
-                    amount += b.data.Pollution / b.data.Productiontime;
+                    float pollutionPerSecond = b.data.Pollution / b.data.Productiontime;
+                    amount += pollutionPerSecond * gameTime.TimePerYear;
                 }
             }
-            return amount * 60;
+            return amount;
+        }
+
+        public static float ConvertToPollutionPerYear(float pollution, float productionTime) {
+            float pollutionPerSecond = pollution / productionTime;
+            return pollutionPerSecond * instance.gameTime.TimePerYear;
         }
     }
 }

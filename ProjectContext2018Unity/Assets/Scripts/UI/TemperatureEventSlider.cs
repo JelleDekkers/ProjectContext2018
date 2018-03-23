@@ -9,7 +9,7 @@ public class TemperatureEventSlider : MonoBehaviour {
     public Slider slider;
 
     public void Init(float temperature, float min, float max) {
-        temperatureTxt.text = string.Format("{0:0.00}", temperature.ToString());
+        temperatureTxt.text = string.Format("{0:0.00}", temperature);
         slider.minValue = min;
         slider.maxValue = max;
         slider.value = temperature;

@@ -42,7 +42,7 @@ namespace CityView.UI {
             inputGrid.transform.RemoveChildren();
 
             nameTxt.text = selectedBuildingData.Name;
-            pollutionAmountTxt.text = selectedBuildingData.Pollution.ToString();
+            pollutionAmountTxt.text = string.Format("{0:0}", BuildingsHandler.ConvertToPollutionPerYear(selectedBuildingData.Pollution, selectedBuildingData.Productiontime));
             productionTime.text = selectedBuildingData.Productiontime.ToString() + " seconds";
 
             climateTxt.gameObject.SetActive(selectedBuildingData.Climate != Climate.None);

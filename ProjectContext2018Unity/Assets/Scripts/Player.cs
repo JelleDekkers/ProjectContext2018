@@ -18,8 +18,8 @@ public class Player : NetworkBehaviour {
     [SyncVar, SerializeField] private Climate climateType;
     public Climate ClimateType { get { return climateType; } }
 
-    [SyncVar, SerializeField] private float playerPollutionPerMinute;
-    public float PlayerPollutionPerMinute { get { return playerPollutionPerMinute; } }
+    [SyncVar, SerializeField] private float playerPollutionPerYear;
+    public float PlayerPollutionPerYear { get { return playerPollutionPerYear;} }
 
     public PlayerList PlayerList { get; private set; }
     public Action OnUpdatePollutionPerMinuteChanged;
@@ -67,13 +67,13 @@ public class Player : NetworkBehaviour {
 
     public void SendUpdatePollutionPerMinute() {
         //Debug.Log("SendUpdatePollutionPerMinute " + CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
-        CmdUpdatePollutionPerMinute(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
+        CmdUpdatePollutionPerMinute(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerYear());
     }
 
     [Command]
     private void CmdUpdatePollutionPerMinute(int playerID, float pollution) {
         if (isServer && playerID == this.playerID) 
-            playerPollutionPerMinute = pollution;
+            playerPollutionPerYear = pollution;
 
         RpcUpdatePlayerPollutionPerMinute(playerID, pollution);
     }
@@ -82,7 +82,7 @@ public class Player : NetworkBehaviour {
     public void RpcUpdatePlayerPollutionPerMinute(int playerID, float amount) {
         foreach (Player player in PlayerList.Players) {
             if (player.PlayerID == playerID)
-                player.playerPollutionPerMinute = amount;
+                player.playerPollutionPerYear = amount;
         }
 
         if (OnUpdatePollutionPerMinuteChanged != null)

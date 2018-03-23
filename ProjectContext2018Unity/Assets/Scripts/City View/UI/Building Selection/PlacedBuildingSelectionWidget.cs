@@ -56,7 +56,7 @@ namespace CityView.UI {
 
         private void FillValues() {
             nameTxt.text = selectedBuilding.data.Name;
-            pollutionAmountTxt.text = selectedBuilding.data.Pollution.ToString();
+            pollutionAmountTxt.text = string.Format("{0:0}", BuildingsHandler.ConvertToPollutionPerYear(selectedBuilding.data.Pollution, selectedBuilding.data.Productiontime));
 
             FillGridValues(inputGrid, selectedBuilding.data.Moneyinput, selectedBuilding.data.Resourceinput, selectedBuilding.data.Resourceinputamount);
             FillGridValues(outputGrid, selectedBuilding.data.Moneyoutput, selectedBuilding.data.Resourceoutput, selectedBuilding.data.Resourceoutputamount);

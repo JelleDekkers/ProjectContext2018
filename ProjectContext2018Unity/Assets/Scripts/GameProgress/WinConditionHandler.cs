@@ -23,7 +23,7 @@ namespace GameProgress {
 
         private void CheckWinCondition() {
           foreach(Player player in Player.LocalPlayer.PlayerList.Players) {
-                if (player.PlayerPollutionPerMinute > 0)
+                if (player.PlayerPollutionPerYear > 0)
                     return;
             }
             WinConditionMet();
