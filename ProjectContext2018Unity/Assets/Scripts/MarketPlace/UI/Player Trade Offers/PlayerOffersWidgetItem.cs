@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI {
 
     public class PlayerOffersWidgetItem : MonoBehaviour {
+
+        public static Action<int, int> OnOfferChanged, OnOfferRemoved;
 
         [SerializeField] private Image productImg;
         [SerializeField] private InputField amountInputField, valueInputField;
@@ -44,6 +45,8 @@ namespace UI {
             if (int.Parse(amountInputField.text) > 0 && int.Parse(valueInputField.text) > 0) {
                 int difference = Player.LocalPlayer.resourcesAmountForTrade[indexID] - int.Parse(amountInputField.text);
                 PlayerResourcesHandler.Instance.UpdateResource(indexID, difference);
+                if (OnOfferChanged != null)
+                    OnOfferChanged(indexID, difference);
 
                 Player.LocalPlayer.CmdSendTradeOffer(indexID, int.Parse(valueInputField.text), int.Parse(amountInputField.text));
             }
@@ -53,7 +56,10 @@ namespace UI {
         public void RemoveOffer() {
             amountInputField.text = 0.ToString();
             valueInputField.text = 0.ToString();
-            PlayerResourcesHandler.Instance.UpdateResource(indexID, Player.LocalPlayer.resourcesAmountForTrade[indexID]);
+            int amount = Player.LocalPlayer.resourcesAmountForTrade[indexID];
+            if (OnOfferRemoved != null)
+                OnOfferRemoved(indexID, amount);
+            PlayerResourcesHandler.Instance.UpdateResource(indexID, amount);
             Player.LocalPlayer.CmdSendTradeOffer(indexID, 0, 0);
         }
     }

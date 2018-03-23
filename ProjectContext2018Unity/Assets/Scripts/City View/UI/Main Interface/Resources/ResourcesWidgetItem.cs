@@ -13,6 +13,7 @@ namespace CityView.UI {
         [SerializeField] protected Image img;
         [SerializeField] protected Text amountText;
         [SerializeField] protected Vector3 tooltipOffset = new Vector3(0, -0.5f, 0);
+        [SerializeField] protected ResourcesWidgetPopup popup;
 
         protected string tooltipText;
         protected RectTransform rect;
@@ -25,6 +26,27 @@ namespace CityView.UI {
             PlayerResources.OnResourceChanged += UpdateAmount;
             tooltipText = resourceName;
             rect = GetComponent<RectTransform>();
+
+            //MarketPlace.OnTradeOfferSold += CheckForPopup;
+            //MarketPlace.OnTradeOfferBought += CheckForPopup;
+            //PlayerOffersWidgetItem.OnOfferChanged += CheckForPopup;
+            //PlayerOffersWidgetItem.OnOfferRemoved += CheckForPopup;
+        }
+
+        private void CheckForPopup(TradeOffer offer) {
+            CheckForPopup(offer.productId, offer.amount);
+        }
+
+        private void CheckForPopup(int id, int amount) {
+            if (id == resourceID)
+                popup.InstantiateNewItem(amount);
+        }
+
+        private void OnDestroy() {
+            MarketPlace.OnTradeOfferSold -= CheckForPopup;
+            MarketPlace.OnTradeOfferBought -= CheckForPopup;
+            PlayerOffersWidgetItem.OnOfferChanged -= CheckForPopup;
+            PlayerOffersWidgetItem.OnOfferRemoved -= CheckForPopup;
         }
 
         protected void UpdateAmount(int id, int newAmount) {

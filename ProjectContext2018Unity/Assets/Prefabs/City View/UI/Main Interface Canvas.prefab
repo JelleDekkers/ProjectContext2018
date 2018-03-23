@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 222969600843992770}
   - component: {fileID: 114456583561813448}
   - component: {fileID: 114239649615485374}
+  - component: {fileID: 114492249501955928}
   m_Layer: 5
   m_Name: ResourcesWidget Item (1)
   m_TagString: Untagged
@@ -310,6 +311,7 @@ GameObject:
   - component: {fileID: 222000458956252756}
   - component: {fileID: 114506770045378124}
   - component: {fileID: 114022289196837308}
+  - component: {fileID: 114645381142591548}
   m_Layer: 5
   m_Name: ResourcesWidget Item (2)
   m_TagString: Untagged
@@ -447,6 +449,7 @@ GameObject:
   - component: {fileID: 222317199048892854}
   - component: {fileID: 114871807536965332}
   - component: {fileID: 114518614775307040}
+  - component: {fileID: 114746554185089750}
   m_Layer: 5
   m_Name: ResourcesWidget Item (7)
   m_TagString: Untagged
@@ -724,6 +727,7 @@ GameObject:
   - component: {fileID: 222272494972902210}
   - component: {fileID: 114948971989042926}
   - component: {fileID: 114907524413601480}
+  - component: {fileID: 114465746758059436}
   m_Layer: 5
   m_Name: ResourcesWidget Item (4)
   m_TagString: Untagged
@@ -777,6 +781,7 @@ GameObject:
   - component: {fileID: 222342864882341332}
   - component: {fileID: 114214364328687410}
   - component: {fileID: 114997720199585438}
+  - component: {fileID: 114326920838254256}
   m_Layer: 5
   m_Name: ResourcesWidget Item (3)
   m_TagString: Untagged
@@ -1207,6 +1212,7 @@ GameObject:
   - component: {fileID: 222269119967582934}
   - component: {fileID: 114551943924450310}
   - component: {fileID: 114546404369257124}
+  - component: {fileID: 114893498239294650}
   m_Layer: 5
   m_Name: ResourcesWidget Item (6)
   m_TagString: Untagged
@@ -1225,6 +1231,7 @@ GameObject:
   - component: {fileID: 222283079369612350}
   - component: {fileID: 114378365392773314}
   - component: {fileID: 114096447524018694}
+  - component: {fileID: 114035136149704412}
   m_Layer: 5
   m_Name: ResourcesWidget Item (5)
   m_TagString: Untagged
@@ -1383,6 +1390,7 @@ GameObject:
   - component: {fileID: 222225759002417580}
   - component: {fileID: 114537776722485696}
   - component: {fileID: 114141621208922038}
+  - component: {fileID: 114283386669571860}
   m_Layer: 5
   m_Name: ResourcesWidget Item (8)
   m_TagString: Untagged
@@ -1473,6 +1481,7 @@ MonoBehaviour:
   img: {fileID: 114570267558576422}
   amountText: {fileID: 114849619107878912}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114022289196837308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1488,6 +1497,7 @@ MonoBehaviour:
   img: {fileID: 114176515193071120}
   amountText: {fileID: 114965410882009058}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114029334477565758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1515,6 +1525,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114035136149704412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861361718710338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114051116200935208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1599,6 +1622,7 @@ MonoBehaviour:
   img: {fileID: 114188369840031300}
   amountText: {fileID: 114788007998276098}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114102711828181976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1665,6 +1689,7 @@ MonoBehaviour:
   img: {fileID: 114528146629865676}
   amountText: {fileID: 114944181766621374}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114158454876142406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1854,6 +1879,7 @@ MonoBehaviour:
   img: {fileID: 114239421606481364}
   amountText: {fileID: 114924308063342546}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114199228132045962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,6 +2096,7 @@ MonoBehaviour:
   img: {fileID: 114271561572305622}
   amountText: {fileID: 114180304143881744}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114243646253310220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2228,6 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c681b775c63ad443b46a63eb0b1a990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxItemsShowing: 5
   group: {fileID: 114597037506185592}
   waterDamageLogItem: {fileID: 114736182190208260, guid: afacc6e545875ba43a0bea455e553e06,
     type: 2}
@@ -2236,6 +2264,19 @@ MonoBehaviour:
   resourceUnavailableItem: {fileID: 114346452457277724, guid: c1aaa3c32432f2548a480c480007da5b,
     type: 2}
   temperatureEventItem: {fileID: 114011046761111292, guid: 5bc2ad83ff7dd3047b1559e0a7efc61c,
+    type: 2}
+--- !u!114 &114283386669571860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985438320764600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
     type: 2}
 --- !u!114 &114288812309622196
 MonoBehaviour:
@@ -2313,6 +2354,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipText: {fileID: 114291703152106232}
+--- !u!114 &114326920838254256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627239967153098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114327002563122178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2647,6 +2701,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114465746758059436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572979998578284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114473723240496298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2707,6 +2774,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Scoreboard
+--- !u!114 &114492249501955928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154021761716046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114492253393729136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2888,6 +2968,7 @@ MonoBehaviour:
   img: {fileID: 114227237351742554}
   amountText: {fileID: 114492253393729136}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114528146629865676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2957,6 +3038,7 @@ MonoBehaviour:
   img: {fileID: 114410561630368426}
   amountText: {fileID: 114501639538754070}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &114551943924450310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3151,6 +3233,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114645381142591548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250300523826108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114650989319517686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3506,6 +3601,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114746554185089750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371066392568118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114756491851836076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4095,6 +4203,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 20
+--- !u!114 &114893498239294650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842392675324914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114907524413601480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4110,6 +4231,7 @@ MonoBehaviour:
   img: {fileID: 114473723240496298}
   amountText: {fileID: 114249811056908776}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 114465746758059436}
 --- !u!114 &114924308063342546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4371,6 +4493,7 @@ MonoBehaviour:
   img: {fileID: 114231964507915494}
   amountText: {fileID: 114199228132045962}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!222 &222000458956252756
 CanvasRenderer:
   m_ObjectHideFlags: 1
