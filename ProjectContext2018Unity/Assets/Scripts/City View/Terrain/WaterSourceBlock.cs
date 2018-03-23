@@ -168,7 +168,9 @@ namespace CityView.Terrain {
         }
 
         private void OnDestroy() {
-            if(OnDestroyEvent != null)
+            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
+
+            if (OnDestroyEvent != null)
                 OnDestroyEvent();
 
             foreach (WaterSourceBlock block in children) {

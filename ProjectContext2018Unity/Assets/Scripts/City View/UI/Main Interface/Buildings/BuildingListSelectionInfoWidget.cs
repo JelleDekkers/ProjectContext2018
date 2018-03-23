@@ -32,10 +32,9 @@ namespace CityView.UI {
         }
 
         private void UpdateInfo(int id, System.Object data) {
-            if(data.GetType() != typeof(BuildingsData)) {
-                Debug.Log("wrong type");
+            if(data.GetType() != typeof(BuildingsData)) 
                 return;
-            }
+            
             BuildingsData selectedBuildingData = data as BuildingsData;
             gameObject.SetActive(true);
             costGrid.transform.RemoveChildren();

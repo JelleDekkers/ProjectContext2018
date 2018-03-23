@@ -52,19 +52,19 @@ namespace CityView {
             if (OnProductionResumed != null)
                 OnProductionResumed();
 
-            if (isUnderWater) {
-                isUnderWater = false;
-                if (OnWaterIsGone != null)
-                    OnWaterIsGone();
-            }
+            //if (isUnderWater) {
+            //    isUnderWater = false;
+            //    if (OnWaterIsGone != null)
+            //        OnWaterIsGone();
+            //}
         }
 
         protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
         }
 
-        private void CheckWaterState(bool water) {
-            if (water == true) {
+        private void CheckWaterState(bool hasWater) {
+            if (hasWater) {
                 if (isUnderWater == false) {
                     enabled = false;
                     isUnderWater = true;
