@@ -82,7 +82,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   scaleAtStartDuration: 0.7
-  itemPrefab: {fileID: 114343262984714222, guid: 15b4434071e7e1f4e87bf60543832680,
+  itemPrefab: {fileID: 114816304430735552, guid: 15b4434071e7e1f4e87bf60543832680,
     type: 2}
   disappearCurve:
     serializedVersion: 2

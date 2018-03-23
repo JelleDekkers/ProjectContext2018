@@ -52,7 +52,7 @@ Transform:
   m_GameObject: {fileID: 1350968954193644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99, y: 1, z: 0.99}
   m_Children: []
   m_Father: {fileID: 4906484967505996}
   m_RootOrder: 0
@@ -128,9 +128,9 @@ MonoBehaviour:
     z: 0
   startingheight: 0
   currentHeight: 0
+  maxHeight: 1.1
   blockBeneath: {fileID: 0}
   newWaterBlockCreationTimer: 2
-  scaleIncreasePerDegree: 0.0001
   generator: {fileID: 0}
   neighbours:
   - {fileID: 0}

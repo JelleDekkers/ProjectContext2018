@@ -70,6 +70,7 @@ namespace CityView {
                     isUnderWater = true;
                     if (OnWaterReachedBuilding != null)
                         OnWaterReachedBuilding(this);
+                    EventLogManager.AddNewUnderwaterLog(this);
                 }
             } else {
                 enabled = !TilesStandingOnAreUnderWater();
@@ -89,6 +90,10 @@ namespace CityView {
             ToggleBuildingEffects(false);
             if (OnNotEnoughInputResourcesAvailable != null)
                 OnNotEnoughInputResourcesAvailable(this);
+
+            int missingID;
+            PlayerResources.Instance.HasResourcesAmount(data.Resourceinput, data.Resourceinputamount, out missingID);
+            EventLogManager.AddNewResourceUnavailableLog(this, missingID);
         }
 
         private void CheckIfNecessaryInputResourcesAreAvailable(int x, int y) {

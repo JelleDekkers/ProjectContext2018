@@ -16,6 +16,7 @@ public class TemperatureEventsManager : ScriptableObject {
 
     public void TriggerNextEvent() {
         OnEventTriggered(events[currentEventIndex].waterLevel);
+        EventLogManager.AddNewTemperatureEventTriggeredLog(events[currentEventIndex].waterLevel);
         currentEventIndex++;
     }
 

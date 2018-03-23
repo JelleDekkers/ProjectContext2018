@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224540302115957218}
   - component: {fileID: 222057728328423370}
   - component: {fileID: 114642040116496606}
+  - component: {fileID: 114816304430735552}
   m_Layer: 0
   m_Name: Production Stopped Widget Item
   m_TagString: Untagged
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114816304430735552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346232524270420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a58d0b6b8400b947841b4838ea3a9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productImg: {fileID: 114642040116496606}
 --- !u!114 &114846929355682766
 MonoBehaviour:
   m_ObjectHideFlags: 1
