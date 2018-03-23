@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CityView.Construction;
 
 namespace CityView.Terrain {
 
@@ -24,7 +25,6 @@ namespace CityView.Terrain {
         public TerrainBlock BlockBeneath { get { return blockBeneath; } }
 
         [SerializeField] private float newWaterBlockCreationTimer = 2;
-        [SerializeField] private float scaleIncreasePerDegree = 0.01f;
 
         [HideInInspector]
         public GameTerrain generator;
@@ -38,15 +38,17 @@ namespace CityView.Terrain {
         public new Renderer renderer;
 
         private Coroutine heightCoroutine;
+        private Tile tile;
 
         private void Start() {
-            WorldTemperature.OnWorldTemperatureChanged += AddHeightToTemperature;
+            TemperatureEventsManager.OnEventTriggered += AddHeightOnTemperatureEvent;
             blockBeneath.OnHeightChange += CheckBlockBeneathSize;
 
             StartCoroutine(CheckForPossibleNewWaterBlockCoroutine());
 
             // TODO: nettere manier
-            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(true);
+            tile = City.Instance.TilesGrid.GetTile(coordinates);
+            tile.OnWaterLevelChanged(true);
         }
 
         private void UpdatePossibleNeighbours() {
@@ -104,12 +106,10 @@ namespace CityView.Terrain {
             }
         }
 
-        private void AddHeightToTemperature(float amount) {
-            float newHeight = currentHeight + (amount * scaleIncreasePerDegree);
-            if (newHeight < maxHeight)
-                SetHeight(newHeight);
-            else
-                WorldTemperature.OnWorldTemperatureChanged -= AddHeightToTemperature;
+        private void AddHeightOnTemperatureEvent(float addedHeight) {
+            float newHeight = startingheight + addedHeight;
+            //if (newHeight < maxHeight)
+            SetHeight(newHeight);
         }
 
         public void AdjustScaleToWaves(float amount) {
@@ -168,7 +168,8 @@ namespace CityView.Terrain {
         }
 
         private void OnDestroy() {
-            City.Instance.TilesGrid.GetTile(coordinates).OnWaterLevelChanged(false);
+            if(tile != null)
+                tile.OnWaterLevelChanged(false);
 
             if (OnDestroyEvent != null)
                 OnDestroyEvent();
@@ -178,7 +179,7 @@ namespace CityView.Terrain {
                     Destroy(block.gameObject);
             }
 
-            WorldTemperature.OnWorldTemperatureChanged -= AddHeightToTemperature;
+            TemperatureEventsManager.OnEventTriggered -= AddHeightOnTemperatureEvent;
             blockBeneath.OnHeightChange -= CheckBlockBeneathSize;
         }
     }

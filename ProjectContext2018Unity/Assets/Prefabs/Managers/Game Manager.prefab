@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114256466945747132}
   - component: {fileID: 114379417012748154}
   - component: {fileID: 114054688223747112}
+  - component: {fileID: 114367096303010186}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -90,6 +91,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d93a331551e9e47b5240853c5eda44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114367096303010186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927902049873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7fc7147efe1af4da9bb28c842b2305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperatureEventsManager: {fileID: 11400000, guid: 3fa68ca8d69bd0d4a9860074645ddd39,
+    type: 2}
 --- !u!114 &114379417012748154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9987de1e9281bb243848a10c1cd192f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkTimeInSeconds: 5
 --- !u!114 &114384831341065306
 MonoBehaviour:
   m_ObjectHideFlags: 1

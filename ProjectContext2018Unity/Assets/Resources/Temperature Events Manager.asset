@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48347ca5a4f130149862f340913d189e, type: 3}
+  m_Name: Temperature Events Manager
+  m_EditorClassIdentifier: 
+  temperature: {fileID: 11400000, guid: bab4035b9b66efd48b302c172b49122b, type: 2}
+  events:
+  - {fileID: 11400000, guid: ad0d513303fdaf346a0101072505e6d2, type: 2}
+  - {fileID: 11400000, guid: 4a5cd044268f8784192b1574c09675af, type: 2}
+  - {fileID: 11400000, guid: 64d455dca41cbdf4d913bb6677c419b5, type: 2}
+  - {fileID: 11400000, guid: c24570a1ac8dba0409076c7d7644dcd6, type: 2}
+  - {fileID: 11400000, guid: b45082e1114691c4d9d0f0f6c04fce52, type: 2}
+  currentEventIndex: 0
