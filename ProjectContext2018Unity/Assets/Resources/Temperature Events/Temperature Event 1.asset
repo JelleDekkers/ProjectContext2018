@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c1d1dc7501d394e883f94e3b64f99a, type: 3}
   m_Name: Temperature Event 1
   m_EditorClassIdentifier: 
-  temperatureTrigger: 28
+  temperatureTrigger: 26
   waterLevel: 0.1
