@@ -66,12 +66,12 @@ namespace CityView {
         private void CheckWaterState(bool hasWater) {
             if (hasWater) {
                 if (isUnderWater == false) {
-                    enabled = false;
-                    isUnderWater = true;
                     if (OnWaterReachedBuilding != null)
                         OnWaterReachedBuilding(this);
                     EventLogManager.AddNewUnderwaterLog(this);
                 }
+                isUnderWater = true;
+                enabled = false;
             } else {
                 enabled = !TilesStandingOnAreUnderWater();
                 if (enabled) {

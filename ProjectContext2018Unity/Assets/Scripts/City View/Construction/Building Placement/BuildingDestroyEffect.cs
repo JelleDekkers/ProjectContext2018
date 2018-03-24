@@ -18,6 +18,7 @@ namespace CityView.Construction {
             Destroy(gameObject, destroyTime);
             StartCoroutine(Shrink(building.transform));
             CityCamera.Instance.audioSource.PlayOneShot(demolishSFX);
+            building.GetComponent<Collider>().enabled = false;
         }
 
         private IEnumerator Shrink(Transform building) {
