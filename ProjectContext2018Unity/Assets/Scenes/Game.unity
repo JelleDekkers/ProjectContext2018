@@ -31586,7 +31586,17 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 723354013}
-    - target: {fileID: 1084321822614018, guid: b9577b31f83e844458365af80b5434a6, type: 2}
+    - target: {fileID: 224102332372053774, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224102332372053774, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422424522445344, guid: b9577b31f83e844458365af80b5434a6, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -31605,20 +31615,34 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: -17
       objectReference: {fileID: 0}
-    - target: {fileID: 224595370958449986, guid: b9577b31f83e844458365af80b5434a6,
-        type: 2}
-      propertyPath: m_SizeDelta.x
+    - target: {fileID: 1084321822614018, guid: b9577b31f83e844458365af80b5434a6, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224102332372053774, guid: b9577b31f83e844458365af80b5434a6,
+    - target: {fileID: 224595370958449986, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00000641983
+      objectReference: {fileID: 0}
+    - target: {fileID: 114173609694464284, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_Spacing.x
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224102332372053774, guid: b9577b31f83e844458365af80b5434a6,
         type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114650268604532502, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_Spacing.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114349072364106324, guid: b9577b31f83e844458365af80b5434a6,
+        type: 2}
+      propertyPath: m_Spacing.x
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9577b31f83e844458365af80b5434a6, type: 2}
