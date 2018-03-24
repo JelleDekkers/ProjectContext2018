@@ -170,6 +170,8 @@ namespace CityView {
                     t.OnWaterStateChanged -= CheckWaterState;
                 OnDestroyedGlobal(this);
             }
+            if (OnDestroyed != null)
+                OnDestroyed();
         }
 
         public override bool IsBuildable(int dataID) {

@@ -15,7 +15,7 @@ namespace CityView {
         private Ray ray;
         private RaycastHit hit;
 
-        private BuildingBase buildingHoveringOver;
+        public BuildingBase BuildingHoveringOver { get; private set; }
         private BuildingBase[] buildingsHoveringOver;
 
         private void Start() {
@@ -29,7 +29,7 @@ namespace CityView {
 
         private void Update() {
             if (EventSystem.current.IsPointerOverGameObject()) {
-                buildingHoveringOver = null;
+                BuildingHoveringOver = null;
                 return;
             }
 
@@ -51,21 +51,21 @@ namespace CityView {
         }
 
         private void OnClick() {
-            if (buildingHoveringOver == null)
+            if (BuildingHoveringOver == null)
                 return;
 
-            if (buildingHoveringOver.GetType() == typeof(Building) || buildingHoveringOver.GetType() == typeof(House))
-                OnPlacedBuildingSelected(buildingHoveringOver as Building);
-            else if(buildingHoveringOver.GetType() == typeof(Dike))
-                OnPlacedClimateBuildingSelected(buildingHoveringOver as Dike);
+            if (BuildingHoveringOver.GetType() == typeof(Building) || BuildingHoveringOver.GetType() == typeof(House))
+                OnPlacedBuildingSelected(BuildingHoveringOver as Building);
+            else if(BuildingHoveringOver.GetType() == typeof(Dike))
+                OnPlacedClimateBuildingSelected(BuildingHoveringOver as Dike);
         }
 
         private void SetBuildingHoveringOver(BuildingBase building) {
-            if (buildingHoveringOver != null)
-                buildingHoveringOver.OnHoverExit();
-            buildingHoveringOver = building;
-            if (buildingHoveringOver != null)
-                buildingHoveringOver.OnHoverEnter(onHoverOutlineWidth);
+            if (BuildingHoveringOver != null)
+                BuildingHoveringOver.OnHoverExit();
+            BuildingHoveringOver = building;
+            if (BuildingHoveringOver != null)
+                BuildingHoveringOver.OnHoverEnter(onHoverOutlineWidth);
         }
 
         private void OnDisable() {
