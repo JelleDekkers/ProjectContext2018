@@ -58,7 +58,8 @@ namespace EarthView.UI {
         private void InstantiateTradeOffers() {
             tradeOffers.transform.RemoveChildren();
             tradeOfferWidgets = new TradeOfferWidget[playerInspecting.resourcesAmountForTrade.Count];
-            for(int i = 0; i < playerInspecting.resourcesAmountForTrade.Count; i++) {
+            // start at 1 to skip Energy
+            for(int i = 1; i < playerInspecting.resourcesAmountForTrade.Count; i++) {
                 tradeOfferWidgets[i] = Instantiate(tradeOfferWidgetPrefab, tradeOffers.transform);
                 tradeOfferWidgets[i].Init(this, playerInspecting, i);
             }

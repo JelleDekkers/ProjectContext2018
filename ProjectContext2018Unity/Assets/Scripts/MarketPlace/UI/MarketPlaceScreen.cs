@@ -36,7 +36,8 @@ namespace UI {
 
         private void FillFilterGrid() {
             filterGrid.transform.RemoveChildren();
-            for(int i = 0; i < DataManager.ResourcesData.dataArray.Length; i++) {
+            // start at 1 to skip Energy
+            for(int i = 1; i < DataManager.ResourcesData.dataArray.Length; i++) {
                 Instantiate(filterWidgetPrefab, filterGrid.transform).Init(this, i, toggleGroup);
             }
         }

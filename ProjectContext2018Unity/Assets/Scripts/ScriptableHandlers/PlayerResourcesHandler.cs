@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CityView;
 
 public class PlayerResourcesHandler : MonoBehaviour {
 
@@ -10,18 +11,44 @@ public class PlayerResourcesHandler : MonoBehaviour {
     [SerializeField] private PlayerResources playerResources;
     public PlayerResources Resources { get { return playerResources; } }
 
+    private int energyIndex = 0;
+
     private void Awake() {
         instance = this;
         playerResources.Init();
-        CityView.Building.OnProductionCycleCompleted += playerResources.ProcessBuildingProductionResult;
+        Building.OnProductionCycleCompleted += playerResources.ProcessBuildingProductionResult;
         MarketPlace.OnTradeOfferBought += playerResources.TradeOfferBought;
         MarketPlace.OnTradeOfferSold += playerResources.TradeOfferSold;
+        Building.OnBuildingEnabled += HandleBuildingEnabled;
+        Building.OnBuildingDisabled += HandeBuildingDisabled;
     }
 
     private void OnDestroy() {
-        CityView.Building.OnProductionCycleCompleted -= playerResources.ProcessBuildingProductionResult;
+        Building.OnProductionCycleCompleted -= playerResources.ProcessBuildingProductionResult;
         MarketPlace.OnTradeOfferBought -= playerResources.TradeOfferBought;
         MarketPlace.OnTradeOfferSold -= playerResources.TradeOfferSold;
+        Building.OnBuildingEnabled -= HandleBuildingEnabled;
+        Building.OnBuildingDisabled -= HandeBuildingDisabled;
+   }
+
+    private void HandleBuildingEnabled(Building building) {
+        // Store energy as capacity
+        foreach (int i in building.data.Resourceoutput) {
+            if (i == energyIndex) {
+                Resources.AddResource(i, building.data.Resourceoutputamount[i]);
+                return;
+            }
+        }
+    }
+
+    private void HandeBuildingDisabled(Building building) {
+        // Remove stored energy
+        foreach (int i in building.data.Resourceoutput) {
+            if (i == energyIndex) {
+                Resources.RemoveResource(i, building.data.Resourceoutputamount[i]);
+                return;
+            }
+        }
     }
 
     public void UpdateResource(int id, int amount) {

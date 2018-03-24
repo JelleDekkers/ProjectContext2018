@@ -15,7 +15,8 @@ namespace UI {
 
         private void FillItemGrid() {
             grid.RemoveChildren();
-            for(int i = 0; i < Player.LocalPlayer.resourcesAmountForTrade.Count; i++) 
+            // start at 1 to skip Energy
+            for(int i = 1; i < Player.LocalPlayer.resourcesAmountForTrade.Count; i++) 
                 InstantiateNewItem(i);   
         }
 

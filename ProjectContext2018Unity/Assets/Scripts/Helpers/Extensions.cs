@@ -14,4 +14,20 @@ public static class Extensions {
             Object.Destroy(child.gameObject);
         }
     }
+
+    public static bool Contains<T>(this T[] array, T value) {
+        foreach(T t in array) {
+            if (t.Equals(value))
+                return true;
+        }
+        return false;
+    }
+
+    public static T[] RemoveFirstElement<T>(this T[] array) {
+        T[] finalArray = new T[array.Length - 1];
+        for(int i = 1; i < array.Length; i++) {
+            finalArray[i - 1] = array[i];
+        }
+        return finalArray;
+    }
 }

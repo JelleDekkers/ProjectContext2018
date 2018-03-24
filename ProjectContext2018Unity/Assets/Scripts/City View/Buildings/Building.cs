@@ -8,6 +8,7 @@ namespace CityView {
     public class Building : BuildingBase {
 
         public BuildingsData data;
+        public static Action<Building> OnBuildingEnabled, OnBuildingDisabled;
         public static Action<Building, ProductionCycleResult> OnProductionCycleCompleted;
         public static Action<BuildingBase> OnDestroyedGlobal;
         public static Action<BuildingBase> OnDemolishInitiated;
@@ -29,6 +30,7 @@ namespace CityView {
         private Animator animator;
         private ParticleSystem[] particles;
         private bool effectsCached;
+        private bool sentEnergyCapacity;
 
         public override void CacheEffects() {
             animator = GetComponent<Animator>();
@@ -51,16 +53,15 @@ namespace CityView {
                 ToggleBuildingEffects(true);
             if (OnProductionResumed != null)
                 OnProductionResumed();
-
-            //if (isUnderWater) {
-            //    isUnderWater = false;
-            //    if (OnWaterIsGone != null)
-            //        OnWaterIsGone();
-            //}
         }
 
         protected virtual void OnDisable() {
             ToggleBuildingEffects(false);
+            if (sentEnergyCapacity) {
+                if (OnBuildingDisabled != null)
+                    OnBuildingDisabled(this);
+                sentEnergyCapacity = false;
+            }
         }
 
         private void CheckWaterState(bool hasWater) {
@@ -81,7 +82,7 @@ namespace CityView {
                 }
             }
         }
-        
+
         private void OnProductionNotAvailable() {
             PlayerResources.OnResourceChanged += CheckIfNecessaryInputResourcesAreAvailable;
             //PlayerResources.OnMoneyChanged += (x) => CheckIfNecessaryInputResourcesAreAvailable();
@@ -118,13 +119,19 @@ namespace CityView {
 
         private void StartNewProduction() {
             productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
-            PlayerResources.OnResourceChanged -= CheckIfNecessaryInputResourcesAreAvailable; 
+            PlayerResources.OnResourceChanged -= CheckIfNecessaryInputResourcesAreAvailable;
             //PlayerResources.OnMoneyChanged -= (x) => CheckIfNecessaryInputResourcesAreAvailable();
             OnProductionInputProcessed(this, data);
 
-            if (!enabled) 
+            if (!enabled)
                 enabled = true;
             ToggleBuildingEffects(true);
+
+            if (!sentEnergyCapacity) {
+                if (OnBuildingEnabled != null)
+                    OnBuildingEnabled(this);
+                sentEnergyCapacity = true;
+            }
         }
 
         public override void ToggleBuildingEffects(bool toggle) {

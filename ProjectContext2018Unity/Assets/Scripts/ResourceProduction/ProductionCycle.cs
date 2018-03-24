@@ -20,9 +20,12 @@ public class ProductionCycle {
     public ProductionCycle(BuildingsData data, Action<ProductionCycleResult> OnComplete) {
         ProductionTime = data.Productiontime;
         Money = data.Moneyoutput;
-        ResourcesIDs = data.Resourceoutput;
         ResourcesAmount = data.Resourceoutputamount;
         Pollution = data.Pollution;
+        if (!data.Resourceoutput.Contains(0))
+            ResourcesIDs = data.Resourceoutput;
+        else
+            ResourcesIDs = data.Resourceoutput.RemoveFirstElement();
 
         PlayerResources.Instance.RemoveResources(data.Resourceinput, data.Resourceinputamount);
         PlayerResources.Instance.RemoveMoney(data.Moneyinput);
@@ -46,6 +49,7 @@ public class ProductionCycle {
             pollutionPoints = Pollution
         };
 
+        // energy verwijderen
         ResourceContainer[] producedResources = new ResourceContainer[ResourcesIDs.Length];
         for (int i = 0; i < producedResources.Length; i++) 
             producedResources[i] = new ResourceContainer(ResourcesIDs[i], ResourcesAmount[i]);
