@@ -42,5 +42,21 @@ namespace CityView {
                 return false;
             return true;
         }
+
+        private void OnDestroy() {
+            if (blocksStandingOn == null)
+                return;
+            else
+                UpdateSurroundingWaterBlocks();
+        }
+
+        private void UpdateSurroundingWaterBlocks() {
+            TerrainBlock block = blocksStandingOn[0];
+            foreach (TerrainBlock neighbour in GameTerrain.Instance.GetTerrainBlockNeighbours(block.Coordinates.x, block.Coordinates.z)) {
+                WaterSourceBlock water = GameTerrain.Instance.GetWaterBlock(neighbour.Coordinates);
+                if(water != null)
+                    water.CheckForPossibleNewWaterBlock();
+            }
+        }
     }
 }

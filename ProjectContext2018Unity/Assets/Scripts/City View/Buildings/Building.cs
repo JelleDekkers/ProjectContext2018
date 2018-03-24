@@ -75,7 +75,6 @@ namespace CityView {
             } else {
                 enabled = !TilesStandingOnAreUnderWater();
                 if (enabled) {
-                    Debug.Log("continuing work");
                     isUnderWater = false;
                     if (OnWaterIsGone != null)
                         OnWaterIsGone();

@@ -126,7 +126,7 @@ namespace CityView.Terrain {
                 Destroy(gameObject);
         }
 
-        private void CheckForPossibleNewWaterBlock() {
+        public void CheckForPossibleNewWaterBlock() {
             UpdatePossibleNeighbours();
 
             for (int i = 0; i < neighbours.Length; i++) {

@@ -35,8 +35,9 @@ namespace CityView {
 
         private void AddBuilding(BuildingBase building, ClimateBuildingsData data) {
             buildings.Add(building);
-            if(OnBuildingListChanged != null)
-                OnBuildingListChanged();
+            // commented so winCondition doesn't get triggered when building a dike
+            //if(OnBuildingListChanged != null)
+            //    OnBuildingListChanged();
         }
 
         private void RemoveBuilding(BuildingBase building) {

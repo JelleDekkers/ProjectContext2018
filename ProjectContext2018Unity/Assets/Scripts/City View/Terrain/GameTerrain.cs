@@ -7,6 +7,9 @@ namespace CityView.Terrain {
     [System.Serializable]
     public class GameTerrain : MonoBehaviour {
 
+        private static GameTerrain instance;
+        public static GameTerrain Instance { get { return instance; } }
+
         [SerializeField] private IntVector2 mapSize;
         public IntVector2 MapSize { get { return mapSize; } }
 
@@ -24,6 +27,10 @@ namespace CityView.Terrain {
         [SerializeField] private Color maxHeightColor = Color.white;
         [SerializeField] private float heightMin, heightMax;
         [SerializeField] private float waterStartingHeight = 2;
+
+        private void Awake() {
+            instance = this;
+        }
 
         private void CleanUp(Object[] grid, Transform parent) {
             for (int i = parent.childCount - 1; i >= 0; i--)
@@ -94,6 +101,16 @@ namespace CityView.Terrain {
             if (!IsInsideGrid(x, z))
                 return null;
             return terrainGrid[ConvertToSingleArrayIndex(x, z)];
+        }
+
+        public List<TerrainBlock> GetTerrainBlockNeighbours(int x, int z) {
+            List<TerrainBlock> neighbours = new List<TerrainBlock>();
+            for(int i = 0; i < 4; i++) {
+                IntVector2 neighbourCoordinates = new IntVector2(x, z) + IntVector2.NeighbourCoordinates[i];
+                if (IsInsideGrid(neighbourCoordinates) && GetTerrainBlock(neighbourCoordinates) != null)
+                    neighbours.Add(GetTerrainBlock(neighbourCoordinates));
+            }
+            return neighbours;
         }
 
         public WaterSourceBlock GetWaterBlock(IntVector2 coordinates) {
