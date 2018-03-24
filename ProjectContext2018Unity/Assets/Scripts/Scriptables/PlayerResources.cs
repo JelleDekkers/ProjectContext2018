@@ -39,7 +39,7 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
             startingResources.Add(DataManager.ResourcesData.dataArray[i].Name, 0);
     }
 
-    public int GetResource(int index) {
+    public int GetResourceAmount(int index) {
         string resourceName = DataManager.ResourcesData.dataArray[index].Name;
         return resources[resourceName];
     }

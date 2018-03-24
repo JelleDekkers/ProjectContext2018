@@ -26,7 +26,7 @@ namespace UI {
         }
 
         public void OnAmountInputFieldChange() {
-            amountInputField.text = Mathf.Clamp(int.Parse(amountInputField.text), 0, PlayerResources.Instance.GetResource(indexID)).ToString();
+            amountInputField.text = Mathf.Clamp(int.Parse(amountInputField.text), 0, PlayerResources.Instance.GetResourceAmount(indexID)).ToString();
         }
 
         public void UpdateAddButtonInteractableState() {

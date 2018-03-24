@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productImg: {fileID: 114568581568223468}
   amountTxt: {fileID: 114316964068170658}
+  notEnoughResourcesColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!222 &222011734144386248
 CanvasRenderer:
   m_ObjectHideFlags: 1

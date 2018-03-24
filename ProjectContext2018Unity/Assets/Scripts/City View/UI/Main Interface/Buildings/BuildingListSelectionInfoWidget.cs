@@ -59,12 +59,12 @@ namespace CityView.UI {
             Sprite sprite;
             if (selectedBuildingData.Moneycost > 0) {
                 sprite = DataManager.ResourcePrefabs.MoneySprite;
-                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Moneycost);
+                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Moneycost, true);
             }
 
             for (int i = 0; i < selectedBuildingData.Resourcecost.Length; i++) {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourcecost[i]);
-                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Resourcecostamount[i]);
+                Instantiate(productItemPrefab, costGrid.transform).Init(sprite, selectedBuildingData.Resourcecostamount[i], selectedBuildingData.Resourcecost[i]);
             }
 
             // input:
