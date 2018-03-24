@@ -103,9 +103,10 @@ namespace EarthView.UI {
             TradeOffer tradeOffer = new TradeOffer(PlayerList.Instance.Players[playerInspecting.PlayerID], tradeOfferSelectionID, amount, cost);
             MarketPlace.OnTradeOfferBought(tradeOffer);
             tradeInfoObject.gameObject.SetActive(false);
+            PlayerResources.Instance.RemoveMoney(tradeOffer.totalValue);
             //Init(cityObject, playerInspecting);
         }
-        
+
         private void OnDestroy() {
             CityObject.OnSelected -= Init;
         }

@@ -16,6 +16,7 @@ namespace CityView.UI {
         [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Color correctClimateColor, incorrectClimateColor;
+        [SerializeField] private Color sufficientResourcesColor = Color.white, insufficientResourcesColor = Color.red;
 
         private void DisableGameObject() {
             gameObject.SetActive(false);
@@ -88,7 +89,6 @@ namespace CityView.UI {
                 sprite = DataManager.ResourcePrefabs.GetResourceSprite(selectedBuildingData.Resourceoutput[i]);
                 Instantiate(productItemPrefab, productionGrid.transform).Init(sprite, selectedBuildingData.Resourceoutputamount[i]);
             }
-
         }
 
         private void OnDestroy() {

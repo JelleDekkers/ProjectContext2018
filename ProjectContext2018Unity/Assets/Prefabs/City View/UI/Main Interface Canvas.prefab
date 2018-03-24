@@ -1110,6 +1110,7 @@ GameObject:
   - component: {fileID: 222263603251504128}
   - component: {fileID: 114375085196620696}
   - component: {fileID: 114019360843260684}
+  - component: {fileID: 114200835359089038}
   m_Layer: 5
   m_Name: 'Money '
   m_TagString: Untagged
@@ -1481,7 +1482,7 @@ MonoBehaviour:
   img: {fileID: 114570267558576422}
   amountText: {fileID: 114849619107878912}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114200835359089038}
 --- !u!114 &114022289196837308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1497,7 +1498,7 @@ MonoBehaviour:
   img: {fileID: 114176515193071120}
   amountText: {fileID: 114965410882009058}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114645381142591548}
 --- !u!114 &114029334477565758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1622,7 +1623,7 @@ MonoBehaviour:
   img: {fileID: 114188369840031300}
   amountText: {fileID: 114788007998276098}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114035136149704412}
 --- !u!114 &114102711828181976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1689,7 +1690,7 @@ MonoBehaviour:
   img: {fileID: 114528146629865676}
   amountText: {fileID: 114944181766621374}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114283386669571860}
 --- !u!114 &114158454876142406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1913,6 +1914,19 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 999
+--- !u!114 &114200835359089038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816021865463066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841487899a17bc428104c953f28a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 114608462841946156, guid: bca30bc0b1a23184c8b3d4ed62d048e5,
+    type: 2}
 --- !u!114 &114214364328687410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,7 +2110,7 @@ MonoBehaviour:
   img: {fileID: 114271561572305622}
   amountText: {fileID: 114180304143881744}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114492249501955928}
 --- !u!114 &114243646253310220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2968,7 +2982,7 @@ MonoBehaviour:
   img: {fileID: 114227237351742554}
   amountText: {fileID: 114492253393729136}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114893498239294650}
 --- !u!114 &114528146629865676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3038,7 +3052,7 @@ MonoBehaviour:
   img: {fileID: 114410561630368426}
   amountText: {fileID: 114501639538754070}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114893498239294650}
 --- !u!114 &114551943924450310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3325,6 +3339,8 @@ MonoBehaviour:
   posOffset: {x: 0, y: 0, z: 0}
   correctClimateColor: {r: 0, g: 0, b: 0, a: 0}
   incorrectClimateColor: {r: 0, g: 0, b: 0, a: 0}
+  sufficientResourcesColor: {r: 1, g: 1, b: 1, a: 1}
+  insufficientResourcesColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114666979850375016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4493,7 +4509,7 @@ MonoBehaviour:
   img: {fileID: 114231964507915494}
   amountText: {fileID: 114199228132045962}
   tooltipOffset: {x: 0, y: -30, z: 0}
-  popup: {fileID: 0}
+  popup: {fileID: 114326920838254256}
 --- !u!222 &222000458956252756
 CanvasRenderer:
   m_ObjectHideFlags: 1

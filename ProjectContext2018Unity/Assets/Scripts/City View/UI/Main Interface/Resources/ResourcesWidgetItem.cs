@@ -28,9 +28,9 @@ namespace CityView.UI {
             rect = GetComponent<RectTransform>();
 
             //MarketPlace.OnTradeOfferSold += CheckForPopup;
-            //MarketPlace.OnTradeOfferBought += CheckForPopup;
-            //PlayerOffersWidgetItem.OnOfferChanged += CheckForPopup;
-            //PlayerOffersWidgetItem.OnOfferRemoved += CheckForPopup;
+            MarketPlace.OnTradeOfferBought += CheckForPopup;
+            PlayerOffersWidgetItem.OnOfferChanged += CheckForPopup;
+            PlayerOffersWidgetItem.OnOfferRemoved += CheckForPopup;
         }
 
         private void CheckForPopup(TradeOffer offer) {
@@ -42,8 +42,14 @@ namespace CityView.UI {
                 popup.InstantiateNewItem(amount);
         }
 
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Space)) {
+                popup.InstantiateNewItem(-100);
+            }
+        }
+
         private void OnDestroy() {
-            MarketPlace.OnTradeOfferSold -= CheckForPopup;
+            //MarketPlace.OnTradeOfferSold -= CheckForPopup;
             MarketPlace.OnTradeOfferBought -= CheckForPopup;
             PlayerOffersWidgetItem.OnOfferChanged -= CheckForPopup;
             PlayerOffersWidgetItem.OnOfferRemoved -= CheckForPopup;

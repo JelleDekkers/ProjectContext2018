@@ -72,6 +72,7 @@ namespace UI {
             Player.LocalPlayer.CmdTradeWithPlayer(Player.LocalPlayer.PlayerID, offer.player.PlayerID, offer.productId, offer.amount);
             MarketPlace.OnTradeOfferBought(offer);
             buyWidget.gameObject.SetActive(false);
+            PlayerResources.Instance.RemoveMoney(offer.totalValue);
             //RefreshTradeOffersList();
         }
     }

@@ -114,7 +114,8 @@ public class Player : NetworkBehaviour {
         float value = resourcesCostForTrade[resourceID] * amount;
         TradeOffer tradeOffer = new TradeOffer(this, resourceID, amount, value);
         MarketPlace.OnTradeOfferSold(tradeOffer);
-        EventLogManager.AddNewTradeOfferSoldLog(tradeOffer);
+        if(isLocalPlayer)
+            EventLogManager.AddNewTradeOfferSoldLog(tradeOffer);
     }
 
     [Command]

@@ -9,7 +9,9 @@ namespace UI {
         [SerializeField] private ResourcesWidgetPopupItem itemPrefab;
 
         public void InstantiateNewItem(int amount) {
-            Instantiate(itemPrefab, transform).Init(amount);
+            ResourcesWidgetPopupItem item = Instantiate(itemPrefab);
+            item.transform.SetParent(transform, false);
+            item.Init(amount);
         }
     }
 }
