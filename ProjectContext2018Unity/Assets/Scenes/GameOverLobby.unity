@@ -1086,7 +1086,7 @@ Prefab:
     - target: {fileID: 114198661762956580, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1,
         type: 2}
       propertyPath: sustainableConditionMetDescription
-      value: You were able to stop global warming. You won!
+      value: You were able to stop global warming.
       objectReference: {fileID: 0}
     - target: {fileID: 114198661762956580, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1,
         type: 2}
@@ -1094,6 +1094,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 4c66a6454839f284caa0da56566a4690,
         type: 2}
+    - target: {fileID: 114198661762956580, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1,
+        type: 2}
+      propertyPath: gameOverTitleTxt
+      value: 
+      objectReference: {fileID: 1170501446}
+    - target: {fileID: 114198661762956580, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1,
+        type: 2}
+      propertyPath: gameWonTitle
+      value: You Won
+      objectReference: {fileID: 0}
+    - target: {fileID: 114198661762956580, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1,
+        type: 2}
+      propertyPath: gameLostTitle
+      value: You Lost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1ba1dbdf449eae4e9ad0b9f81bb9dd1, type: 2}
   m_IsPrefabParent: 0

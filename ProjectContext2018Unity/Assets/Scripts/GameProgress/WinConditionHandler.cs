@@ -31,6 +31,7 @@ namespace GameProgress {
 
         private void WinConditionMet() {
             Debug.Log("GAME WON");
+            GameOverManager.SetGameOverState(GameOverManager.GameOverState.GameWon);
             Player.LocalPlayer.CmdLoadGameOverLobby();
         }
 
