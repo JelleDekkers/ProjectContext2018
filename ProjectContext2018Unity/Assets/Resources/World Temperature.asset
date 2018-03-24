@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   temperatureIncreasePerPollution: 0.001
   startingTemperature: 15
-  currentTemperature: 40.000004
+  currentTemperature: 15
   maxTemperature: 40

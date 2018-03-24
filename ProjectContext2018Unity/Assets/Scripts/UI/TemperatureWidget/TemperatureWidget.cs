@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class TemperatureWidget : MonoBehaviour {
+public class TemperatureWidget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
     [SerializeField] private TemperatureEventsManager eventsManager;
     [SerializeField] private Slider slider;
@@ -11,6 +12,7 @@ public class TemperatureWidget : MonoBehaviour {
     [SerializeField] private Text temperatureText;
     [SerializeField] private TemperatureEventSlider eventSlider;
     [SerializeField] private Transform eventSlidersParent;
+    [SerializeField] private TemperatureInfoPanel infoPanel;
 
     private TemperatureEventSlider[] sliders;
 
@@ -45,5 +47,17 @@ public class TemperatureWidget : MonoBehaviour {
         slider.transform.SetAsFirstSibling();
         slider.Init(e.temperatureTrigger, temperature.StartingTemperature, temperature.MaxTemperature);
         return slider;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        infoPanel.gameObject.SetActive(true);
+        if (eventsManager.currentEventIndex < eventsManager.events.Length - 1)
+            infoPanel.SetText(eventsManager.events[eventsManager.currentEventIndex + 1].temperatureTrigger, eventsManager.events[eventsManager.currentEventIndex + 1].waterLevel);
+        else
+            infoPanel.SetTextFinalEvent(temperature.MaxTemperature);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        infoPanel.gameObject.SetActive(false);
     }
 }
