@@ -51,10 +51,12 @@ public class TemperatureWidget : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData) {
         infoPanel.gameObject.SetActive(true);
-        if (eventsManager.currentEventIndex < eventsManager.events.Length - 1)
-            infoPanel.SetText(eventsManager.events[eventsManager.currentEventIndex + 1].temperatureTrigger, eventsManager.events[eventsManager.currentEventIndex + 1].waterLevel);
-        else
+        if (eventsManager.currentEventIndex < eventsManager.events.Length - 1) {
+            var e = eventsManager.events[eventsManager.currentEventIndex + 1];
+            infoPanel.SetText(e.temperatureTrigger, e.waterLevel * e.waterLevelTextMultiplier);
+        } else {
             infoPanel.SetTextFinalEvent(temperature.MaxTemperature);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {

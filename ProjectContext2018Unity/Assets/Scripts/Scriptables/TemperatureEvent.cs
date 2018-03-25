@@ -6,4 +6,5 @@ public class TemperatureEvent : ScriptableObject {
 
     public int temperatureTrigger;
     public float waterLevel;
+    public float waterLevelTextMultiplier = 4;
 }
