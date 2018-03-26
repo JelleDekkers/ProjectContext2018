@@ -36,7 +36,7 @@ MonoBehaviour:
   buildingSprites:
   - {fileID: 21300000, guid: cc845c8f21da38442bd5956b7d79b10a, type: 3}
   - {fileID: 21300000, guid: 5b4a54eafda592f40b2d6193217f3b7c, type: 3}
-  - {fileID: 21300000, guid: 19bf4bb1e15d2df4c89fb2bd09d05b45, type: 3}
+  - {fileID: 21300000, guid: eaf4dab3ea33ce446a52b5474de36fd6, type: 3}
   - {fileID: 21300000, guid: 8f796755b2c49cc41897c210dd055fd1, type: 3}
   - {fileID: 21300000, guid: b92199fdb018fdd478c67ce6ab1c2a40, type: 3}
   - {fileID: 21300000, guid: 779c8a1d96932084c9dd7b96c384a114, type: 3}
