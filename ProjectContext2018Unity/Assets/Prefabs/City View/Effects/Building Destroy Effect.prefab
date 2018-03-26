@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1786787325384114}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.6409196, y: 1.4518368, z: 2.0113792}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 3, y: 2, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demolishSFX: {fileID: 8300000, guid: e32b2b6408dca7941a4abdf3125bbacc, type: 3}
   particleSystem: {fileID: 198112639267593600}
-  shrinkTime: 2
+  shrinkTime: 0.5
 --- !u!198 &198112639267593600
 ParticleSystem:
   m_ObjectHideFlags: 1
