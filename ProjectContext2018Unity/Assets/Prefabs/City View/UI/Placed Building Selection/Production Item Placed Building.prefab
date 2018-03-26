@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productImg: {fileID: 114856899314358178}
   amountTxt: {fileID: 114962813619172852}
+  notEnoughResourcesColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114856899314358178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
