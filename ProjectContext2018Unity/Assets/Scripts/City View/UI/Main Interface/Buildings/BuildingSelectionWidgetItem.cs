@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using CityView.Construction;
 
 namespace CityView.UI {
 
@@ -28,12 +29,12 @@ namespace CityView.UI {
             Construction.BuildModeClimateBuildings.OnBuildingPlaced -= UpdateInteractableStateClimateBuilding;
         }
 
-        public void Init(int id, BuildingPrefabs prefab, BuildingsData data, bool isCorrectClimate) {
+        public void Init(int id, BuildingPrefabs prefab, BuildingsData data, bool isCorrectClimate, BuildModeBase buildMode) {
             this.id = id;
             this.data = data;
             this.isCorrectClimate = isCorrectClimate;
             img.sprite = prefab.GetBuildingSprite(id);
-            button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
+            button.onClick.AddListener(() => buildMode.SelectBuilding(id));
             button.interactable = Building.IsBuildingBuildable(id);
             PlayerResources.OnResourceChanged += UpdateInteractableStateBuilding;
             PlayerResources.OnMoneyChanged += UpdateInteractableStateBuilding;
@@ -45,12 +46,12 @@ namespace CityView.UI {
             }
         }
 
-        public void Init(int id, BuildingPrefabs prefab, ClimateBuildingsData data, bool isCorrectClimate) {
+        public void Init(int id, BuildingPrefabs prefab, ClimateBuildingsData data, bool isCorrectClimate, BuildModeBase buildMode) {
             this.id = id;
             this.data = data;
             this.isCorrectClimate = isCorrectClimate;
             img.sprite = prefab.GetBuildingSprite(id);
-            button.onClick.AddListener(() => BuildingSelectionWidget.OnBuildingSelected(id));
+            button.onClick.AddListener(() => buildMode.SelectBuilding(id));
             button.interactable = ClimateBuilding.IsBuildingBuildable(id);
             PlayerResources.OnResourceChanged += (x, y) => UpdateInteractableStateClimateBuilding();
             PlayerResources.OnMoneyChanged += (x) => UpdateInteractableStateClimateBuilding();

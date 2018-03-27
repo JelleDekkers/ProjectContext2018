@@ -39,6 +39,13 @@ namespace CityView.Construction {
                 OnMouseClick();
         }
 
+        public virtual void SelectBuilding(int id) {
+            enabled = true;
+            OnBuildingSelected(id);
+        }
+
+        protected abstract void OnBuildingSelected(int index);
+
         protected void HighlightUnbuildableTiles() {
             foreach (Tile t in tilesHoveringOver) {
                 if (t == null)

@@ -28,6 +28,7 @@ MonoBehaviour:
     resourceoutputamount: f4010000
     productiontime: 6
     climate: 0
+    buildingtype: 1
   - id: 1
     name: Butchery
     pollution: 10
@@ -42,6 +43,7 @@ MonoBehaviour:
     resourceoutputamount: 90010000
     productiontime: 10
     climate: 0
+    buildingtype: 3
   - id: 2
     name: Sawmill
     pollution: 5
@@ -56,6 +58,7 @@ MonoBehaviour:
     resourceoutputamount: c8000000
     productiontime: 10
     climate: 0
+    buildingtype: 4
   - id: 3
     name: Mine
     pollution: 20
@@ -70,6 +73,7 @@ MonoBehaviour:
     resourceoutputamount: fa000000
     productiontime: 6
     climate: 0
+    buildingtype: 4
   - id: 4
     name: Digging Facility
     pollution: 20
@@ -84,6 +88,7 @@ MonoBehaviour:
     resourceoutputamount: 2c010000
     productiontime: 8
     climate: 0
+    buildingtype: 4
   - id: 5
     name: Electronics Factory
     pollution: 20
@@ -98,6 +103,7 @@ MonoBehaviour:
     resourceoutputamount: c8000000
     productiontime: 6
     climate: 2
+    buildingtype: 5
   - id: 6
     name: Plastic Factory
     pollution: 20
@@ -112,6 +118,7 @@ MonoBehaviour:
     resourceoutputamount: c8000000
     productiontime: 6
     climate: 1
+    buildingtype: 5
   - id: 7
     name: Ore Smelting
     pollution: 10
@@ -126,6 +133,7 @@ MonoBehaviour:
     resourceoutputamount: fa000000
     productiontime: 10
     climate: 3
+    buildingtype: 5
   - id: 8
     name: House
     pollution: 10
@@ -140,6 +148,7 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 10
     climate: 0
+    buildingtype: 2
   - id: 9
     name: Wind Mill
     pollution: 0
@@ -154,6 +163,7 @@ MonoBehaviour:
     resourceoutputamount: ee020000
     productiontime: 5
     climate: 0
+    buildingtype: 1
   - id: 10
     name: Hyrdroponic Farm
     pollution: 0
@@ -168,6 +178,7 @@ MonoBehaviour:
     resourceoutputamount: 58020000
     productiontime: 10
     climate: 0
+    buildingtype: 3
   - id: 11
     name: 'Lumberyard '
     pollution: 0
@@ -182,6 +193,7 @@ MonoBehaviour:
     resourceoutputamount: 2c010000
     productiontime: 10
     climate: 0
+    buildingtype: 4
   - id: 12
     name: Recyling Plant
     pollution: 0
@@ -196,6 +208,7 @@ MonoBehaviour:
     resourceoutputamount: 77010000
     productiontime: 6
     climate: 0
+    buildingtype: 4
   - id: 13
     name: Soil Extraction Facility
     pollution: 0
@@ -210,6 +223,7 @@ MonoBehaviour:
     resourceoutputamount: c2010000
     productiontime: 8
     climate: 0
+    buildingtype: 4
   - id: 14
     name: Silicon Factory
     pollution: 0
@@ -224,6 +238,7 @@ MonoBehaviour:
     resourceoutputamount: 2c010000
     productiontime: 6
     climate: 2
+    buildingtype: 5
   - id: 15
     name: Plastic Processing
     pollution: 0
@@ -238,6 +253,7 @@ MonoBehaviour:
     resourceoutputamount: 2c010000
     productiontime: 6
     climate: 1
+    buildingtype: 5
   - id: 16
     name: Powder Metallurgy
     pollution: 0
@@ -252,6 +268,7 @@ MonoBehaviour:
     resourceoutputamount: 77010000
     productiontime: 10
     climate: 3
+    buildingtype: 5
   - id: 17
     name: Eco-House
     pollution: 0
@@ -266,3 +283,4 @@ MonoBehaviour:
     resourceoutputamount: 
     productiontime: 5
     climate: 0
+    buildingtype: 2

@@ -73,4 +73,8 @@ MonoBehaviour:
     name: Climate
     isEnable: 0
     isArray: 0
+  - type: 7
+    name: BuildingType
+    isEnable: 0
+    isArray: 0
   AccessCode: 

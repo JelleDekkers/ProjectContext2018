@@ -1,19 +1,17 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CityView.UI {
 
-    public class BuildingSelectionWidget : MonoBehaviour {
-
-        public static Action<int> OnBuildingSelected;
+    public class ClimateBuildingSelectionWidget : MonoBehaviour {
 
         [SerializeField] private BuildingSelectionWidgetItem itemPrefab;
         [SerializeField] private GameObject contentWidget;
         [SerializeField] private Transform contentGrid;
-        [SerializeField] private BuildingPrefabs buildings;
-        [SerializeField] private BuildingType buildingType;
-        [SerializeField] private BuildingListSelectionInfoWidget infoWidget;
+        [SerializeField] private BuildingPrefabs climateBuildings;
+        [SerializeField] private ClimateBuildingListSelectionInfoWidget infoWidget;
         [SerializeField] private Construction.BuildModeBase buildMode;
         [SerializeField] private Toggle toggle;
 
@@ -32,19 +30,17 @@ namespace CityView.UI {
 
         public void OnToggled() {
             FillGridBuildingData();
-            contentWidget.gameObject.SetActive(toggle.isOn);
+            contentWidget.gameObject.SetActive(toggle);
             buildMode.enabled = toggle.isOn;
         }
 
         private void FillGridBuildingData() {
             contentGrid.RemoveChildren();
             contentWidget.gameObject.SetActive(true);
-            for (int i = 0; i < DataManager.BuildingData.dataArray.Length; i++) {
-                BuildingsData data = DataManager.BuildingData.dataArray[i];
-                if(data.BuildingType == buildingType) {
-                    bool correctClimate = (data.Climate == Climate.None || data.Climate == Player.LocalPlayer.ClimateType);
-                    Instantiate(itemPrefab, contentGrid).Init(i, buildings, data, correctClimate, buildMode);
-                }
+            for (int i = 0; i < DataManager.ClimateBuildingData.dataArray.Length; i++) {
+                ClimateBuildingsData data = DataManager.ClimateBuildingData.dataArray[i];
+                bool correctClimate = (data.Climate == Climate.None || data.Climate == City.Instance.ClimateType);
+                Instantiate(itemPrefab, contentGrid).Init(i, climateBuildings, data, correctClimate, buildMode);
             }
         }
     }

@@ -13,18 +13,16 @@ namespace CityView.UI {
         [SerializeField] private GridLayoutGroup costGrid;
         [SerializeField] private Vector3 posOffset;
 
-        private void DisableGameObject() {
-            gameObject.SetActive(false);
-        }
+        public void Init() {
+            BuildingSelectionWidgetItem.OnPointerEnterEvent -= UpdateInfo;
+            BuildingSelectionWidgetItem.OnPointerExitEvent -= DisableGameObject;
 
-        public void SubscribeToBuildingWidget() {
             BuildingSelectionWidgetItem.OnPointerEnterEvent += UpdateInfo;
             BuildingSelectionWidgetItem.OnPointerExitEvent += DisableGameObject;
         }
 
-        public void UnSubscribeToBuildingWidget() {
-            BuildingSelectionWidgetItem.OnPointerEnterEvent -= UpdateInfo;
-            BuildingSelectionWidgetItem.OnPointerExitEvent -= DisableGameObject;
+        private void DisableGameObject() {
+            gameObject.SetActive(false);
         }
 
         private void UpdateInfo(int id, System.Object data) {

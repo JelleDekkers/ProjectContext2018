@@ -42,12 +42,13 @@ namespace CityView.Construction {
             base.Update();
         }
 
-        protected void OnBuildingSelected(int index) {
+        protected override void OnBuildingSelected(int index) {
             if (index == selectionIndex) {
                 selectionIndex = -1;
                 buildingGhost.gameObject.SetActive(false);
                 RevertTileColors();
                 OnBuildStateToggled(false);
+                enabled = false;
             } else {
                 selectionIndex = index;
                 buildingGhost.Setup(SelectedBuilding, SelectedBuildingData.ID);
