@@ -120,5 +120,19 @@ namespace CityView.Construction {
             }
             return null;
         }
+
+        protected Tile[,] GetNeededTiles(IntVector2 coordinates, IntVector2 buildingSize) {
+            Tile[,] tiles = new Tile[buildingSize.x, buildingSize.z];
+            for (int x = 0; x < buildingSize.x; x++) {
+                for (int z = 0; z < buildingSize.z; z++) {
+                    IntVector2 c = new IntVector2(coordinates.x + x, coordinates.z + z);
+                    if (City.Instance.TilesGrid.IsInsideGrid(c)) {
+                        Tile t = City.Instance.TilesGrid.GetTile(c);
+                        tiles[x, z] = t;
+                    }
+                }
+            }
+            return tiles;
+        }
     }
 }

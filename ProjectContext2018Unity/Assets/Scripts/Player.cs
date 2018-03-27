@@ -51,8 +51,8 @@ public class Player : NetworkBehaviour {
         AssignSemiRandomizedClimateType();
 
         if (isLocalPlayer) {
-            CityView.City.OnGameSceneWasLoaded += SendUpdatePollutionPerMinute;
-            CityView.BuildingsHandler.OnBuildingListChanged += SendUpdatePollutionPerMinute;
+            CityView.City.OnGameSceneWasLoaded += SendUpdatePollutionPerYear;
+            CityView.BuildingsHandler.OnBuildingListChanged += SendUpdatePollutionPerYear;
         }
     }
 
@@ -61,25 +61,27 @@ public class Player : NetworkBehaviour {
     }
 
     private void OnDestroy() {
-        CityView.City.OnGameSceneWasLoaded -= SendUpdatePollutionPerMinute;
-        CityView.BuildingsHandler.OnBuildingListChanged -= SendUpdatePollutionPerMinute;
+        CityView.City.OnGameSceneWasLoaded -= SendUpdatePollutionPerYear;
+        CityView.BuildingsHandler.OnBuildingListChanged -= SendUpdatePollutionPerYear;
     }
 
-    public void SendUpdatePollutionPerMinute() {
+    public void SendUpdatePollutionPerYear() {
         //Debug.Log("SendUpdatePollutionPerMinute " + CityView.BuildingsHandler.Instance.GetPollutionPerMinute());
-        CmdUpdatePollutionPerMinute(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerYear());
+        CmdUpdatePollutionPeryear(playerID, CityView.BuildingsHandler.Instance.GetPollutionPerYear());
+        if (OnUpdatePollutionPerMinuteChanged != null)
+            OnUpdatePollutionPerMinuteChanged();
     }
 
     [Command]
-    private void CmdUpdatePollutionPerMinute(int playerID, float pollution) {
+    private void CmdUpdatePollutionPeryear(int playerID, float pollution) {
         if (isServer && playerID == this.playerID) 
             playerPollutionPerYear = pollution;
 
-        RpcUpdatePlayerPollutionPerMinute(playerID, pollution);
+        RpcUpdatePlayerPollutionPerYear(playerID, pollution);
     }
 
     [ClientRpc]
-    public void RpcUpdatePlayerPollutionPerMinute(int playerID, float amount) {
+    public void RpcUpdatePlayerPollutionPerYear(int playerID, float amount) {
         foreach (Player player in PlayerList.Players) {
             if (player.PlayerID == playerID)
                 player.playerPollutionPerYear = amount;

@@ -5,8 +5,9 @@ public class PollutionPerYearWidget : MonoBehaviour {
 
     [SerializeField] private Text pollutionAmount;
 
-    private void Start() {
+    private void Awake() {
         Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged += UpdateAmount;
+        UpdateAmount();
     }
 
     private void OnDestroy() {

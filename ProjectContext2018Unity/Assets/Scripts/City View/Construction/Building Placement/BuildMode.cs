@@ -90,6 +90,21 @@ namespace CityView.Construction {
             buildingGhost.Setup(SelectedBuilding, SelectedBuildingData.ID);
         }
 
+        public void BuildAtStart(Building building, BuildingsData data, IntVector2 coordinates) {
+            Tile[,] tiles = GetNeededTiles(coordinates, building.Size);
+            AverageOutTerrain(tiles);
+
+            foreach (Tile tile in tiles)
+                tile.SetOccupant(building);
+
+            building.transform.position = Tile.GetCentrePoint(tiles);
+            building.enabled = true;
+            building.Init(data, tiles);
+            building.AddOutline(outlinePrefab);
+
+            OnBuildingPlaced(building, data);
+        }
+
         private void OnDestroy() {
             UI.BuildingSelectionWidget.OnBuildingSelected -= OnBuildingSelected;
         }
