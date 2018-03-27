@@ -45650,7 +45650,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1411188073465618, guid: 241597c404a5db24c9cd12c275c54281, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 241597c404a5db24c9cd12c275c54281, type: 2}
@@ -56566,6 +56566,10 @@ Prefab:
     - target: {fileID: 4575630780049560, guid: 301e96950b1891b4bbe10b075edc6cae, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101835989534100, guid: 301e96950b1891b4bbe10b075edc6cae, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301e96950b1891b4bbe10b075edc6cae, type: 2}
@@ -70328,11 +70332,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 723354013}
-    - target: {fileID: 114056447125538176, guid: 78a16944eee0a514093fb612229e91c2,
-        type: 2}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78a16944eee0a514093fb612229e91c2, type: 2}
   m_IsPrefabParent: 0
