@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -632,6 +632,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 114003148139359566, guid: faff049c6d6aaf74faba4072a7f94fe6,
     type: 2}
   contentParent: {fileID: 523781293}
+  buildings: {fileID: 0}
+  climateBuildings: {fileID: 0}
 --- !u!114 &167139151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,10 +709,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aa85a4c0bfca04ea25db8d09eadacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  city: {fileID: 0}
   buildingGhost: {fileID: 1760239632}
   placeEffectPrefab: {fileID: 114625599853400204, guid: dcdd17a1a6bfbac4fa2d1d38d948bf68,
     type: 2}
   buildingsParent: {fileID: 386444470}
+  tileLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  outlinePrefab: {fileID: 0}
 --- !u!1 &176773012
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a098a699cd1954ca1cd25eac114564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canZoom: 0
+  canRotate: 0
   movementSpeed: 30
   horizontalBorderMin: -3
   horizontalBorderMax: 3
@@ -777,6 +786,7 @@ MonoBehaviour:
   verticalBorderMax: 3
   zoomMin: 3
   zoomMax: 6
+  zoomSpeed: 1
 --- !u!114 &176773016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +801,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 288
+  onHoverOutlineWidth: 0
 --- !u!114 &176773017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,6 +1402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildings: []
+  gameTime: {fileID: 0}
 --- !u!4 &386444470
 Transform:
   m_ObjectHideFlags: 0
@@ -1819,12 +1831,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTxt: {fileID: 1637578711}
   pollutionAmountTxt: {fileID: 493244705}
+  climateTxt: {fileID: 0}
   productItemPrefab: {fileID: 114774181416442392, guid: c7a53a29156a1ce4ea9cb04c683cdb10,
     type: 2}
   costGrid: {fileID: 777086536}
   productionGrid: {fileID: 238648182}
+  inputGrid: {fileID: 0}
   productionTime: {fileID: 370812677}
   posOffset: {x: 0, y: 0, z: 0}
+  correctClimateColor: {r: 0, g: 0, b: 0, a: 0}
+  incorrectClimateColor: {r: 0, g: 0, b: 0, a: 0}
+  sufficientResourcesColor: {r: 1, g: 1, b: 1, a: 1}
+  insufficientResourcesColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &560143437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2390,6 +2408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productImg: {fileID: 1700080981}
   amountTxt: {fileID: 1073768937}
+  plusColor: {r: 0, g: 1, b: 0, a: 1}
+  minColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!222 &694702584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3542,6 +3562,7 @@ MonoBehaviour:
   img: {fileID: 1700080981}
   amountText: {fileID: 1073768937}
   tooltipOffset: {x: 0, y: -30, z: 0}
+  popup: {fileID: 0}
 --- !u!114 &1368136706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,9 +4483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1a63b2f01049e4c99c2c250336e24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size:
-    x: 10
-    z: 10
   tilePrefab: {fileID: 114985919384200408, guid: abe99406b5bd9ec4b929bc11ea10e825,
     type: 2}
   lineMaterial: {fileID: 2100000, guid: 09dbde46876b91940bf85cf485ac07be, type: 2}
@@ -4493,7 +4511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c38fde56eae4843ae22ea81529277a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1654829773}
+  climateType: 0
+  tilesGrid: {fileID: 0}
+  terrain: {fileID: 0}
 --- !u!114 &1654829777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4517,7 +4537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ac480b24cf3794d81329fb03368dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources: {fileID: 11400000, guid: 6f38c66f1a2d198448844323b7e369df, type: 2}
+  playerResources: {fileID: 0}
 --- !u!1 &1669667234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bdbcb42f1aba14cbb13f748dfc1fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaValue: 0.2
+  AlphaValue: 0.8
+  unbuildableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1765734543
 GameObject:
   m_ObjectHideFlags: 0
