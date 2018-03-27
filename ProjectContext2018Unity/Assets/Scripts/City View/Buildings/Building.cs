@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using CityView.Construction;
@@ -102,8 +103,15 @@ namespace CityView {
         }
 
         private bool HasNecessaryResourcesForProductionCycle() {
-            return (PlayerResources.Instance.HasResourcesAmount(data.Resourceinput, data.Resourceinputamount) &&
-                    PlayerResources.Instance.HasMoneyAmount(data.Moneyinput));
+            int energyIndex = 0;
+            if (data.Resourceinput.Contains(energyIndex) && !sentEnergyCapacity) {
+                return (PlayerResources.Instance.HasResourcesAmountExcludingEnergy(data.Resourceinput, data.Resourceinputamount) &&
+                        PlayerResources.Instance.HasMoneyAmount(data.Moneyinput) &&
+                        PlayerResources.Instance.HasEnergyAmount(data.Resourceinputamount[energyIndex]));
+            } else {
+                return (PlayerResources.Instance.HasResourcesAmountExcludingEnergy(data.Resourceinput, data.Resourceinputamount) &&
+                        PlayerResources.Instance.HasMoneyAmount(data.Moneyinput));
+            }
         }
 
         private IEnumerator WaitForNewProductionStart() {
@@ -117,11 +125,38 @@ namespace CityView {
             }
         }
 
+        private BuildingsData GetDataWithoutEnergyResource(BuildingsData data) {
+            BuildingsData dataWithoutEnergy = data.Clone() as BuildingsData;
+            List<int> input = new List<int>();
+            List<int> inputAmount = new List<int>();
+            for (int i = 0; i < data.Resourceinput.Length; i++) {
+                if (data.Resourceinput[i] != 0) {
+                    input.Add(data.Resourceinput[i]);
+                    inputAmount.Add(data.Resourceinputamount[i]);
+                }
+            }
+            dataWithoutEnergy.Resourceinput = input.ToArray();
+            dataWithoutEnergy.Resourceinputamount = inputAmount.ToArray();
+
+            List<int> output = new List<int>();
+            List<int> outputAmount = new List<int>();
+            for (int i = 0; i < data.Resourceoutput.Length; i++) {
+                if (data.Resourceoutput[i] != 0) {
+                    output.Add(data.Resourceoutput[i]);
+                    outputAmount.Add(data.Resourceoutputamount[i]);
+                }
+            }
+            dataWithoutEnergy.Resourceoutput = output.ToArray();
+            dataWithoutEnergy.Resourceoutputamount = outputAmount.ToArray();
+            return dataWithoutEnergy;
+        }
+
         private void StartNewProduction() {
-            productionCycle = new ProductionCycle(data, OnProductionCycleCompletedHandler);
+            BuildingsData dataWithoutEnergy = GetDataWithoutEnergyResource(data);
+            productionCycle = new ProductionCycle(dataWithoutEnergy, OnProductionCycleCompletedHandler);
             PlayerResources.OnResourceChanged -= CheckIfNecessaryInputResourcesAreAvailable;
             //PlayerResources.OnMoneyChanged -= (x) => CheckIfNecessaryInputResourcesAreAvailable();
-            OnProductionInputProcessed(this, data);
+            OnProductionInputProcessed(this, dataWithoutEnergy);
 
             if (!enabled)
                 enabled = true;
@@ -181,18 +216,30 @@ namespace CityView {
         }
 
         public override bool IsBuildable(int dataID) {
-            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.BuildingData.dataArray[dataID].Moneycost))
+            BuildingsData data = DataManager.BuildingData.dataArray[dataID];
+            if (!PlayerResources.Instance.HasMoneyAmount(data.Moneycost))
                 return false;
-            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.BuildingData.dataArray[dataID].Resourcecost, DataManager.BuildingData.dataArray[dataID].Resourcecostamount))
+            if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
                 return false;
+            //int energyIndex = 0;
+            //if (data.Resourceinput.Contains(energyIndex)) {
+            //    if (!PlayerResources.Instance.HasEnergyAmount(data.Resourceinputamount[energyIndex]))
+            //        return false;
+            //}
             return true;
         }
 
         public static bool IsBuildingBuildable(int dataID) {
-            if (!PlayerResources.Instance.HasMoneyAmount(DataManager.BuildingData.dataArray[dataID].Moneycost))
+            BuildingsData data = DataManager.BuildingData.dataArray[dataID];
+            if (!PlayerResources.Instance.HasMoneyAmount(data.Moneycost))
                 return false;
-            if (!PlayerResources.Instance.HasResourcesAmount(DataManager.BuildingData.dataArray[dataID].Resourcecost, DataManager.BuildingData.dataArray[dataID].Resourcecostamount))
+            if (!PlayerResources.Instance.HasResourcesAmount(data.Resourcecost, data.Resourcecostamount))
                 return false;
+            //int energyIndex = 0;
+            //if (data.Resourceinput.Contains(energyIndex)) {
+            //    if (!PlayerResources.Instance.HasEnergyAmount(data.Resourceinputamount[energyIndex]))
+            //        return false;
+            //}
             return true;
         }
     }

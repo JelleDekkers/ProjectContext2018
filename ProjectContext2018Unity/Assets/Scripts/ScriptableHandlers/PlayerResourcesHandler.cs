@@ -19,19 +19,19 @@ public class PlayerResourcesHandler : MonoBehaviour {
         Building.OnProductionCycleCompleted += playerResources.ProcessBuildingProductionResult;
         MarketPlace.OnTradeOfferBought += playerResources.TradeOfferBought;
         MarketPlace.OnTradeOfferSold += playerResources.TradeOfferSold;
-        Building.OnBuildingEnabled += HandleBuildingEnabled;
-        Building.OnBuildingDisabled += HandeBuildingDisabled;
+        Building.OnBuildingEnabled += HandleEnergyConsumptionOnEnable;
+        Building.OnBuildingDisabled += HandleEnergyConsumptionOnDisable;
     }
 
     private void OnDestroy() {
         Building.OnProductionCycleCompleted -= playerResources.ProcessBuildingProductionResult;
         MarketPlace.OnTradeOfferBought -= playerResources.TradeOfferBought;
         MarketPlace.OnTradeOfferSold -= playerResources.TradeOfferSold;
-        Building.OnBuildingEnabled -= HandleBuildingEnabled;
-        Building.OnBuildingDisabled -= HandeBuildingDisabled;
+        Building.OnBuildingEnabled -= HandleEnergyConsumptionOnEnable;
+        Building.OnBuildingDisabled -= HandleEnergyConsumptionOnDisable;
    }
 
-    private void HandleBuildingEnabled(Building building) {
+    private void HandleEnergyConsumptionOnEnable(Building building) {
         // Store energy as capacity
         foreach (int i in building.data.Resourceoutput) {
             if (i == energyIndex) {
@@ -39,13 +39,29 @@ public class PlayerResourcesHandler : MonoBehaviour {
                 return;
             }
         }
+
+        // remove necessary energy
+        foreach (int i in building.data.Resourceinput) {
+            if (i == energyIndex) {
+                Resources.RemoveResource(i, building.data.Resourceinputamount[i]);
+                return;
+            }
+        }
     }
 
-    private void HandeBuildingDisabled(Building building) {
+    private void HandleEnergyConsumptionOnDisable(Building building) {
         // Remove stored energy
         foreach (int i in building.data.Resourceoutput) {
             if (i == energyIndex) {
                 Resources.RemoveResource(i, building.data.Resourceoutputamount[i]);
+                return;
+            }
+        }
+
+        // return used energy
+        foreach (int i in building.data.Resourceinput) {
+            if (i == energyIndex) {
+                Resources.AddResource(i, building.data.Resourceinputamount[i]);
                 return;
             }
         }

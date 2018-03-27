@@ -22,11 +22,9 @@ public class ProductionCycle {
         Money = data.Moneyoutput;
         ResourcesAmount = data.Resourceoutputamount;
         Pollution = data.Pollution;
-        if (!data.Resourceoutput.Contains(0))
-            ResourcesIDs = data.Resourceoutput;
-        else
-            ResourcesIDs = data.Resourceoutput.RemoveFirstElement();
-
+        ResourcesIDs = data.Resourceoutput;
+        ResourcesAmount = data.Resourceinputamount;
+        
         PlayerResources.Instance.RemoveResources(data.Resourceinput, data.Resourceinputamount);
         PlayerResources.Instance.RemoveMoney(data.Moneyinput);
 
@@ -49,11 +47,13 @@ public class ProductionCycle {
             pollutionPoints = Pollution
         };
 
-        // energy verwijderen
-        ResourceContainer[] producedResources = new ResourceContainer[ResourcesIDs.Length];
-        for (int i = 0; i < producedResources.Length; i++) 
-            producedResources[i] = new ResourceContainer(ResourcesIDs[i], ResourcesAmount[i]);
-        result.producedResources = producedResources;
+        int energyIndex = 0;
+        List<ResourceContainer> producedResources = new List<ResourceContainer>();
+        for (int i = 0; i < ResourcesIDs.Length; i++) {
+            if(ResourcesIDs[i] != energyIndex)
+                producedResources.Add(new ResourceContainer(ResourcesIDs[i], ResourcesAmount[i]));
+        }
+        result.producedResources = producedResources.ToArray();
 
         OnComplete(result);
     }

@@ -103,6 +103,14 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
         return true;
     }
 
+    public bool HasResourcesAmountExcludingEnergy(int[] resourceIDs, int[] amount) {
+        for (int i = 1; i < resourceIDs.Length; i++) {
+            if (!HasResourceAmount(resourceIDs[i], amount[i]))
+                return false;
+        }
+        return true;
+    }
+
     public bool HasResourcesAmount(int[] resourceIDs, int[] amount, out int missingResourceID) {
         for (int i = 0; i < resourceIDs.Length; i++) {
             if (!HasResourceAmount(resourceIDs[i], amount[i])) {
@@ -114,6 +122,9 @@ public class PlayerResources : ScriptableObjectSingleton<PlayerResources> {
         return true;
     }
 
+    public bool HasEnergyAmount(int amount) {
+        return HasResourceAmount(0, amount);
+    }
 
     public bool HasResourceAmount(int resourceID, int amount) {
         string resourceName = DataManager.ResourcesData.dataArray[resourceID].Name;

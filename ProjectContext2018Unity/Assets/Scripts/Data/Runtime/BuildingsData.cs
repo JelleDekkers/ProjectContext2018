@@ -6,7 +6,7 @@ using System.Collections;
 /// !!! DO NOT CHANGE Tabs to Spaces !!!
 ///
 [System.Serializable]
-public class BuildingsData
+public class BuildingsData : System.ICloneable
 {
   [SerializeField]
   int id;
@@ -63,5 +63,8 @@ public class BuildingsData
   [SerializeField]
   Climate climate;
   public Climate Climate { get {return climate; } set { climate = value;} }
-  
+
+    public object Clone() {
+        return MemberwiseClone();
+    }
 }
