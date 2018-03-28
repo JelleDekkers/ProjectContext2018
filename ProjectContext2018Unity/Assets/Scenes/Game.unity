@@ -57826,6 +57826,21 @@ Prefab:
       propertyPath: tooltipOffset.y
       value: -22
       objectReference: {fileID: 0}
+    - target: {fileID: 114191747799761544, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114019360843260684, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114239649615485374, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65ffd601f8bce464ca50e1e4b3c717f5, type: 2}
   m_IsPrefabParent: 0
