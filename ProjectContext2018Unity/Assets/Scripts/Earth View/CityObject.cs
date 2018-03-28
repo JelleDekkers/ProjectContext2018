@@ -9,9 +9,12 @@ namespace EarthView {
         public static Action<CityObject, Player> OnSelected;
 
         public Player Player { get; private set; }
+        public GameObject localPlayerCircle;
 
         public void Init(Player player) {
             Player = player;
+
+            localPlayerCircle.SetActive(player == Player.LocalPlayer);
         }
 
         public void Select() {
