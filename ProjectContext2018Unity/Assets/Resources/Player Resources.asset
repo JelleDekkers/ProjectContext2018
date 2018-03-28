@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Player Resources
   m_EditorClassIdentifier: 
   startingMoney: 5
-  money: 6
+  money: 16
   startingResources:
     m_keys:
     - Energy
@@ -34,4 +34,4 @@ MonoBehaviour:
     - Electronics
     - Plastics
     - Metals
-    m_values: 0500000003000000030000000000000000000000000000000000000000000000
+    m_values: 0500000005000000030000000000000000000000000000000000000000000000

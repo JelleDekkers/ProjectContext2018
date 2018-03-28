@@ -12,7 +12,7 @@ namespace CityView.UI {
         [SerializeField] private Transform contentGrid;
         [SerializeField] private BuildingPrefabs climateBuildings;
         [SerializeField] private ClimateBuildingListSelectionInfoWidget infoWidget;
-        [SerializeField] private Construction.BuildModeBase buildMode;
+        [SerializeField] private Construction.BuildModeClimateBuildings buildMode;
         [SerializeField] private Toggle toggle;
 
         private void OnEnable() {

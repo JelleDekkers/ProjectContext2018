@@ -16,7 +16,6 @@ namespace CityView.UI {
         [SerializeField] private Text productionTime;
         [SerializeField] private Vector3 posOffset;
         [SerializeField] private Color correctClimateColor, incorrectClimateColor;
-        [SerializeField] private Color sufficientResourcesColor = Color.white, insufficientResourcesColor = Color.red;
 
         public void Init() {
             BuildingSelectionWidgetItem.OnPointerEnterEvent -= UpdateInfo;
