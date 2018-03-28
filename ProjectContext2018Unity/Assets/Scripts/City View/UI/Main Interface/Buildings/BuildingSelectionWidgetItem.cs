@@ -81,7 +81,8 @@ namespace CityView.UI {
         }
 
         private void UpdateInteractableStateClimateBuilding() {
-            button.interactable = ClimateBuilding.IsBuildingBuildable(id);
+            if(button != null)
+                button.interactable = ClimateBuilding.IsBuildingBuildable(id);
         }
 
         private void UpdateInteractableStateClimateBuilding(float money) {
