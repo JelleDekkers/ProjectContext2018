@@ -57741,6 +57741,91 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 8300000, guid: a2677f18ae8370043b064bfb77cdec58, type: 3}
+    - target: {fileID: 114546404369257124, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022289196837308, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114518614775307040, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907524413601480, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141621208922038, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096447524018694, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114997720199585438, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114546404369257124, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022289196837308, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114518614775307040, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907524413601480, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141621208922038, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096447524018694, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114997720199585438, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114191747799761544, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114019360843260684, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114239649615485374, guid: 65ffd601f8bce464ca50e1e4b3c717f5,
+        type: 2}
+      propertyPath: tooltipOffset.y
+      value: -22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65ffd601f8bce464ca50e1e4b3c717f5, type: 2}
   m_IsPrefabParent: 0

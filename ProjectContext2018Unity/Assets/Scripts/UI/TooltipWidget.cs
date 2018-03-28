@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +6,6 @@ using UnityEngine.UI;
 namespace UI {
 
     public class TooltipWidget : MonoBehaviour {
-
         private static TooltipWidget instance;
         public static TooltipWidget Instance {
             get {
