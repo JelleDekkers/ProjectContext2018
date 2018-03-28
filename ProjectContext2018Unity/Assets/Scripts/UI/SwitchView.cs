@@ -11,7 +11,7 @@ public class SwitchView : MonoBehaviour {
         earthView.SetActive(!earthView.activeInHierarchy);
         cityView.SetActive(!cityView.activeInHierarchy);
 
-        if (OnSceneViewSwitched != null)
-            OnSceneViewSwitched();
+        //if (OnSceneViewSwitched != null)
+        //    OnSceneViewSwitched();
     }
 }
