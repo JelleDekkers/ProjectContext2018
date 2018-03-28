@@ -49,7 +49,6 @@ public class ProductionCycle {
 
         int energyIndex = 0;
         List<ResourceContainer> producedResources = new List<ResourceContainer>();
-        Debug.Log(ResourcesIDs.Length + " " + ResourcesAmount.Length);
         for (int i = 0; i < ResourcesIDs.Length; i++) {
             if(ResourcesIDs[i] != energyIndex)
                 producedResources.Add(new ResourceContainer(ResourcesIDs[i], ResourcesAmount[i]));
