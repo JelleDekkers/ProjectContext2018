@@ -12,7 +12,7 @@ namespace UI {
         public void Init(int index, Player player) {
             indexTxt.text = index.ToString();
             nameTxt.text = player.Name;
-            scoreTxt.text = player.ScoreManager.Score.ToString();
+            scoreTxt.text = ((int)player.ScoreManager.Score).ToString();
             moneyTxt.text = player.ScoreManager.money.ToString();
             populationTxt.text = player.ScoreManager.inhabitants.ToString();
         }

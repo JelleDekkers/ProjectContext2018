@@ -10,6 +10,15 @@ namespace GameProgress {
         private float timer = 0;
 
         public void Start() {
+            StartCoroutine(StartBuffer());
+        }
+
+        private IEnumerator StartBuffer() {
+            float time = 2f;
+            while (time > 0) {
+                time -= Time.deltaTime;
+                yield return null;
+            }
             Player.LocalPlayer.OnUpdatePollutionPerMinuteChanged += CheckWinCondition;
         }
 

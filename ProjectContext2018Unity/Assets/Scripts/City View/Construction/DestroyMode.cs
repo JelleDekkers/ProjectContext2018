@@ -27,7 +27,8 @@ namespace CityView.Construction {
 
         private void OnDisable() {
             SetBuildingHoveringOver(null);
-            cityCam.enabled = true;
+            if(cityCam != null)
+                cityCam.enabled = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
 
