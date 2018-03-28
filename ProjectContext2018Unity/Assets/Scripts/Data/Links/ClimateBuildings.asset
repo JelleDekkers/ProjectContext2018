@@ -16,25 +16,25 @@ MonoBehaviour:
   dataArray:
   - id: 0
     name: Small Dike
-    moneycost: 100
+    moneycost: 0
     resourcecost: 04000000
-    resourcecostamount: 05000000
-    climate: 1
+    resourcecostamount: 01000000
+    climate: 0
     level: 0.4
     description: Stops up to 4 meters of water
   - id: 1
     name: Medium Dike
-    moneycost: 200
+    moneycost: 1
     resourcecost: 0200000004000000
-    resourcecostamount: 0a0000000a000000
-    climate: 1
+    resourcecostamount: 0100000001000000
+    climate: 0
     level: 0.8
     description: Stops up to 8 meters of water
   - id: 2
     name: Large Dike
-    moneycost: 300
-    resourcecost: 020000000400000005000000
-    resourcecostamount: 0a0000000a0000000a000000
-    climate: 1
+    moneycost: 1
+    resourcecost: 0200000004000000
+    resourcecostamount: 0200000002000000
+    climate: 0
     level: 1.2
     description: Stops up to 12 meters of water
