@@ -48,7 +48,6 @@ public class EventLogResourcesUnavailable : IEventLog {
     public EventLogResourcesUnavailable(Building building, int missingResourceID) {
         this.building = building;
         this.missingResourceID = missingResourceID;
-        Debug.Log(missingResourceID);
         string missingResourceName = DataManager.ResourcesData.dataArray[missingResourceID].Name;
         stringOne = "Not enough ";
         stringTwo = " for ";

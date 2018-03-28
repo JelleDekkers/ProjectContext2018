@@ -87,8 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   playerID: 0
-  playerPollutionPerMinute: 0
-  score: 0
+  climateType: 0
+  playerPollutionPerYear: 0
   gameOverScene:
     sceneAsset: {fileID: 102900000, guid: 3248cb598643e8447bb4ab6a69a21a0a, type: 3}
     sceneName: Scenes/GameOverLobby
@@ -105,8 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  inhabitants: 0
+  money: 0
   player: {fileID: 114304207039974888}
   playerResources: {fileID: 11400000, guid: 6f38c66f1a2d198448844323b7e369df, type: 2}
   population: {fileID: 11400000, guid: d117f2d139811094f8e5e91de358e466, type: 2}
-  pointsPerInhabitant: 0.1
-  pointsPerMoney: 0.0001
+  pointsPerInhabitant: 1
+  pointsPerMoney: 0.01
