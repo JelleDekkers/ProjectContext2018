@@ -16,134 +16,134 @@ MonoBehaviour:
   dataArray:
   - id: 0
     name: Coal Plant
-    pollution: 20
-    moneycost: 1000
+    pollution: 5
+    moneycost: 2
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 02000000
-    resourceinputamount: 4b000000
-    moneyoutput: 50
+    resourceinputamount: 01000000
+    moneyoutput: 1
     resourceoutput: 00000000
-    resourceoutputamount: f4010000
+    resourceoutputamount: 03000000
     productiontime: 6
     climate: 0
     buildingtype: 1
   - id: 1
     name: Butchery
-    pollution: 10
-    moneycost: 1500
+    pollution: 2
+    moneycost: 3
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 
-    resourceinputamount: 
-    moneyoutput: 100
+    resourceinputamount: 00000000
+    moneyoutput: 0
     resourceoutput: 01000000
-    resourceoutputamount: 90010000
+    resourceoutputamount: 03000000
     productiontime: 10
     climate: 0
     buildingtype: 3
   - id: 2
     name: Sawmill
-    pollution: 5
-    moneycost: 1000
+    pollution: 1
+    moneycost: 2
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 
-    resourceinputamount: 
-    moneyoutput: 50
+    resourceinputamount: 00000000
+    moneyoutput: 1
     resourceoutput: 02000000
-    resourceoutputamount: c8000000
+    resourceoutputamount: 01000000
     productiontime: 10
     climate: 0
     buildingtype: 4
   - id: 3
     name: Mine
-    pollution: 20
-    moneycost: 750
+    pollution: 4
+    moneycost: 3
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 
-    resourceinputamount: 
-    moneyoutput: 200
+    resourceinputamount: 00000000
+    moneyoutput: 1
     resourceoutput: 03000000
-    resourceoutputamount: fa000000
+    resourceoutputamount: 02000000
     productiontime: 6
     climate: 0
     buildingtype: 4
   - id: 4
     name: Digging Facility
-    pollution: 20
-    moneycost: 500
+    pollution: 3
+    moneycost: 3
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 
-    resourceinputamount: 
-    moneyoutput: 75
+    resourceinputamount: 00000000
+    moneyoutput: 0
     resourceoutput: 04000000
-    resourceoutputamount: 2c010000
-    productiontime: 8
+    resourceoutputamount: 02000000
+    productiontime: 10
     climate: 0
     buildingtype: 4
   - id: 5
     name: Electronics Factory
-    pollution: 20
-    moneycost: 1000
+    pollution: 6
+    moneycost: 7
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 03000000
-    resourceinputamount: 64000000
-    moneyoutput: 10
+    resourceinputamount: 01000000
+    moneyoutput: 1
     resourceoutput: 05000000
-    resourceoutputamount: c8000000
-    productiontime: 6
+    resourceoutputamount: 03000000
+    productiontime: 10
     climate: 2
     buildingtype: 5
   - id: 6
     name: Plastic Factory
-    pollution: 20
-    moneycost: 1000
+    pollution: 6
+    moneycost: 7
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 04000000
-    resourceinputamount: 7d000000
-    moneyoutput: 10
+    resourceinputamount: 01000000
+    moneyoutput: 1
     resourceoutput: 06000000
-    resourceoutputamount: c8000000
-    productiontime: 6
+    resourceoutputamount: 03000000
+    productiontime: 10
     climate: 1
     buildingtype: 5
   - id: 7
     name: Ore Smelting
-    pollution: 10
-    moneycost: 900
+    pollution: 6
+    moneycost: 7
     resourcecost: 
     resourcecostamount: 
     moneyinput: 0
     resourceinput: 03000000
-    resourceinputamount: fa000000
-    moneyoutput: 20
+    resourceinputamount: 01000000
+    moneyoutput: 1
     resourceoutput: 07000000
-    resourceoutputamount: fa000000
+    resourceoutputamount: 03000000
     productiontime: 10
     climate: 3
     buildingtype: 5
   - id: 8
     name: House
-    pollution: 10
-    moneycost: 1000
+    pollution: 3
+    moneycost: 2
     resourcecost: 02000000
-    resourcecostamount: 32000000
+    resourcecostamount: 01000000
     moneyinput: 0
     resourceinput: 0000000001000000
-    resourceinputamount: c20100002c010000
-    moneyoutput: 1000
+    resourceinputamount: 0200000002000000
+    moneyoutput: 3
     resourceoutput: 
     resourceoutputamount: 
     productiontime: 10
@@ -152,135 +152,135 @@ MonoBehaviour:
   - id: 9
     name: Wind Mill
     pollution: 0
-    moneycost: 5000
+    moneycost: 5
     resourcecost: 050000000600000007000000
-    resourcecostamount: e2040000e8030000dc050000
+    resourcecostamount: 010000000100000001000000
     moneyinput: 0
     resourceinput: 
-    resourceinputamount: 
+    resourceinputamount: 00000000
     moneyoutput: 0
     resourceoutput: 00000000
-    resourceoutputamount: ee020000
+    resourceoutputamount: 04000000
     productiontime: 5
     climate: 0
     buildingtype: 1
   - id: 10
     name: Hyrdroponic Farm
     pollution: 0
-    moneycost: 7000
+    moneycost: 7
     resourcecost: 050000000600000007000000
-    resourcecostamount: b00400004c040000aa050000
+    resourcecostamount: 010000000100000001000000
     moneyinput: 0
     resourceinput: 00000000
-    resourceinputamount: 96000000
+    resourceinputamount: 01000000
     moneyoutput: 0
     resourceoutput: 01000000
-    resourceoutputamount: 58020000
+    resourceoutputamount: 03000000
     productiontime: 10
     climate: 0
     buildingtype: 3
   - id: 11
     name: 'Lumberyard '
     pollution: 0
-    moneycost: 4000
+    moneycost: 5
     resourcecost: 05000000
-    resourcecostamount: ee020000
+    resourcecostamount: 01000000
     moneyinput: 0
     resourceinput: 00000000
-    resourceinputamount: 19000000
+    resourceinputamount: 01000000
     moneyoutput: 0
     resourceoutput: 02000000
-    resourceoutputamount: 2c010000
+    resourceoutputamount: 01000000
     productiontime: 10
     climate: 0
     buildingtype: 4
   - id: 12
     name: Recyling Plant
     pollution: 0
-    moneycost: 5000
+    moneycost: 7
     resourcecost: 06000000
-    resourcecostamount: ee020000
+    resourcecostamount: 01000000
     moneyinput: 0
     resourceinput: 00000000
-    resourceinputamount: 64000000
+    resourceinputamount: 01000000
     moneyoutput: 0
     resourceoutput: 03000000
-    resourceoutputamount: 77010000
+    resourceoutputamount: 02000000
     productiontime: 6
     climate: 0
     buildingtype: 4
   - id: 13
     name: Soil Extraction Facility
     pollution: 0
-    moneycost: 7000
+    moneycost: 6
     resourcecost: 07000000
-    resourcecostamount: ee020000
+    resourcecostamount: 01000000
     moneyinput: 0
     resourceinput: 00000000
-    resourceinputamount: 64000000
+    resourceinputamount: 01000000
     moneyoutput: 0
     resourceoutput: 04000000
-    resourceoutputamount: c2010000
+    resourceoutputamount: 02000000
     productiontime: 8
     climate: 0
     buildingtype: 4
   - id: 14
     name: Silicon Factory
     pollution: 0
-    moneycost: 8000
+    moneycost: 14
     resourcecost: 02000000
-    resourcecostamount: e8030000
+    resourcecostamount: 03000000
     moneyinput: 0
     resourceinput: 03000000
-    resourceinputamount: 96000000
+    resourceinputamount: 02000000
     moneyoutput: 0
     resourceoutput: 05000000
-    resourceoutputamount: 2c010000
-    productiontime: 6
+    resourceoutputamount: 04000000
+    productiontime: 8
     climate: 2
     buildingtype: 5
   - id: 15
     name: Plastic Processing
     pollution: 0
-    moneycost: 10000
+    moneycost: 14
     resourcecost: 03000000
-    resourcecostamount: e8030000
+    resourcecostamount: 03000000
     moneyinput: 0
     resourceinput: 04000000
-    resourceinputamount: fa000000
+    resourceinputamount: 02000000
     moneyoutput: 0
     resourceoutput: 06000000
-    resourceoutputamount: 2c010000
-    productiontime: 6
+    resourceoutputamount: 04000000
+    productiontime: 8
     climate: 1
     buildingtype: 5
   - id: 16
     name: Powder Metallurgy
     pollution: 0
-    moneycost: 10000
+    moneycost: 14
     resourcecost: 04000000
-    resourcecostamount: e8030000
+    resourcecostamount: 03000000
     moneyinput: 0
     resourceinput: 03000000
-    resourceinputamount: 77010000
+    resourceinputamount: 02000000
     moneyoutput: 0
     resourceoutput: 07000000
-    resourceoutputamount: 77010000
-    productiontime: 10
+    resourceoutputamount: 04000000
+    productiontime: 8
     climate: 3
     buildingtype: 5
   - id: 17
     name: Eco-House
     pollution: 0
-    moneycost: 5000
+    moneycost: 6
     resourcecost: 02000000
-    resourcecostamount: e8030000
+    resourcecostamount: 03000000
     moneyinput: 0
     resourceinput: 0000000001000000
-    resourceinputamount: 2c0100002c010000
-    moneyoutput: 1500
+    resourceinputamount: 0200000002000000
+    moneyoutput: 3
     resourceoutput: 
     resourceoutputamount: 
-    productiontime: 5
+    productiontime: 10
     climate: 0
     buildingtype: 2

@@ -34,7 +34,7 @@ public class TemperatureWidget : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void Update() {
         slider.value = temperature.CurrentTemperature;
-        temperatureText.text = ((int)(temperature.CurrentTemperature)).ToString() + "C";
+        temperatureText.text = ((int)(temperature.CurrentTemperature)).ToString() + "c";
     }
 
     private void RemoveSlider(float newWaterLevel) {

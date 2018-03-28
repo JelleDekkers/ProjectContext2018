@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d23ea419458494ba4b6be6294ab916, type: 3}
   m_Name: World Temperature
   m_EditorClassIdentifier: 
-  temperatureIncreasePerPollution: 0.001
-  startingTemperature: 15
-  currentTemperature: 15
-  maxTemperature: 40
+  temperatureIncreasePerPollution: 0.005
+  startingTemperature: 12
+  currentTemperature: 12
+  maxTemperature: 23
