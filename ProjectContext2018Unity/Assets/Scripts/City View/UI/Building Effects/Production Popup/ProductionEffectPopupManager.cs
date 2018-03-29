@@ -44,6 +44,7 @@ namespace CityView.UI {
         private void OnDestroy() {
             Building.OnProductionCycleCompleted -= InstantiateNewProductionPopup;
             Construction.BuildMode.OnBuildingPlaced -= InstantiateNewBuildingCostsPopup;
+            Building.OnProductionInputProcessed -= InstantiateNewInputPopup;
         }
     }
 }

@@ -54,7 +54,17 @@ MonoBehaviour:
   menu:
     sceneAsset: {fileID: 102900000, guid: 08f352aa02fdd17489ff16b78a9fe45b, type: 3}
     sceneName: Scenes/Main Menu
-  gameWonDesc: {fileID: 0}
-  gameLostDesc: {fileID: 0}
+  worldTemperature: {fileID: 11400000, guid: bab4035b9b66efd48b302c172b49122b, type: 2}
+  gameTime: {fileID: 11400000, guid: 4c66a6454839f284caa0da56566a4690, type: 2}
+  gameOverDescriptionTxt: {fileID: 0}
+  gameOverTitleTxt: {fileID: 0}
+  gameWonTitle: You Won
+  gameLostTitle: You Lost
+  temperatureThresholdReachedDescription: You were not able to stop global warming.
+    Everyone loses!
+  timeThresholdReachedDescription: You were not able to stop global warming in time.
+    Everyone loses!
+  sustainableConditionMetDescription: You were able to stop global warming.
   playerList: {fileID: 0}
-  infoItemPrefab: {fileID: 0}
+  infoItemPrefab: {fileID: 114303006129664150, guid: e69567c84ef7a624c9e3147e6c9266a9,
+    type: 2}

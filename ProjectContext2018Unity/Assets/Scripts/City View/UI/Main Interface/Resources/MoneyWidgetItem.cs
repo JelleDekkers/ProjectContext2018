@@ -19,5 +19,9 @@ namespace CityView.UI {
         private void UpdateAmount(float newAmount) {
             amountText.text = Mathf.RoundToInt(newAmount).ToString();
         }
+
+        private void OnDestroy() {
+            PlayerResources.OnMoneyChanged -= UpdateAmount;
+        }
     }
 }

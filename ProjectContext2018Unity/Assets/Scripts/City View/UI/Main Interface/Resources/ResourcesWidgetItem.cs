@@ -53,6 +53,7 @@ namespace CityView.UI {
             MarketPlace.OnTradeOfferBought -= CheckForPopup;
             PlayerOffersWidgetItem.OnOfferChanged -= CheckForPopup;
             PlayerOffersWidgetItem.OnOfferRemoved -= CheckForPopup;
+            PlayerResources.OnResourceChanged -= UpdateAmount;
         }
 
         protected void UpdateAmount(int id, int newAmount) {
